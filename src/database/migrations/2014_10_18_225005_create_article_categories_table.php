@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateArticleCategoriesTable extends Migration {
 
@@ -10,12 +10,10 @@ class CreateArticleCategoriesTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
+	public function up() {
 		// Create the `Posts` table
-		Schema::create('article_categories', function(Blueprint $table)
-		{
-            $table->engine = 'InnoDB';
+		Schema::create('article_categories', function (Blueprint $table) {
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->unsignedInteger('language_id');
 			$table->foreign('language_id')->references('id')->on('languages');
@@ -27,7 +25,7 @@ class CreateArticleCategoriesTable extends Migration {
 			$table->string('title');
 			$table->string('slug')->nullable();
 			$table->timestamps();
-            $table->softDeletes();
+			$table->softDeletes();
 		});
 	}
 
@@ -36,8 +34,7 @@ class CreateArticleCategoriesTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
+	public function down() {
 		Schema::drop('article_categories');
 	}
 

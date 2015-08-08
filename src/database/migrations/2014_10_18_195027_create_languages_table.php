@@ -1,6 +1,6 @@
 <?php
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateLanguagesTable extends Migration {
 
@@ -9,10 +9,9 @@ class CreateLanguagesTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		Schema::create( 'languages', function(Blueprint $table){
-		    $table->engine = 'InnoDB';
+	public function up() {
+		Schema::create('languages', function (Blueprint $table) {
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->integer('position')->nullable();
 			$table->string('name', 50)->unique();
@@ -22,8 +21,8 @@ class CreateLanguagesTable extends Migration {
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
 			$table->unsignedInteger('user_id_edited')->nullable();
 			$table->foreign('user_id_edited')->references('id')->on('users')->onDelete('set null');
-            $table->timestamps();
-            $table->softDeletes();
+			$table->timestamps();
+			$table->softDeletes();
 		}
 		);
 	}
@@ -33,8 +32,7 @@ class CreateLanguagesTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
+	public function down() {
 		Schema::drop('languages');
 	}
 

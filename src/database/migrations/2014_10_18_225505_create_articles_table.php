@@ -1,18 +1,16 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateArticlesTable extends Migration
-{
+class CreateArticlesTable extends Migration {
 
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
+	public function up() {
 		// Create the `Posts` table
 		Schema::create('articles', function (Blueprint $table) {
 			$table->engine = 'InnoDB';
@@ -33,7 +31,7 @@ class CreateArticlesTable extends Migration
 			$table->string('source')->nullable();
 			$table->string('picture')->nullable();
 			$table->timestamps();
-            $table->softDeletes();
+			$table->softDeletes();
 		});
 	}
 
@@ -42,8 +40,7 @@ class CreateArticlesTable extends Migration
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
+	public function down() {
 		Schema::drop('articles');
 	}
 
