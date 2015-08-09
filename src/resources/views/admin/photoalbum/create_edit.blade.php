@@ -5,7 +5,7 @@
 </ul>
 <form class="form-horizontal" enctype="multipart/form-data"
 	method="post"
-	action="@if(isset($photoalbum)){{ URL::to('admin/photoalbum/'.$photoalbum->id.'/edit') }}
+	action="@if(isset($photoalbum)){{ URL::to('admin/photoalbum/edit/'.$photoalbum->id) }}
 	        @else{{ URL::to('admin/photoalbum/create') }}@endif"
 	autocomplete="off">
 	<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
@@ -58,10 +58,10 @@
 					trans("admin/modal.reset") }}
 				</button>
 				<button type="submit" class="btn btn-sm btn-success">
-					<span class="glyphicon glyphicon-ok-circle"></span> 
-					@if	(isset($photoalbum)) 
+					<span class="glyphicon glyphicon-ok-circle"></span>
+					@if	(isset($photoalbum))
 					   {{ trans("admin/modal.edit") }}
-				    @else 
+				    @else
 				        {{trans("admin/modal.create") }}
 				    @endif
 				</button>

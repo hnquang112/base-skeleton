@@ -1,6 +1,6 @@
 @extends('admin.layouts.modal') @section('content')
 <form id="deleteForm" class="form-horizontal" method="post"
-	action="@if (isset($videoalbum)){{ URL::to('admin/videoalbum/' . $videoalbum->id . '/delete') }}@endif"
+	action="@if (isset($videoalbum)){{ URL::to('admin/videoalbum/delete/' . $videoalbum->id) }}@endif"
 	autocomplete="off">
 	<input type="hidden" name="_token" value="{{{ csrf_token() }}}" /> <input
 		type="hidden" name="id" value="{{ $videoalbum->id }}" />

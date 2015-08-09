@@ -16,7 +16,7 @@ class UserController extends AdminController {
 	 *
 	 * @return Response
 	 */
-	public function index() {
+	public function getIndex() {
 		// Show the page
 		return view('admin.users.index');
 	}
@@ -110,13 +110,13 @@ class UserController extends AdminController {
 	 *
 	 * @return Datatables JSON
 	 */
-	public function data() {
+	public function getData() {
 		$users = User::select(array('users.id', 'users.name', 'users.email', 'users.confirmed', 'users.created_at'));
 
 		return Datatables::of($users)
 			->edit_column('confirmed', '@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif')
-			->add_column('actions', '@if ($id!="1")<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm iframe" ><span class="glyphicon glyphicon-pencil"></span>  {{ trans("admin/modal.edit") }}</a>
-                    <a href="{{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ trans("admin/modal.delete") }}</a>
+			->add_column('actions', '@if ($id!="1")<a href="{{{ URL::to(\'admin/users/edit/\' . $id) }}}" class="btn btn-success btn-sm iframe" ><span class="glyphicon glyphicon-pencil"></span>  {{ trans("admin/modal.edit") }}</a>
+                    <a href="{{{ URL::to(\'admin/users/delete/\' . $id) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ trans("admin/modal.delete") }}</a>
                 @endif')
 			->remove_column('id')
 

@@ -4,7 +4,7 @@
 			trans('admin/modal.general') }}}</a></li>
 </ul>
 <form class="form-horizontal" method="post"
-	action="@if (isset($user)){{ URL::to('admin/users/' . $user->id . '/edit') }}@endif"
+	action="@if (isset($user)){{ URL::to('admin/users/edit/' . $user->id) }}@endif"
 	autocomplete="off">
 	<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 	<div class="tab-content">
@@ -106,7 +106,7 @@
 				trans("admin/modal.reset") }}
 			</button>
 			<button type="submit" class="btn btn-sm btn-success">
-				<span class="glyphicon glyphicon-ok-circle"></span> 
+				<span class="glyphicon glyphicon-ok-circle"></span>
 				    @if	(isset($user))
 				        {{ trans("admin/modal.edit") }}
 				    @else

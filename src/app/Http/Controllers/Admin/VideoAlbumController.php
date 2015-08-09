@@ -18,7 +18,7 @@ class VideoAlbumController extends AdminController {
 	 *
 	 * @return Response
 	 */
-	public function index() {
+	public function getIndex() {
 		// Show the page
 		return view('admin.videoalbum.index');
 	}
@@ -106,7 +106,7 @@ class VideoAlbumController extends AdminController {
 	 *
 	 * @return Datatables JSON
 	 */
-	public function data() {
+	public function getData() {
 		$video_category = VideoAlbum::join('languages', 'languages.id', '=', 'video_albums.language_id')
 			->select(array('video_albums.id', 'video_albums.name', 'languages.name as language', 'video_albums.id as images_count', 'video_albums.created_at'))
 			->orderBy('video_albums.position', 'ASC');
@@ -114,8 +114,8 @@ class VideoAlbumController extends AdminController {
 		return Datatables::of($video_category)
 			->edit_column('images_count', '<a class="btn btn-primary btn-sm" >{{ DB::table(\'videos\')->where(\'video_album_id\', \'=\', $id)->count() }}</a>')
 			->add_column('actions', '<a href="{{{ URL::to(\'admin/video/\' . $id . \'/itemsforalbum\' ) }}}" class="btn btn-info btn-sm" ><span class="glyphicon glyphicon-open"></span>  {{ trans("admin/modal.items") }}</a>
-                    <a href="{{{ URL::to(\'admin/videoalbum/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm iframe" ><span class="glyphicon glyphicon-pencil"></span>  {{ trans("admin/modal.edit") }}</a>
-                    <a href="{{{ URL::to(\'admin/videoalbum/\' . $id . \'/delete\' ) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ trans("admin/modal.delete") }}</a>
+                    <a href="{{{ URL::to(\'admin/videoalbum/edit/\' . $id) }}}" class="btn btn-success btn-sm iframe" ><span class="glyphicon glyphicon-pencil"></span>  {{ trans("admin/modal.edit") }}</a>
+                    <a href="{{{ URL::to(\'admin/videoalbum/delete/\' . $id) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ trans("admin/modal.delete") }}</a>
                     <input type="hidden" name="row" value="{{$id}}" id="row">')
 			->remove_column('id')
 

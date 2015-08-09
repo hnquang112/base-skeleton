@@ -69,15 +69,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
 	// Route::get('news/reorder', 'ArticlesController@getReorder');
 
 	# Photo Album
-	Route::get('photoalbum', 'PhotoAlbumController@index');
-	Route::get('photoalbum/create', 'PhotoAlbumController@getCreate');
-	Route::post('photoalbum/create', 'PhotoAlbumController@postCreate');
-	Route::get('photoalbum/{id}/edit', 'PhotoAlbumController@getEdit');
-	Route::post('photoalbum/{id}/edit', 'PhotoAlbumController@postEdit');
-	Route::get('photoalbum/{id}/delete', 'PhotoAlbumController@getDelete');
-	Route::post('photoalbum/{id}/delete', 'PhotoAlbumController@postDelete');
-	Route::get('photoalbum/data', 'PhotoAlbumController@data');
-	Route::get('photoalbum/reorder', 'PhotoAlbumController@getReorder');
+	Route::controller('photoalbum', 'PhotoAlbumController');
+	// Route::get('photoalbum', 'PhotoAlbumController@index');
+	// Route::get('photoalbum/create', 'PhotoAlbumController@getCreate');
+	// Route::post('photoalbum/create', 'PhotoAlbumController@postCreate');
+	// Route::get('photoalbum/{id}/edit', 'PhotoAlbumController@getEdit');
+	// Route::post('photoalbum/{id}/edit', 'PhotoAlbumController@postEdit');
+	// Route::get('photoalbum/{id}/delete', 'PhotoAlbumController@getDelete');
+	// Route::post('photoalbum/{id}/delete', 'PhotoAlbumController@postDelete');
+	// Route::get('photoalbum/data', 'PhotoAlbumController@data');
+	// Route::get('photoalbum/reorder', 'PhotoAlbumController@getReorder');
 
 	# Photo
 	Route::get('photo', 'PhotoController@index');
@@ -94,15 +95,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
 	Route::get('photo/reorder', 'PhotoController@getReorder');
 
 	# Video
-	Route::get('videoalbum', 'VideoAlbumController@index');
-	Route::get('videoalbum/create', 'VideoAlbumController@getCreate');
-	Route::post('videoalbum/create', 'VideoAlbumController@postCreate');
-	Route::get('videoalbum/{id}/edit', 'VideoAlbumController@getEdit');
-	Route::post('videoalbum/{id}/edit', 'VideoAlbumController@postEdit');
-	Route::get('videoalbum/{id}/delete', 'VideoAlbumController@getDelete');
-	Route::post('videoalbum/{id}/delete', 'VideoAlbumController@postDelete');
-	Route::get('videoalbum/data', 'VideoAlbumController@data');
-	Route::get('video/reorder', 'VideoAlbumController@getReorder');
+	Route::controller('videoalbum', 'VideoAlbumController');
+	// Route::get('videoalbum', 'VideoAlbumController@index');
+	// Route::get('videoalbum/create', 'VideoAlbumController@getCreate');
+	// Route::post('videoalbum/create', 'VideoAlbumController@postCreate');
+	// Route::get('videoalbum/{id}/edit', 'VideoAlbumController@getEdit');
+	// Route::post('videoalbum/{id}/edit', 'VideoAlbumController@postEdit');
+	// Route::get('videoalbum/{id}/delete', 'VideoAlbumController@getDelete');
+	// Route::post('videoalbum/{id}/delete', 'VideoAlbumController@postDelete');
+	// Route::get('videoalbum/data', 'VideoAlbumController@data');
+	// Route::get('video/reorder', 'VideoAlbumController@getReorder');
 
 	# Video
 	Route::get('video', 'VideoController@index');
@@ -118,13 +120,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
 	Route::get('video/reorder', 'VideoController@getReorder');
 
 	# Users
-	Route::get('users/', 'UserController@index');
-	Route::get('users/create', 'UserController@getCreate');
-	Route::post('users/create', 'UserController@postCreate');
-	Route::get('users/{id}/edit', 'UserController@getEdit');
-	Route::post('users/{id}/edit', 'UserController@postEdit');
-	Route::get('users/{id}/delete', 'UserController@getDelete');
-	Route::post('users/{id}/delete', 'UserController@postDelete');
-	Route::get('users/data', 'UserController@data');
+	Route::controller('user', 'UserController');
+	// Route::get('users/', 'UserController@index');
+	// Route::get('users/create', 'UserController@getCreate');
+	// Route::post('users/create', 'UserController@postCreate');
+	// Route::get('users/{id}/edit', 'UserController@getEdit');
+	// Route::post('users/{id}/edit', 'UserController@postEdit');
+	// Route::get('users/{id}/delete', 'UserController@getDelete');
+	// Route::post('users/{id}/delete', 'UserController@postDelete');
+	// Route::get('users/data', 'UserController@data');
 
 });

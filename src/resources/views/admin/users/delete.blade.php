@@ -1,6 +1,6 @@
 @extends('admin.layouts.modal') @section('content')
 <form id="deleteForm" class="form-horizontal" method="post"
-	action="@if (isset($user)){{ URL::to('admin/users/' . $user->id . '/delete') }}@endif"
+	action="@if (isset($user)){{ URL::to('admin/users/delete/' . $user->id) }}@endif"
 	autocomplete="off">
 
 	<input type="hidden" name="_token" value="{{{ csrf_token() }}}" /> <input
