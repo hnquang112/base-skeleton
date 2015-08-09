@@ -1,16 +1,16 @@
-<?php namespace App\Http\Controllers;
+<?php
 
-use App\Article;
+namespace App\Http\Controllers;
+
+use App\Models\Article;
 
 class ArticlesController extends Controller {
 
-	public function __construct()
-	{
-		$this->middleware('auth', [ 'except' => [ 'index', 'show' ] ]);
+	public function __construct() {
+		$this->middleware('auth', ['except' => ['index', 'show']]);
 	}
 
-	public function show($id)
-	{
+	public function show($id) {
 		// Get all the blog posts
 		$news = Article::find($id);
 

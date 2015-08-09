@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Admin;
+<?php
+
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -9,10 +11,9 @@ class UserEditRequest extends FormRequest {
 	 *
 	 * @return array
 	 */
-	public function rules()
-	{
+	public function rules() {
 		return [
-            'name' => 'required|min:3',
+			'name' => 'required|min:3',
 		];
 	}
 
@@ -21,8 +22,7 @@ class UserEditRequest extends FormRequest {
 	 *
 	 * @return bool
 	 */
-	public function authorize()
-	{
+	public function authorize() {
 		return true;
 	}
 

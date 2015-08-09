@@ -1,17 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Video extends Model
-{
+class Video extends Model {
 
-    use SoftDeletes;
+	use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
+	protected $dates = ['deleted_at'];
 
 	/**
 	 * Deletes a video
@@ -30,7 +28,7 @@ class Video extends Model
 	 * @return string
 	 */
 	public function content() {
-		return nl2br($this -> content);
+		return nl2br($this->content);
 	}
 
 	/**
@@ -39,25 +37,24 @@ class Video extends Model
 	 * @return User
 	 */
 	public function author() {
-		return $this -> belongsTo('App\User', 'user_id');
+		return $this->belongsTo('App\Models\User', 'user_id');
 	}
-	
+
 	/**
 	 * Get the video.
 	 *
 	 * @return Video
 	 */
 	public function album() {
-		return $this -> belongsTo('App\VideoAlbum', 'video_album_id');
+		return $this->belongsTo('App\Models\VideoAlbum', 'video_album_id');
 	}
 
-    /**
-     * Get the video's language.
-     *
-     * @return Language
-     */
-    public function language()
-    {
-        return $this->belongsTo('App\Language');
-    }
+	/**
+	 * Get the video's language.
+	 *
+	 * @return Language
+	 */
+	public function language() {
+		return $this->belongsTo('App\Models\Language');
+	}
 }

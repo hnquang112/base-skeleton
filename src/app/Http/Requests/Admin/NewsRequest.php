@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Admin;
+<?php
+
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -9,13 +11,12 @@ class NewsRequest extends FormRequest {
 	 *
 	 * @return array
 	 */
-	public function rules()
-	{
+	public function rules() {
 		return [
-            'title' => 'required|min:3',
-            'language_id' => 'required|integer',
-            'newscategory_id' => 'required|integer',
-            'content' => 'required|min:20',
+			'title' => 'required|min:3',
+			'language_id' => 'required|integer',
+			'newscategory_id' => 'required|integer',
+			'content' => 'required|min:20',
 		];
 	}
 
@@ -24,8 +25,7 @@ class NewsRequest extends FormRequest {
 	 *
 	 * @return bool
 	 */
-	public function authorize()
-	{
+	public function authorize() {
 		return true;
 	}
 

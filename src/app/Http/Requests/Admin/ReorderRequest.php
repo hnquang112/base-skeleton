@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Admin;
+<?php
+
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -9,10 +11,9 @@ class ReorderRequest extends FormRequest {
 	 *
 	 * @return array
 	 */
-	public function rules()
-	{
+	public function rules() {
 		return [
-            'list' => 'required',
+			'list' => 'required',
 		];
 	}
 
@@ -21,8 +22,7 @@ class ReorderRequest extends FormRequest {
 	 *
 	 * @return bool
 	 */
-	public function authorize()
-	{
+	public function authorize() {
 		return true;
 	}
 

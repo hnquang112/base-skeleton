@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Admin;
+<?php
+
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -9,11 +11,10 @@ class VideoAlbumRequest extends FormRequest {
 	 *
 	 * @return array
 	 */
-	public function rules()
-	{
+	public function rules() {
 		return [
-            'name' => 'required|min:3',
-            'language_id' => 'required|integer',
+			'name' => 'required|min:3',
+			'language_id' => 'required|integer',
 		];
 	}
 
@@ -22,8 +23,7 @@ class VideoAlbumRequest extends FormRequest {
 	 *
 	 * @return bool
 	 */
-	public function authorize()
-	{
+	public function authorize() {
 		return true;
 	}
 

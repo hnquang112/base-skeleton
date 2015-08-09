@@ -1,17 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ArticleCategory extends Model
-{
+class ArticleCategory extends Model {
 
-    use SoftDeletes;
+	use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
+	protected $dates = ['deleted_at'];
 
 	protected $table = "article_categories";
 
@@ -21,8 +19,7 @@ class ArticleCategory extends Model
 	 *
 	 * @return string
 	 */
-	public function description()
-	{
+	public function description() {
 		return nl2br($this->description);
 	}
 
@@ -31,9 +28,8 @@ class ArticleCategory extends Model
 	 *
 	 * @return User
 	 */
-	public function author()
-	{
-		return $this->belongsTo('App\User');
+	public function author() {
+		return $this->belongsTo('App\Models\User');
 	}
 
 	/**
@@ -41,9 +37,8 @@ class ArticleCategory extends Model
 	 *
 	 * @return array
 	 */
-	public function articles()
-	{
-		return $this->hasMany('App\Article');
+	public function articles() {
+		return $this->hasMany('App\Models\Article');
 	}
 
 	/**
@@ -51,8 +46,7 @@ class ArticleCategory extends Model
 	 *
 	 * @return Language
 	 */
-	public function language()
-	{
-		return $this->belongsTo('App\Language');
+	public function language() {
+		return $this->belongsTo('App\Models\Language');
 	}
 }

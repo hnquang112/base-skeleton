@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Admin;
+<?php
+
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -9,11 +11,10 @@ class LanguageRequest extends FormRequest {
 	 *
 	 * @return array
 	 */
-	public function rules()
-	{
+	public function rules() {
 		return [
-            'name' => 'required|min:3',
-            'lang_code' => 'required|min:1',
+			'name' => 'required|min:3',
+			'lang_code' => 'required|min:1',
 		];
 	}
 
@@ -22,8 +23,7 @@ class LanguageRequest extends FormRequest {
 	 *
 	 * @return bool
 	 */
-	public function authorize()
-	{
+	public function authorize() {
 		return true;
 	}
 

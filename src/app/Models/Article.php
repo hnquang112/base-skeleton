@@ -1,17 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Article extends Model
-{
+class Article extends Model {
 
-    use SoftDeletes;
+	use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
+	protected $dates = ['deleted_at'];
 
 	/**
 	 * The attributes that are mass assignable.
@@ -26,8 +24,7 @@ class Article extends Model
 	 *
 	 * @return string
 	 */
-	public function content()
-	{
+	public function content() {
 		return nl2br($this->content);
 	}
 
@@ -37,8 +34,7 @@ class Article extends Model
 	 *
 	 * @return string
 	 */
-	public function introduction()
-	{
+	public function introduction() {
 		return nl2br($this->introduction);
 	}
 
@@ -47,9 +43,8 @@ class Article extends Model
 	 *
 	 * @return User
 	 */
-	public function author()
-	{
-		return $this->belongsTo('App\User', 'user_id');
+	public function author() {
+		return $this->belongsTo('App\Models\User', 'user_id');
 	}
 
 	/**
@@ -57,9 +52,8 @@ class Article extends Model
 	 *
 	 * @return Language
 	 */
-	public function language()
-	{
-		return $this->belongsTo('App\Language');
+	public function language() {
+		return $this->belongsTo('App\Models\Language');
 	}
 
 	/**
@@ -67,9 +61,8 @@ class Article extends Model
 	 *
 	 * @return ArticleCategory
 	 */
-	public function category()
-	{
-		return $this->belongsTo('App\NewsCategory');
+	public function category() {
+		return $this->belongsTo('App\Models\NewsCategory');
 	}
 
 }
