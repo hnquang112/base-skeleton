@@ -1,7 +1,7 @@
 @extends('admin.layouts.modal') {{-- Content --}} @section('content')
 {{-- Delete Post Form --}}
 <form id="deleteForm" class="form-horizontal" method="post"
-	action="@if (isset($newscategory)){{ URL::to('admin/newscategory/' . $newscategory->id . '/delete') }}@endif"
+	action="@if (isset($newscategory)){{ URL::to('admin/newscategory/delete/' . $newscategory->id) }}@endif"
 	autocomplete="off">
 
 	<!-- CSRF Token -->

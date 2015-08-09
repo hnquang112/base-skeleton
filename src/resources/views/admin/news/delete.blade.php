@@ -2,7 +2,7 @@
 
 {{-- Delete Post Form --}}
 <form id="deleteForm" class="form-horizontal" method="post"
-	action="@if (isset($news)){{ URL::to('admin/news/' . $news->id . '/delete') }}@endif"
+	action="@if (isset($news)){{ URL::to('admin/news/delete/' . $news->id) }}@endif"
 	autocomplete="off">
 
 	<!-- CSRF Token -->

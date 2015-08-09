@@ -7,7 +7,7 @@
 <!-- ./ tabs -->
 <form class="form-horizontal" enctype="multipart/form-data"
 	method="post"
-	action="@if(isset($language)){{ URL::to('admin/language/'.$language->id.'/edit') }}
+	action="@if(isset($language)){{ URL::to('admin/language/edit/'.$language->id) }}
 	        @else{{ URL::to('admin/language/create') }}@endif"
 	autocomplete="off">
 	<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
@@ -54,11 +54,11 @@
 				trans("admin/modal.reset") }}
 			</button>
 			<button type="submit" class="btn btn-sm btn-success">
-				<span class="glyphicon glyphicon-ok-circle"></span> 
-				@if (isset($language)) 
+				<span class="glyphicon glyphicon-ok-circle"></span>
+				@if (isset($language))
 				    {{ trans("admin/modal.edit") }}
-				@else 
-				    {{trans("admin/modal.create") }}
+				@else
+				    {{ trans("admin/modal.create") }}
 			     @endif
 			</button>
 		</div>

@@ -16,7 +16,7 @@ class LanguageController extends AdminController {
 	 *
 	 * @return Response
 	 */
-	public function index() {
+	public function getIndex() {
 		// Show the page
 		return view('admin.language.index');
 	}
@@ -103,7 +103,6 @@ class LanguageController extends AdminController {
 	 * @param $id
 	 * @return Response
 	 */
-
 	public function getDelete($id) {
 		$language = $id;
 		// Show the page
@@ -126,15 +125,15 @@ class LanguageController extends AdminController {
 	 *
 	 * @return Datatables JSON
 	 */
-	public function data() {
+	public function getData() {
 		$language = Language::whereNull('languages.deleted_at')
 			->orderBy('languages.position', 'ASC')
 			->select(array('languages.id', 'languages.name', 'languages.lang_code as lang_code', 'languages.lang_code as icon'));
 		return Datatables::of($language)
 			->edit_column('icon', '<img src="blank.gif" class="flag flag-{{$icon}}" alt="" />')
 
-			->add_column('actions', '<a href="{{{ URL::to(\'admin/language/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm iframe" ><span class="glyphicon glyphicon-pencil"></span> {{ trans("admin/modal.edit") }}</a>
-                    <a href="{{{ URL::to(\'admin/language/\' . $id . \'/delete\' ) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ trans("admin/modal.delete") }}</a>
+			->add_column('actions', '<a href="{{{ URL::to(\'admin/language/edit/\' . $id) }}}" class="btn btn-success btn-sm iframe" ><span class="glyphicon glyphicon-pencil"></span> {{ trans("admin/modal.edit") }}</a>
+                    <a href="{{{ URL::to(\'admin/language/delete/\' . $id) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ trans("admin/modal.delete") }}</a>
                     <input type="hidden" name="row" value="{{$id}}" id="row">')
 			->remove_column('id')
 

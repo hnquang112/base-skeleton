@@ -8,7 +8,7 @@
 {{-- Edit Blog Form --}}
 <form class="form-horizontal" enctype="multipart/form-data"
 	method="post"
-	action="@if(isset($newscategory)){{ URL::to('admin/newscategory/'.$newscategory->id.'/edit') }}
+	action="@if(isset($newscategory)){{ URL::to('admin/newscategory/edit/'.$newscategory->id) }}
 	        @else{{ URL::to('admin/newscategory/create') }}@endif"
 	autocomplete="off">
 	<!-- CSRF Token -->
@@ -62,10 +62,10 @@
 					trans("admin/modal.reset") }}
 				</button>
 				<button type="submit" class="btn btn-sm btn-success">
-					<span class="glyphicon glyphicon-ok-circle"></span> 
-					@if (isset($newscategory)) 
+					<span class="glyphicon glyphicon-ok-circle"></span>
+					@if (isset($newscategory))
 						{{ trans("admin/modal.edit") }}
-					@else 
+					@else
 						{{trans("admin/modal.create") }}
 				    	@endif
 				</button>

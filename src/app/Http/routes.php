@@ -17,7 +17,7 @@ Route::get('about', 'PagesController@about');
 Route::get('contact', 'PagesController@contact');
 
 Route::pattern('id', '[0-9]+');
-Route::get('news/{id}', 'ArticlesController@show');
+Route::get('news/{id}', 'ArticleController@show');
 Route::get('video/{id}', 'VideoController@show');
 Route::get('photo/{id}', 'PhotoController@show');
 
@@ -34,36 +34,39 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
 	Route::get('dashboard', 'DashboardController@index');
 
 	# Language
-	Route::get('language', 'LanguageController@index');
-	Route::get('language/create', 'LanguageController@getCreate');
-	Route::post('language/create', 'LanguageController@postCreate');
-	Route::get('language/{id}/edit', 'LanguageController@getEdit');
-	Route::post('language/{id}/edit', 'LanguageController@postEdit');
-	Route::get('language/{id}/delete', 'LanguageController@getDelete');
-	Route::post('language/{id}/delete', 'LanguageController@postDelete');
-	Route::get('language/data', 'LanguageController@data');
+	Route::controller('language', 'LanguageController');
+	// Route::get('language', 'LanguageController@index');
+	// Route::get('language/create', 'LanguageController@getCreate');
+	// Route::post('language/create', 'LanguageController@postCreate');
+	// Route::get('language/{id}/edit', 'LanguageController@getEdit');
+	// Route::post('language/{id}/edit', 'LanguageController@postEdit');
+	// Route::get('language/{id}/delete', 'LanguageController@getDelete');
+	// Route::post('language/{id}/delete', 'LanguageController@postDelete');
+	// Route::get('language/data', 'LanguageController@data');
 
 	# News category
-	Route::get('newscategory', 'ArticleCategoriesController@index');
-	Route::get('newscategory/create', 'ArticleCategoriesController@getCreate');
-	Route::post('newscategory/create', 'ArticleCategoriesController@postCreate');
-	Route::get('newscategory/{id}/edit', 'ArticleCategoriesController@getEdit');
-	Route::post('newscategory/{id}/edit', 'ArticleCategoriesController@postEdit');
-	Route::get('newscategory/{id}/delete', 'ArticleCategoriesController@getDelete');
-	Route::post('newscategory/{id}/delete', 'ArticleCategoriesController@postDelete');
-	Route::get('newscategory/data', 'ArticleCategoriesController@data');
-	Route::get('newscategory/reorder', 'ArticleCategoriesController@getReorder');
+	Route::controller('newscategory', 'ArticleCategoryController');
+	// Route::get('newscategory', 'ArticleCategoriesController@index');
+	// Route::get('newscategory/create', 'ArticleCategoriesController@getCreate');
+	// Route::post('newscategory/create', 'ArticleCategoriesController@postCreate');
+	// Route::get('newscategory/{id}/edit', 'ArticleCategoriesController@getEdit');
+	// Route::post('newscategory/{id}/edit', 'ArticleCategoriesController@postEdit');
+	// Route::get('newscategory/{id}/delete', 'ArticleCategoriesController@getDelete');
+	// Route::post('newscategory/{id}/delete', 'ArticleCategoriesController@postDelete');
+	// Route::get('newscategory/data', 'ArticleCategoriesController@data');
+	// Route::get('newscategory/reorder', 'ArticleCategoriesController@getReorder');
 
 	# News
-	Route::get('news', 'ArticlesController@index');
-	Route::get('news/create', 'ArticlesController@getCreate');
-	Route::post('news/create', 'ArticlesController@postCreate');
-	Route::get('news/{id}/edit', 'ArticlesController@getEdit');
-	Route::post('news/{id}/edit', 'ArticlesController@postEdit');
-	Route::get('news/{id}/delete', 'ArticlesController@getDelete');
-	Route::post('news/{id}/delete', 'ArticlesController@postDelete');
-	Route::get('news/data', 'ArticlesController@data');
-	Route::get('news/reorder', 'ArticlesController@getReorder');
+	Route::controller('news', 'ArticleController');
+	// Route::get('news', 'ArticlesController@index');
+	// Route::get('news/create', 'ArticlesController@getCreate');
+	// Route::post('news/create', 'ArticlesController@postCreate');
+	// Route::get('news/{id}/edit', 'ArticlesController@getEdit');
+	// Route::post('news/{id}/edit', 'ArticlesController@postEdit');
+	// Route::get('news/{id}/delete', 'ArticlesController@getDelete');
+	// Route::post('news/{id}/delete', 'ArticlesController@postDelete');
+	// Route::get('news/data', 'ArticlesController@data');
+	// Route::get('news/reorder', 'ArticlesController@getReorder');
 
 	# Photo Album
 	Route::get('photoalbum', 'PhotoAlbumController@index');

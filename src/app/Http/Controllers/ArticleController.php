@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 
-class ArticlesController extends Controller {
+class ArticleController extends Controller {
 
 	public function __construct() {
 		$this->middleware('auth', ['except' => ['index', 'show']]);

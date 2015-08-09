@@ -13,14 +13,14 @@ use Datatables;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
-class ArticlesController extends AdminController {
+class ArticleController extends AdminController {
 
 	/*
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index() {
+	public function getIndex() {
 		// Show the page
 		return view('admin.news.index');
 	}
@@ -146,15 +146,15 @@ class ArticlesController extends AdminController {
 	 *
 	 * @return Datatables JSON
 	 */
-	public function data() {
+	public function getData() {
 		$news = Article::join('languages', 'languages.id', '=', 'articles.language_id')
 			->join('article_categories', 'article_categories.id', '=', 'articles.article_category_id')
 			->select(array('articles.id', 'articles.title', 'article_categories.title as category', 'languages.name', 'articles.created_at'))
 			->orderBy('articles.position', 'ASC');
 
 		return Datatables::of($news)
-			->add_column('actions', '<a href="{{{ URL::to(\'admin/news/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm iframe" ><span class="glyphicon glyphicon-pencil"></span>  {{ trans("admin/modal.edit") }}</a>
-                    <a href="{{{ URL::to(\'admin/news/\' . $id . \'/delete\' ) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ trans("admin/modal.delete") }}</a>
+			->add_column('actions', '<a href="{{{ URL::to(\'admin/news/edit/\' . $id) }}}" class="btn btn-success btn-sm iframe" ><span class="glyphicon glyphicon-pencil"></span>  {{ trans("admin/modal.edit") }}</a>
+                    <a href="{{{ URL::to(\'admin/news/delete/\' . $id) }}}" class="btn btn-sm btn-danger iframe"><span class="glyphicon glyphicon-trash"></span> {{ trans("admin/modal.delete") }}</a>
                     <input type="hidden" name="row" value="{{$id}}" id="row">')
 			->remove_column('id')
 
