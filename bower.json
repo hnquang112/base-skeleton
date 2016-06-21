@@ -1,0 +1,21 @@
+{
+  "name": "base-skeleton",
+  "version": "0.1.0",
+  "authors": [
+    "hnquang112 <hnquang112@yahoo.com.vn>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "fontawesome": "~4.3.0",
+    "bootstrap-sass": "~3.3.6"
+  }
+}
