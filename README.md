@@ -26,7 +26,17 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
+## Inspiration By
+
+* [L5ESK](https://github.com/sroutier/laravel-5.1-enterprise-starter-kit)
+* [Laradock](https://github.com/LaraDock/laradock)
+* [Prestissimo for Composer](https://github.com/hirak/prestissimo)
+
 ## Installed Plugins
 
-https://github.com/laracasts/Laravel-5-Generators-Extended
-https://github.com/barryvdh/laravel-debugbar
+* [Generator](https://github.com/laracasts/Laravel-5-Generators-Extended)
+* [Debugbar](https://github.com/barryvdh/laravel-debugbar)
+* [Carbon](https://github.com/briannesbitt/Carbon)
+* [Gravatar](https://github.com/creativeorange/gravatar)
+* [Eloquent Sluggable](https://github.com/cviebrock/eloquent-sluggable)
+* [Flash](https://github.com/laracasts/flash)
