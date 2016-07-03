@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'cms', 'namespace' => 'Cms', 'middleware' => 'web'], function () {
+	Route::get('login', function () {
+		return view('cms.login.index');
+	});
+
+	Route::get('dashboard', function () {
+		return view('cms.dashboard.index');
+	});
+
+	Route::resource('posts', 'PostController');
+});

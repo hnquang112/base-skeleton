@@ -215,7 +215,7 @@ return [
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
-        'Flash' => Laracasts\Flash\Flash:class,
+        'Flash' => Laracasts\Flash\Flash::class,
 
     ],
 
