@@ -36,6 +36,8 @@
 
       <!-- Main content -->
       <section class="content">
+        @include('flash::message')
+
         @yield ('content')
       </section>
       <!-- /.content -->
@@ -43,7 +45,6 @@
     <!-- /.content-wrapper -->
 
     @include ('layouts.cms._footer')
-
   </div>
   <!-- ./wrapper -->
 

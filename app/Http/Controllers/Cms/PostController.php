@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Cms;
 
 use Illuminate\Http\Request;
+use App\Post;
+use Laracasts\Flash\Flash;
 
 class PostController extends CmsController
 {
@@ -23,7 +25,8 @@ class PostController extends CmsController
      */
     public function create()
     {
-        return view('cms.posts.create');
+        $post = new Post;
+        return view('cms.posts.create', compact('post'));
     }
 
     /**
@@ -34,7 +37,20 @@ class PostController extends CmsController
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $post = new Post([
+            'title' => $request->title
+        ]);
+        $post->fill($request->except('title'));
+        $post->author_id = 1;
+        
+        if ($post->save()) {
+            flash()->success('Saved successfully');
+            
+            return redirect()->route('cms.posts.index');
+        }
+        
+        flash()->error('Save failed');
+        return back();
     }
 
     /**
@@ -56,7 +72,8 @@ class PostController extends CmsController
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('cms.posts.edit', compact('post'));
     }
 
     /**
@@ -68,7 +85,18 @@ class PostController extends CmsController
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->fill($request->all());
+        $post->author_id = 1;
+
+        if ($post->save()) {
+            flash()->success('Saved successfully');
+
+            return redirect()->route('cms.posts.index');
+        }
+
+        flash()->error('Save failed');
+        return back();
     }
 
     /**

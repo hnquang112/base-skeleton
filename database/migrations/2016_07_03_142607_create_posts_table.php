@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->longText('content');
             $table->string('slug');
 //            $table->json('data')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
