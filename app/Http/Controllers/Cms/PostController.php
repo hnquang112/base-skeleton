@@ -15,7 +15,8 @@ class PostController extends CmsController
      */
     public function index()
     {
-        return view('cms.posts.index');
+        $posts = Post::all();
+        return view('cms.posts.index', compact('posts'));
     }
 
     /**
@@ -26,6 +27,7 @@ class PostController extends CmsController
     public function create()
     {
         $post = new Post;
+
         return view('cms.posts.create', compact('post'));
     }
 
@@ -45,11 +47,12 @@ class PostController extends CmsController
         
         if ($post->save()) {
             flash()->success('Saved successfully');
-            
+
             return redirect()->route('cms.posts.index');
         }
         
         flash()->error('Save failed');
+
         return back();
     }
 
@@ -59,9 +62,11 @@ class PostController extends CmsController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slugString)
     {
-        //
+        $post = Post::findBySlugOrFail($slugString);
+
+        return $post;
     }
 
     /**
@@ -73,6 +78,7 @@ class PostController extends CmsController
     public function edit($id)
     {
         $post = Post::findOrFail($id);
+
         return view('cms.posts.edit', compact('post'));
     }
 
@@ -96,6 +102,7 @@ class PostController extends CmsController
         }
 
         flash()->error('Save failed');
+        
         return back();
     }
 

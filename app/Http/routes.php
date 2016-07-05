@@ -33,3 +33,7 @@ Route::group(['prefix' => 'cms', 'namespace' => 'Cms'], function () {
 	Route::resource('menus', 'MenuController');
 
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

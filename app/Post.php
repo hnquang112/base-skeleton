@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Post extends Model
 {
-    use SoftDeletes, Sluggable;
+    use SoftDeletes, Sluggable, SluggableScopeHelpers;
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['title', 'content'];
