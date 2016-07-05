@@ -8,12 +8,8 @@
                     <h3 class="box-title">Posts</h3>
 
                     <div class="box-tools pull-right">
-                        <div class="has-feedback">
-                            <input type="text" class="form-control input-sm" placeholder="Search Post">
-                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                        </div>
+                        <a class="btn btn-primary" href="{{ route('cms.posts.create') }}">Create</a>
                     </div>
-                    <!-- /.box-tools -->
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
@@ -21,29 +17,26 @@
                         <!-- Check all button -->
                         <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
                         </button>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
-                        </div>
-                        <!-- /.btn-group -->
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                        <div class="pull-right">
-                            1-50/200
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+
+                        <!-- Bunch delete button -->
+                        <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+
+                        <!--Filter items-->
+                        Tất cả (442) | Của tôi (215) | Đã đăng (442)
+
+                        <div class="box-tools pull-right">
+                            <div class="has-feedback">
+                                <input type="text" class="form-control input-sm" placeholder="Search Post">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
-                            <!-- /.btn-group -->
                         </div>
-                        <!-- /.pull-right -->
+                        <!-- /.box-tools -->
                     </div>
                     <div class="table-responsive mailbox-messages">
                         <table class="table table-hover table-striped">
                             <tbody>
                             <tr>
-                                <td><div class="icheckbox_flat-purple" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div></td>
-                                <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+                                <td><input type="checkbox"></td>
                                 <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
                                 <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
                                 </td>
@@ -58,20 +51,20 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer no-padding">
-
+                    <div class="mailbox-controls">
+                        <!-- /.btn-group -->
+                        <div class="pull-right">
+                            1-50/200
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                            </div>
+                            <!-- /.btn-group -->
+                        </div>
+                        <!-- /.pull-right -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
-
-@push ('scripts')
-<script>
-    $(function () {
-        $('input[type="checkbox"]').iCheck({
-            checkboxClass: 'icheckbox_flat-purple',
-            radioClass: 'iradio_flat-purple '
-        });
-    });
-</script>
-@endpush

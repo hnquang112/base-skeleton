@@ -23,8 +23,8 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="reset" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-info pull-right">Save</button>
+                    <a class="btn btn-default" href="{{ route('cms.posts.index') }}">Cancel</a>
+                    <button type="submit" class="btn btn-primary pull-right">Save</button>
                 </div>
             </form>
         </div>

@@ -16,14 +16,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'cms', 'namespace' => 'Cms'], function () {
-	Route::get('login', function () {
-		return view('cms.login.index');
-	});
-
-	Route::get('dashboard', function () {
-		return view('cms.dashboard.index');
-	});
-
+	Route::resource('dashboard', 'DashboardController');
 	Route::resource('users', 'UserController');
 	Route::resource('roles', 'RoleController');
 	Route::resource('posts', 'PostController');
@@ -31,7 +24,6 @@ Route::group(['prefix' => 'cms', 'namespace' => 'Cms'], function () {
 	Route::resource('categories', 'CategoryController');
 	Route::resource('comments', 'CommentController');
 	Route::resource('menus', 'MenuController');
-
 });
 
 Route::auth();
