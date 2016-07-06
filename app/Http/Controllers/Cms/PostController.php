@@ -15,7 +15,7 @@ class PostController extends CmsController
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(10);
         return view('cms.posts.index', compact('posts'));
     }
 

@@ -1,3 +1,5 @@
+@inject('request', 'Illuminate\Http\Request')
+
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
@@ -14,18 +16,24 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">MAIN NAVIGATION</li>
-      <li class="active treeview">
-        <a href="#">
+      <li class="treeview {{ $request->is('cms/dashboard*') ? 'active' : '' }}">
+        <a href="{{ route('cms.dashboard.index') }}">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="treeview {{ $request->is('cms/posts*') ? 'active' : '' }}">
+        <a href="#">
+          <i class="fa fa-edit"></i> <span>Posts</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-          <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+          <li {{ $request->is('cms/posts') ? 'class=active' : '' }}><a href="{{ route('cms.posts.index') }}"><i class="fa fa-circle-o"></i> Posts List</a></li>
+          <li {{ $request->is('cms/posts/create') ? 'class=active' : '' }}><a href="{{ route('cms.posts.create') }}"><i class="fa fa-circle-o"></i> Write New Post</a></li>
         </ul>
       </li>
+      {{--Next--}}
       <li class="treeview">
         <a href="#">
           <i class="fa fa-files-o"></i>
@@ -79,19 +87,6 @@
           <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
           <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
           <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-        </ul>
-      </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-edit"></i> <span>Forms</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-          <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-          <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
         </ul>
       </li>
       <li class="treeview">
