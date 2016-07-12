@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('type');
             $table->integer('is_active');
-            $table->json('data')->nullable();
+            $table->json('meta')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

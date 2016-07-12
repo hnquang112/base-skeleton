@@ -12,7 +12,7 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $adminCounter = User::whereType(User::ADMIN)->count();
+        $adminCounter = User::whereType(User::MASTER)->count();
 
         if ($adminCounter < 1) {
             $admin = new User;
@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
             $admin->username = 'super_admin';
             $admin->password = 'zxcv1234';
             $admin->type = User::MASTER;
-            $admin->data['display_name'] = ['Master Q!'];
+            $admin->display_name = 'Master Q!';
             $admin->save();
         }
     }

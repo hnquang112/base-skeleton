@@ -3,9 +3,15 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Eloquent\Dialect\Json;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Hash;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
+    use Json, SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -30,20 +36,55 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'data' => 'object',
+        'meta' => 'object',
+        'is_active' => 'boolean',
     ];
+
+    protected $jsonColumns = ['meta'];
     
     const MASTER = 0;
     const ADMIN = 1;
     const EDITOR = 2;
     const USER = 3;
 
+    const GENDER_MALE = 0;
+    const GENDER_FEMALE = 1;
 
+    const STT_INACTIVE = 0;
+    const STT_ACTIVE = 1;
+
+    public function __construct() {
+        parent::__construct();
+        $this->hintJsonStructure('meta', '{
+            "display_name":null,
+			"profile_image":null,
+			"birthday":null,
+			"phone":null,
+			"address":null,
+			"gender":null
+		}');
+    }
+    
     /**
      * Mutators
      */
-//    public function setPasswordAttribute($value)
-//    {
-//        $this->attributes['password'] = bcrypt($value);
-//    }
+    public function setPasswordAttribute($value) {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
+     * Scopes
+     */
+    public function scopeFilterMasters($query) {
+        return $query->whereType(self::MASTER);
+    }
+
+    public function scopeFilterAdmins($query) {
+        return $query->whereType(self::ADMIN);
+    }
+
+    public function scopeFilterUsers($query) {
+        return $query->whereType(self::USER);
+    }
+    
 }

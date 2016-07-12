@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -28,8 +29,12 @@ class AuthController extends Controller
      *
      * @var string
      */
+    protected $redirectPath = '/cms/dashboard';
     protected $redirectTo = '/cms/dashboard';
+    protected $redirectAfterLogout = '/login';
     protected $guard = 'cms';
+//    protected $loginView = 'cms.login.index';
+    protected $username = 'username';
 
     /**
      * Create a new authentication controller instance.
@@ -70,4 +75,5 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
 }

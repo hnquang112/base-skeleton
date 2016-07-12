@@ -1,4 +1,4 @@
-@inject('request', 'Illuminate\Http\Request')
+@inject ('request', 'Illuminate\Http\Request')
 
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
@@ -29,8 +29,12 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li {{ $request->is('cms/posts') ? 'class=active' : '' }}><a href="{{ route('cms.posts.index') }}"><i class="fa fa-circle-o"></i> Posts List</a></li>
-          <li {{ $request->is('cms/posts/create') ? 'class=active' : '' }}><a href="{{ route('cms.posts.create') }}"><i class="fa fa-circle-o"></i> Write New Post</a></li>
+          <li {{ $request->is('cms/posts') ? 'class=active' : '' }}>
+            <a href="{{ route('cms.posts.index') }}"><i class="fa fa-circle-o"></i> Posts List</a>
+          </li>
+          <li {{ $request->is('cms/posts/create') ? 'class=active' : '' }}>
+            <a href="{{ route('cms.posts.create') }}"><i class="fa fa-circle-o"></i> Write New Post</a>
+          </li>
         </ul>
       </li>
       {{--Next--}}

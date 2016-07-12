@@ -40,3 +40,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * [Gravatar](https://github.com/creativeorange/gravatar)
 * [Eloquent Sluggable](https://github.com/cviebrock/eloquent-sluggable)
 * [Flash](https://github.com/laracasts/flash)
+* [Dialect](https://github.com/darrylkuhn/dialect)
+* [Former](https://github.com/formers/former)

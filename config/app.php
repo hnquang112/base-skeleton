@@ -165,7 +165,7 @@ return [
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-
+        Former\FormerServiceProvider::class
 
     ],
 
@@ -216,6 +216,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Flash' => Laracasts\Flash\Flash::class,
+        'Former' => Former\Facades\Former::class,
 
     ],
 
