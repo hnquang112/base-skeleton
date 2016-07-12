@@ -45,6 +45,11 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'cms' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -70,10 +75,10 @@ return [
             'model' => App\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         'admins' => [
+             'driver' => 'eloquent',
+             'table' => App\Admin::class,
+         ],
     ],
 
     /*
@@ -97,6 +102,13 @@ return [
 
     'passwords' => [
         'users' => [
+            'provider' => 'users',
+            'email' => 'auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'admins' => [
             'provider' => 'users',
             'email' => 'auth.emails.password',
             'table' => 'password_resets',

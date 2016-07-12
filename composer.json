@@ -11,7 +11,9 @@
         "creativeorange/gravatar": "~1.0",
         "cviebrock/eloquent-sluggable": "^4.0.2",
         "laracasts/flash": "^2.0",
-        "nesbot/carbon": "^1.21"
+        "nesbot/carbon": "^1.21",
+        "darrylkuhn/dialect": "dev-master",
+        "anahkiasen/former": "^4.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

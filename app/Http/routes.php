@@ -15,15 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'cms', 'namespace' => 'Cms'], function () {
+Route::group(['prefix' => 'cms', 'namespace' => 'Cms', 'middleware' => 'auth:cms'], function () {
 	Route::resource('dashboard', 'DashboardController');
-	Route::resource('users', 'UserController');
-	Route::resource('roles', 'RoleController');
+//	Route::resource('users', 'UserController');
+//	Route::resource('roles', 'RoleController');
 	Route::resource('posts', 'PostController');
-	Route::resource('tags', 'TagController');
-	Route::resource('categories', 'CategoryController');
-	Route::resource('comments', 'CommentController');
-	Route::resource('menus', 'MenuController');
+//	Route::resource('tags', 'TagController');
+//	Route::resource('categories', 'CategoryController');
+//	Route::resource('comments', 'CommentController');
+//	Route::resource('menus', 'MenuController');
 });
 
 Route::auth();
