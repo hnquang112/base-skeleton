@@ -18,7 +18,7 @@ class Post extends Model
      * Validations
      */
     public static $rulesForCreating = [
-        'title' => 'required',
+        'title' => 'required|max:255',
         'content' => 'required'
     ];
 

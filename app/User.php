@@ -64,6 +64,13 @@ class User extends Authenticatable
 			"gender":null
 		}');
     }
+
+    /**
+     * Relationships
+     */
+    public function posts() {
+        return $this->hasMany('App\Post', 'author_id');
+    }
     
     /**
      * Mutators

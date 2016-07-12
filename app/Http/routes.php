@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'cms', 'namespace' => 'Cms', 'middleware' => 'auth:cms'], function () {
-	Route::resource('dashboard', 'DashboardController');
+	Route::resource('/', 'DashboardController');
 //	Route::resource('users', 'UserController');
 //	Route::resource('roles', 'RoleController');
 	Route::resource('posts', 'PostController');
