@@ -37,6 +37,13 @@ class Post extends Model
     }
 
     /**
+     * Relationships
+     */
+    public function author() {
+        return $this->belongsTo('App\User', 'author_id');
+    }
+
+    /**
      * Mutators
      */
 //    public function setSlugAttribute($value) {

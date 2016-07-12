@@ -11,8 +11,7 @@ namespace App\Http\Controllers\Cms;
 
 class DashboardController extends CmsController
 {
-    public function index()
-    {
+    public function index() {
         return view('cms.dashboard.index');
     }
 }

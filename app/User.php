@@ -7,6 +7,7 @@ use Eloquent\Dialect\Json;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Hash;
 use Carbon\Carbon;
+use Gravatar;
 
 class User extends Authenticatable
 {
@@ -53,6 +54,13 @@ class User extends Authenticatable
     const STT_INACTIVE = 0;
     const STT_ACTIVE = 1;
 
+    public static $roleNames = [
+        0 => 'Web Master',
+        1 => 'Administrator',
+        2 => 'Content Editor',
+        3 => 'User'
+    ];
+
     public function __construct() {
         parent::__construct();
         $this->hintJsonStructure('meta', '{
@@ -70,6 +78,21 @@ class User extends Authenticatable
      */
     public function posts() {
         return $this->hasMany('App\Post', 'author_id');
+    }
+
+    /**
+     * Accessors
+     */
+    public function getRoleNameAttribute() {
+        return self::$roleNames[$this->type];
+    }
+
+    public function getAvatarImageAttribute() {
+        if (!empty($this->profile_image)) {
+            return asset($this->profile_image);
+        }
+
+        return Gravatar::get($this->email);
     }
     
     /**

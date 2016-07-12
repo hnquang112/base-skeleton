@@ -16,7 +16,14 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'cms', 'namespace' => 'Cms', 'middleware' => 'auth:cms'], function () {
-	Route::resource('/', 'DashboardController');
+    Route::get('/', function () {
+        if (auth()->guard('cms')->check()) {
+            return redirect()->route('cms.dashboard.index');
+        }
+
+        return redirect('/login');
+    });
+	Route::resource('dashboard', 'DashboardController');
 //	Route::resource('users', 'UserController');
 //	Route::resource('roles', 'RoleController');
 	Route::resource('posts', 'PostController');
