@@ -18,11 +18,10 @@
                 <div class="box-body no-padding">
                     <div class="mailbox-controls form-inline">
                         <!-- Check all button -->
-                        <button type="button" class="btn btn-default btn-sm js-toggle-checkbox"><i class="fa fa-square-o"></i>
-                        </button>
+                        <button type="button" class="btn btn-default btn-sm js-toggle-checkbox"><i class="fa fa-square-o"></i></button>
 
                         <!-- Bunch delete button -->
-                        <button type="button" class="btn btn-danger btn-sm js-delete-posts"><i class="fa fa-trash-o"></i></button>
+                        <button onclick="$('#js-delete-posts-form').submit()" type="button" class="btn btn-danger btn-sm js-delete-posts"><i class="fa fa-trash-o"></i></button>
 
                         <form style="display: inline">
                             <div class="form-group">
@@ -59,29 +58,34 @@
                         <!-- /.box-tools -->
                     </div>
                     <div class="table-responsive mailbox-messages">
-                        <table class="table table-hover">
-                            <thead><tr>
-                                <th></th>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Categories</th>
-                                <th>Tags</th>
-                                <th>Dates</th>
-                            </tr></thead>
-                            <tbody>
-                                @foreach ($posts as $post)
-                                    <tr>
-                                        <td><input name="selected_ids[]" type="checkbox" value="{{ $post->id }}"></td>
-                                        <td><a href="{{ route('cms.posts.edit', $post->id) }}"><strong>{{ $post->title }}</strong></a></td>
-                                        <td>Alexander Pierce</td>
-                                        <td>asd, qwe, zxc</td>
-                                        <td>qaz, edc, wsx</td>
-                                        <td>{{ $post->updated_at }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <!-- /.table -->
+                        <form id="js-delete-posts-form" action="{{ route('cms.posts.destroy') }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+
+                            <table class="table table-hover">
+                                <thead><tr>
+                                    <th></th>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Categories</th>
+                                    <th>Tags</th>
+                                    <th>Dates</th>
+                                </tr></thead>
+                                <tbody>
+                                    @foreach ($posts as $post)
+                                        <tr>
+                                            <td><input name="selected_ids[]" type="checkbox" value="{{ $post->id }}"></td>
+                                            <td><a href="{{ route('cms.posts.edit', $post->id) }}"><strong>{{ $post->title }}</strong></a></td>
+                                            <td>{{ $post->author->display_name }}</td>
+                                            <td>asd, qwe, zxc</td>
+                                            <td>qaz, edc, wsx</td>
+                                            <td>{{ $post->updated_at }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <!-- /.table -->
+                        </form>
                     </div>
                     <!-- /.mail-box-messages -->
                 </div>

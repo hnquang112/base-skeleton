@@ -9,11 +9,11 @@
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form action="{{ url('/login') }}" method="POST">
+        <form action="{{ url('/cms/login') }}" method="POST">
             {{ csrf_field() }}
 
             <div class="form-group has-feedback{{ $errors->has('username') ? ' has-error' : '' }}">
-                <input name="username" type="text" class="form-control" placeholder="Username">
+                <input name="username" type="text" class="form-control" placeholder="Username" autofocus="autofocus">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 
                 @if ($errors->has('username'))

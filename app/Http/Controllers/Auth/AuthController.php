@@ -31,7 +31,7 @@ class AuthController extends Controller
      */
     protected $redirectPath = '/cms/dashboard';
     protected $redirectTo = '/cms/dashboard';
-    protected $redirectAfterLogout = '/login';
+    protected $redirectAfterLogout = '/cms/login';
     protected $guard = 'cms';
 //    protected $loginView = 'cms.login.index';
     protected $username = 'username';

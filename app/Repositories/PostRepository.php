@@ -12,5 +12,5 @@ use AppPost;
 
 class PostRepository
 {
-
+	
 }

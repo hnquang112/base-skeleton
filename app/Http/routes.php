@@ -15,24 +15,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'cms', 'namespace' => 'Cms', 'middleware' => 'auth:cms'], function () {
-    Route::get('/', function () {
-        if (auth()->guard('cms')->check()) {
-            return redirect()->route('cms.dashboard.index');
-        }
+Route::group(['prefix' => 'cms'], function () {
+	Route::auth();
 
-        return redirect('/login');
-    });
-	Route::resource('dashboard', 'DashboardController');
-//	Route::resource('users', 'UserController');
-//	Route::resource('roles', 'RoleController');
-	Route::resource('posts', 'PostController');
-//	Route::resource('tags', 'TagController');
-//	Route::resource('categories', 'CategoryController');
-//	Route::resource('comments', 'CommentController');
-//	Route::resource('menus', 'MenuController');
+	Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms'], function () {
+		Route::get('/', function () {
+			if (auth()->check()) return redirect()->route('cms.dashboard.index');
+
+			return redirect('/cms/login');
+		});
+		
+		Route::resource('dashboard', 'DashboardController');
+
+		Route::delete('posts', [
+			'uses' => 'PostController@destroy',
+			'as' => 'cms.posts.destroy'
+		]);
+		Route::resource('posts', 'PostController', ['except' => ['show', 'destroy']]);
+
+		Route::resource('tags', 'TagController');
+		Route::resource('categories', 'CategoryController');
+		// Route::resource('users', 'UserController');
+		// Route::resource('roles', 'RoleController');
+		
+		
+		// Route::resource('comments', 'CommentController');
+		// Route::resource('menus', 'MenuController');
+	});
 });
-
-Route::auth();
 
 Route::get('/home', 'HomeController@index');

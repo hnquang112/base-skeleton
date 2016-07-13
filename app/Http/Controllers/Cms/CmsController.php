@@ -12,5 +12,7 @@ use App\Http\Controllers\Controller;
 
 class CmsController extends Controller
 {
-
+	public function getCurrentUser() {
+		return auth()->check() ? auth()->user() : null;
+	}
 }

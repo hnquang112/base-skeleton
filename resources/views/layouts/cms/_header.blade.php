@@ -213,17 +213,17 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="{{ auth()->guard('cms')->user()->avatar_image }}" class="user-image" alt="User Image">
-            <span class="hidden-xs">{{ auth()->guard('cms')->user()->display_name }}</span>
+            <img src="{{ auth()->user()->avatar_image }}" class="user-image" alt="User Image">
+            <span class="hidden-xs">{{ auth()->user()->display_name }}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="{{ auth()->guard('cms')->user()->avatar_image }}" class="img-circle" alt="User Image">
+              <img src="{{ auth()->user()->avatar_image }}" class="img-circle" alt="User Image">
 
               <p>
-                {{ auth()->guard('cms')->user()->display_name }} - {{ auth()->guard('cms')->user()->role_name }}
-                <small>Member since {{ auth()->guard('cms')->user()->created_at }}</small>
+                {{ auth()->user()->display_name }} - {{ auth()->user()->role_name }}
+                <small>Member since {{ auth()->user()->created_at }}</small>
               </p>
             </li>
             <!-- Menu Body -->
@@ -247,7 +247,7 @@
                 <a href="#" class="btn btn-default btn-flat">Profile</a>
               </div>
               <div class="pull-right">
-                <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                <a href="{{ url('/cms/logout') }}" class="btn btn-default btn-flat">Sign out</a>
               </div>
             </li>
           </ul>

@@ -7,7 +7,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form action="{{ $post->id ? route('cms.posts.update', $post->id) : route('cms.posts.store') }}"
-                  id="js-post-form" method="POST" enctype="multipart/form-data">
+                  id="js-save-post-form" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 {{ $post->id ? method_field('PUT') : '' }}
 
@@ -53,7 +53,7 @@
             <!-- /.box-body -->
             <div class="box-footer">
 
-                <button class="btn btn-primary btn-flat pull-right" onclick="$('#js-post-form').submit()">Save</button>
+                <button class="btn btn-primary btn-flat pull-right" onclick="$('#js-save-post-form').submit()">Save</button>
             </div>
         </div>
         <!-- /.box -->

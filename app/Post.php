@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use Eloquent\Dialect\Json;
 
 class Post extends Model
 {
@@ -21,6 +22,15 @@ class Post extends Model
         'title' => 'required|max:255',
         'content' => 'required'
     ];
+
+    // public function __construct() {
+    //     parent::__construct();
+    //     $this->hintJsonStructure('meta', '{
+    //         "seo_title":null,
+    //         "seo_description":null,
+    //         "published_date":null
+    //     }');
+    // }
 
     /**
      * Return the sluggable configuration array for this model.

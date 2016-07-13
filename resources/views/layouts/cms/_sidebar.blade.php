@@ -6,11 +6,11 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ auth()->guard('cms')->user()->avatar_image }}" class="img-circle" alt="User Image">
+                <img src="{{ auth()->user()->avatar_image }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>{{ auth()->guard('cms')->user()->display_name }}</p>
-                <p>{{ auth()->guard('cms')->user()->role_name }}</p>
+                <p>{{ auth()->user()->display_name }}</p>
+                <p>{{ auth()->user()->role_name }}</p>
                 {{--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>--}}
             </div>
         </div>
@@ -28,7 +28,7 @@
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li {{ $request->is('cms/posts') ? 'class=active' : '' }}>
+                    <li {{ $request->is('cms/posts*') && !$request->is('cms/posts/create') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.posts.index') }}"><i class="fa fa-circle-o"></i> Posts List</a>
                     </li>
                     <li {{ $request->is('cms/posts/create') ? 'class=active' : '' }}>

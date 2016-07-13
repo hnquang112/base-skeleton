@@ -32,7 +32,8 @@ class PostController extends CmsController
      */
     public function index()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::with('author')->paginate(10);
+
         return view('cms.posts.index', compact('posts'));
     }
 
@@ -62,7 +63,7 @@ class PostController extends CmsController
             'title' => $request->title
         ]);
         $post->fill($request->except('title'));
-        $post->author_id = auth()->guard();
+        $post->author_id = $this->getCurrentUser()->id;
         
         if ($post->save()) {
             flash()->success('Saved successfully');
@@ -73,19 +74,6 @@ class PostController extends CmsController
         flash()->error('Save failed');
 
         return back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($slugString)
-    {
-        $post = Post::findBySlugOrFail($slugString);
-
-        return $post;
     }
 
     /**
@@ -110,30 +98,38 @@ class PostController extends CmsController
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, Post::$rulesForCreating);
+
         $post = Post::findOrFail($id);
         $post->fill($request->all());
-        $post->author_id = 1;
+        $post->author_id = $this->getCurrentUser()->id;
 
         if ($post->save()) {
             flash()->success('Saved successfully');
-
-            return redirect()->route('cms.posts.index');
+        } else {
+            flash()->error('Save failed');
         }
 
-        flash()->error('Save failed');
-        
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        if (empty($request->selected_ids)) {
+            flash()->warning('Select post');
+        } else {
+            Post::destroy($request->selected_ids);
+
+            flash()->success('Deleted successfully');
+        }
+
+        return back();
     }
 
 }
