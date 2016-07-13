@@ -18,10 +18,10 @@
                 <div class="box-body no-padding">
                     <div class="mailbox-controls form-inline">
                         <!-- Check all button -->
-                        <button type="button" class="btn btn-default btn-sm js-toggle-checkbox"><i class="fa fa-square-o"></i></button>
+                        <button type="button" class="btn btn-default btn-sm js-checkbox-toggle-check-all"><i class="fa fa-square-o"></i></button>
 
                         <!-- Bunch delete button -->
-                        <button onclick="$('#js-delete-posts-form').submit()" type="button" class="btn btn-danger btn-sm js-delete-posts"><i class="fa fa-trash-o"></i></button>
+                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm js-delete-items"><i class="fa fa-trash-o"></i></button>
 
                         <form style="display: inline">
                             <div class="form-group">
@@ -58,7 +58,7 @@
                         <!-- /.box-tools -->
                     </div>
                     <div class="table-responsive mailbox-messages">
-                        <form id="js-delete-posts-form" action="{{ route('cms.posts.destroy') }}" method="POST">
+                        <form id="js-form-delete" action="{{ route('cms.posts.destroy') }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
@@ -104,37 +104,22 @@
     </div>
 @endsection
 
-@push ('scripts')
-<script type="text/javascript">
-    $(function () {
-        //Enable check and uncheck all functionality
-        $(".js-toggle-checkbox").click(function () {
-            var clicks = $(this).data('clicks');
-
-            if (clicks) {
-                //Uncheck all checkboxes
-                $(".mailbox-messages input[type='checkbox']").prop("checked", false);
-                $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
-            } else {
-                //Check all checkboxes
-                $(".mailbox-messages input[type='checkbox']").prop("checked", true);
-                $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
-            }
-            $(this).data("clicks", !clicks);
-        });
-
-        $(".js-delete-posts").click(function () {
-            var ids = [];
-
-            ids = $.map($('input[type="checkbox"]:checked'), function (c) {
-                return c.value;
-            });
-
-            //TODO:
-            // 1. show confirmation
-            // 2. call delete posts api
-            // 3. delete posts
-        });
-    })
-</script>
+@push ('modals')
+<div id="js-modal-confirm-delete" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Delete Posts</h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to delete selected posts?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button id="js-button-delete" type="button" class="btn btn-primary">Yes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 @endpush

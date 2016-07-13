@@ -61,6 +61,8 @@ elixir(function (mix) {
     // make vendor.js
     mix.scripts(scriptsPath, publicPath + 'js/' + 'vendor.js');
 
+    mix.scriptsIn(assetPath + 'javascripts');
+
     // make vendor.css
     mix.styles(stylesPath, publicPath + 'css/' + 'vendor.css');
 
