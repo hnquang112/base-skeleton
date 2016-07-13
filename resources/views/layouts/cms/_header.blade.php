@@ -213,16 +213,16 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="{{ asset('img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+            <img src="{{ auth()->guard('cms')->user()->avatar_image }}" class="user-image" alt="User Image">
             <span class="hidden-xs">{{ auth()->guard('cms')->user()->display_name }}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+              <img src="{{ auth()->guard('cms')->user()->avatar_image }}" class="img-circle" alt="User Image">
 
               <p>
-                {{ auth()->guard('cms')->user()->display_name }} - Web Developer
+                {{ auth()->guard('cms')->user()->display_name }} - {{ auth()->guard('cms')->user()->role_name }}
                 <small>Member since {{ auth()->guard('cms')->user()->created_at }}</small>
               </p>
             </li>

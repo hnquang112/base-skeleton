@@ -5,9 +5,26 @@ namespace App\Http\Controllers\Cms;
 use Illuminate\Http\Request;
 use App\Post;
 use Laracasts\Flash\Flash;
+use App\Repositories\PostRepository;
 
 class PostController extends CmsController
 {
+    /**
+     * The post repository instance.
+     */
+    protected $posts;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param  TaskRepository  $tasks
+     * @return void
+     */
+    public function __construct(PostRepository $posts)
+    {
+        $this->posts = $posts;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -39,11 +56,13 @@ class PostController extends CmsController
      */
     public function store(Request $request)
     {
+        $this->validate($request, Post::$rulesForCreating);
+
         $post = new Post([
             'title' => $request->title
         ]);
         $post->fill($request->except('title'));
-        $post->author_id = 1;
+        $post->author_id = auth()->guard();
         
         if ($post->save()) {
             flash()->success('Saved successfully');

@@ -1,32 +1,104 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9">
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Post</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form action="{{ $post->id ? route('cms.posts.update', $post->id) : route('cms.posts.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ $post->id ? route('cms.posts.update', $post->id) : route('cms.posts.store') }}"
+                  id="js-post-form" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 {{ $post->id ? method_field('PUT') : '' }}
 
                 <div class="box-body">
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                         <label for="exampleInputEmail1">Title:</label>
                         <input name="title" type="text" class="form-control" placeholder="Enter title" value="{{ $post->title }}">
+
+                        @if ($errors->has('title'))
+                            <span class="help-block"><strong>{{ $errors->first('title') }}</strong></span>
+                        @endif
                     </div>
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                         <label for="exampleInputPassword1">Content:</label>
                         <textarea name="content" id="summernote" class="hidden">{{ $post->content }}</textarea>
+
+                        @if ($errors->has('content'))
+                            <span class="help-block"><strong>{{ $errors->first('content') }}</strong></span>
+                        @endif
                     </div>
                 </div>
                 <!-- /.box-body -->
-
-                <div class="box-footer">
-                    <a class="btn btn-default" href="{{ route('cms.posts.index') }}">Cancel</a>
-                    <button type="submit" class="btn btn-primary pull-right">Save</button>
-                </div>
             </form>
+        </div>
+        <!-- /.box -->
+    </div>
+
+    <div class="col-md-3">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Publish</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+                <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                The body of the box
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+
+                <button class="btn btn-primary btn-flat pull-right" onclick="$('#js-post-form').submit()">Save</button>
+            </div>
+        </div>
+        <!-- /.box -->
+
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Categories</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+                <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                The body of the box
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+
+                <button class="btn btn-primary btn-flat pull-right" onclick="$('#js-post-form').submit()">Save</button>
+            </div>
+        </div>
+        <!-- /.box -->
+
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Tags</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+                <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                The body of the box
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+
+                <button class="btn btn-primary btn-flat pull-right" onclick="$('#js-post-form').submit()">Save</button>
+            </div>
         </div>
         <!-- /.box -->
     </div>
@@ -36,7 +108,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#summernote').summernote({
-            minHeight: 200,
+            minHeight: 300,
             callbacks: {
                 onChange: function(contents, $editable) {
                     $('#this').val(contents);

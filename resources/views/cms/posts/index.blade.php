@@ -72,7 +72,7 @@
                                 @foreach ($posts as $post)
                                     <tr>
                                         <td><input name="selected_ids[]" type="checkbox" value="{{ $post->id }}"></td>
-                                        <td><a href="read-mail.html"><strong>{{ $post->title }}</strong></a></td>
+                                        <td><a href="{{ route('cms.posts.edit', $post->id) }}"><strong>{{ $post->title }}</strong></a></td>
                                         <td>Alexander Pierce</td>
                                         <td>asd, qwe, zxc</td>
                                         <td>qaz, edc, wsx</td>
