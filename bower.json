@@ -20,6 +20,11 @@
     "AdminLTE": "adminlte#^2.3.4",
     "Ionicons": "ionicons#^2.0.1",
     "summernote": "^0.8.1",
-    "toastr": "^2.1.2"
+    "toastr": "^2.1.2",
+    "flexslider": "FlexSlider#^2.6.1",
+    "prettyphoto": "*",
+    "superfish": "^1.7.9",
+    "blockUI": "blockui#*",
+    "hoverintent": "hoverintentjs#^1.0.2"
   }
 }

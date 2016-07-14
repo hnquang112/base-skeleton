@@ -4,7 +4,7 @@ var assetPath = 'resources/assets/';
 var publicPath = 'public/';
 
 // Add path of file for js concatenating task
-var scriptsPath = [
+var cmsScriptPaths = [
     '../../../bower_components/jquery/dist/jquery.min.js',
     '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     '../../../bower_components/AdminLTE/plugins/fastclick/fastclick.min.js',
@@ -20,7 +20,11 @@ var scriptsPath = [
     '../../../bower_components/toastr/toastr.min.js'
 ];
 
-var stylesPath = [
+var scriptPaths = [
+
+];
+
+var cmsStylePaths = [
     '../../../bower_components/AdminLTE/bootstrap/css/bootstrap.min.css',
     '../../../bower_components/fontawesome/css/font-awesome.min.css',
     '../../../bower_components/Ionicons/css/ionicons.min.css',
@@ -30,6 +34,10 @@ var stylesPath = [
     '../../../bower_components/AdminLTE/plugins/iCheck/square/purple.css',
     '../../../bower_components/summernote/dist/summernote.css',
     '../../../bower_components/toastr/toastr.min.css'
+];
+
+var stylePaths = [
+
 ];
 
 // Add src and dest paths of file for copying task
@@ -61,12 +69,12 @@ elixir(function (mix) {
     // mix.sass('app.scss');
 
     // make vendor.js
-    mix.scripts(scriptsPath, publicPath + 'js/' + 'vendor.js');
+    mix.scripts(cmsScriptPaths, publicPath + 'js/' + 'vendor.js');
 
     mix.scriptsIn(assetPath + 'javascripts');
 
     // make vendor.css
-    mix.styles(stylesPath, publicPath + 'css/' + 'vendor.css');
+    mix.styles(cmsStylePaths, publicPath + 'css/' + 'vendor.css');
 
     // copy images and fonts
     copyPaths.forEach(function (path) {
