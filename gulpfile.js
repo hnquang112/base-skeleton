@@ -16,7 +16,8 @@ var scriptsPath = [
     '../../../bower_components/AdminLTE/plugins/chartjs/Chart.min.js',
     '../../../bower_components/AdminLTE/plugins/iCheck/icheck.min.js',
     '../../../bower_components/summernote/dist/summernote.min.js',
-    '../../../bower_components/summernote/dist/lang/summernote-vi-VN.min.js'
+    '../../../bower_components/summernote/dist/lang/summernote-vi-VN.min.js',
+    '../../../bower_components/toastr/toastr.min.js'
 ];
 
 var stylesPath = [
@@ -27,7 +28,8 @@ var stylesPath = [
     '../../../bower_components/AdminLTE/dist/css/AdminLTE.min.css',
     '../../../bower_components/AdminLTE/dist/css/skins/_all-skins.min.css',
     '../../../bower_components/AdminLTE/plugins/iCheck/square/purple.css',
-    '../../../bower_components/summernote/dist/summernote.css'
+    '../../../bower_components/summernote/dist/summernote.css',
+    '../../../bower_components/toastr/toastr.min.css'
 ];
 
 // Add src and dest paths of file for copying task

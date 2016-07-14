@@ -30,7 +30,7 @@ class PostController extends CmsController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $posts = Post::with('author')->paginate(10);
 

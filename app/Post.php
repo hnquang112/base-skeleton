@@ -15,6 +15,9 @@ class Post extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = ['title', 'content'];
 
+    const STT_DRAFT = 0;
+    const STT_PUBLISHED = 1;
+
     /**
      * Validations
      */
@@ -59,4 +62,20 @@ class Post extends Model
 //    public function setSlugAttribute($value) {
 //        $this->attributes['slug'] = str_slug($value);
 //    }
+
+    /**
+     * Scopes
+     */
+    public function scopeMine($query) {
+        return $query->where('author_id', auth()->user()->id);
+    }
+
+    public function scopePublished($query) {
+        return $query->where('is_published', self::STT_PUBLISHED);
+    }
+
+    public function scopeFilter($query, $inputs) {
+        // if ($inputs->has('filter_date')) $query = $query->where()
+        // if ($inputs->has('filter_category')) $query = $query->where()
+    }
 }

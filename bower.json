@@ -19,6 +19,7 @@
     "bootstrap-sass": "~3.3.6",
     "AdminLTE": "adminlte#^2.3.4",
     "Ionicons": "ionicons#^2.0.1",
-    "summernote": "^0.8.1"
+    "summernote": "^0.8.1",
+    "toastr": "^2.1.2"
   }
 }

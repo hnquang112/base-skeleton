@@ -16,7 +16,7 @@ var Common = {
 
     setupButtonInListPages: function () {
         // Enable check and uncheck all functionality
-        $(".js-checkbox-toggle-check-all").click(function () {
+        $("#js-checkbox-toggle-check-all").click(function () {
             var clicks = $(this).data('clicks');
 
             if (clicks) {
@@ -33,7 +33,7 @@ var Common = {
         });
 
         // Call modal for confirm multiple delete
-        $(".js-button-confirm-delete").click(function () {
+        $("#js-button-confirm-delete").click(function () {
             var ids = $.map($('input[type="checkbox"]:checked'), function (c) {
                 return c.value
             });
@@ -44,7 +44,7 @@ var Common = {
         });
 
         $('#js-button-delete').click(function () {
-            console.log(1)
+            $('#js-form-delete').submit()
         });
     },
 

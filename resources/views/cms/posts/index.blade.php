@@ -8,7 +8,9 @@
                     <h3 class="box-title">Posts</h3>
 
                     <!--Filter items-->
-                    <a href="">Tất cả (442)</a> | <a href="">Của tôi (215)</a> | <a href="">Đã đăng (442)</a>
+                    <a href="{{ route('cms.posts.index', ['filter' => 'all']) }}">All (442)</a> | 
+                    <a href="{{ route('cms.posts.index', ['filter' => 'mine']) }}">Mine (215)</a> | 
+                    <a href="{{ route('cms.posts.index', ['filter' => 'published']) }}">Published (442)</a>
 
                     <div class="box-tools pull-right">
                         <a class="btn btn-primary" href="{{ route('cms.posts.create') }}">Create</a>
@@ -18,15 +20,15 @@
                 <div class="box-body no-padding">
                     <div class="mailbox-controls form-inline">
                         <!-- Check all button -->
-                        <button type="button" class="btn btn-default btn-sm js-checkbox-toggle-check-all"><i class="fa fa-square-o"></i></button>
+                        <button id="js-checkbox-toggle-check-all" type="button" class="btn btn-default btn-sm"><i class="fa fa-square-o"></i></button>
 
                         <!-- Bunch delete button -->
-                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm js-delete-items"><i class="fa fa-trash-o"></i></button>
+                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
 
-                        <form style="display: inline">
+                        <form id="js-form-filter-items" action="{{ route('cms.posts.create') }}" method="GET" style="display: inline">
                             <div class="form-group">
-                                <select class="form-control">
-                                    <option value="">Date</option>
+                                <select name="filter_date" class="form-control">
+                                    <option>Date</option>
                                     <option>option 1</option>
                                     <option>option 2</option>
                                     <option>option 3</option>
@@ -36,8 +38,8 @@
                             </div>
 
                             <div class="form-group">
-                                <select class="form-control">
-                                    <option value="">Category</option>
+                                <select name="filter_category" class="form-control">
+                                    <option>Category</option>
                                     <option>option 1</option>
                                     <option>option 2</option>
                                     <option>option 3</option>

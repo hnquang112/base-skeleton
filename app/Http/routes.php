@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front.home.index');
 });
 
 Route::group(['prefix' => 'cms'], function () {
