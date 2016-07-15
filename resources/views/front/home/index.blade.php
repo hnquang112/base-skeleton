@@ -1,6 +1,8 @@
 @extends ('layouts.front.master')
 
 @section ('content')
+    @include ('layouts.front._slider')
+    
     <!-- BEGIN .section-mini2 -->
     <div class="section-mini2">
         <div class="tag-title-wrap clearfix"><h4 class="tag-title">Featured Products</h4></div>

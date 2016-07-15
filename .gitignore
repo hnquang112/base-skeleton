@@ -8,4 +8,7 @@ Homestead.json
 .vagrant
 .idea
 npm-debug*
-public/**
+public/css
+public/fonts
+public/img
+public/js

@@ -165,7 +165,8 @@ return [
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-        Former\FormerServiceProvider::class
+        Former\FormerServiceProvider::class,
+        Barryvdh\Elfinder\ElfinderServiceProvider::class
 
     ],
 

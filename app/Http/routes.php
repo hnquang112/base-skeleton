@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('front.home.index');
 });
 
+Route::get('blogs', function () {
+    return view('front.blogs.index');
+});
+
 Route::group(['prefix' => 'cms'], function () {
 	Route::auth();
 
