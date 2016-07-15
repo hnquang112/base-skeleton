@@ -21,7 +21,14 @@ var cmsScriptPaths = [
 ];
 
 var scriptPaths = [
-
+    '../../../bower_components/jquery/dist/jquery.min.js',
+    '../../../bower_components/jquery-ui/jquery-ui.min.js',
+    '../../../bower_components/superfish/dist/js/hoverIntent.js',
+    '../../../bower_components/superfish/dist/js/superfish.min.js',
+    '../../../bower_components/prettyphoto/js/jquery.prettyPhoto.js',
+    '../../../bower_components/prettyphoto/js/jquery.prettyPhoto.js',
+    '../../../bower_components/blockUI/jquery.blockUI.js',
+    '../../../resources/assets/plugins/jquery.numeric/jquery.numeric.min.js'
 ];
 
 var cmsStylePaths = [
@@ -37,7 +44,14 @@ var cmsStylePaths = [
 ];
 
 var stylePaths = [
-
+    '../../../resources/assets/plugins/organic.shop.theme/theme.css',
+    '../../../resources/assets/plugins/organic.shop.theme/theme.green.css',
+    '../../../resources/assets/plugins/organic.shop.theme/responsive.css',
+    '../../../resources/assets/plugins/organic.shop.theme/font-face.css',
+    '../../../resources/assets/plugins/organic.shop.theme/woocommerce.css',
+    '../../../bower_components/superfish/dist/css/superfish.css',
+    '../../../bower_components/prettyphoto/css/prettyPhoto.css',
+    '../../../bower_components/flexslider/flexslider.css'
 ];
 
 // Add src and dest paths of file for copying task
@@ -53,6 +67,9 @@ var copyPaths = [{
 }, {
     src: 'plugins/summernote/**',
     dest: 'css/font'
+}, {
+    src: 'plugins/flexslider',
+    dest: 'css/fonts'
 }];
 
 /*
@@ -70,11 +87,13 @@ elixir(function (mix) {
 
     // make vendor.js
     mix.scripts(cmsScriptPaths, publicPath + 'js/' + 'vendor.js');
+    mix.scripts(scriptPaths, publicPath + 'js/' + 'vendor.front.js');
 
     mix.scriptsIn(assetPath + 'javascripts');
 
     // make vendor.css
     mix.styles(cmsStylePaths, publicPath + 'css/' + 'vendor.css');
+    mix.styles(stylePaths, publicPath + 'css/' + 'vendor.front.css');
 
     // copy images and fonts
     copyPaths.forEach(function (path) {

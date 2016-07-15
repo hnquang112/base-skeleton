@@ -22,8 +22,9 @@
     <title>Organic Shop | A Responsive WordPress Theme for eCommerce Websites</title>
 
     <!-- Stylesheets -->
-    <link href="css/style.css" media="all" rel="stylesheet" type="text/css">
-    <link href="css/font-face.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css\vendor.front.css') }}">
+    {{--<link href="css/style.css" media="all" rel="stylesheet" type="text/css">--}}
+    {{--<link href="css/font-face.css" rel="stylesheet" type="text/css">--}}
     <style type="text/css">
         h1, h2, h3, h4, h5, h6, #ui-datepicker-div .ui-datepicker-title, .dropcap, .ui-tabs .ui-tabs-nav li,
         #title-wrapper h1, #main-menu li, #main-menu li span, .caption, .accommodation_img_price {
@@ -34,12 +35,12 @@
             width: 220px;
         }
     </style>
-    <link href="css/woocommerce.css" id="woocommerce_frontend_styles-css" media="all" rel="stylesheet" type="text/css">
-    <link href="css/superfish.css" id="superfish-css" media="all" rel="stylesheet" type="text/css">
-    <link href="css/prettyPhoto.css" id="prettyPhoto-css" media="all" rel="stylesheet" type="text/css">
-    <link href="css/flexslider.css" id="flexslider-css" media="all" rel="stylesheet" type="text/css">
-    <link href="css/green.css" id="color-css" media="all" rel="stylesheet" type="text/css">
-    <link href="css/responsive.css" id="responsive-css" media="all" rel="stylesheet" type="text/css">
+    {{--<link href="css/woocommerce.css" id="woocommerce_frontend_styles-css" media="all" rel="stylesheet" type="text/css">--}}
+    {{--<link href="css/superfish.css" id="superfish-css" media="all" rel="stylesheet" type="text/css">--}}
+    {{--<link href="css/prettyPhoto.css" id="prettyPhoto-css" media="all" rel="stylesheet" type="text/css">--}}
+    {{--<link href="css/flexslider.css" id="flexslider-css" media="all" rel="stylesheet" type="text/css">--}}
+    {{--<link href="css/green.css" id="color-css" media="all" rel="stylesheet" type="text/css">--}}
+    {{--<link href="css/responsive.css" id="responsive-css" media="all" rel="stylesheet" type="text/css">--}}
 
     <!-- RSS Feeds & Pingbacks -->
     <link href="http://themes.quitenicestuff.com/organicshopwp/feed/" rel="alternate" type="application/rss+xml"
@@ -52,7 +53,7 @@
     <link href="http://themes.quitenicestuff.com/organicshopwp/home/feed/" rel="alternate"  type="application/rss+xml"
           title="Organic Shop » Home Comments Feed">
 
-    <script src="js/jquery_002.js" type="text/javascript"></script>
+    {{--<script src="js/jquery_002.js" type="text/javascript"></script>--}}
 
     <link href="http://themes.quitenicestuff.com/organicshopwp/xmlrpc.php?rsd" rel="EditURI" type="application/rsd+xml"
           title="RSD" >
@@ -552,21 +553,21 @@
 <script>
     var slideshow_autoplay = true;var slideshow_speed = 7000;
 </script>
-<script src="js/jquery-ui.js" type="text/javascript"></script>
-<script src="js/hoverIntent.js" type="text/javascript"></script>
-<script src="js/superfish.js" type="text/javascript"></script>
-<script src="js/jquery_004.js" type="text/javascript"></script>
-<script src="js/jquery_003.js" type="text/javascript"></script>
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/scripts.js" type="text/javascript"></script>
-<script src="js/add-to-cart.js" type="text/javascript"></script>
-<script src="js/jquery-plugins.js" type="text/javascript"></script>
+<script src="{{ asset('js/vendor.front.js') }}"></script>
+{{--<script src="js/jquery-ui.js" type="text/javascript"></script>--}}
+{{--<script src="js/hoverIntent.js" type="text/javascript"></script>--}}
+{{--<script src="js/superfish.js" type="text/javascript"></script>--}}
+{{--<script src="js/jquery_004.js" type="text/javascript"></script>--}}
+{{--<script src="js/jquery_003.js" type="text/javascript"></script>--}}
+{{--<script src="js/jquery.js" type="text/javascript"></script>--}}
+{{--<script src="js/scripts.js" type="text/javascript"></script>--}}
+{{--<script src="js/add-to-cart.js" type="text/javascript"></script>--}}
+{{--<script src="js/jquery-plugins.js" type="text/javascript"></script>--}}
 <script type="text/javascript">
     /* <![CDATA[ */
     var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Territory\",\"NSW\":\"New South Wales\",\"NT\":\"Northern Territory\",\"QLD\":\"Queensland\",\"SA\":\"South Australia\",\"TAS\":\"Tasmania\",\"VIC\":\"Victoria\",\"WA\":\"Western Australia\"},\"AF\":[],\"AT\":[],\"BE\":[],\"BI\":[],\"BR\":{\"AM\":\"Amazonas\",\"AC\":\"Acre\",\"AL\":\"Alagoas\",\"AP\":\"Amap\u00e1\",\"CE\":\"Cear\u00e1\",\"DF\":\"Distrito Federal\",\"ES\":\"Esp\u00edrito Santo\",\"MA\":\"Maranh\u00e3o\",\"PR\":\"Paran\u00e1\",\"PE\":\"Pernambuco\",\"PI\":\"Piau\u00ed\",\"RN\":\"Rio Grande do Norte\",\"RS\":\"Rio Grande do Sul\",\"RO\":\"Rond\u00f4nia\",\"RR\":\"Roraima\",\"SC\":\"Santa Catarina\",\"SE\":\"Sergipe\",\"TO\":\"Tocantins\",\"PA\":\"Par\u00e1\",\"BH\":\"Bahia\",\"GO\":\"Goi\u00e1s\",\"MT\":\"Mato Grosso\",\"MS\":\"Mato Grosso do Sul\",\"RJ\":\"Rio de Janeiro\",\"SP\":\"S\u00e3o Paulo\",\"MG\":\"Minas Gerais\",\"PB\":\"Para\u00edba\"},\"CA\":{\"AB\":\"Alberta\",\"BC\":\"British Columbia\",\"MB\":\"Manitoba\",\"NB\":\"New Brunswick\",\"NF\":\"Newfoundland\",\"NT\":\"Northwest Territories\",\"NS\":\"Nova Scotia\",\"NU\":\"Nunavut\",\"ON\":\"Ontario\",\"PE\":\"Prince Edward Island\",\"QC\":\"Quebec\",\"SK\":\"Saskatchewan\",\"YT\":\"Yukon Territory\"},\"CZ\":[],\"DE\":[],\"DK\":[],\"FI\":[],\"FR\":[],\"HK\":{\"HONG KONG\":\"Hong Kong Island\",\"KOWLOON\":\"Kowloon\",\"NEW TERRITORIES\":\"New Territories\"},\"HU\":[],\"IS\":[],\"IL\":[],\"NL\":{\"DR\":\"Drenthe\",\"FL\":\"Flevoland\",\"FR\":\"Friesland\",\"GLD\":\"Gelderland\",\"GRN\":\"Groningen\",\"LB\":\"Limburg\",\"NB\":\"Noord-Brabant\",\"NH\":\"Noord-Holland\",\"OV\":\"Overijssel\",\"UT\":\"Utrecht\",\"ZLD\":\"Zeeland\",\"ZH\":\"Zuid-Holland\"},\"NZ\":{\"NL\":\"Northland\",\"AK\":\"Auckland\",\"WA\":\"Waikato\",\"BP\":\"Bay of Plenty\",\"TK\":\"Taranaki\",\"HB\":\"Hawke\u2019s Bay\",\"MW\":\"Manawatu-Wanganui\",\"WE\":\"Wellington\",\"NS\":\"Nelson\",\"MB\":\"Marlborough\",\"TM\":\"Tasman\",\"WC\":\"West Coast\",\"CT\":\"Canterbury\",\"OT\":\"Otago\",\"SL\":\"Southland\"},\"NO\":[],\"PL\":[],\"SG\":[],\"SK\":[],\"SI\":[],\"LK\":[],\"SE\":[],\"US\":{\"AL\":\"Alabama\",\"AK\":\"Alaska\",\"AZ\":\"Arizona\",\"AR\":\"Arkansas\",\"CA\":\"California\",\"CO\":\"Colorado\",\"CT\":\"Connecticut\",\"DE\":\"Delaware\",\"DC\":\"District Of Columbia\",\"FL\":\"Florida\",\"GA\":\"Georgia\",\"HI\":\"Hawaii\",\"ID\":\"Idaho\",\"IL\":\"Illinois\",\"IN\":\"Indiana\",\"IA\":\"Iowa\",\"KS\":\"Kansas\",\"KY\":\"Kentucky\",\"LA\":\"Louisiana\",\"ME\":\"Maine\",\"MD\":\"Maryland\",\"MA\":\"Massachusetts\",\"MI\":\"Michigan\",\"MN\":\"Minnesota\",\"MS\":\"Mississippi\",\"MO\":\"Missouri\",\"MT\":\"Montana\",\"NE\":\"Nebraska\",\"NV\":\"Nevada\",\"NH\":\"New Hampshire\",\"NJ\":\"New Jersey\",\"NM\":\"New Mexico\",\"NY\":\"New York\",\"NC\":\"North Carolina\",\"ND\":\"North Dakota\",\"OH\":\"Ohio\",\"OK\":\"Oklahoma\",\"OR\":\"Oregon\",\"PA\":\"Pennsylvania\",\"RI\":\"Rhode Island\",\"SC\":\"South Carolina\",\"SD\":\"South Dakota\",\"TN\":\"Tennessee\",\"TX\":\"Texas\",\"UT\":\"Utah\",\"VT\":\"Vermont\",\"VA\":\"Virginia\",\"WA\":\"Washington\",\"WV\":\"West Virginia\",\"WI\":\"Wisconsin\",\"WY\":\"Wyoming\"},\"USAF\":{\"AA\":\"Americas\",\"AE\":\"Europe\",\"AP\":\"Pacific\"},\"VN\":[]}","select_state_text":"Select an option\u2026","plugin_url":"http:\/\/themes.quitenicestuff.com\/organicshopwp\/wp-content\/plugins\/woocommerce","ajax_url":"\/\/themes.quitenicestuff.com\/organicshopwp\/wp-admin\/admin-ajax.php","ajax_loader_url":"http:\/\/themes.quitenicestuff.com\/organicshopwp\/wp-content\/plugins\/woocommerce\/assets\/images\/ajax-loader.gif","required_rating_text":"Please select a rating","review_rating_required":"yes","required_text":"required","update_order_review_nonce":"e4cffe74cc","apply_coupon_nonce":"775c85676a","option_guest_checkout":"yes","checkout_url":"\/\/themes.quitenicestuff.com\/organicshopwp\/wp-admin\/admin-ajax.php?action=woocommerce-checkout","is_checkout":"0","update_shipping_method_nonce":"7f9b99759b","add_to_cart_nonce":"49173cfab4"};
     /* ]]> */
 </script>
-<script src="js/woocommerce.js" type="text/javascript">
-</script> <!-- END body -->
-</body>
+{{--<script src="js/woocommerce.js" type="text/javascript"></script>--}}
+</body><!-- END body -->
 </html>
