@@ -166,7 +166,7 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Former\FormerServiceProvider::class,
-        Barryvdh\Elfinder\ElfinderServiceProvider::class
+//        Barryvdh\Elfinder\ElfinderServiceProvider::class
 
     ],
 

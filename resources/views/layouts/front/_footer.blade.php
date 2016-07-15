@@ -76,6 +76,7 @@
                 </ul>
             </div>
         </li>
+        {{--Put facebook widget here--}}
     <!-- <li class="col4">
                 <div class="widget">
                     <div class="widget-title clearfix">

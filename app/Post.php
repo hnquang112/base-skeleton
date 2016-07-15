@@ -71,7 +71,15 @@ class Post extends Model
     }
 
     public function scopePublished($query) {
-        return $query->where('is_published', self::STT_PUBLISHED);
+        return $query->whereNotNull('published_at');
+    }
+
+    public function scopeOrderByCreated($query) {
+        return $query->orderBy('created_at', 'DESC');
+    }
+
+    public function scopeOrderByNewest($query) {
+        return $query->orderBy('published_at', 'DESC');
     }
 
     public function scopeFilter($query, $inputs) {

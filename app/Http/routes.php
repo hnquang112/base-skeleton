@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.home.index');
-});
-
-Route::get('blogs', function () {
-    return view('front.blogs.index');
+Route::group(['namespace' => 'Front'], function () {
+    Route::resource('/', 'HomeController', ['only' => ['index']]);
+    Route::resource('blog', 'BlogController', ['only' => ['index', 'show']]);
 });
 
 Route::group(['prefix' => 'cms'], function () {
@@ -39,10 +36,9 @@ Route::group(['prefix' => 'cms'], function () {
 
 		Route::resource('tags', 'TagController');
 		Route::resource('categories', 'CategoryController');
+
 		// Route::resource('users', 'UserController');
 		// Route::resource('roles', 'RoleController');
-		
-		
 		// Route::resource('comments', 'CommentController');
 		// Route::resource('menus', 'MenuController');
 	});

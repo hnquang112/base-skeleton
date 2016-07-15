@@ -9,89 +9,45 @@
             <!-- BEGIN .col-main -->
             <li class="col-main">
                 <h2 class="page-title">Blog</h2>
-                <!-- BEGIN .blog-title -->
-                <div class="post-49 post type-post status-publish format-standard hentry category-bath-body-care category-moisturisers tag-skin-care tag-soap blog-title clearfix">
-                    <div class="fl">
-                        <h3>
-                            <a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-4/" rel="bookmark" title="Dasellus ac nibh urna donec ac urna">
-                                Dasellus ac nibh urna donec ac urna                             </a>                        
-                            <span>
-                                Posted                                  August 30, 2012                                  | Tags: <a href="http://themes.quitenicestuff.com/organicshopwp/tag/skin-care/" rel="tag">Skin Care</a>, <a href="http://themes.quitenicestuff.com/organicshopwp/tag/soap/" rel="tag">Soap</a>                             </span>
-                        </h3>
-                    </div>
-                    <div class="comment-count fr">
-                        <h3><a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-4/#comments" title="Comment on Dasellus ac nibh urna donec ac urna">3</a></h3>
-                        <div class="comment-point"></div>
-                    </div>
-                </div><!-- END .blog-title -->
 
-                <!-- BEGIN .blog-content -->
-                <div class="blog-content clearfix">
-                    <div class="block-img1">
-                        <a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-4/" rel="bookmark" title="Dasellus ac nibh urna donec ac urna">
-                            <img src="{{ asset('img/blog-image1.jpg') }}" alt="" class="prev-image"> </a>
-                    </div>
-                    <p>Nam sollicitudin placerat velit, in euismod sapien molestie a. Proin volutpat dolor vitae erat congue vulputate. Duis at dolor a magna tincidunt lacinia. Nulla facilisi.
-                    </p>
-                    <p><a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-4/" class="button2">Read More »</a>
-                    </p>
-                </div><!-- END .blog-content -->
+                @forelse ($posts as $post)
+                    <!-- BEGIN .blog-title -->
+                    <div class="post-{{ $post->id }} post type-post status-publish format-standard hentry blog-title clearfix
+                        category-bath-body-care
+                        category-moisturisers
+                        tag-skin-care
+                        tag-soap">
+                        <div class="fl">
+                            <h3>
+                                <a href="{{ route('blog.show', $post->slug) }}" rel="bookmark" title="{{ $post->title }}">
+                                    {{ $post->title }}
+                                </a>
+                                <span>Posted August 30, 2012 | Tags:
+                                    <a href="http://themes.quitenicestuff.com/organicshopwp/tag/skin-care/" rel="tag">Skin Care</a>,
+                                    <a href="http://themes.quitenicestuff.com/organicshopwp/tag/soap/" rel="tag">Soap</a>
+                                </span>
+                            </h3>
+                        </div>
+                        <div class="comment-count fr">
+                            <h3><a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-4/#comments"
+                                   title="Comment on Dasellus ac nibh urna donec ac urna">3</a></h3>
+                            <div class="comment-point"></div>
+                        </div>
+                    </div><!-- END .blog-title -->
 
-                <!-- BEGIN .blog-title -->
-                <div class="post-44 post type-post status-publish format-standard hentry category-make-up category-moisturisers blog-title clearfix">
-                    <div class="fl">
-                        <h3>
-                            <a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-3/" rel="bookmark" title="Dasellus ac nibh urna donec ac urna">
-                                Dasellus ac nibh urna donec ac urna                             </a>                        
-                            <span>
-                                Posted                                  August 30, 2012                                                                 </span>
-                        </h3>
-                    </div>
-                    <div class="comment-count fr">
-                        <h3><a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-3/#comments" title="Comment on Dasellus ac nibh urna donec ac urna">1</a></h3>
-                        <div class="comment-point"></div>
-                    </div>
-                </div><!-- END .blog-title -->
-
-                <!-- BEGIN .blog-content -->
-                <div class="blog-content clearfix">
-                    <div class="block-img1">
-                        <a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-3/" rel="bookmark" title="Dasellus ac nibh urna donec ac urna">
-                            <img src="{{ asset('img/blog-image2.jpg') }}" alt="" class="prev-image"> </a>
-                    </div>
-                    <p>Nam sollicitudin placerat velit, in euismod sapien molestie a. Proin volutpat dolor vitae erat congue vulputate. Duis at dolor a magna tincidunt lacinia. Nulla facilisi.
-                    </p>
-                    <p><a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-3/" class="button2">Read More »</a>
-                    </p>
-                </div><!-- END .blog-content -->
-
-                <!-- BEGIN .blog-title -->
-                <div class="post-40 post type-post status-publish format-standard hentry category-hair category-make-up category-moisturisers tag-beauty tag-health blog-title clearfix">
-                    <div class="fl">
-                        <h3>
-                            <a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-2/" rel="bookmark" title="Dasellus ac nibh urna donec ac urna">
-                                Dasellus ac nibh urna donec ac urna                             </a>                        
-                            <span>
-                                Posted                                  August 30, 2012                                  | Tags: <a href="http://themes.quitenicestuff.com/organicshopwp/tag/beauty/" rel="tag">Beauty</a>, <a href="http://themes.quitenicestuff.com/organicshopwp/tag/health/" rel="tag">Health</a>                               </span>
-                        </h3>
-                    </div>
-                    <div class="comment-count fr">
-                        <h3><a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-2/#comments" title="Comment on Dasellus ac nibh urna donec ac urna">1</a></h3>
-                        <div class="comment-point"></div>
-                    </div>
-                </div><!-- END .blog-title -->
-
-                <!-- BEGIN .blog-content -->
-                <div class="blog-content clearfix">
-                    <div class="block-img1">
-                        <a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-2/" rel="bookmark" title="Dasellus ac nibh urna donec ac urna">
-                            <img src="{{ asset('img/blog-image3.jpg') }}" alt="" class="prev-image"> </a>
-                    </div>
-                    <p>Nam sollicitudin placerat velit, in euismod sapien molestie a. Proin volutpat dolor vitae erat congue vulputate. Duis at dolor a magna tincidunt lacinia. Nulla facilisi.
-                    </p>
-                    <p><a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-2/" class="button2">Read More »</a>
-                    </p>
-                </div><!-- END .blog-content -->
+                    <!-- BEGIN .blog-content -->
+                    <div class="blog-content clearfix">
+                        <div class="block-img1">
+                            <a href="{{ route('blog.show', $post->slug) }}" rel="bookmark" title="{{ $post->title }}">
+                                <img src="{{ asset('img/blog-image1.jpg') }}" alt="" class="prev-image"> </a>
+                        </div>
+                        <p>{{ str_limit($post->content, 100) }}</p>
+                        <p><a href="{{ route('blog.show', $post->slug) }}" class="button2">Read More »</a>
+                        </p>
+                    </div><!-- END .blog-content -->
+                @empty
+                    <p>No posts</p>
+                @endforelse
 
                 <div class="clearboth"></div>
 
@@ -99,7 +55,7 @@
                 <div class="page-pagination page-pagination-full">
                     <p class="clearfix">
                         <span class="fl"><a href="http://themes.quitenicestuff.com/organicshopwp/blog/page/2/">← Older posts</a></span>
-                        <span class="fr"></span>
+                        <span class="fr"><a href="http://themes.quitenicestuff.com/organicshopwp/blog/">Newer posts →</a></span>
                     </p>
                 </div><!--END .page-pagination -->
             </li><!-- END .col-main -->

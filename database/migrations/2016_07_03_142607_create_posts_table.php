@@ -17,10 +17,9 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->longText('content');
             $table->integer('author_id');
-            $table->integer('is_published')->default(0);
             $table->string('slug');
             $table->json('meta')->nullable();
-            // $table->timestamp('published_at')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
