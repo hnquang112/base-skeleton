@@ -30,7 +30,7 @@
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
     <div class="wrapper">
-        {{-- @include ('layouts.cms._header') --}}
+        @include ('layouts.cms._header')
 
         <!-- Left side column. contains the logo and sidebar -->
         @include ('layouts.cms._sidebar')

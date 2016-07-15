@@ -21,14 +21,15 @@ var cmsScriptPaths = [
 ];
 
 var scriptPaths = [
-    '../../../bower_components/jquery/dist/jquery.min.js',
-    '../../../bower_components/jquery-ui/jquery-ui.min.js',
-    '../../../bower_components/superfish/dist/js/hoverIntent.js',
-    '../../../bower_components/superfish/dist/js/superfish.min.js',
-    '../../../bower_components/prettyphoto/js/jquery.prettyPhoto.js',
-    '../../../bower_components/prettyphoto/js/jquery.prettyPhoto.js',
-    '../../../bower_components/blockUI/jquery.blockUI.js',
-    '../../../resources/assets/plugins/jquery.numeric/jquery.numeric.min.js'
+    '../../../resources/assets/plugins/organic.shop.theme/js/jquery-1.7.2.min.js',
+    '../../../resources/assets/plugins/organic.shop.theme/js/jquery-ui.js',
+    '../../../resources/assets/plugins/organic.shop.theme/js/hoverIntent.js',
+    '../../../resources/assets/plugins/organic.shop.theme/js/superfish.js',
+    '../../../resources/assets/plugins/organic.shop.theme/js/flexslider-2.1.min.js',
+    '../../../resources/assets/plugins/organic.shop.theme/js/prettyPhoto-3.1.4.min.js',
+    '../../../resources/assets/plugins/organic.shop.theme/js/jquery.numeric.js',
+    '../../../resources/assets/plugins/organic.shop.theme/js/scripts.js',
+    '../../../resources/assets/plugins/organic.shop.theme/js/blockUI-2.39.min.js'
 ];
 
 var cmsStylePaths = [
@@ -44,14 +45,14 @@ var cmsStylePaths = [
 ];
 
 var stylePaths = [
-    '../../../resources/assets/plugins/organic.shop.theme/theme.css',
-    '../../../resources/assets/plugins/organic.shop.theme/theme.green.css',
-    '../../../resources/assets/plugins/organic.shop.theme/responsive.css',
-    '../../../resources/assets/plugins/organic.shop.theme/font-face.css',
-    '../../../resources/assets/plugins/organic.shop.theme/woocommerce.css',
-    '../../../bower_components/superfish/dist/css/superfish.css',
-    '../../../bower_components/prettyphoto/css/prettyPhoto.css',
-    '../../../bower_components/flexslider/flexslider.css'
+    '../../../resources/assets/plugins/organic.shop.theme/css/theme.css',
+    '../../../resources/assets/plugins/organic.shop.theme/css/theme.green.css',
+    '../../../resources/assets/plugins/organic.shop.theme/css/responsive.css',
+    '../../../resources/assets/plugins/organic.shop.theme/css/font-face.css',
+    '../../../resources/assets/plugins/organic.shop.theme/css/woocommerce.css',
+    '../../../resources/assets/plugins/organic.shop.theme/css/superfish.css',
+    '../../../resources/assets/plugins/organic.shop.theme/css/prettyPhoto.css',
+    '../../../resources/assets/plugins/organic.shop.theme/css/flexslider.css'
 ];
 
 // Add src and dest paths of file for copying task
