@@ -16,7 +16,6 @@ class CreateTaxonomiesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('type');
-            $table->longText('description')->nullable();
             $table->string('slug');
             $table->json('meta')->nullable();
             $table->timestamps();

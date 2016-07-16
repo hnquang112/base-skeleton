@@ -59,10 +59,8 @@ class PostController extends CmsController
     {
         $this->validate($request, Post::$rulesForCreating);
 
-        $post = new Post([
-            'title' => $request->title
-        ]);
-        $post->fill($request->except('title'));
+        $post = new Post;
+        $post->fill($request->all());
         $post->author_id = $this->getCurrentUser()->id;
         
         if ($post->save()) {
@@ -119,7 +117,7 @@ class PostController extends CmsController
     public function destroy(Request $request)
     {
         if (empty($request->selected_ids)) {
-            flash()->warning('Select post');
+            flash()->warning('Select item');
         } else {
             Post::destroy($request->selected_ids);
 

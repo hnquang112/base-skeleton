@@ -28,6 +28,8 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot($router);
 
         $router->model('posts', 'App\Post');
+        $router->model('categories', 'App\Category');
+        $router->model('tags', 'App\Tag');
         $router->bind('blog', function ($slug) {
             return Post::findBySlugOrFail($slug);
         });

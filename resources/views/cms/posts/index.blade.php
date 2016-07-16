@@ -20,10 +20,12 @@
                 <div class="box-body">
                     <div class="mailbox-controls form-inline">
                         <!-- Check all button -->
-                        <button id="js-checkbox-toggle-check-all" type="button" class="btn btn-default btn-sm"><i class="fa fa-square-o"></i></button>
+                        <button id="js-checkbox-toggle-check-all" type="button" class="btn btn-default btn-sm">
+                            <i class="fa fa-square-o"></i></button>
 
                         <!-- Bunch delete button -->
-                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash-o"></i></button>
 
                         <form id="js-form-filter-items" action="{{ route('cms.posts.create') }}" method="GET" style="display: inline">
                             <div class="form-group">
@@ -52,7 +54,7 @@
                         </form>
                     </div>
                     <div class="table-responsive mailbox-messages">
-                        <form id="js-form-delete" action="{{ route('cms.posts.destroy') }}" method="POST">
+                        <form id="js-form-delete" action="{{ route('cms.posts.destroy', 0) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
@@ -69,11 +71,12 @@
                                     @foreach ($posts as $post)
                                         <tr>
                                             <td><input name="selected_ids[]" type="checkbox" value="{{ $post->id }}"></td>
-                                            <td><a href="{{ route('cms.posts.edit', $post->id) }}"><strong>{{ $post->title }}</strong></a></td>
+                                            <td><a href="{{ route('cms.posts.edit', $post->id) }}"><strong>
+                                                        {{ $post->title }}</strong></a></td>
                                             <td>{{ $post->author->display_name }}</td>
                                             <td>asd, qwe, zxc</td>
                                             <td>qaz, edc, wsx</td>
-                                            <td>{{ $post->updated_at }}</td>
+                                            <td>{{ $post->published_at }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -87,23 +90,3 @@
         </div>
     </div>
 @endsection
-
-@push ('modals')
-<div id="js-modal-confirm-delete" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Delete Posts</h4>
-            </div>
-            <div class="modal-body">
-                <p>Do you want to delete selected posts?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                <button id="js-button-delete" type="button" class="btn btn-primary">Yes</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-@endpush

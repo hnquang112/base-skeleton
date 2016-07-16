@@ -44,7 +44,7 @@
 
             <!-- Main content -->
             <section class="content">
-                @include('flash::message')
+                @include ('flash::message')
 
                 @yield ('content')
             </section>
@@ -52,6 +52,7 @@
         </div>
         <!-- /.content-wrapper -->
 
+            @include ('layouts.cms._modals')
         @stack ('modals')
 
         @include ('layouts.cms._footer')

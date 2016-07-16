@@ -1,5 +1,5 @@
 @extends ('layouts.cms.master')
 
 @section ('content')
-    @include ('cms.posts._form')
+    @include ('cms.categories._form')
 @endsection

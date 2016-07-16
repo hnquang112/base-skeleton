@@ -27,15 +27,9 @@ Route::group(['prefix' => 'cms'], function () {
 		});
 		
 		Route::resource('dashboard', 'DashboardController');
-
-		Route::delete('posts', [
-			'uses' => 'PostController@destroy',
-			'as' => 'cms.posts.destroy'
-		]);
-		Route::resource('posts', 'PostController', ['except' => ['show', 'destroy']]);
-
+		Route::resource('posts', 'PostController', ['except' => ['show']]);
 		Route::resource('tags', 'TagController');
-		Route::resource('categories', 'CategoryController');
+		Route::resource('categories', 'CategoryController', ['except' => ['show']]);
 
 		// Route::resource('users', 'UserController');
 		// Route::resource('roles', 'RoleController');
