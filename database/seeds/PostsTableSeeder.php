@@ -19,6 +19,7 @@ class PostsTableSeeder extends Seeder
         for ($i = 0; $i < $limit; $i++) {
             $post = new Post([
                 'title' => $faker->catchPhrase,
+                'short_description' => $faker->catchPhrase,
                 'content' => $faker->paragraph,
                 'author_id' => 2
             ]);

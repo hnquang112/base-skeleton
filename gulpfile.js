@@ -15,9 +15,24 @@ var cmsScriptPaths = [
     '../../../bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js',
     '../../../bower_components/AdminLTE/plugins/chartjs/Chart.min.js',
     '../../../bower_components/AdminLTE/plugins/iCheck/icheck.min.js',
+    '../../../bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js',
+    '../../../bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js',
     '../../../bower_components/summernote/dist/summernote.min.js',
     '../../../bower_components/summernote/dist/lang/summernote-vi-VN.min.js',
     '../../../bower_components/toastr/toastr.min.js'
+];
+
+var cmsStylePaths = [
+    '../../../bower_components/AdminLTE/bootstrap/css/bootstrap.min.css',
+    '../../../bower_components/fontawesome/css/font-awesome.min.css',
+    '../../../bower_components/Ionicons/css/ionicons.min.css',
+    '../../../bower_components/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css',
+    '../../../bower_components/AdminLTE/dist/css/AdminLTE.min.css',
+    '../../../bower_components/AdminLTE/dist/css/skins/_all-skins.min.css',
+    '../../../bower_components/AdminLTE/plugins/iCheck/square/purple.css',
+    '../../../bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css',
+    '../../../bower_components/summernote/dist/summernote.css',
+    '../../../bower_components/toastr/toastr.min.css'
 ];
 
 var scriptPaths = [
@@ -30,18 +45,6 @@ var scriptPaths = [
     '../../../resources/assets/plugins/organic.shop.theme/js/jquery.numeric.js',
     '../../../resources/assets/plugins/organic.shop.theme/js/scripts.js',
     '../../../resources/assets/plugins/organic.shop.theme/js/blockUI-2.39.min.js'
-];
-
-var cmsStylePaths = [
-    '../../../bower_components/AdminLTE/bootstrap/css/bootstrap.min.css',
-    '../../../bower_components/fontawesome/css/font-awesome.min.css',
-    '../../../bower_components/Ionicons/css/ionicons.min.css',
-    '../../../bower_components/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css',
-    '../../../bower_components/AdminLTE/dist/css/AdminLTE.min.css',
-    '../../../bower_components/AdminLTE/dist/css/skins/_all-skins.min.css',
-    '../../../bower_components/AdminLTE/plugins/iCheck/square/purple.css',
-    '../../../bower_components/summernote/dist/summernote.css',
-    '../../../bower_components/toastr/toastr.min.css'
 ];
 
 var stylePaths = [
@@ -57,6 +60,9 @@ var stylePaths = [
 
 // Add src and dest paths of file for copying task
 var copyPaths = [{
+    src: 'javascripts',
+    dest: 'js'
+}, {
     src: 'images',
     dest: 'img'
 }, {
@@ -89,8 +95,6 @@ elixir(function (mix) {
     // make vendor.js
     mix.scripts(cmsScriptPaths, publicPath + 'js/' + 'vendor.js');
     mix.scripts(scriptPaths, publicPath + 'js/' + 'vendor.front.js');
-
-    mix.scriptsIn(assetPath + 'javascripts');
 
     // make vendor.css
     mix.styles(cmsStylePaths, publicPath + 'css/' + 'vendor.css');

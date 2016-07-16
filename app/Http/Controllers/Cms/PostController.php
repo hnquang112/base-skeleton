@@ -32,7 +32,7 @@ class PostController extends CmsController
      */
     public function index(Request $request)
     {
-        $posts = Post::with('author')->orderByCreated()->paginate(10);
+        $posts = Post::with('author')->orderByDesc('created_at')->paginate(10);
 
         return view('cms.posts.index', compact('posts'));
     }
@@ -82,10 +82,8 @@ class PostController extends CmsController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($post)
     {
-        $post = Post::findOrFail($id);
-
         return view('cms.posts.edit', compact('post'));
     }
 
@@ -96,11 +94,10 @@ class PostController extends CmsController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $post)
     {
         $this->validate($request, Post::$rulesForCreating);
 
-        $post = Post::findOrFail($id);
         $post->fill($request->all());
         $post->author_id = $this->getCurrentUser()->id;
 

@@ -11,7 +11,24 @@ var Common = {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-        });
+        })
+    },
+
+    setupWysiwygEditor: function () {
+        $('#summernote').summernote({
+            minHeight: 300,
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    $('#this').val(contents);
+                }
+            }
+        })
+    },
+
+    setupDatatable: function () {
+        $('.datatable').DataTable({
+            "order": []
+        })
     },
 
     setupButtonInListPages: function () {
@@ -45,11 +62,13 @@ var Common = {
 
         $('#js-button-delete').click(function () {
             $('#js-form-delete').submit()
-        });
+        })
     },
 
     run: function () {
         this.configAjax();
+        this.setupWysiwygEditor();
+        this.setupDatatable();
         this.setupButtonInListPages();
     }
 };

@@ -14,16 +14,12 @@ use App\Post;
 class BlogController extends FrontController
 {
     public function index(Request $request) {
-        $posts = Post::
-            //published()->
-            paginate(5);
+        $posts = Post::published()->orderByDesc('published_at')->paginate(5);
 
         return view('front.blog.index', compact('posts'));
     }
 
-    public function show(Request $request, $slug) {
-        $post = Post::findBySlugOrFail($slug);
-
+    public function show(Request $request, $post) {
         return view('front.blog.show', compact('post'));
     }
 }

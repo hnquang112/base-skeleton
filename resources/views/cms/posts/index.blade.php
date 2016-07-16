@@ -8,7 +8,7 @@
                     <h3 class="box-title">Posts</h3>
 
                     <!--Filter items-->
-                    <a href="{{ route('cms.posts.index', ['filter' => 'all']) }}">All (442)</a> | 
+                    <a href="{{ route('cms.posts.index') }}">All (442)</a> |
                     <a href="{{ route('cms.posts.index', ['filter' => 'mine']) }}">Mine (215)</a> | 
                     <a href="{{ route('cms.posts.index', ['filter' => 'published']) }}">Published (442)</a>
 
@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body no-padding">
+                <div class="box-body">
                     <div class="mailbox-controls form-inline">
                         <!-- Check all button -->
                         <button id="js-checkbox-toggle-check-all" type="button" class="btn btn-default btn-sm"><i class="fa fa-square-o"></i></button>
@@ -50,21 +50,13 @@
 
                             <button type="submit" class="btn btn-default">Filter</button>
                         </form>
-
-                        <div class="box-tools pull-right">
-                            <div class="has-feedback">
-                                <input type="text" class="form-control input-sm" placeholder="Search Post">
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                            </div>
-                        </div>
-                        <!-- /.box-tools -->
                     </div>
                     <div class="table-responsive mailbox-messages">
                         <form id="js-form-delete" action="{{ route('cms.posts.destroy') }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
-                            <table class="table table-hover">
+                            <table class="table table-hover datatable">
                                 <thead><tr>
                                     <th></th>
                                     <th>Title</th>
@@ -90,16 +82,6 @@
                         </form>
                     </div>
                     <!-- /.mail-box-messages -->
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer no-padding">
-                    <div class="mailbox-controls">
-                        <!-- /.btn-group -->
-                        <div class="pull-right">
-                            @include ('layouts.cms._pagination', ['paginator' => $posts])
-                        </div>
-                        <!-- /.pull-right -->
-                    </div>
                 </div>
             </div>
         </div>
