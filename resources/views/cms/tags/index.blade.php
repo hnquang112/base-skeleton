@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Categories</h3>
+                    <h3 class="box-title">Tags</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -20,7 +20,7 @@
                     </div>
                     <div class="table-responsive mailbox-messages">
                         <form id="js-form-delete" method="POST"
-                              action="{{ route('cms.categories.destroy', $categories->first() ? $categories->first()->id : 0) }}" >
+                              action="{{ route('cms.tags.destroy', $tags->first() ? $tags->first()->id : 0) }}" >
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
@@ -34,10 +34,10 @@
                                     <th>Dates</th>
                                 </tr></thead>
                                 <tbody>
-                                @foreach ($categories as $cat)
+                                @foreach ($tags as $cat)
                                     <tr>
                                         <td><input name="selected_ids[]" type="checkbox" value="{{ $cat->id }}"></td>
-                                        <td><a href="{{ route('cms.categories.edit', $cat->id) }}"><strong>
+                                        <td><a href="{{ route('cms.tags.edit', $cat->id) }}"><strong>
                                                     {{ $cat->name }}</strong></a></td>
                                         <td>{{ $cat->description }}</td>
                                         <td>asd</td>
@@ -66,8 +66,7 @@
                     </div>
                     <!-- /.box-tools -->
                 </div>
-                <form action="{{ $category->id ? route('cms.categories.update', $category->id) : route('cms.categories.store') }}"
-                      method="POST">
+                <form action="{{ $tag->id ? route('cms.tags.update', $tag->id) : route('cms.tags.store') }}" method="POST">
                     {{ csrf_field() }}
 
                     <!-- /.box-header -->
@@ -76,7 +75,7 @@
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="">Name:</label>
                                 <input name="name" type="text" class="form-control" placeholder="Enter name"
-                                       value="{{ $category->name }}">
+                                       value="{{ $tag->name }}">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
@@ -85,7 +84,7 @@
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="">Description:</label>
                                 <input name="description" type="text" class="form-control" placeholder="Enter description"
-                                       value="{{ $category->description }}">
+                                       value="{{ $tag->description }}">
 
                                 @if ($errors->has('description'))
                                     <span class="help-block"><strong>{{ $errors->first('description') }}</strong></span>

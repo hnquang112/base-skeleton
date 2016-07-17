@@ -17,7 +17,7 @@ class CategoryController extends CmsController
     public function create() {
         $category = new Category;
 
-        return view('cms.categories.create', compact('category'));
+        return view('cms.categories.form', compact('category'));
     }
 
     public function store(Request $request) {
@@ -38,7 +38,7 @@ class CategoryController extends CmsController
     }
 
     public function edit($category) {
-        return view('cms.categories.create', compact('category'));
+        return view('cms.categories.form', compact('category'));
     }
 
     public function update(Request $request, $category) {
@@ -58,13 +58,7 @@ class CategoryController extends CmsController
     }
 
     public function destroy(Request $request) {
-        if (empty($request->selected_ids)) {
-            flash()->warning('Select item');
-        } else {
-            Category::destroy($request->selected_ids);
-
-            flash()->success('Deleted successfully');
-        }
+        $this->deleteMultipleItems(Category::class, $request->selected_ids);
 
         return back();
     }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Cms;
 
-use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
+use App\Tag;
+use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 use App\Repositories\PostRepository;
 
@@ -45,8 +47,10 @@ class PostController extends CmsController
     public function create()
     {
         $post = new Post;
+        $categories = Category::lists('name', 'id');
+        $tags = Tag::lists('name', 'id');
 
-        return view('cms.posts.create', compact('post'));
+        return view('cms.posts.form', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -57,6 +61,7 @@ class PostController extends CmsController
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $this->validate($request, Post::$rulesForCreating);
 
         $post = new Post;
@@ -82,7 +87,7 @@ class PostController extends CmsController
      */
     public function edit($post)
     {
-        return view('cms.posts.edit', compact('post'));
+        return view('cms.posts.form', compact('post'));
     }
 
     /**
@@ -116,13 +121,7 @@ class PostController extends CmsController
      */
     public function destroy(Request $request)
     {
-        if (empty($request->selected_ids)) {
-            flash()->warning('Select item');
-        } else {
-            Post::destroy($request->selected_ids);
-
-            flash()->success('Deleted successfully');
-        }
+        $this->deleteMultipleItems(Post::class, $request->selected_ids);
 
         return back();
     }

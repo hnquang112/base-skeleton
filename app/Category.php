@@ -12,15 +12,4 @@ class Category extends Taxonomy {
         return parent::newQuery($excludeDeleted)->categories();
     }
 
-    public function sluggable() {
-        return [
-            'slug' => [
-                'source' => 'name'
-            ]
-        ];
-    }
-
-    public function getFillable() {
-        return $this->fillable;
-    }
 }

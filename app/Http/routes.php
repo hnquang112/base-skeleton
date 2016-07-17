@@ -14,21 +14,18 @@
 Route::group(['namespace' => 'Front'], function () {
     Route::resource('/', 'HomeController', ['only' => ['index']]);
     Route::resource('blog', 'BlogController', ['only' => ['index', 'show']]);
+    Route::resource('category', 'CategoryController', ['only' => ['index', 'show']]);
+    Route::resource('tag', 'TagController', ['only' => ['index', 'show']]);
 });
 
 Route::group(['prefix' => 'cms'], function () {
 	Route::auth();
 
 	Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms'], function () {
-		Route::get('/', function () {
-			if (auth()->check()) return redirect()->route('cms.dashboard.index');
-
-			return redirect('/cms/login');
-		});
-		
-		Route::resource('dashboard', 'DashboardController');
+		Route::get('/', 'CmsController@gate');
+		Route::resource('dashboard', 'DashboardController', ['only' => ['index']]);
 		Route::resource('posts', 'PostController', ['except' => ['show']]);
-		Route::resource('tags', 'TagController');
+		Route::resource('tags', 'TagController', ['except' => ['show']]);
 		Route::resource('categories', 'CategoryController', ['except' => ['show']]);
 
 		// Route::resource('users', 'UserController');
