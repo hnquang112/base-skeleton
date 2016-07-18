@@ -30,6 +30,6 @@ class CreatePostTaxonomyPivotTable extends Migration
      */
     public function down()
     {
-        Schema::drop('post_taxonomy');
+        Schema::dropIfExists('post_taxonomy');
     }
 }

@@ -61,7 +61,6 @@ class PostController extends CmsController
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $this->validate($request, Post::$rulesForCreating);
 
         $post = new Post;

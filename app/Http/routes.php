@@ -12,10 +12,10 @@
 */
 
 Route::group(['namespace' => 'Front'], function () {
-    Route::resource('/', 'HomeController', ['only' => ['index']]);
-    Route::resource('blog', 'BlogController', ['only' => ['index', 'show']]);
-    Route::resource('category', 'CategoryController', ['only' => ['index', 'show']]);
-    Route::resource('tag', 'TagController', ['only' => ['index', 'show']]);
+	Route::resource('/', 'HomeController', ['only' => ['index']]);
+	Route::resource('blog', 'BlogController', ['only' => ['index', 'show']]);
+	Route::resource('category', 'CategoryController', ['only' => ['index', 'show']]);
+	Route::resource('tag', 'TagController', ['only' => ['index', 'show']]);
 });
 
 Route::group(['prefix' => 'cms'], function () {

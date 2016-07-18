@@ -30,14 +30,14 @@ class Post extends Model
     ];
 
      public function __construct() {
-         parent::__construct();
-         $this->hintJsonStructure('meta', '{
-             "short_description":null,
-             "represent_image":null,
-             "seo_title":null,
-             "seo_description":null,
-             "seo_keywords":null
-         }');
+        parent::__construct();
+        $this->hintJsonStructure('meta', '{
+            "short_description":null,
+            "represent_image":null,
+            "seo_title":null,
+            "seo_description":null,
+            "seo_keywords":null
+        }');
      }
 
     /**
@@ -59,6 +59,14 @@ class Post extends Model
      */
     public function author() {
         return $this->belongsTo('App\User', 'author_id');
+    }
+
+    public function categories() {
+        return $this->belongsToMany('App\Taxonomies')->where('taxonomies.type', Taxonomy::TYP_CATEGORY);
+    }
+
+    public function tags() {
+        return $this->belongsToMany('App\Taxonomies')->where('taxonomies.type', Taxonomy::TYP_TAG);
     }
 
     /**

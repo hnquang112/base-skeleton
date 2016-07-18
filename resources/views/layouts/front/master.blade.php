@@ -31,7 +31,7 @@
     </style>
 
     <!-- RSS Feeds & Pingbacks -->
-    <link href="http://themes.quitenicestuff.com/organicshopwp/feed/" rel="alternate" type="application/rss+xml"
+    {{-- <link href="http://themes.quitenicestuff.com/organicshopwp/feed/" rel="alternate" type="application/rss+xml"
           title="Organic Shop RSS Feed">
     <link href="http://themes.quitenicestuff.com/organicshopwp/xmlrpc.php" rel="pingback">
     <link href="http://themes.quitenicestuff.com/organicshopwp/feed/" rel="alternate" type="application/rss+xml"
@@ -47,7 +47,7 @@
     <link href="http://themes.quitenicestuff.com/organicshopwp/checkout/order-received/" rel="prev"
           title="Order Received">
     <link href="http://themes.quitenicestuff.com/organicshopwp/blog/" rel="next" title="Blog">
-    <link href="http://themes.quitenicestuff.com/organicshopwp/" rel="canonical">
+    <link href="http://themes.quitenicestuff.com/organicshopwp/" rel="canonical"> --}}
 </head><!-- END head -->
 
 <!-- BEGIN body -->
