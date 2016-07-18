@@ -31,6 +31,13 @@ var Common = {
         })
     },
 
+    setupSelect2: function () {
+        $('.select2').select2({
+            placeholder: 'Select or enter new tag',
+            tags: true
+        })
+    },
+
     setupButtonInListPages: function () {
         // Enable check and uncheck all functionality
         $("#js-checkbox-toggle-check-all").click(function () {
@@ -69,6 +76,7 @@ var Common = {
         this.configAjax();
         this.setupWysiwygEditor();
         this.setupDatatable();
+        this.setupSelect2();
         this.setupButtonInListPages();
     }
 };

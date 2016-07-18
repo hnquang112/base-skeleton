@@ -40,7 +40,7 @@
                                         <td><a href="{{ route('cms.tags.edit', $cat->id) }}"><strong>
                                                     {{ $cat->name }}</strong></a></td>
                                         <td>{{ $cat->description }}</td>
-                                        <td>asd</td>
+                                        <td>{{ $cat->posts_count }}</td>
                                         <td>qwe</td>
                                         <td>{{ $cat->created_at }}</td>
                                     </tr>

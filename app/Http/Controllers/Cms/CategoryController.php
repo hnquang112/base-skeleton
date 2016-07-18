@@ -8,7 +8,7 @@ use App\Category;
 class CategoryController extends CmsController
 {
     public function index(Request $request) {
-        $categories = Category::all();
+        $categories = Category::withCount('posts')->get();
         $category = new Category;
 
         return view('cms.categories.index', compact('categories', 'category'));

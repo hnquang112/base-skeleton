@@ -34,7 +34,7 @@ class PostController extends CmsController
      */
     public function index(Request $request)
     {
-        $posts = Post::with('author')->orderByDesc('created_at')->paginate(10);
+        $posts = Post::with('author', 'categories')->orderByDesc('created_at')->paginate(10);
 
         return view('cms.posts.index', compact('posts'));
     }
@@ -47,8 +47,8 @@ class PostController extends CmsController
     public function create()
     {
         $post = new Post;
-        $categories = Category::lists('name', 'id');
-        $tags = Tag::lists('name', 'id');
+        $categories = [];
+        $tags = [];
 
         return view('cms.posts.form', compact('post', 'categories', 'tags'));
     }
@@ -61,6 +61,7 @@ class PostController extends CmsController
      */
     public function store(Request $request)
     {
+        dd($request->category_ids);
         $this->validate($request, Post::$rulesForCreating);
 
         $post = new Post;
@@ -68,6 +69,9 @@ class PostController extends CmsController
         $post->author_id = $this->getCurrentUser()->id;
         
         if ($post->save()) {
+            $category_ids = $request->input('category_ids', []);
+            $post->categories()->attach($category_ids);
+
             flash()->success('Saved successfully');
 
             return redirect()->route('cms.posts.index');
@@ -86,7 +90,10 @@ class PostController extends CmsController
      */
     public function edit($post)
     {
-        return view('cms.posts.form', compact('post'));
+        $categories = $post->categories()->lists('taxonomies.id')->toArray();
+//        $tags = Tag::lists('name', 'id');
+
+        return view('cms.posts.form', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -104,6 +111,9 @@ class PostController extends CmsController
         $post->author_id = $this->getCurrentUser()->id;
 
         if ($post->save()) {
+            $category_ids = $request->input('category_ids', []);
+            $post->categories()->sync($category_ids);
+
             flash()->success('Saved successfully');
         } else {
             flash()->error('Save failed');

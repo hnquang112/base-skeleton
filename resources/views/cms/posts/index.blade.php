@@ -74,8 +74,8 @@
                                             <td><a href="{{ route('cms.posts.edit', $post->id) }}"><strong>
                                                         {{ $post->title }}</strong></a></td>
                                             <td>{{ $post->author->display_name }}</td>
-                                            <td>asd, qwe, zxc</td>
-                                            <td>qaz, edc, wsx</td>
+                                            <td>{{ $post->category_names }}</td>
+                                            <td>{{ $post->tag_names }}</td>
                                             <td>{{ $post->published_at }}</td>
                                         </tr>
                                     @endforeach

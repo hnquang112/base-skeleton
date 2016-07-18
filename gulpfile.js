@@ -17,6 +17,7 @@ var cmsScriptPaths = [
     '../../../bower_components/AdminLTE/plugins/iCheck/icheck.min.js',
     '../../../bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js',
     '../../../bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js',
+    '../../../bower_components/AdminLTE/plugins/select2/select2.full.min.js',
     '../../../bower_components/summernote/dist/summernote.min.js',
     '../../../bower_components/summernote/dist/lang/summernote-vi-VN.min.js',
     '../../../bower_components/toastr/toastr.min.js'
@@ -31,6 +32,7 @@ var cmsStylePaths = [
     '../../../bower_components/AdminLTE/dist/css/skins/_all-skins.min.css',
     '../../../bower_components/AdminLTE/plugins/iCheck/square/purple.css',
     '../../../bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css',
+    '../../../bower_components/AdminLTE/plugins/select2/select2.min.css',
     '../../../bower_components/summernote/dist/summernote.css',
     '../../../bower_components/toastr/toastr.min.css'
 ];

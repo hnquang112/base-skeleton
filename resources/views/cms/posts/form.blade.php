@@ -99,9 +99,10 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="form-group">
-                            @foreach ($categories as $id => $name)
+                            @foreach (App\Category::lists('name', 'id') as $id => $name)
                                 <div class="checkbox">
-                                    <label><input name="category_ids[]" value="{{ $id }}" type="checkbox"> {{ $name }}</label>
+                                    <label><input name="category_ids[]" type="checkbox" value="{{ $id }}"
+                                        {{ in_array($id, $categories) ? 'checked' : '' }}> {{ $name }}</label>
                                 </div>
                             @endforeach
                         </div>
@@ -122,7 +123,11 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        The body of the box
+                        <select name="category_ids" class="form-control select2" multiple style="width: 100%">
+                            @foreach (App\Tag::lists('name', 'id') as $id => $name)
+                                <option value="{{ $id }}">{{ $name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <!-- /.box-body -->
                 </div>

@@ -8,7 +8,7 @@ use App\Tag;
 class TagController extends CmsController
 {
     public function index(Request $request) {
-        $tags = Tag::all();
+        $tags = Tag::withCount('posts')->get();
         $tag = new Tag;
 
         return view('cms.tags.index', compact('tags', 'tag'));

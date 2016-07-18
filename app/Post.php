@@ -62,11 +62,22 @@ class Post extends Model
     }
 
     public function categories() {
-        return $this->belongsToMany('App\Taxonomies')->where('taxonomies.type', Taxonomy::TYP_CATEGORY);
+        return $this->belongsToMany('App\Category')->withTimestamps();
     }
 
     public function tags() {
-        return $this->belongsToMany('App\Taxonomies')->where('taxonomies.type', Taxonomy::TYP_TAG);
+        return $this->belongsToMany('App\Tag')->withTimestamps();
+    }
+
+    /**
+     * Accessors
+     */
+    public function getCategoryNamesAttribute() {
+        return implode($this->categories()->lists('name')->toArray(), ', ');
+    }
+
+    public function getTagNamesAttribute() {
+        return implode($this->tags()->lists('name')->toArray(), ', ');
     }
 
     /**

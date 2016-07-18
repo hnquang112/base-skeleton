@@ -45,7 +45,7 @@ class Taxonomy extends Model {
      * Relationships
      */
     public function posts() {
-//        return $this->belongsToMany('App\User', 'author_id');
+        return $this->belongsToMany('App\Post')->withTimestamps();
     }
 
     /**
