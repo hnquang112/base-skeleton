@@ -2,6 +2,7 @@
 
 @section ('content')
     <div class="row">
+        <!-- form start -->
         <form action="{{ $post->id ? route('cms.posts.update', $post->id) : route('cms.posts.store') }}"
               id="js-save-post-form" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -11,9 +12,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Post</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <!-- form start -->
+                    </div><!-- /.box-header -->
 
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -57,11 +56,8 @@
                                    value="{{ $post->seo_keywords }}">
                         </div>
                     </div>
-                    <!-- /.box-body -->
-
-                </div>
-                <!-- /.box -->
-            </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
 
             <div class="col-md-3">
                 <div class="box box-info">
@@ -71,20 +67,15 @@
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
-                        </div>
-                        <!-- /.box-tools -->
-                    </div>
-                    <!-- /.box-header -->
+                        </div><!-- /.box-tools -->
+                    </div><!-- /.box-header -->
                     <div class="box-body">
                         The body of the box
-                    </div>
-                    <!-- /.box-body -->
+                    </div><!-- /.box-body -->
                     <div class="box-footer">
-
                         <button class="btn btn-primary btn-flat pull-right" onclick="$('#js-save-post-form').submit()">Save</button>
                     </div>
-                </div>
-                <!-- /.box -->
+                </div><!-- /.box -->
 
                 <div class="box box-success">
                     <div class="box-header with-border">
@@ -93,10 +84,8 @@
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
-                        </div>
-                        <!-- /.box-tools -->
-                    </div>
-                    <!-- /.box-header -->
+                        </div><!-- /.box-tools -->
+                    </div><!-- /.box-header -->
                     <div class="box-body">
                         <div class="form-group">
                             @foreach (App\Category::lists('name', 'id') as $id => $name)
@@ -106,10 +95,8 @@
                                 </div>
                             @endforeach
                         </div>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
+                    </div> <!-- /.box-body -->
+                </div><!-- /.box -->
 
                 <div class="box box-warning">
                     <div class="box-header with-border">
@@ -118,20 +105,16 @@
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
-                        </div>
-                        <!-- /.box-tools -->
-                    </div>
-                    <!-- /.box-header -->
+                        </div><!-- /.box-tools -->
+                    </div><!-- /.box-header -->
                     <div class="box-body">
-                        <select name="category_ids" class="form-control select2" multiple style="width: 100%">
+                        <select name="tag_ids[]" class="form-control select2" multiple style="width: 100%">
                             @foreach (App\Tag::lists('name', 'id') as $id => $name)
-                                <option value="{{ $id }}">{{ $name }}</option>
+                                <option value="{{ $id }}" {{ in_array($id, $tags) ? 'selected' : '' }}>{{ $name }}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
 
                 <div class="box box-danger">
                     <div class="box-header with-border">
@@ -140,16 +123,12 @@
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
-                        </div>
-                        <!-- /.box-tools -->
-                    </div>
-                    <!-- /.box-header -->
+                        </div><!-- /.box-tools -->
+                    </div><!-- /.box-header -->
                     <div class="box-body">
                         The body of the box
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
             </div>
         </form>
     </div>

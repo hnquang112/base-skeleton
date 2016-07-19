@@ -8,11 +8,11 @@
 
 <!-- BEGIN head -->
 <head>
-    <!-- Meta Tags -->
-    <meta charset="UTF-8">
+    <!-- Essential Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 
     <!-- Title -->
     <title>Organic Shop | A Responsive WordPress Theme for eCommerce Websites</title>
@@ -30,24 +30,8 @@
         }
     </style>
 
-    <!-- RSS Feeds & Pingbacks -->
-    {{-- <link href="http://themes.quitenicestuff.com/organicshopwp/feed/" rel="alternate" type="application/rss+xml"
-          title="Organic Shop RSS Feed">
-    <link href="http://themes.quitenicestuff.com/organicshopwp/xmlrpc.php" rel="pingback">
-    <link href="http://themes.quitenicestuff.com/organicshopwp/feed/" rel="alternate" type="application/rss+xml"
-          title="Organic Shop » Feed">
-    <link href="http://themes.quitenicestuff.com/organicshopwp/comments/feed/" rel="alternate" type="application/rss+xml"
-          title="Organic Shop » Comments Feed">
-    <link href="http://themes.quitenicestuff.com/organicshopwp/home/feed/" rel="alternate"  type="application/rss+xml"
-          title="Organic Shop » Home Comments Feed">
-    <link href="http://themes.quitenicestuff.com/organicshopwp/xmlrpc.php?rsd" rel="EditURI" type="application/rsd+xml"
-          title="RSD" >
-    <link href="http://themes.quitenicestuff.com/organicshopwp/wp-includes/wlwmanifest.xml" rel="wlwmanifest"
-          type="application/wlwmanifest+xml">
-    <link href="http://themes.quitenicestuff.com/organicshopwp/checkout/order-received/" rel="prev"
-          title="Order Received">
-    <link href="http://themes.quitenicestuff.com/organicshopwp/blog/" rel="next" title="Blog">
-    <link href="http://themes.quitenicestuff.com/organicshopwp/" rel="canonical"> --}}
+    <!-- Meta tags -->
+    {{-- See https://github.com/joshbuchea/HEAD for further neccesary tags --}}
 </head><!-- END head -->
 
 <!-- BEGIN body -->

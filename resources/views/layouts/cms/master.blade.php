@@ -47,17 +47,14 @@
                 @include ('flash::message')
 
                 @yield ('content')
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
 
             @include ('layouts.cms._modals')
         @stack ('modals')
 
         @include ('layouts.cms._footer')
-    </div>
-    <!-- ./wrapper -->
+    </div><!-- ./wrapper -->
 
     <!-- Vendor JS -->
     <script src="{{ asset('js/vendor.js') }}"></script>

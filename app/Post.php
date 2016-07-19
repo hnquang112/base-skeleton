@@ -80,6 +80,14 @@ class Post extends Model
         return implode($this->tags()->lists('name')->toArray(), ', ');
     }
 
+    public function getCategoryIdsAttribute() {
+        return $this->categories()->lists('taxonomies.id')->toArray();
+    }
+
+    public function getTagIdsAttribute() {
+        return $this->tags()->lists('taxonomies.id')->toArray();
+    }
+
     /**
      * Mutators
      */
@@ -105,5 +113,21 @@ class Post extends Model
     public function scopeFilter($query, $inputs) {
         // if ($inputs->has('filter_date')) $query = $query->where()
         // if ($inputs->has('filter_category')) $query = $query->where()
+    }
+
+    /**
+     * Need to move to repository
+     */
+    public function syncCategories($categoryIds) {
+        $this->categories()->sync($categoryIds);
+    }
+
+    public function syncTags($tagIds) {
+        $arrIds = $this->tag_ids;
+        $newTagNames = array_diff($tagIds, $arrIds);
+
+        dd($newTagNames);
+
+        $this->tags()->sync($tagIds);
     }
 }
