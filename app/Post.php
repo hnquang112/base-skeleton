@@ -88,6 +88,10 @@ class Post extends Model
         return $this->tags()->lists('taxonomies.id')->toArray();
     }
 
+    public function getFrontUrlAttribute() {
+        return route('blog.show', $this->slug);
+    }
+
     /**
      * Mutators
      */
@@ -123,11 +127,18 @@ class Post extends Model
     }
 
     public function syncTags($tagIds) {
-        $arrIds = $this->tag_ids;
+        $arrIds = Tag::lists('id')->toArray();
         $newTagNames = array_diff($tagIds, $arrIds);
+        $syncItems = array_intersect($tagIds, $arrIds);
 
-        dd($newTagNames);
+        $this->tags()->sync($syncItems);
 
-        $this->tags()->sync($tagIds);
+        foreach ($newTagNames as $name) {
+            $tag = new Tag;
+            $tag->name = $name;
+            $tag->save();
+
+            $this->tags()->attach($tag->id);
+        }
     }
 }

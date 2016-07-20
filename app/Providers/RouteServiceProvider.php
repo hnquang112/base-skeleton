@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use App\Post;
+use App\Tag;
+use App\Category;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -32,6 +34,12 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('tags', 'App\Tag');
         $router->bind('blog', function ($slug) {
             return Post::findBySlugOrFail($slug);
+        });
+        $router->bind('tag', function ($slug) {
+            return Tag::findBySlugOrFail($slug);
+        });
+        $router->bind('category', function ($slug) {
+            return Category::findBySlugOrFail($slug);
         });
     }
 

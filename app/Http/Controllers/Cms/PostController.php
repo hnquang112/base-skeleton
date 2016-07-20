@@ -72,12 +72,10 @@ class PostController extends CmsController
             $post->syncTags($request->input('tag_ids', []));
 
             flash()->success('Saved successfully');
-
-            return redirect()->route('cms.posts.index');
+        } else {
+            flash()->error('Save failed');
         }
         
-        flash()->error('Save failed');
-
         return back();
     }
 

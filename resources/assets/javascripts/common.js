@@ -72,11 +72,69 @@ var Common = {
         })
     },
 
+    setupButtonInFormPages: function() {
+        var $button = $('#js-button-get-image-from-url'),
+            $input = $('#js-input-image-url'),
+            $image = $('#js-image-thumbnail-gotten'),
+            $result = $('#js-p-get-result');
+
+        $input.keyup(function () {
+            if ($(this).val() != '') {
+                $button.removeAttr('disabled')
+            } else {
+                $button.attr('disabled', 'disabled')
+            }
+        });
+
+        $button.click(function () {
+            testImage($input.val(), showThumbnail)
+        })
+
+        function testImage(url, callback, timeout) {
+            timeout = timeout || 5000;
+            var timedOut = false, timer;
+            var img = new Image();
+            img.onerror = img.onabort = function() {
+                if (!timedOut) {
+                    clearTimeout(timer);
+                    callback(url, -1);
+                }
+            };
+            img.onload = function() {
+                if (!timedOut) {
+                    clearTimeout(timer);
+                    callback(url, 1);
+                }
+            };
+            img.src = url;
+            timer = setTimeout(function() {
+                timedOut = true;
+                callback(url, 0);
+            }, timeout)
+        }
+            
+        function showThumbnail(url, result) {
+            if (result == -1) {
+                $result.text('Error');
+                $image.hide()
+            }
+            if (result == 0) {
+                $result.text('Time out');
+                $image.hide()
+            }
+            if (result == 1) {
+                $result.text('');
+                $image.attr('src', url).show()
+            }
+        }
+    },
+
     run: function () {
         this.configAjax();
         this.setupWysiwygEditor();
         this.setupDatatable();
         this.setupSelect2();
         this.setupButtonInListPages();
+        this.setupButtonInFormPages();
     }
 };

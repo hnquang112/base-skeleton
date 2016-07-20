@@ -9,16 +9,18 @@
             <!-- BEGIN .col-main -->
             <li class="col-main">
                 <!-- BEGIN .blog-title-single -->
-                <div class="post-40 post type-post status-publish format-standard hentry category-hair category-make-up category-moisturisers tag-beauty tag-health blog-title-single clearfix">
+                <div class="post-40 post type-post status-publish format-standard hentry blog-title-single clearfix">
                     <div class="fl">
                         <h2>{{ $post->title }}
                             <span>Posted {{ format_date_as_string($post->published_at) }} | Tags:
-                                <a href="http://themes.quitenicestuff.com/organicshopwp/tag/beauty/" rel="tag">Beauty</a>,
-                                <a href="http://themes.quitenicestuff.com/organicshopwp/tag/health/" rel="tag">Health</a>					</span>
+                                @foreach ($post->tags as $key => $tag)
+                                    <a href="{{ $tag->front_url }}" rel="tag">{{ $tag->name }}</a>@if ($key < $post->tags()->count() - 1), @endif
+                                @endforeach
+                            </span>
                         </h2>
                     </div>
                     <div class="comment-count fr">
-                        <h3><a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-2/#comments" title="Comment on Dasellus ac nibh urna donec ac urna">1</a></h3>
+                        <h3><a href="{{ $tag->front_url }}#comments" title="Comment on {{ $post->title }}">1</a></h3>
                         <div class="comment-point"></div>
                     </div>
                 </div><!-- END .blog-title-single -->
@@ -26,8 +28,8 @@
                 <!-- BEGIN .blog-content -->
                 <div class="blog-content clearfix">
                     <div class="block-img1">
-                        <a href="http://themes.quitenicestuff.com/organicshopwp/dasellus-ac-nibh-urna-donec-ac-urna-2/" rel="bookmark" title="Dasellus ac nibh urna donec ac urna">
-                            <img src="{{ asset('img/blog-image3.jpg') }}" alt="" class="prev-image"> </a>
+                        <a href="{{ $tag->front_url }}" rel="bookmark" title="{{ $post->title }}">
+                            <img src="{{ $post->represent_image }}" alt="" class="prev-image"></a>
                     </div>
 
                     {!! $post->content !!}
