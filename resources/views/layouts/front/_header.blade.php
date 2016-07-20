@@ -3,15 +3,15 @@
 <!-- BEGIN .topbar -->
 <div class="topbar clearfix">
     <ul class="social-icons fl">
-        <li><a href="#"><span id="twitter_icon"></span></a></li>
+        {{--<li><a href="#"><span id="twitter_icon"></span></a></li>--}}
         <li><a href="#"><span id="facebook_icon"></span></a></li>
-        <li><a href="#"><span id="googleplus_icon"></span></a></li>
+        {{--<li><a href="#"><span id="googleplus_icon"></span></a></li>--}}
         <li><a href="#"><span id="skype_icon"></span></a></li>
-        <li><a href="#"><span id="flickr_icon"></span></a></li>
-        <li><a href="#"><span id="linkedin_icon"></span></a></li>
-        <li><a href="#"><span id="vimeo_icon"></span></a></li>
-        <li><a href="#"><span id="youtube_icon"></span></a></li>
-        <li><a href="#"><span id="rss_icon"></span></a></li>
+        {{--<li><a href="#"><span id="flickr_icon"></span></a></li>--}}
+        {{--<li><a href="#"><span id="linkedin_icon"></span></a></li>--}}
+        {{--<li><a href="#"><span id="vimeo_icon"></span></a></li>--}}
+        {{--<li><a href="#"><span id="youtube_icon"></span></a></li>--}}
+        {{--<li><a href="#"><span id="rss_icon"></span></a></li>--}}
     </ul><!-- BEGIN .topbar-right -->
     <div class="topbar-right clearfix">
         <ul class="clearfix">
@@ -28,7 +28,7 @@
     </div><!-- END .topbar-right -->
 </div><!-- END .topbar -->
 <div id="site-title">
-    <h1><a href="http://themes.quitenicestuff.com/organicshopwp">Organic <span>shop</span></a></h1>
+    <h1><a href="{{ url('/') }}">Organic <span>shop</span></a></h1>
 </div>
 
 <!-- BEGIN .main-menu-wrapper -->

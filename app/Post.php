@@ -128,7 +128,9 @@ class Post extends Model
 
     public function syncTags($tagIds) {
         $arrIds = Tag::lists('id')->toArray();
+        // List names of new tags
         $newTagNames = array_diff($tagIds, $arrIds);
+        // List of existed tags to be sync
         $syncItems = array_intersect($tagIds, $arrIds);
 
         $this->tags()->sync($syncItems);

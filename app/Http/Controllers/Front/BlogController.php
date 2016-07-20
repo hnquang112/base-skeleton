@@ -22,4 +22,18 @@ class BlogController extends FrontController
     public function show(Request $request, $post) {
         return view('front.blog.show', compact('post'));
     }
+
+    public function filterByCategory($taxo) {
+        $taxoType = 'cat';
+        $posts = $taxo->getRelatedPosts();
+
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'posts'));
+    }
+
+    public function filterByTag($taxo) {
+        $taxoType = 'tag';
+        $posts = $taxo->getRelatedPosts();
+
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'posts'));
+    }
 }
