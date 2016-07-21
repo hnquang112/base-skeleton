@@ -41,7 +41,7 @@
 
                             <div class="form-group">
                                 <select name="filter_category" class="form-control">
-                                    <option>Category</option>
+                                    <option>All</option>
                                     <option>option 1</option>
                                     <option>option 2</option>
                                     <option>option 3</option>
