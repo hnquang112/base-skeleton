@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Eloquent\Dialect\Json;
+use Carbon\Carbon;
 
 class Post extends Model
 {
@@ -14,7 +15,7 @@ class Post extends Model
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['title', 'short_description', 'content', 'short_description', 'represent_image', 'seo_title',
-        'seo_description', 'seo_keywords'];
+        'seo_description', 'seo_keywords', 'published_at'];
     protected $jsonColumns = ['meta'];
 
     const STT_DRAFT = 0;
@@ -92,12 +93,16 @@ class Post extends Model
         return route('blog.show', $this->slug);
     }
 
+    public function getIsPublishedAttribute() {
+        return $this->published_at != null ? self::STT_PUBLISHED : self::STT_DRAFT;
+    }
+
     /**
      * Mutators
      */
-//    public function setSlugAttribute($value) {
-//        $this->attributes['slug'] = str_slug($value);
-//    }
+    public function setPublishedAttribute($value) {
+       $this->attributes['published_at'] = ($value == self::STT_PUBLISHED ? Carbon::now() : null);
+    }
 
     /**
      * Scopes

@@ -70,10 +70,21 @@
                         </div><!-- /.box-tools -->
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        The body of the box
+                        <p>Status: 
+                            @if ($post->is_draft) 
+                                <span class="text-success"><strong>Published</strong> at 2016/07/20 17:00:00</span>
+                            @else
+                                <span class="text-warning"><strong>Draft</strong>
+                            @endif
+                        </p>
+
+                        <div class="checkbox">
+                            <label><input name="do_publish" type="checkbox" value="{{ App\Post::STT_PUBLISHED }}"> Also publish when saving</label>
+                        </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
                         <button class="btn btn-primary btn-flat pull-right" onclick="$('#js-save-post-form').submit()">Save</button>
+                        <button class="btn btn-info btn-flat pull-right" disabled="disabled">Publish</button>
                     </div>
                 </div><!-- /.box -->
 

@@ -64,8 +64,9 @@ class PostController extends CmsController
         $this->validate($request, Post::$rulesForCreating);
 
         $post = new Post;
-        $post->fill($request->all());
+        $post->fill($request->except('do_publish'));
         $post->author_id = $this->getCurrentUser()->id;
+        $post->published_at = $request->do_publish;
         
         if ($post->save()) {
             $post->syncCategories($request->input('category_ids', []));
@@ -104,7 +105,7 @@ class PostController extends CmsController
     {
         $this->validate($request, Post::$rulesForCreating);
 
-        $post->fill($request->all());
+        $post->fill($request->except('do_publish'));
 
         if ($post->save()) {
             $post->syncCategories($request->input('category_ids', []));
@@ -131,4 +132,18 @@ class PostController extends CmsController
         return back();
     }
 
+    /**
+     * Toggle publish status of a post
+     */
+    public function togglePublish($post) {
+        if (is_null($post->published_at)) {
+            $post->published_at = Post::STT_PUBLISHED;
+        } else {
+            $post->published_at = Post::STT_DRAFT;
+        }
+
+        $post->save();
+
+        return $post->published_at;
+    }
 }
