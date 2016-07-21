@@ -71,20 +71,26 @@
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <p>Status: 
-                            @if ($post->is_draft) 
-                                <span class="text-success"><strong>Published</strong> at 2016/07/20 17:00:00</span>
+                            @if ($post->is_published)
+                                <span class="text-success"><strong>Published</strong> at {{ $post->published_at }}</span>
                             @else
                                 <span class="text-warning"><strong>Draft</strong>
                             @endif
                         </p>
 
                         <div class="checkbox">
-                            <label><input name="do_publish" type="checkbox" value="{{ App\Post::STT_PUBLISHED }}"> Also publish when saving</label>
+                            <label><input name="do_publish" type="checkbox" value="{{ App\Post::STT_PUBLISHED }}"
+                                        {{ $post->is_published ? 'disabled=disabled' : '' }}>
+                                Also publish when saving</label>
                         </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
+                        @if ($post->is_published)
+                            <button class="btn btn-warning btn-flat pull-left">Unpublish</button>
+                        @else
+                            <button class="btn btn-info btn-flat pull-left">Publish</button>
+                        @endif
                         <button class="btn btn-primary btn-flat pull-right" onclick="$('#js-save-post-form').submit()">Save</button>
-                        <button class="btn btn-info btn-flat pull-right" disabled="disabled">Publish</button>
                     </div>
                 </div><!-- /.box -->
 
@@ -150,7 +156,7 @@
 
                         <p id="js-p-get-result" class="margin text-red"></p>
 
-                        <img id="js-image-thumbnail-gotten" src="{{ $post->represent_image }}" width="100%" height="auto">
+                        <img id="js-image-thumbnail-gotten" src="{{ $post->represent_image_path }}" width="100%" height="auto">
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div>

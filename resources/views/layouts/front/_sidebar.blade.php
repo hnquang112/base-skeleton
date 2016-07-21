@@ -34,7 +34,7 @@
                 <li class="clearfix">
                     <div class="lpl-img">
                         <a href="{{ $post->front_url }}" rel="bookmark">
-                            <img width="66" height="66" src="{{ $post->represent_image }}" alt="{{ $post->title }}">
+                            <img width="66" height="66" src="{{ $post->represent_image_path }}" alt="{{ $post->title }}">
                         </a>
                     </div>
                     <div class="lpl-content">

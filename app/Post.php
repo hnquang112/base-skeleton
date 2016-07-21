@@ -14,8 +14,8 @@ class Post extends Model
     use SoftDeletes, Sluggable, SluggableScopeHelpers, Json;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['title', 'short_description', 'content', 'short_description', 'represent_image', 'seo_title',
-        'seo_description', 'seo_keywords', 'published_at'];
+    protected $fillable = ['title', 'short_description', 'published_at', 'content', 'short_description', 'seo_title',
+        'seo_description', 'seo_keywords'];
     protected $jsonColumns = ['meta'];
 
     const STT_DRAFT = 0;
@@ -34,7 +34,6 @@ class Post extends Model
         parent::__construct();
         $this->hintJsonStructure('meta', '{
             "short_description":null,
-            "represent_image":null,
             "seo_title":null,
             "seo_description":null,
             "seo_keywords":null
@@ -70,6 +69,10 @@ class Post extends Model
         return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 
+    public function represent_image() {
+        return $this->hasOne('App\File', 'id', 'represent_image_id');
+    }
+
     /**
      * Accessors
      */
@@ -94,14 +97,24 @@ class Post extends Model
     }
 
     public function getIsPublishedAttribute() {
-        return $this->published_at != null ? self::STT_PUBLISHED : self::STT_DRAFT;
+        return $this->published_at != null;
+    }
+
+    public function getRepresentImagePathAttribute() {
+        return $this->represent_image ? $this->represent_image->path : '';
     }
 
     /**
      * Mutators
      */
-    public function setPublishedAttribute($value) {
-       $this->attributes['published_at'] = ($value == self::STT_PUBLISHED ? Carbon::now() : null);
+    public function setPublishedAtAttribute($value) {
+        $this->attributes['published_at'] = ($value == self::STT_PUBLISHED ? Carbon::now() : null);
+    }
+
+    public function setRepresentImageIdAttribute($value) {
+        if (!empty($value)) {
+            $this->attributes['represent_image_id'] = createFileFromPath($value);
+        }
     }
 
     /**

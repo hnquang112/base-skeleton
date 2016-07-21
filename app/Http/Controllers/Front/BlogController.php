@@ -14,7 +14,7 @@ use App\Post;
 class BlogController extends FrontController
 {
     public function index(Request $request) {
-        $posts = Post::published()->orderByDesc('published_at')->paginate(5);
+        $posts = Post::with('tags', 'represent_image')->published()->orderByDesc('published_at')->paginate(5);
 
         return view('front.blog.index', compact('posts'));
     }

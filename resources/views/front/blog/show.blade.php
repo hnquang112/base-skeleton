@@ -29,7 +29,7 @@
                 <div class="blog-content clearfix">
                     <div class="block-img1">
                         <a href="{{ $tag->front_url }}" rel="bookmark" title="{{ $post->title }}">
-                            <img src="{{ $post->represent_image }}" alt="" class="prev-image"></a>
+                            <img src="{{ $post->represent_image_path }}" alt="" class="prev-image"></a>
                     </div>
 
                     {!! $post->content !!}

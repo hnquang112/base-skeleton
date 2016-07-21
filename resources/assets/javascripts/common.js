@@ -88,7 +88,7 @@ var Common = {
 
         $button.click(function () {
             testImage($input.val(), showThumbnail)
-        })
+        });
 
         function testImage(url, callback, timeout) {
             timeout = timeout || 5000;

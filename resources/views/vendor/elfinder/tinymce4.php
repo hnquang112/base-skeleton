@@ -34,7 +34,7 @@
                 // close popup window
                 parent.tinymce.activeEditor.windowManager.close();
             }
-        }
+        };
 
         $().ready(function() {
             var elf = $('#elfinder').elfinder({
