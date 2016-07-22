@@ -44,7 +44,7 @@
             </div>
         </form>
 
-        <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
+        <a href="{{ url('cms/password/reset') }}">I forgot my password</a><br>
     </div>
     <!-- /.login-box-body -->
 @endsection

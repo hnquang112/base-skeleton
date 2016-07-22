@@ -64,9 +64,11 @@ class PostController extends CmsController
         $this->validate($request, Post::$rulesForCreating);
 
         $post = new Post;
-        $post->fill($request->except('do_publish'));
+
         $post->author_id = $this->getCurrentUser()->id;
         $post->published_at = $request->do_publish;
+        $post->represent_image_id = $request->represent_image;
+        $post->fill($request->except('do_publish', 'represent_image'));
         
         if ($post->save()) {
             $post->syncCategories($request->input('category_ids', []));
@@ -105,7 +107,9 @@ class PostController extends CmsController
     {
         $this->validate($request, Post::$rulesForCreating);
 
-        $post->fill($request->except('do_publish'));
+        if ($request->do_publish == Post::STT_PUBLISHED) $post->published_at = $request->do_publish;
+        $post->represent_image_id = $request->represent_image;
+        $post->fill($request->except('do_publish', 'represent_image'));
 
         if ($post->save()) {
             $post->syncCategories($request->input('category_ids', []));

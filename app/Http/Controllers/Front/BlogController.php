@@ -14,12 +14,26 @@ use App\Post;
 class BlogController extends FrontController
 {
     public function index(Request $request) {
-        $posts = Post::published()->orderByDesc('published_at')->paginate(5);
+        $posts = Post::with('tags', 'represent_image')->published()->orderByDesc('published_at')->paginate(5);
 
         return view('front.blog.index', compact('posts'));
     }
 
     public function show(Request $request, $post) {
         return view('front.blog.show', compact('post'));
+    }
+
+    public function filterByCategory($taxo) {
+        $taxoType = 'cat';
+        $posts = $taxo->getRelatedPosts();
+
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'posts'));
+    }
+
+    public function filterByTag($taxo) {
+        $taxoType = 'tag';
+        $posts = $taxo->getRelatedPosts();
+
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'posts'));
     }
 }

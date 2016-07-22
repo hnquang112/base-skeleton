@@ -83,7 +83,7 @@ jQuery(document).ready(function() {
         var elid = jQuery(document.activeElement).is('.qty-text');
         if(e.keyCode === 8 && elid){
             return false;
-        };
+        }
     });
 
     // Accordion

@@ -58,4 +58,11 @@ class Taxonomy extends Model {
     public function scopeTags($query) {
         return $query->whereType(self::TYP_TAG);
     }
+
+    /**
+     * Helpers
+     */
+    public function getRelatedPosts() {
+        return $this->posts()->published()->orderBy('title')->get();
+    }
 }

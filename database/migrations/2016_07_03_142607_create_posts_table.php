@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->json('meta')->nullable();
             $table->timestamp('published_at')->nullable();
+            $table->integer('represent_image_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -14,30 +14,12 @@
             <div class="widget">
                 <div class="widget-title clearfix"><h6>Categories</h6></div>
                 <ul>
-                    <li class="cat-item cat-item-16">
-                        <a href="http://themes.quitenicestuff.com/organicshopwp/category/bath-body-care/"
-                           title="View all posts filed under Bath &amp; Body Care">Bath &amp; Body Care</a>
-                    </li>
-                    <li class="cat-item cat-item-17">
-                        <a href="http://themes.quitenicestuff.com/organicshopwp/category/fragrance/"
-                           title="View all posts filed under Fragrance">Fragrance</a>
-                    </li>
-                    <li class="cat-item cat-item-22">
-                        <a href="http://themes.quitenicestuff.com/organicshopwp/category/hair/"
-                           title="View all posts filed under Hair">Hair</a>
-                    </li>
-                    <li class="cat-item cat-item-21">
-                        <a href="http://themes.quitenicestuff.com/organicshopwp/category/make-up/"
-                           title="View all posts filed under Make-Up">Make-Up</a>
-                    </li>
-                    <li class="cat-item cat-item-23">
-                        <a href="http://themes.quitenicestuff.com/organicshopwp/category/moisturisers/"
-                           title="View all posts filed under Moisturisers">Moisturisers</a>
-                    </li>
-                    <li class="cat-item cat-item-15">
-                        <a href="http://themes.quitenicestuff.com/organicshopwp/category/skin-care/"
-                           title="View all posts filed under Skin Care">Skin Care</a>
-                    </li>
+                    @foreach (App\Category::all() as $cat)
+                        <li class="cat-item cat-item-{{ $cat->id }}">
+                            <a href="{{ $cat->front_url }}" title="View all posts filed under {{ ucfirst($cat->name) }}">
+                                {{ ucfirst($cat->name) }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </li>
@@ -45,34 +27,12 @@
             <div class="widget">
                 <div class="widget-title clearfix"><h6>Tags</h6></div>
                 <ul class="wp-tag-cloud">
-                    <li>
-                        <a class="tag-link-25" href="http://themes.quitenicestuff.com/organicshopwp/tag/beauty/"
-                           style="font-size: 14px;" title="1 topic">Beauty</a>
-                    </li>
-                    <li>
-                        <a class="tag-link-24" href="http://themes.quitenicestuff.com/organicshopwp/tag/health/"
-                           style="font-size: 14px;" title="1 topic">Health</a>
-                    </li>
-                    <li>
-                        <a class="tag-link-18" href="http://themes.quitenicestuff.com/organicshopwp/tag/organic/"
-                           style="font-size: 14px;" title="1 topic">Organic</a>
-                    </li>
-                    <li>
-                        <a class="tag-link-20" href="http://themes.quitenicestuff.com/organicshopwp/tag/seaweed/"
-                           style="font-size: 14px;" title="1 topic">Seaweed</a>
-                    </li>
-                    <li>
-                        <a class="tag-link-15" href="http://themes.quitenicestuff.com/organicshopwp/tag/skin-care/"
-                           style="font-size: 14px;" title="1 topic">Skin Care</a>
-                    </li>
-                    <li>
-                        <a class="tag-link-26" href="http://themes.quitenicestuff.com/organicshopwp/tag/soap/"
-                           style="font-size: 14px;" title="1 topic">Soap</a>
-                    </li>
-                    <li>
-                        <a class="tag-link-19" href="http://themes.quitenicestuff.com/organicshopwp/tag/spa/"
-                           style="font-size: 14px;" title="1 topic">Spa</a>
-                    </li>
+                    @foreach (App\Tag::all() as $tag)
+                        <li><a href="{{ $tag->front_url }}" class="tag-link-{{ $tag->id }}" title="1 topic" style="font-size: 14px;">
+                                {{ ucfirst($tag->name) }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </li>
@@ -164,7 +124,7 @@
                 <a href="http://themes.quitenicestuff.com/organicshopwp/contact/">Contact</a>
             </li>
         </ul>
-        <p>© Copyright 2012</p>
+        <p>© Copyright 2016</p>
     </div>
     <div class="fr"><img alt="" src="img/payment-methods1.png"></div>
 </div><!-- END #footer-bottom -->

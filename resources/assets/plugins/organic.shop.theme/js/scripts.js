@@ -82,9 +82,10 @@ jQuery(document).ready(function() {
 	jQuery(document).keypress(function(e){ 
 	  var elid = jQuery(document.activeElement).is('.qty-text'); 
 	  if(e.keyCode === 8 && elid){ 
-	      return false; 
-	  }; 
-	});
+	      return false;
+
+  }
+    });
 	
 	// Accordion
 	jQuery(".accordion").accordion( { autoHeight: false } );

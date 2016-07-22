@@ -42,7 +42,7 @@ $.fn.numeric = function(config, callback)
 	var callback = typeof callback == "function" ? callback : function(){};
 	// set data and methods
 	return this.data("numeric.decimal", decimal).data("numeric.negative", negative).data("numeric.callback", callback).keypress($.fn.numeric.keypress).keyup($.fn.numeric.keyup).blur($.fn.numeric.blur);
-}
+};
 
 $.fn.numeric.keypress = function(e)
 {
@@ -134,7 +134,7 @@ $.fn.numeric.keypress = function(e)
 		allow = true;
 	}
 	return allow;
-}
+};
 
 $.fn.numeric.keyup = function(e)
 {
@@ -218,7 +218,7 @@ $.fn.numeric.keyup = function(e)
 		this.value = val;
 		$.fn.setSelection(this, carat);
 	}
-}
+};
 
 $.fn.numeric.blur = function()
 {
@@ -233,12 +233,12 @@ $.fn.numeric.blur = function()
 			callback.apply(this);
 		}
 	}
-}
+};
 
 $.fn.removeNumeric = function()
 {
 	return this.data("numeric.decimal", null).data("numeric.negative", null).data("numeric.callback", null).unbind("keypress", $.fn.numeric.keypress).unbind("blur", $.fn.numeric.blur);
-}
+};
 
 // Based on code from http://javascript.nwbox.com/cursor_position/ (Diego Perini <dperini@nwbox.com>)
 $.fn.getSelectionStart = function(o)
@@ -250,7 +250,7 @@ $.fn.getSelectionStart = function(o)
 		if (r.text == '') return o.value.length;
 		return o.value.lastIndexOf(r.text);
 	} else return o.selectionStart;
-}
+};
 
 // set the selection, o is the object (input), p is the position ([start, end] or just start)
 $.fn.setSelection = function(o, p)
