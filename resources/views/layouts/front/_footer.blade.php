@@ -14,10 +14,10 @@
             <div class="widget">
                 <div class="widget-title clearfix"><h6>Categories</h6></div>
                 <ul>
-                    @foreach (App\Category::all() as $cat)
-                        <li class="cat-item cat-item-{{ $cat->id }}">
-                            <a href="{{ $cat->front_url }}" title="View all posts filed under {{ ucfirst($cat->name) }}">
-                                {{ ucfirst($cat->name) }}</a>
+                    @foreach ($_allCategories as $_cat)
+                        <li class="cat-item cat-item-{{ $_cat->id }}">
+                            <a href="{{ $_cat->front_url }}" title="View all posts filed under {{ ucfirst($_cat->name) }}">
+                                {{ ucfirst($_cat->name) }}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -27,9 +27,9 @@
             <div class="widget">
                 <div class="widget-title clearfix"><h6>Tags</h6></div>
                 <ul class="wp-tag-cloud">
-                    @foreach (App\Tag::all() as $tag)
-                        <li><a href="{{ $tag->front_url }}" class="tag-link-{{ $tag->id }}" title="1 topic" style="font-size: 14px;">
-                                {{ ucfirst($tag->name) }}
+                    @foreach ($_allTags as $_tag)
+                        <li><a href="{{ $_tag->front_url }}" class="tag-link-{{ $_tag->id }}" title="1 topic" style="font-size: 14px;">
+                                {{ ucfirst($_tag->name) }}
                             </a>
                         </li>
                     @endforeach

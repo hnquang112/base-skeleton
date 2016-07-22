@@ -30,7 +30,8 @@ class File extends Model {
     public function __construct() {
         parent::__construct();
         $this->hintJsonStructure('meta', '{
-             "description":null
+            "path":null,
+            "description":null
         }');
     }
 

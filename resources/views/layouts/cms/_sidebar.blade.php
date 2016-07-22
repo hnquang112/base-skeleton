@@ -48,18 +48,6 @@
                     <i class="fa fa-paper-plane-o"></i> <span>Products</span>
                 </a>
             </li>
-            <li class="treeview {{ $request->is('cms/posts*') || $request->is('cms/categories*') || $request->is('cms/tags*')
-                ? 'active' : '' }}">
-                <a href="#">
-                    <i class="fa fa-file-text-o"></i> <span>Pages</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li {{ $request->is('cms/posts*') && !$request->is('cms/posts/create') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.posts.index') }}"><i class="fa fa-circle-o"></i> Posts List</a>
-                    </li>
-                </ul>
-            </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Users</span>
@@ -67,8 +55,14 @@
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-cogs"></i> <span>Settings</span>
+                    <i class="fa fa-file-text-o"></i> <span>Settings</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
+                <ul class="treeview-menu">
+                    <li {{ $request->is('cms/sliders*') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.sliders.index') }}"><i class="fa fa-circle-o"></i> Slider</a>
+                    </li>
+                </ul>
             </li>
             {{--Next--}}
             {{--

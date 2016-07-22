@@ -18,6 +18,10 @@ class Post extends Model
         'seo_description', 'seo_keywords'];
     protected $jsonColumns = ['meta'];
 
+    const TYP_BLOG = 0;
+    const TYP_PRODUCT = 1;
+    const TYP_REVIEW = 2;
+
     const STT_DRAFT = 0;
     const STT_PUBLISHED = 1;
 

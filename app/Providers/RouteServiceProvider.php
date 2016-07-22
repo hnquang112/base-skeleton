@@ -32,6 +32,8 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('posts', 'App\Post');
         $router->model('categories', 'App\Category');
         $router->model('tags', 'App\Tag');
+        $router->model('settings', 'App\Setting');
+        
         $router->bind('blog', function ($slug) {
             return Post::findBySlugOrFail($slug);
         });
