@@ -34,7 +34,8 @@ var cmsStylePaths = [
     '../../../bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css',
     '../../../bower_components/AdminLTE/plugins/select2/select2.min.css',
     '../../../bower_components/summernote/dist/summernote.css',
-    '../../../bower_components/toastr/toastr.min.css'
+    '../../../bower_components/toastr/toastr.min.css',
+    '../../../bower_components/flag-icon-css/css/flag-icon.min.css'
 ];
 
 var scriptPaths = [
@@ -77,8 +78,11 @@ var copyPaths = [{
     src: 'plugins/summernote/**',
     dest: 'css/font'
 }, {
-    src: 'plugins/flexslider',
+    src: 'plugins/flexslider/**',
     dest: 'css/fonts'
+}, {
+    src: 'plugins/flag-icon-css/**',
+    dest: 'flags'
 }];
 
 /*
