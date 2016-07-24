@@ -2,20 +2,23 @@
 
 namespace App;
 
-class Category extends Taxonomy {
-  protected $table = 'taxonomies';
-  protected $attributes = array(
-    'type' => Taxonomy::TYP_CATEGORY,
-  );
+class Category extends Taxonomy
+{
+    protected $table = 'taxonomies';
+    protected $attributes = array(
+        'type' => Taxonomy::TYP_CATEGORY,
+    );
 
-  public function newQuery($excludeDeleted = true) {
-    return parent::newQuery($excludeDeleted)->categories();
-  }
+    public function newQuery($excludeDeleted = true)
+    {
+        return parent::newQuery($excludeDeleted)->categories();
+    }
 
-  /**
-   * Accessors
-   */
-  public function getFrontUrlAttribute() {
-    return route('category.show', $this->slug);
-  }
+    /**
+     * Accessors
+     */
+    public function getFrontUrlAttribute()
+    {
+        return route('category.show', $this->slug);
+    }
 }

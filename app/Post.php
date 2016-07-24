@@ -17,10 +17,12 @@ class Post extends Model
     protected $fillable = ['title', 'short_description', 'published_at', 'content', 'short_description', 'seo_title',
         'seo_description', 'seo_keywords'];
     protected $jsonColumns = ['meta'];
+    protected $attributes = array(
+        'type' => self::TYP_BLOG,
+    );
 
     const TYP_BLOG = 0;
     const TYP_PRODUCT = 1;
-    const TYP_REVIEW = 2;
 
     const STT_DRAFT = 0;
     const STT_PUBLISHED = 1;
