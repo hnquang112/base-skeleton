@@ -33,6 +33,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('categories', 'App\Category');
         $router->model('tags', 'App\Tag');
         $router->model('settings', 'App\Setting');
+//        $router->model('products', 'App\Post');
         
         $router->bind('blog', function ($slug) {
             return Post::findBySlugOrFail($slug);
@@ -43,6 +44,9 @@ class RouteServiceProvider extends ServiceProvider
         $router->bind('category', function ($slug) {
             return Category::findBySlugOrFail($slug);
         });
+//        $router->bind('shop', function ($slug) {
+//            return Product::findBySlugOrFail($slug);
+//        });
     }
 
     /**
