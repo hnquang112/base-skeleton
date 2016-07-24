@@ -14,6 +14,9 @@
     <meta name='author' content=''/><!----**********ADD WEB AUTHOR---->
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
+    @inject ('_request', 'Illuminate\Http\Request')
+    <link rel="canonical" href="{{ $_request->url() }}">
+
     <title>AdminLTE 2 | Dashboard</title>
 
     <!-- Vendor CSS -->

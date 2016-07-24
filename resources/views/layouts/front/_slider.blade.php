@@ -1,6 +1,5 @@
 <!-- BEGIN .slider -->
 <div class="slider clearfix">
-    <!-- END .slider -->
     <div class="flex-viewport" style="overflow: hidden; position: relative;">
         <ul class="slides" style="width: 1000%; transition-duration: 0.6s; transform: translate3d(-2361px, 0px, 0px);">
             @foreach ($_allSliders as $_slider)
@@ -17,7 +16,7 @@
         <li><a class="flex-prev" href="#">Previous</a></li>
         <li><a class="flex-next" href="#">Next</a></li>
     </ul>
-</div>
+</div><!-- END .slider -->
 
 <!-- BEGIN .section -->
 <div class="section section-intro">
