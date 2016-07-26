@@ -38,8 +38,9 @@
         page_item page-item-14 {{ $request->is('/') ? 'current_page_item' : '' }} menu-item-25">
             <a href="{{ url('/') }}">Home</a>
         </li>
-        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26" id="menu-item-26">
-            <a class="sf-with-ul" href="http://themes.quitenicestuff.com/organicshopwp/shop/">
+        <li class="menu-item menu-item-type-post_type {{ $request->is('shop*') ? 'current_page_item' : '' }}
+                menu-item-object-page menu-item-26 " id="menu-item-26">
+            <a class="sf-with-ul" href="{{ route('shop.index') }}">
                 Shop <span class="sf-sub-indicator">»</span></a>
             <ul class="sub-menu" style="display: none; visibility: hidden;">
                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-200" id="menu-item-200">

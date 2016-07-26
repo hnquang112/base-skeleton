@@ -1,24 +1,24 @@
 @extends ('layouts.front.master')
 
 @section ('content')
-    <div id="page-header"><img src="./product_files/page-header1.jpg" alt=""></div>
+    <div id="page-header"><img src="{{ asset('img/page-header1.jpg') }}" alt=""></div>
+
     <!-- BEGIN .section -->
     <div class="section">
         <ul class="columns-content page-content clearfix">
 
             <!-- BEGIN .col-main -->
             <li class="col-main">
-                <h2 class="page-title">Oak Candle Set</h2>
+                <h2 class="page-title">{{ $product->title }}</h2>
 
                 <ul class="columns-2 product-single-content clearfix">
                     <li class="post-73 product type-product status-publish hentry col2 clearfix" id="product-73">
-                        <span class="onsale">Sale!</span>
+                        @if ($product->is_on_sale) <span class="onsale">Sale!</span> @endif
                         <div class="images">
-                            <a itemprop="image"
-                               href="http://themes.quitenicestuff.com/organicshopwp/wp-content/uploads/2012/08/image2.jpg"
-                               class="zoom" rel="thumbnails" title="image2"><img
-                                        src="./product_files/image2-285x285.jpg"
-                                        class="attachment-shop_single wp-post-image" alt="image2" title="image2">
+                            <a itemprop="image" href="{{ $product->represent_image_path }}"
+                               class="zoom" rel="thumbnails" title="image2">
+                                <img src="{{ $product->represent_image_path }}" alt="image2" title="image2"
+                                     class="attachment-shop_single wp-post-image">
                             </a>
                             <div class="thumbnails"></div>
                         </div>
@@ -28,35 +28,31 @@
                         <div class="summary">
                             <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                 <h2 itemprop="price" class="product-price-single">
-                                    <del><span class="amount">£49.99</span></del>
-                                    <ins><span class="amount">£34.99</span></ins>
+                                    <del><span class="amount">{{ format_price_with_currency($product->price) }}</span></del>
+                                    <ins><span class="amount">{{ format_price_with_currency($product->discount_price) }}</span></ins>
                                 </h2>
 
                                 <link itemprop="availability" href="http://schema.org/InStock">
                             </div>
                             <div itemprop="description">
-                                <p>Vestibulum lacinia neque eu mi accumsan faucibus. Vivamus sed odio nisl, porta
-                                    facilisis magna. Maecenas sed mi ac ante gravida porta id eget odio. Mauris vel leo
-                                    nibh. Quisque enim sem, porttitor et congue vehicula, congue sit amet felis.</p>
+                                <p>{{ $product->short_description }}</p>
                             </div>
                             
-                            <form action="http://themes.quitenicestuff.com/organicshopwp/shop/oak-candle-set-2/?add-to-cart=73" class="qty-product-single clearfix cart" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('shop.index') }}" class="qty-product-single clearfix cart" method="post">
                                 <div class="qty-fields-large clearfix fl">
-                                    <input name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty" class="qty-text" maxlength="12">
+                                    <input name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty"
+                                           class="qty-text" maxlength="12">
                                 </div>
                                 <button type="submit" class="single_add_to_cart_button button3 fr alt">Add to cart</button>
                             </form>
 
                             <div class="product_meta">
-                                <span class="posted_in">Category: <a
-                                            href="http://themes.quitenicestuff.com/organicshopwp/product-category/bath-body-care/"
-                                            rel="tag">Bath &amp; Body Care</a>, <a
-                                            href="http://themes.quitenicestuff.com/organicshopwp/product-category/fragrance/"
-                                            rel="tag">Fragrance</a>, <a
-                                            href="http://themes.quitenicestuff.com/organicshopwp/product-category/skin-care/"
-                                            rel="tag">Skin Care</a>, <a
-                                            href="http://themes.quitenicestuff.com/organicshopwp/product-category/spa-products/"
-                                            rel="tag">Spa Products</a>.</span>
+                                <span class="posted_in">Category:
+                                    @foreach ($product->categories as $key => $cat)
+                                        <a href="{{ $cat->front_url }}" rel="tag">{{ $cat->name }}</a>
+                                        @if ($key < $product->categories()->count() - 1), @endif
+                                    @endforeach
+                                </span>
                             </div>
                         </div>
                     </li><!-- .summary -->
@@ -70,7 +66,7 @@
                         </li>
                     </ul>
                     <div id="tabs-tab-title-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
-                        <p>Vestibulum lacinia neque eu mi accumsan faucibus. Vivamus sed odio nisl, porta facilisis magna. Maecenas sed mi ac ante gravida porta id eget odio. Mauris vel leo nibh. Quisque enim sem, porttitor et congue vehicula, congue sit amet felis.</p>
+                        <p>{!! $product->content !!}</p>
                     </div>
                     <div id="tabs-tab-title-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
                         <div id="reviews">
@@ -170,8 +166,7 @@
                 </div>
             </li><!-- END .col-main -->
 
-            <!-- BEGIN .col-sidebar -->
-            {{--include sidebar--}}
+            @include ('layouts.front._sidebar')
         </ul>
     </div><!-- END .section -->
 @endsection

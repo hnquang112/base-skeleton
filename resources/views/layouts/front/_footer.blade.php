@@ -126,5 +126,5 @@
         </ul>
         <p>© Copyright 2016</p>
     </div>
-    <div class="fr"><img alt="" src="img/payment-methods1.png"></div>
+    <div class="fr"><img alt="" src="{{ asset('img/payment-methods1.png') }}"></div>
 </div><!-- END #footer-bottom -->

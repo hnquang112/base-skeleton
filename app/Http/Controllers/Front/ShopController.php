@@ -14,7 +14,7 @@ class ShopController extends FrontController {
 
     }
 
-    public function show($slug) {
-        return view('front.shop.show');
+    public function show($product) {
+        return view('front.shop.show', compact('product'));
     }
 }

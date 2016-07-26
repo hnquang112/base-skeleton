@@ -45,9 +45,9 @@ class RouteServiceProvider extends ServiceProvider
         $router->bind('category', function ($slug) {
             return Category::findBySlugOrFail($slug);
         });
-//        $router->bind('shop', function ($slug) {
-//            return Product::findBySlugOrFail($slug);
-//        });
+        $router->bind('shop', function ($slug) {
+            return Product::findBySlugOrFail($slug);
+        });
     }
 
     /**

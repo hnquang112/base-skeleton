@@ -46,7 +46,16 @@
             <li class="treeview{{ $request->is('cms/products*') ? ' active' : '' }}">
                 <a href="{{ route('cms.products.index') }}">
                     <i class="fa fa-paper-plane-o"></i> <span>Products</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
+                <ul class="treeview-menu">
+                    <li {{ $request->is('cms/products*') && !$request->is('cms/products/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.products.index') }}"><i class="fa fa-circle-o"></i> Products List</a>
+                    </li>
+                    <li {{ $request->is('cms/products/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.products.create') }}"><i class="fa fa-circle-o"></i> Add New Product</a>
+                    </li>
+                </ul>
             </li>
             <li class="treeview">
                 <a href="#">

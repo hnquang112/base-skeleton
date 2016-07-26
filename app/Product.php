@@ -17,4 +17,7 @@ class Product extends Post {
         return parent::newQuery($excludeDeleted)->products();
     }
 
+    public function getIsOnSaleAttribute() {
+        return !is_null($this->discount_price);
+    }
 }

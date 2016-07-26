@@ -12,7 +12,11 @@ function format_date_as_string($date) {
     return Carbon::parse($date)->format('Y/m/d');
 }
 
-function createFileFromPath($path) {
+function format_price_with_currency($price, $currency = 'đ') {
+    return number_format($price) . $currency;
+}
+
+function create_file_from_path($path) {
     if (!empty($path)) {
         $file = new File;
         $file->path = $path;

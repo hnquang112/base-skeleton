@@ -124,7 +124,7 @@ class Post extends Model
 
     public function setRepresentImageIdAttribute($value) {
         if (!empty($value)) {
-            $this->attributes['represent_image_id'] = createFileFromPath($value);
+            $this->attributes['represent_image_id'] = create_file_from_path($value);
         }
     }
 
@@ -146,6 +146,10 @@ class Post extends Model
     public function scopeFilter($query, $inputs) {
         // if ($inputs->has('filter_date')) $query = $query->where()
         // if ($inputs->has('filter_category')) $query = $query->where()
+    }
+
+    public function scopeBlogPosts($query) {
+        return $query->where('type', self::TYP_BLOG);
     }
 
     public function scopeProducts($query) {

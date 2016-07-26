@@ -14,7 +14,8 @@
                         <h2>{{ $post->title }}
                             <span>Posted {{ format_date_as_string($post->published_at) }} | Tags:
                                 @foreach ($post->tags as $key => $tag)
-                                    <a href="{{ $tag->front_url }}" rel="tag">{{ $tag->name }}</a>@if ($key < $post->tags()->count() - 1), @endif
+                                    <a href="{{ $tag->front_url }}" rel="tag">{{ $tag->name }}</a>
+                                    @if ($key < $post->tags()->count() - 1), @endif
                                 @endforeach
                             </span>
                         </h2>

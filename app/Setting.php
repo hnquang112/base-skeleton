@@ -42,7 +42,7 @@ class Setting extends Model {
 
   public function setImageIdAttribute($value) {
     if (!empty($value)) {
-      $this->attributes['image_id'] = createFileFromPath($value);
+      $this->attributes['image_id'] = create_file_from_path($value);
     }
   }
 

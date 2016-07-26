@@ -34,7 +34,7 @@ class PostController extends CmsController
      */
     public function index(Request $request)
     {
-        $posts = Post::with('author', 'categories')->orderByDesc('created_at')->paginate(10);
+        $posts = Post::with('author', 'categories')->blogPosts()->orderByDesc('created_at')->paginate(10);
 
         return view('cms.posts.index', compact('posts'));
     }
