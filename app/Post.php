@@ -15,7 +15,7 @@ class Post extends Model
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['title', 'short_description', 'published_at', 'content', 'short_description', 'seo_title',
-        'seo_description', 'seo_keywords'];
+        'seo_description', 'seo_keywords', 'price', 'discount_price', 'is_in_stock', 'product_image_ids'];
     protected $jsonColumns = ['meta'];
     protected $attributes = [
         'type' => self::TYP_BLOG,
@@ -33,7 +33,8 @@ class Post extends Model
     public static $rulesForCreating = [
         'title' => 'required|max:255',
         'short_description' => 'required|max:255',
-        'content' => 'required'
+        'content' => 'required',
+        'represent_image' => 'active_url'
     ];
 
      public function __construct() {
@@ -42,7 +43,11 @@ class Post extends Model
             "short_description":null,
             "seo_title":null,
             "seo_description":null,
-            "seo_keywords":null
+            "seo_keywords":null,
+            "price":0,
+            "discount_price":null,
+            "is_in_stock":true,
+            "product_image_ids":[]
         }');
      }
 
@@ -68,11 +73,11 @@ class Post extends Model
     }
 
     public function categories() {
-        return $this->belongsToMany('App\Category')->withTimestamps();
+        return $this->belongsToMany('App\Category', 'category_post', 'post_id', 'category_id')->withTimestamps();
     }
 
     public function tags() {
-        return $this->belongsToMany('App\Tag')->withTimestamps();
+        return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id')->withTimestamps();
     }
 
     public function represent_image() {
@@ -141,6 +146,10 @@ class Post extends Model
     public function scopeFilter($query, $inputs) {
         // if ($inputs->has('filter_date')) $query = $query->where()
         // if ($inputs->has('filter_category')) $query = $query->where()
+    }
+
+    public function scopeProducts($query) {
+        return $query->where('type', self::TYP_PRODUCT);
     }
 
     /**

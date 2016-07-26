@@ -17,13 +17,13 @@
         <!-- sidebar menu: style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview {{ $request->is('cms/dashboard*') ? 'active' : '' }}">
+            <li class="treeview{{ $request->is('cms/dashboard*') ? ' active' : '' }}">
                 <a href="{{ route('cms.dashboard.index') }}">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="treeview {{ $request->is('cms/posts*') || $request->is('cms/categories*') || $request->is('cms/tags*')
-                ? 'active' : '' }}">
+            <li class="treeview{{ $request->is('cms/posts*') || $request->is('cms/categories*') || $request->is('cms/tags*')
+                ? ' active' : '' }}">
                 <a href="#">
                     <i class="fa fa-edit"></i> <span>Posts</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
@@ -43,8 +43,8 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
+            <li class="treeview{{ $request->is('cms/products*') ? ' active' : '' }}">
+                <a href="{{ route('cms.products.index') }}">
                     <i class="fa fa-paper-plane-o"></i> <span>Products</span>
                 </a>
             </li>

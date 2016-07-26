@@ -7,6 +7,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use App\Post;
 use App\Tag;
 use App\Category;
+use App\Product;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -33,7 +34,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('categories', 'App\Category');
         $router->model('tags', 'App\Tag');
         $router->model('settings', 'App\Setting');
-//        $router->model('products', 'App\Post');
+        $router->model('products', 'App\Post');
         
         $router->bind('blog', function ($slug) {
             return Post::findBySlugOrFail($slug);
