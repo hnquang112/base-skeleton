@@ -9,8 +9,10 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use Session;
 
-class FrontController extends Controller
-{
-
+class FrontController extends Controller {
+    public function getSessionId() {
+        return Session::getId();
+    }
 }

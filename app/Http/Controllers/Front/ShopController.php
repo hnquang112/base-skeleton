@@ -8,6 +8,8 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Product;
+use DB;
 
 class ShopController extends FrontController {
     public function index() {
@@ -15,6 +17,12 @@ class ShopController extends FrontController {
     }
 
     public function show($product) {
-        return view('front.shop.show', compact('product'));
+        $similarProducts = $product->similar()->get();
+
+        return view('front.shop.show', compact('product', 'similarProducts'));
+    }
+
+    public function addToCart() {
+
     }
 }

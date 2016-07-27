@@ -8,6 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Eloquent\Dialect\Json;
 use Carbon\Carbon;
+use DB;
 
 class Post extends Model
 {
@@ -112,7 +113,8 @@ class Post extends Model
     }
 
     public function getRepresentImagePathAttribute() {
-        return $this->represent_image ? $this->represent_image->path : '';
+        return $this->represent_image ? $this->represent_image->path :
+            'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
     }
 
     /**
@@ -154,6 +156,15 @@ class Post extends Model
 
     public function scopeProducts($query) {
         return $query->where('type', self::TYP_PRODUCT);
+    }
+
+    public function scopeSimilar($query) {
+        return $query->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
+            ->select('posts.*', DB::raw('COUNT(*) AS matched_tags'))
+            ->whereIn('post_tag.tag_id', DB::table('post_tag')->where('post_id', $this->id)->lists('tag_id'))
+            ->where('posts.id', '<>', $this->id)
+            ->groupBy('posts.id')->havingRaw('COUNT(*) > 1')
+            ->orderBy('matched_tags', 'desc')->take(3);
     }
 
     /**

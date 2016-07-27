@@ -37,7 +37,7 @@
                             <div itemprop="description">
                                 <p>{{ $product->short_description }}</p>
                             </div>
-                            
+
                             <form action="{{ route('shop.index') }}" class="qty-product-single clearfix cart" method="post">
                                 <div class="qty-fields-large clearfix fl">
                                     <input name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty"
@@ -124,44 +124,27 @@
                     <h2>Related Products</h2>
 
                     <ul class="products">
-                        <li class="first">
-                            <a href="http://themes.quitenicestuff.com/organicshopwp/shop/seaweed-soap/">
-                                <div class="product-image">
-                                    <span class="onsale">Sale!</span>
-                                    <img src="./product_files/image1-285x285.jpg"
-                                         class="attachment-shop_catalog wp-post-image" alt="image1" title="image1">
-                                </div>
-                                <p class="product-title">Seaweed Soap</p>
-                                <p class="product-price">
-                                    <del><span class="amount">£18.99</span></del>
-                                    <ins><span class="amount">£14.99</span></ins>
+                        @foreach ($similarProducts as $key => $prod)
+                            <li class="{{ $key == 0 ? 'first' : ($key == $similarProducts->count() - 1 ? 'last' : '') }}">
+                                <a href="{{ $prod->front_url }}">
+                                    <div class="product-image">
+                                        @if ($prod->is_on_sale) <span class="onsale">Sale!</span> @endif
+                                        <img src="{{ $prod->represent_image_path }}" alt="image1" title="image1"
+                                             class="attachment-shop_catalog wp-post-image">
+                                    </div>
+                                    <p class="product-title">{{ $prod->title }}</p>
+                                    <p class="product-price">
+                                        <del><span class="amount">{{ format_price_with_currency($prod->price) }}</span></del>
+                                        <ins><span class="amount">{{ format_price_with_currency($prod->discount_price) }}</span></ins>
+                                    </p>
+                                </a>
+                                <p class="product-button clearfix">
+                                    <a href="http://themes.quitenicestuff.com/organicshopwp/shop/oak-candle-set-2/?add-to-cart=60"
+                                        rel="nofollow" data-product-id="60" class="button2 product_type_simple">
+                                        Add to cart</a>
                                 </p>
-                            </a>
-                            <p class="product-button clearfix"><a
-                                        href="http://themes.quitenicestuff.com/organicshopwp/shop/oak-candle-set-2/?add-to-cart=60"
-                                        rel="nofollow" data-product_id="60" class="button2 product_type_simple">Add to
-                                    cart</a>
-                            </p>
-                        </li>
-                        <li class="last">
-                            <a href="http://themes.quitenicestuff.com/organicshopwp/shop/oak-candle-set/">
-                                <div class="product-image">
-                                    <span class="onsale">Sale!</span>
-                                    <img src="./product_files/image2-285x285.jpg"
-                                         class="attachment-shop_catalog wp-post-image" alt="image2" title="image2">
-                                </div>
-                                <p class="product-title">Oak Candle Set</p>
-                                <p class="product-price">
-                                    <del><span class="amount">£49.99</span></del>
-                                    <ins><span class="amount">£34.99</span></ins>
-                                </p>
-                            </a>
-                            <p class="product-button clearfix"><a
-                                        href="http://themes.quitenicestuff.com/organicshopwp/shop/oak-candle-set-2/?add-to-cart=62"
-                                        rel="nofollow" data-product_id="62" class="button2 product_type_simple">Add to
-                                    cart</a>
-                            </p>
-                        </li>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </li><!-- END .col-main -->
