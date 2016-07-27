@@ -28,8 +28,12 @@
                         <div class="summary">
                             <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                 <h2 itemprop="price" class="product-price-single">
-                                    <del><span class="amount">{{ format_price_with_currency($product->price) }}</span></del>
-                                    <ins><span class="amount">{{ format_price_with_currency($product->discount_price) }}</span></ins>
+                                    @if ($product->is_on_sale)
+                                        <del><span class="amount">{{ format_price_with_currency($product->price) }}</span></del>
+                                        <ins><span class="amount">{{ format_price_with_currency($product->discount_price) }}</span></ins>
+                                    @else
+                                        <ins><span class="amount">{{ format_price_with_currency($product->price) }}</span></ins>
+                                    @endif
                                 </h2>
 
                                 <link itemprop="availability" href="http://schema.org/InStock">
@@ -38,7 +42,8 @@
                                 <p>{{ $product->short_description }}</p>
                             </div>
 
-                            <form action="{{ route('shop.index') }}" class="qty-product-single clearfix cart" method="post">
+                            <form action="{{ route('shop.cart', [$product->slug]) }}" class="qty-product-single clearfix cart" method="POST">
+                                {{ csrf_field() }}
                                 <div class="qty-fields-large clearfix fl">
                                     <input name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty"
                                            class="qty-text" maxlength="12">
@@ -134,13 +139,17 @@
                                     </div>
                                     <p class="product-title">{{ $prod->title }}</p>
                                     <p class="product-price">
-                                        <del><span class="amount">{{ format_price_with_currency($prod->price) }}</span></del>
-                                        <ins><span class="amount">{{ format_price_with_currency($prod->discount_price) }}</span></ins>
+                                        @if ($prod->is_on_sale)
+                                            <del><span class="amount">{{ format_price_with_currency($prod->price) }}</span></del>
+                                            <ins><span class="amount">{{ format_price_with_currency($prod->discount_price) }}</span></ins>
+                                        @else
+                                            <ins><span class="amount">{{ format_price_with_currency($prod->price) }}</span></ins>
+                                        @endif
                                     </p>
                                 </a>
                                 <p class="product-button clearfix">
                                     <a href="http://themes.quitenicestuff.com/organicshopwp/shop/oak-candle-set-2/?add-to-cart=60"
-                                        rel="nofollow" data-product-id="60" class="button2 product_type_simple">
+                                        rel="nofollow" data-product-id="{{ $prod->id }}" class="button2 product_type_simple">
                                         Add to cart</a>
                                 </p>
                             </li>

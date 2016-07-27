@@ -18,6 +18,10 @@ class Product extends Post {
     }
 
     public function getIsOnSaleAttribute() {
-        return !is_null($this->discount_price);
+        return !empty($this->discount_price);
+    }
+
+    public function getFrontUrlAttribute() {
+        return route('shop.show', $this->slug);
     }
 }

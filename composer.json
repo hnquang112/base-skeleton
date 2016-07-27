@@ -14,7 +14,8 @@
         "nesbot/carbon": "^1.21",
         "darrylkuhn/dialect": "dev-master",
         "anahkiasen/former": "^4.0",
-        "barryvdh/laravel-elfinder": "^0.3.7"
+        "barryvdh/laravel-elfinder": "^0.3.7",
+        "gloudemans/shoppingcart": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

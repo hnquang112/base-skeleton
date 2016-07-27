@@ -17,7 +17,10 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('category/{category}', ['uses' => 'BlogController@filterByCategory', 'as' => 'category.show']);
     Route::get('tag/{tag}', ['uses' => 'BlogController@filterByTag', 'as' => 'tag.show']);
 
+    Route::post('shop/{shop}/cart', ['uses' => 'ShopController@addToCart', 'as' => 'shop.cart']);
+    Route::post('shop/{shop}/review', ['uses' => 'ShopController@writeReview', 'as' => 'shop.review']);
     Route::resource('shop', 'ShopController', ['only' => ['index', 'show']]);
+    Route::resource('cart', 'CartController', ['only' => ['index', 'update']]);
 });
 
 Route::group(['prefix' => 'cms'], function () {

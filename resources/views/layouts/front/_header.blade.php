@@ -23,7 +23,7 @@
             </li>
         </ul>
         <div class="cart-top">
-            <p><a href="http://themes.quitenicestuff.com/organicshopwp/cart/">0 items</a></p>
+            <p><a href="{{ route('cart.index') }}">{{ Cart::count() }} items</a></p>
         </div>
     </div><!-- END .topbar-right -->
 </div><!-- END .topbar -->

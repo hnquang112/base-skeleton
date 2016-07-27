@@ -8,7 +8,7 @@
             {{ csrf_field() }}
             {{ $product->id ? method_field('PUT') : '' }}
 
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Product</h3>
@@ -61,14 +61,14 @@
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="box box-danger">
                     <div class="box-header with-border">
                         <h3 class="box-title">Represent Image</h3>
 
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                        class="fa fa-minus"></i>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
                             </button>
                         </div><!-- /.box-tools -->
                     </div><!-- /.box-header -->

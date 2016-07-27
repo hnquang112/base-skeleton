@@ -13,6 +13,7 @@ function format_date_as_string($date) {
 }
 
 function format_price_with_currency($price, $currency = 'đ') {
+    if (empty($price)) return '';
     return number_format(floatval($price)) . $currency;
 }
 
