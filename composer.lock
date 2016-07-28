@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "011f4a124e663aa70875d99b29437907",
+    "hash": "6544fc02d894c82c5fcc0d262a224dc4",
     "content-hash": "6bc362b84b7c32733cf606e23b65a471",
     "packages": [
         {
@@ -386,20 +386,20 @@
         },
         {
             "name": "creativeorange/gravatar",
-            "version": "v1.0.8",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/creativeorange/gravatar.git",
-                "reference": "77d0dcb6af3c5862164cd2a225bb6460cd47cad7"
+                "reference": "06cfcd2754fe0678298da1d244ab17231368d291"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/77d0dcb6af3c5862164cd2a225bb6460cd47cad7",
-                "reference": "77d0dcb6af3c5862164cd2a225bb6460cd47cad7",
+                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/06cfcd2754fe0678298da1d244ab17231368d291",
+                "reference": "06cfcd2754fe0678298da1d244ab17231368d291",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.0.*|5.1.*|5.2.*",
+                "illuminate/support": "5.*",
                 "php": ">=5.4.0"
             },
             "type": "library",
@@ -420,13 +420,13 @@
                     "role": "Developer"
                 }
             ],
-            "description": "A Laravel 5.0, 5.1 and 5.2 gravatar package for retrieving gravatar image URLs or checking the existance of an image.",
+            "description": "A Laravel 5.0, 5.1, 5.2 and 5.3 gravatar package for retrieving gravatar image URLs or checking the existance of an image.",
             "keywords": [
                 "avatar",
                 "gravatar",
                 "laravel"
             ],
-            "time": "2015-12-22 14:04:01"
+            "time": "2016-07-27 16:49:05"
         },
         {
             "name": "cviebrock/eloquent-sluggable",
@@ -1785,16 +1785,16 @@
         },
         {
             "name": "studio-42/elfinder",
-            "version": "2.1.13",
+            "version": "2.1.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Studio-42/elFinder.git",
-                "reference": "0fdd17e79be892ba807fc38127339372cb1b7c30"
+                "reference": "02c19ae09a36ec83a837b28eb5b232f5ce7b0bd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/0fdd17e79be892ba807fc38127339372cb1b7c30",
-                "reference": "0fdd17e79be892ba807fc38127339372cb1b7c30",
+                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/02c19ae09a36ec83a837b28eb5b232f5ce7b0bd9",
+                "reference": "02c19ae09a36ec83a837b28eb5b232f5ce7b0bd9",
                 "shasum": ""
             },
             "require": {
@@ -1839,7 +1839,7 @@
             ],
             "description": "File manager for web",
             "homepage": "http://elfinder.org",
-            "time": "2016-07-11 02:16:04"
+            "time": "2016-07-25 00:34:19"
         },
         {
             "name": "swiftmailer/swiftmailer",

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use DB;
+
 class Product extends Post {
     protected $table = 'posts';
     protected $attributes = [
@@ -23,5 +25,22 @@ class Product extends Post {
 
     public function getFrontUrlAttribute() {
         return route('shop.show', $this->slug);
+    }
+
+    public function scopeSortByAlphabet($query) {
+        return $query->orderBy('title');
+    }
+
+    public function scopeSortByTime($query) {
+        return $query->orderBy('created_at', 'desc');
+    }
+
+    public function scopeSortByPrice($query) {
+        return $query->orderBy(DB::raw("meta->'price'"));
+    }
+
+    public function scopeFilterPrice($query, $start, $end) {
+        if (empty($start) && empty($end)) return $query;
+        return $query->whereBetween(DB::raw("meta->'price'"), [$start, $end]);
     }
 }

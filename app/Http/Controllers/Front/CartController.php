@@ -12,6 +12,12 @@ use Cart;
 
 class CartController extends FrontController {
     public function index() {
-        return Cart::subtotal();
+        return response()->json([
+            'data' => Cart::content(),
+            'meta' => [
+                'status' => 200,
+                'result' => 1
+            ]
+        ]);
     }
 }

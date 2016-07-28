@@ -1,5 +1,34 @@
 <!-- BEGIN .col-sidebar -->
 <li class="col-sidebar">
+    @if (isset($hasPriceFilter) && $hasPriceFilter)
+        <div class="widget">
+            <div class="widget-title clearfix">
+                <h4 class="tag-title">Price Filter</h4>
+            </div>
+            <form method="GET" action="{{ route('shop.index') }}">
+                <div class="price_slider_wrapper">
+                    <div class="price_slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" style="">
+                        <div class="ui-slider-range ui-widget-header" style="left: 0%; width: 100%;"></div>
+                        <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a>
+                        <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 100%;"></a>
+                    </div>
+                    <div class="price_slider_amount">
+                        <input id="min_price" name="min_price" value="{{ $start }}" data-min="0" placeholder="Min price"
+                            data-currency="đ" data-step="1000" type="hidden">
+                        <input id="max_price" name="max_price" value="{{ $end }}" data-max="{{ $max }}" placeholder="Max price" type="hidden">
+                        <button type="submit" class="button">Filter</button>
+                        <div class="price_label" style="">
+                            Price: <span class="from">{{ format_price_with_currency($start) }}</span>
+                             — <span class="to">{{ format_price_with_currency($end) }}</span>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    @endif
+
     <div class="widget">
         <div class="widget-title clearfix">
             <h4 class="tag-title">Categories</h4>

@@ -9,13 +9,31 @@
 namespace App\Http\Controllers\Front;
 
 use App\Product;
-use DB;
 use Cart;
 use Illuminate\Http\Request;
 
 class ShopController extends FrontController {
-    public function index() {
-        $products = Product::paginate(12);
+    public function index(Request $request) {
+        $products = Product::with('represent_image');
+
+        switch ($request->sort) {
+            case 'alphabet':
+                $products = Product::sortByAlphabet();
+                break;
+            case 'recent':
+                $products = Product::sortByTime();
+                break;
+            case 'price':
+                $products = Product::sortByPrice();
+                break;
+            default:
+                break;
+        }
+
+        $products->filterPrice($request->min_price, $request->max_price)->sortByPrice();
+
+        $products = $products->paginate(12);
+        $products->appends($request->all());
 
         return view('front.shop.index', compact('products'));
     }
@@ -29,7 +47,7 @@ class ShopController extends FrontController {
     public function addToCart(Request $request, $product) {
         Cart::add($product->id, $product->title, $request->quantity, $product->price);
 
-        return back();
+        return redirect()->route('cart.index');
     }
 
     public function writeReview() {

@@ -47,7 +47,8 @@ var scriptPaths = [
     '../../../resources/assets/plugins/organic.shop.theme/js/prettyPhoto-3.1.4.min.js',
     '../../../resources/assets/plugins/organic.shop.theme/js/jquery.numeric.js',
     '../../../resources/assets/plugins/organic.shop.theme/js/scripts.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/blockUI-2.39.min.js'
+    '../../../resources/assets/plugins/organic.shop.theme/js/blockUI-2.39.min.js',
+    '../../../resources/assets/plugins/organic.shop.theme/js/price-slider.js'
 ];
 
 var stylePaths = [
