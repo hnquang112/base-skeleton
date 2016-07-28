@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostTagPivotTable extends Migration
+class CreatePostTaxonomyPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,12 @@ class CreatePostTagPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_tag', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('tag_id')->unsigned()->index();
+        Schema::create('post_taxonomy', function (Blueprint $table) {
             $table->integer('post_id')->unsigned()->index();
+            $table->integer('post_type');
+            $table->integer('taxonomy_id')->unsigned()->index();
+            $table->integer('taxonomy_type');
+            $table->primary(['post_id', 'taxonomy_id']);
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreatePostTagPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_tag');
+        Schema::drop('post_taxonomy');
     }
 }

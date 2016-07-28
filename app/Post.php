@@ -194,15 +194,7 @@ class Post extends Model
         $syncItems = array_intersect($tagIds, $arrIds);
 
         if (count($syncItems) > 0) {
-            \Log::info('before detach');
-            \Log::info($this->categories);
-            \Log::info($this->tags);
-
             $this->tags()->detach($this->tag_ids);
-
-            \Log::info('after detach');
-            \Log::info($this->categories);
-            \Log::info($this->tags);
             foreach ($syncItems as $tag) {
                 $this->tags()->attach([$tag => ['post_type' => $this->type, 'taxonomy_type' => Taxonomy::TYP_TAG]]);
             }

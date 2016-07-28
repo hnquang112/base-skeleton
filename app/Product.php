@@ -19,6 +19,16 @@ class Product extends Post {
         return parent::newQuery($excludeDeleted)->products();
     }
 
+//    public function categories() {
+//        return $this->belongsToMany('App\Category', 'post_taxonomy', 'post_id', 'taxonomy_id')
+//            ->where('post_type', self::TYP_PRODUCT)->where('taxonomy_type', Taxonomy::TYP_CATEGORY)->withTimestamps();
+//    }
+//
+//    public function tags() {
+//        return $this->belongsToMany('App\Tag', 'post_taxonomy', 'post_id', 'taxonomy_id')
+//            ->where('post_type', self::TYP_PRODUCT)->where('taxonomy_type', Taxonomy::TYP_TAG)->withTimestamps();
+//    }
+
     public function getIsOnSaleAttribute() {
         return !empty($this->discount_price);
     }

@@ -45,7 +45,13 @@ class Taxonomy extends Model {
      * Relationships
      */
     public function posts() {
-        return $this->belongsToMany('App\Post')->withTimestamps();
+        return $this->belongsToMany('App\Post', 'post_taxonomy', 'taxonomy_id', 'post_id')
+            ->where('taxonomy_type', $this->type)->where('post_type', Post::TYP_BLOG)->withTimestamps();
+    }
+
+    public function products() {
+        return $this->belongsToMany('App\Product', 'post_taxonomy', 'taxonomy_id', 'post_id')
+            ->where('taxonomy_type', $this->type)->where('post_type', Post::TYP_PRODUCT)->withTimestamps();
     }
 
     /**
