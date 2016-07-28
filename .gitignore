@@ -1,15 +1,10 @@
 /vendor
 /node_modules
 /bower_components
-/public/storage
-Homestead.yaml
-Homestead.json
 .env
-.vagrant
 .idea
 npm-debug*
 public/css
 public/fonts
 public/img
 public/js
-public/flags
