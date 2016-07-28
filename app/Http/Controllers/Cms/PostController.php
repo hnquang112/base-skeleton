@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Cms;
 
 use App\Post;
-use App\Category;
-use App\Tag;
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 use App\Repositories\PostRepository;
@@ -69,7 +67,7 @@ class PostController extends CmsController
         $post->published_at = $request->do_publish;
         $post->represent_image_id = $request->represent_image;
         $post->fill($request->except('do_publish', 'represent_image'));
-        
+
         if ($post->save()) {
             $post->syncCategories($request->input('category_ids', []));
             $post->syncTags($request->input('tag_ids', []));

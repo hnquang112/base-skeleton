@@ -12,7 +12,7 @@
 */
 
 Route::group(['namespace' => 'Front'], function () {
-    Route::resource('/', 'HomeController', ['only' => ['index']]);
+    Route::resource('/', 'HomeController', ['only' => ['index', 'store', 'show']]);
     Route::resource('blog', 'BlogController', ['only' => ['index', 'show']]);
     Route::get('category/{category}', ['uses' => 'BlogController@filterByCategory', 'as' => 'category.show']);
     Route::get('tag/{tag}', ['uses' => 'BlogController@filterByTag', 'as' => 'tag.show']);

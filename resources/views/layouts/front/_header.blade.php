@@ -41,7 +41,7 @@
         <li class="menu-item menu-item-type-post_type {{ $request->is('shop*') ? 'current_page_item' : '' }}
                 menu-item-object-page menu-item-26 " id="menu-item-26">
             <a class="sf-with-ul" href="{{ route('shop.index') }}">
-                Shop <span class="sf-sub-indicator">»</span></a>
+                Shop <span class="sf-sub-indicator"></span></a>
             <ul class="sub-menu" style="display: none; visibility: hidden;">
                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-200" id="menu-item-200">
                     <a href="http://themes.quitenicestuff.com/organicshopwp/?product_cat=skin-care">Skin Care</a>
@@ -73,75 +73,8 @@
         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22" id="menu-item-22">
             <a href="http://themes.quitenicestuff.com/organicshopwp/contact/">Contact</a>
         </li>
-        {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83" id="menu-item-83">--}}
-            {{--<a class="sf-with-ul" href="http://themes.quitenicestuff.com/organicshopwp/features/">Features--}}
-                {{--<span class="sf-sub-indicator">»</span></a>--}}
-            {{--<ul class="sub-menu" style="display: none; visibility: hidden;">--}}
-                {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-99" id="menu-item-99">--}}
-                    {{--<a href="http://themes.quitenicestuff.com/organicshopwp/typography/">Typography</a>--}}
-                {{--</li>--}}
-                {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-98" id="menu-item-98">--}}
-                    {{--<a class="sf-with-ul" href="http://themes.quitenicestuff.com/organicshopwp/shortcodes/">--}}
-                        {{--Shortcodes <span class="sf-sub-indicator">»</span></a>--}}
-                    {{--<ul class="sub-menu" style="display: none; visibility: hidden;">--}}
-                        {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-116"--}}
-                            {{--id="menu-item-116">--}}
-                            {{--<a href="http://themes.quitenicestuff.com/organicshopwp/accordion-toggle-tabs/">--}}
-                                {{--Accordion, Toggle &amp; Tabs</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-122" id="menu-item-122">--}}
-                            {{--<a href="http://themes.quitenicestuff.com/organicshopwp/alerts-messages/">--}}
-                                {{--Alerts &amp; Messages</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127" id="menu-item-127">--}}
-                            {{--<a href="http://themes.quitenicestuff.com/organicshopwp/buttons-dropcaps-lists/">--}}
-                                {{--Buttons, Dropcaps &amp; Lists</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134" id="menu-item-134">--}}
-                            {{--<a href="http://themes.quitenicestuff.com/organicshopwp/googlemap/">Googlemap</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-144" id="menu-item-144">--}}
-                            {{--<a href="http://themes.quitenicestuff.com/organicshopwp/video/">Video</a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
-                {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97" id="menu-item-97">--}}
-                    {{--<a href="http://themes.quitenicestuff.com/organicshopwp/left-sidebar/">Left Sidebar</a>--}}
-                {{--</li>--}}
-                {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-96" id="menu-item-96">--}}
-                    {{--<a href="http://themes.quitenicestuff.com/organicshopwp/right-sidebar/">Right Sidebar</a>--}}
-                {{--</li>--}}
-                {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-95" id="menu-item-95">--}}
-                    {{--<a href="http://themes.quitenicestuff.com/organicshopwp/full-width/">Full Width</a>--}}
-                {{--</li>--}}
-            {{--</ul>--}}
-        {{--</li>--}}
     </ul>
     <form action="http://themes.quitenicestuff.com/organicshopwp/" class="fr" id="menu-search" method="get" name="menu-search">
         <input name="s" type="text">
-    </form><!-- END .main-menu-wrapper --><select>
-        <option selected="selected" value="">Go to...</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/">Home</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/shop/">Shop »</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/?product_cat=skin-care">Skin Care</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/?product_cat=bath-body-care">Bath &amp; Body Care</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/?product_cat=fragrance">Fragrance</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/?product_cat=make-up">Make-Up</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/?product_cat=hair">Hair</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/?product_cat=moisturisers">Moisturisers</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/testimonials/">Testimonials</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/blog/">Blog</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/contact/">Contact</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/features/">Features »</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/typography/">Typography</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/shortcodes/">Shortcodes »</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/accordion-toggle-tabs/">Accordion, Toggle &amp; Tabs</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/alerts-messages/">Alerts &amp; Messages</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/buttons-dropcaps-lists/">Buttons, Dropcaps &amp; Lists</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/googlemap/">Googlemap</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/video/">Video</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/left-sidebar/">Left Sidebar</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/right-sidebar/">Right Sidebar</option>
-        <option value="http://themes.quitenicestuff.com/organicshopwp/full-width/">Full Width</option>
-    </select>
-</div>
+    </form>
+</div><!-- END .main-menu-wrapper -->

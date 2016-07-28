@@ -15,4 +15,12 @@ class HomeController extends FrontController
     public function index(Request $request) {
         return view('front.home.index');
     }
+
+    public function store(Request $request) {
+
+    }
+
+    public function show($keyword) {
+
+    }
 }

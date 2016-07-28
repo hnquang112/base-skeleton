@@ -22,8 +22,7 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="treeview{{ $request->is('cms/posts*') || $request->is('cms/categories*') || $request->is('cms/tags*')
-                ? ' active' : '' }}">
+            <li class="treeview{{ $request->is('cms/posts*') ? ' active' : '' }}">
                 <a href="#">
                     <i class="fa fa-edit"></i> <span>Posts</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
@@ -35,16 +34,10 @@
                     <li {{ $request->is('cms/posts/create') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.posts.create') }}"><i class="fa fa-circle-o"></i> Write New Post</a>
                     </li>
-                    <li {{ $request->is('cms/categories*') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.categories.index') }}"><i class="fa fa-list-ul"></i> Categories</a>
-                    </li>
-                    <li {{ $request->is('cms/tags*') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.tags.index') }}"><i class="fa fa-tags"></i> Tags</a>
-                    </li>
                 </ul>
             </li>
             <li class="treeview{{ $request->is('cms/products*') ? ' active' : '' }}">
-                <a href="{{ route('cms.products.index') }}">
+                <a href="#">
                     <i class="fa fa-paper-plane-o"></i> <span>Products</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
@@ -54,6 +47,21 @@
                     </li>
                     <li {{ $request->is('cms/products/create') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.products.create') }}"><i class="fa fa-circle-o"></i> Add New Product</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview{{ $request->is('cms/categories*') || $request->is('cms/tags*')
+                ? ' active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-sitemap"></i> <span>Taxonomies</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li {{ $request->is('cms/categories*') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.categories.index') }}"><i class="fa fa-list-ul"></i> Categories</a>
+                    </li>
+                    <li {{ $request->is('cms/tags*') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.tags.index') }}"><i class="fa fa-tags"></i> Tags</a>
                     </li>
                 </ul>
             </li>

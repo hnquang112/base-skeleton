@@ -54,7 +54,8 @@
                         </form>
                     </div>
                     <div class="table-responsive mailbox-messages">
-                        <form id="js-form-delete" action="{{ route('cms.products.destroy', 0) }}" method="product">
+                        <form id="js-form-delete" action="{{ route('cms.products.destroy', $products->first() ?
+                            $products->first()->id : 0) }}" method="product">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 

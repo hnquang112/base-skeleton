@@ -16,7 +16,7 @@ class CreateSettingsTable extends Migration
             $table->increments('id');
             $table->integer('type');
             $table->integer('image_id')->nullable();
-            $table->json('meta')->nullable();
+            $table->jsonb('meta')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
