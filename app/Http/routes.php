@@ -35,8 +35,8 @@ Route::group(['prefix' => 'cms'], function () {
         Route::resource('categories', 'CategoryController', ['except' => ['show']]);
         Route::resource('sliders', 'SliderController', ['except' => ['show'], 'parameters' => ['sliders' => 'settings']]);
         Route::resource('products', 'ProductController', ['except' => ['show']]);
+        Route::resource('users', 'UserController', ['except' => ['show']]);
 
-        // Route::resource('users', 'UserController');
         // Route::resource('roles', 'RoleController');
         // Route::resource('comments', 'CommentController');
         // Route::resource('menus', 'MenuController');

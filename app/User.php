@@ -42,7 +42,7 @@ class User extends Authenticatable
     ];
 
     protected $jsonColumns = ['meta'];
-    
+
     const MASTER = 0;
     const ADMIN = 1;
     const EDITOR = 2;
@@ -94,7 +94,7 @@ class User extends Authenticatable
 
         return Gravatar::get($this->email);
     }
-    
+
     /**
      * Mutators
      */
@@ -116,5 +116,5 @@ class User extends Authenticatable
     public function scopeFilterUsers($query) {
         return $query->whereType(self::USER);
     }
-    
+
 }
