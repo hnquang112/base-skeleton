@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use App\File;
 
 function format_date_as_string($date) {
-    return Carbon::parse($date)->format('Y/m/d');
+    return Carbon::parse($date)->format('d/m/Y');
 }
 
 function format_price_with_currency($price, $currency = 'đ') {

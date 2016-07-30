@@ -26,9 +26,11 @@ class UserController extends CmsController {
 
         if ($user->save()) {
             flash()->success('Saved successfully');
-        } else {
-            flash()->error('Save failed');
+
+            return redirect()->route('cms.users.index');
         }
+
+        flash()->error('Save failed');
 
         return back();
     }
@@ -37,8 +39,8 @@ class UserController extends CmsController {
         return view('cms.users.form', compact('user'));
     }
 
-    public function update(Request $request, $user) {
-        $this->validate($request, User::$rulesForCreating);
+    public function update(Request $request, $user) {;
+        $this->validate($request, User::$rulesForUpdating);
 
         $user->fill($request->all());
 

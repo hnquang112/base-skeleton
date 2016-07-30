@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'display_name', 'username', 'type'
     ];
 
     /**
@@ -55,10 +55,23 @@ class User extends Authenticatable
     const STT_ACTIVE = 1;
 
     public static $roleNames = [
-        0 => 'Web Master',
-        1 => 'Administrator',
-        2 => 'Content Editor',
-        3 => 'User'
+        self::MASTER => 'Web Master',
+        self::ADMIN => 'Administrator',
+        self::EDITOR => 'Content Editor',
+        self::USER => 'User'
+    ];
+
+    public static $rulesForCreating = [
+        'display_name' => 'required|max:255',
+        'email' => 'email|required|max:255|unique:users,email',
+        'username' => 'required|alpha_dash|max:255',
+        'password' => 'required|confirmed'
+    ];
+
+    public static $rulesForUpdating = [
+        'display_name' => 'required|max:255',
+        'email' => 'email|required|max:255',//|unique:users,email,' . $this->id,
+        'password' => 'confirmed'
     ];
 
     public function __construct() {
@@ -88,11 +101,9 @@ class User extends Authenticatable
     }
 
     public function getAvatarImageAttribute() {
-        if (!empty($this->profile_image)) {
-            return asset($this->profile_image);
-        }
-
-        return Gravatar::get($this->email);
+        if (!empty($this->profile_image)) return asset($this->profile_image);
+        if (!empty($this->email)) return Gravatar::get($this->email);
+        return null;
     }
 
     /**
@@ -115,6 +126,20 @@ class User extends Authenticatable
 
     public function scopeFilterUsers($query) {
         return $query->whereType(self::USER);
+    }
+
+    /**
+     * Helpers
+     */
+    public static function getRolesByAuthUser() {
+        $roles = self::$roleNames;
+        unset($roles[self::MASTER]);
+
+        if (auth()->check() && auth()->user()->type == self::ADMIN) {
+            unset($roles[self::ADMIN]);
+        }
+
+        return $roles;
     }
 
 }
