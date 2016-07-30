@@ -8,12 +8,12 @@
                     <h3 class="box-title">Posts</h3>
 
                     {{--<!--Filter items-->--}}
-                    {{--<a href="{{ route('cms.posts.index') }}">All (442)</a> |--}}
-                    {{--<a href="{{ route('cms.posts.index', ['filter' => 'mine']) }}">Mine (215)</a> | --}}
-                    {{--<a href="{{ route('cms.posts.index', ['filter' => 'published']) }}">Published (442)</a>--}}
+                    {{--<a href="{{ route('cms.users.index') }}">All (442)</a> |--}}
+                    {{--<a href="{{ route('cms.users.index', ['filter' => 'mine']) }}">Mine (215)</a> |--}}
+                    {{--<a href="{{ route('cms.users.index', ['filter' => 'published']) }}">Published (442)</a>--}}
 
                     <div class="box-tools pull-right">
-                        <a class="btn btn-primary" href="{{ route('cms.posts.create') }}">Create</a>
+                        <a class="btn btn-primary" href="{{ route('cms.users.create') }}">Create</a>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -27,7 +27,7 @@
                         <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm">
                             <i class="fa fa-trash-o"></i></button>
 
-                        {{--<form id="js-form-filter-items" action="{{ route('cms.posts.create') }}" method="GET" style="display: inline">--}}
+                        {{--<form id="js-form-filter-items" action="{{ route('cms.users.create') }}" method="GET" style="display: inline">--}}
                             {{--<div class="form-group">--}}
                                 {{--<select name="filter_date" class="form-control">--}}
                                     {{--<option>Date</option>--}}
@@ -54,40 +54,28 @@
                         {{--</form>--}}
                     </div>
                     <div class="table-responsive mailbox-messages">
-                        <form id="js-form-delete" action="{{ route('cms.posts.destroy', $posts->first() ?
-                            $posts->first()->id : 0) }}" method="POST">
+                        <form id="js-form-delete" action="{{ route('cms.users.destroy', $users->first() ?
+                            $users->first()->id : 0) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
                             <table class="table table-hover datatable">
                                 <thead><tr>
                                     <th></th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Categories</th>
-                                    <th>Tags</th>
-                                    <th>Status</th>
-                                    <th>Created At</th>
-                                    <th>Last Updated At</th>
+                                    <th>Email</th>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Joined Date</th>
                                 </tr></thead>
                                 <tbody>
-                                    @foreach ($posts as $post)
+                                    @foreach ($users as $user)
                                         <tr>
-                                            <td><input name="selected_ids[]" type="checkbox" value="{{ $post->id }}"></td>
-                                            <td><a href="{{ route('cms.posts.edit', $post->id) }}"><strong>
-                                                        {{ $post->title }}</strong></a></td>
-                                            <td>{{ $post->author->display_name }}</td>
-                                            <td>{{ $post->category_names }}</td>
-                                            <td>{{ $post->tag_names }}</td>
-                                            <td>
-                                                @if ($post->is_published)
-                                                    <span class="text-success"><strong>Published</strong> at {{ $post->published_at }}</span>
-                                                @else
-                                                    <span class="text-warning"><strong>Draft</strong>
-                                                @endif
-                                            </td>
-                                            <td>{{ $post->created_at }}</td>
-                                            <td>{{ $post->updated_at }}</td>
+                                            <td><input name="selected_ids[]" type="checkbox" value="{{ $user->id }}"></td>
+                                            <td><a href="{{ route('cms.users.edit', $user->id) }}"><strong>
+                                                        {{ $user->email }}</strong></a></td>
+                                            <td>{{ $user->display_name }}</td>
+                                            <td>{{ $user->role_name }}</td>
+                                            <td>{{ format_date_as_string($user->created_at) }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -29,14 +29,13 @@ Route::group(['prefix' => 'cms'], function () {
     Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms'], function () {
         Route::get('/', 'CmsController@gate');
         Route::resource('dashboard', 'DashboardController', ['only' => ['index']]);
-//        Route::resource('profile', 'ProfileController', ['only' => ['index', 'store']]);
         Route::resource('posts', 'PostController', ['except' => ['show']]);
         Route::resource('tags', 'TagController', ['except' => ['show']]);
         Route::resource('categories', 'CategoryController', ['except' => ['show']]);
         Route::resource('sliders', 'SliderController', ['except' => ['show'], 'parameters' => ['sliders' => 'settings']]);
         Route::resource('products', 'ProductController', ['except' => ['show']]);
+        Route::resource('users', 'UserController', ['except' => ['show']]);
 
-        // Route::resource('users', 'UserController');
         // Route::resource('roles', 'RoleController');
         // Route::resource('comments', 'CommentController');
         // Route::resource('menus', 'MenuController');

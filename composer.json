@@ -15,7 +15,8 @@
         "darrylkuhn/dialect": "dev-master",
         "anahkiasen/former": "^4.0",
         "barryvdh/laravel-elfinder": "^0.3.7",
-        "gloudemans/shoppingcart": "^2.1"
+        "gloudemans/shoppingcart": "^2.1",
+        "barryvdh/laravel-ide-helper": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

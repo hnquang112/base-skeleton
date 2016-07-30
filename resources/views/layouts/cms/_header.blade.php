@@ -266,12 +266,12 @@
                     <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat"><i class="fa fa-user-secret"></i>
-                                    Profile</a>
+                                <a href="{{ route('cms.users.edit', auth()->user()->id) }}" class="btn btn-default btn-flat">
+                                    <i class="fa fa-user-secret"></i> Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{ url('/cms/logout') }}" class="btn btn-default btn-flat"><i
-                                            class="fa fa-sign-out"></i> Sign out</a>
+                                <a href="{{ url('/cms/logout') }}" class="btn btn-default btn-flat">
+                                    <i class="fa fa-sign-out"></i> Sign out</a>
                             </div>
                         </li>
                     </ul>

@@ -168,6 +168,7 @@ return [
         Former\FormerServiceProvider::class,
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class
 
     ],
 
