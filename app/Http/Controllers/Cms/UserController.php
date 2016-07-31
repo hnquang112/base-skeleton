@@ -7,7 +7,11 @@ use App\User;
 
 class UserController extends CmsController {
     public function index(Request $request) {
-        $users = User::get();
+        $users = User::query();
+
+        if (get_auth_admin_type() == User::ADMIN) $users = $users->filterNotMaster();
+
+        $users = $users->orderBy('created_at', 'desc')->get();
 
         return view('cms.users.index', compact('users'));
     }
@@ -40,7 +44,8 @@ class UserController extends CmsController {
     }
 
     public function update(Request $request, $user) {;
-        $this->validate($request, User::$rulesForUpdating);
+        $emailUpdateRule = 'email|required|max:255|unique:users,email,' . $user->id;
+        $this->validate($request, User::extendRulesForUpdating(['email' => $emailUpdateRule]));
 
         $user->fill($request->all());
 
@@ -56,7 +61,13 @@ class UserController extends CmsController {
     }
 
     public function destroy(Request $request) {
-        $this->deleteMultipleItems(User::class, $request->selected_ids);
+        $deleteIds = $request->selected_ids;
+
+        if(($key = array_search(auth()->user()->id, $deleteIds)) !== false) {
+            unset($deleteIds[$key]);
+        }
+
+        $this->deleteMultipleItems(User::class, $deleteIds);
 
         return back();
     }

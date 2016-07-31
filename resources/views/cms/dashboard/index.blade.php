@@ -1,5 +1,5 @@
 @extends ('layouts.cms.master')
 
 @section ('content')
-	hello
+	Coming soon...
 @endsection
