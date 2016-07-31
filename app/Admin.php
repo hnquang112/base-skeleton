@@ -9,6 +9,6 @@ class Admin extends User
     protected $table = 'users';
 
     public function newQuery($excludeDeleted = true) {
-        return parent::newQuery($excludeDeleted)->filterAdmins();
+        return parent::newQuery($excludeDeleted)->whereType(self::ADMIN);
     }
 }

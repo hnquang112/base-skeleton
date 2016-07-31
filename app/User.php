@@ -70,7 +70,6 @@ class User extends Authenticatable
 
     public static $rulesForUpdating = [
         'display_name' => 'required|max:255',
-        'email' => 'email|required|max:255',//|unique:users,email,' . $this->id,
         'password' => 'confirmed'
     ];
 
@@ -116,16 +115,8 @@ class User extends Authenticatable
     /**
      * Scopes
      */
-    public function scopeFilterMasters($query) {
-        return $query->whereType(self::MASTER);
-    }
-
-    public function scopeFilterAdmins($query) {
-        return $query->whereType(self::ADMIN);
-    }
-
-    public function scopeFilterUsers($query) {
-        return $query->whereType(self::USER);
+    public function scopeFilterNotMaster($query) {
+        return $query->where('type', '<>', self::MASTER);
     }
 
     /**
@@ -140,6 +131,10 @@ class User extends Authenticatable
         }
 
         return $roles;
+    }
+
+    public static function extendRulesForUpdating($rules = []) {
+        return array_merge(self::$rulesForUpdating, $rules);
     }
 
 }

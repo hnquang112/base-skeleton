@@ -28,3 +28,8 @@ function create_file_from_path($path) {
 
     return null;
 }
+
+function get_auth_admin_type() {
+    if (!auth()->check()) return null;
+    return auth()->user()->type;
+}

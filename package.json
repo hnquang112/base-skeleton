@@ -5,7 +5,11 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
     "gulp": "^3.9.1",
-    "laravel-elixir": "^5.0.0"
+    "laravel-elixir": "^5.0.0",
+    "bower": "^1.7.9"
   }
 }
