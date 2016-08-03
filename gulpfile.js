@@ -27,7 +27,7 @@ var cmsStylePaths = [
     '../../../bower_components/AdminLTE/bootstrap/css/bootstrap.min.css',
     '../../../bower_components/fontawesome/css/font-awesome.min.css',
     '../../../bower_components/Ionicons/css/ionicons.min.css',
-    '../../../bower_components/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css',
+    // '../../../bower_components/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css',
     '../../../bower_components/AdminLTE/dist/css/AdminLTE.min.css',
     '../../../bower_components/AdminLTE/dist/css/skins/_all-skins.min.css',
     '../../../bower_components/AdminLTE/plugins/iCheck/square/purple.css',
