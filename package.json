@@ -17,6 +17,6 @@
     "bower": "^1.7.9"
   },
   "scripts": {
-    "postinstall": "bower install && gulp --production"
+    "postinstall": "bower install && gulp"
   }
 }
