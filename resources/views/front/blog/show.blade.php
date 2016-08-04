@@ -21,7 +21,8 @@
                         </h2>
                     </div>
                     <div class="comment-count fr">
-                        <h3><a href="{{ $post->front_url }}#comments" title="Comment on {{ $post->title }}">1</a></h3>
+                        <h3><a title="Comment on {{ $post->title }}" href="{{ $post->front_url }}#fb-comment-widget">
+                                <span class="fb-comments-count"></span></a></h3>
                         <div class="comment-point"></div>
                     </div>
                 </div><!-- END .blog-title-single -->
@@ -78,6 +79,9 @@
                         {{--</form>--}}
                     {{--</div><!-- #respond -->--}}
                 {{--</div><!--END .reply_container -->--}}
+
+                <div class="fb-like" data-href="{{ $post->front_url }}" data-layout="standard" data-action="like"
+                     data-size="small" data-show-faces="true" data-share="true"></div>
 
                 @include ('layouts.front._comment', ['identifier' => 'blog-' . $post->slug])
             </li>
