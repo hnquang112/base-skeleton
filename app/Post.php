@@ -75,15 +75,11 @@ class Post extends Model
     }
 
     public function categories() {
-        return $this->belongsToMany('App\Category', 'post_taxonomy', 'post_id', 'taxonomy_id')
-            ->where('post_type', $this->type)->where('taxonomy_type', Taxonomy::TYP_CATEGORY)
-            ->withPivot('post_type', 'taxonomy_type')->withTimestamps();
+        return $this->belongsToMany('App\Category', 'category_post', 'post_id', 'category_id')->withTimestamps();
     }
 
     public function tags() {
-        return $this->belongsToMany('App\Tag', 'post_taxonomy', 'post_id', 'taxonomy_id')
-            ->where('post_type', $this->type)->where('taxonomy_type', Taxonomy::TYP_TAG)
-            ->withPivot('post_type', 'taxonomy_type')->withTimestamps();
+        return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id')->withTimestamps();
     }
 
     public function represent_image() {
@@ -137,12 +133,6 @@ class Post extends Model
         $this->attributes['published_at'] = ($value == self::STT_PUBLISHED ? Carbon::now() : null);
     }
 
-    public function setRepresentImageIdAttribute($value) {
-        if (!empty($value)) {
-            $this->attributes['represent_image_id'] = create_file_from_path($value);
-        }
-    }
-
     /**
      * Scopes
      */
@@ -184,14 +174,7 @@ class Post extends Model
      * Need to move to repository
      */
     public function syncCategories($categoryIds) {
-        if (count($categoryIds) > 0) {
-            $this->categories()->detach($this->category_ids);
-            foreach ($categoryIds as $cate) {
-                $this->categories()->attach([$cate => ['post_type' => $this->type, 'taxonomy_type' => Taxonomy::TYP_CATEGORY]]);
-            }
-        } else {
-            $this->categories()->detach($this->category_ids);
-        }
+        $this->categories()->sync($categoryIds);
     }
 
     public function syncTags($tagIds) {
@@ -201,31 +184,14 @@ class Post extends Model
         // List of existed tags to be sync
         $syncItems = array_intersect($tagIds, $arrIds);
 
-        if (count($syncItems) > 0) {
-            \Log::info('before detach');
-            \Log::info($this->categories);
-            \Log::info($this->tags);
+        $this->tags()->sync($syncItems);
 
-            $this->tags()->detach($this->tag_ids);
+        foreach ($newTagNames as $name) {
+            $tag = new Tag;
+            $tag->name = $name;
+            $tag->save();
 
-            \Log::info('after detach');
-            \Log::info($this->categories);
-            \Log::info($this->tags);
-            foreach ($syncItems as $tag) {
-                $this->tags()->attach([$tag => ['post_type' => $this->type, 'taxonomy_type' => Taxonomy::TYP_TAG]]);
-            }
-        } else {
-            $this->tags()->detach($this->category_ids);
-        }
-
-        if (count($newTagNames) > 0) {
-            foreach ($newTagNames as $name) {
-                $tag = new Tag;
-                $tag->name = $name;
-                $tag->save();
-
-                $this->tags()->attach([$tag->id => ['post_type' => $this->type, 'taxonomy_type' => Taxonomy::TYP_TAG]]);
-            }
+            $this->tags()->attach($tag->id);
         }
     }
 }

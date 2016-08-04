@@ -65,7 +65,11 @@ class PostController extends CmsController
 
         $post->author_id = $this->getCurrentUser()->id;
         $post->published_at = $request->do_publish;
-        $post->represent_image_id = $request->represent_image;
+
+        if (!empty($request->represent_image)) {
+            $post->represent_image_id = create_file_from_path($request->represent_image);
+        }
+
         $post->fill($request->except('do_publish', 'represent_image'));
 
         if ($post->save()) {
@@ -106,7 +110,11 @@ class PostController extends CmsController
         $this->validate($request, Post::$rulesForCreating);
 
         if ($request->do_publish == Post::STT_PUBLISHED) $post->published_at = $request->do_publish;
-        $post->represent_image_id = $request->represent_image;
+
+        if (!empty($request->represent_image)) {
+            $post->represent_image_id = create_file_from_path($request->represent_image);
+        }
+
         $post->fill($request->except('do_publish', 'represent_image'));
 
         if ($post->save()) {

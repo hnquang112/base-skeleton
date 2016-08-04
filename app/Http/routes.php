@@ -27,7 +27,7 @@ Route::group(['prefix' => 'cms'], function () {
     Route::auth();
 
     Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms'], function () {
-        Route::get('/', 'CmsController@gate');
+        Route::get('/', ['uses' => 'CmsController@gate', 'as' => 'cms.index']);
         Route::resource('dashboard', 'DashboardController', ['only' => ['index']]);
         Route::resource('posts', 'PostController', ['except' => ['show']]);
         Route::resource('tags', 'TagController', ['except' => ['show']]);

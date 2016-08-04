@@ -36,6 +36,14 @@
 
 <!-- BEGIN body -->
 <body class="home page page-id-14 page-template page-template-template-homepage-php theme-organicshop">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.7&appId=177428942597875";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 
     <!-- BEGIN .wrapper -->
     <div class="wrapper">
@@ -50,5 +58,18 @@
         var slideshow_autoplay = true;var slideshow_speed = 7000;
     </script>
     <script src="{{ asset('js/vendor.front.js') }}"></script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/57a1ea0214e2f0af26fe0d76/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script><!--End of Tawk.to Script-->
 </body><!-- END body -->
 </html>
