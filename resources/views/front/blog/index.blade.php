@@ -26,8 +26,8 @@
                             </h3>
                         </div>
                         <div class="comment-count fr">
-                            <h3><a href="{{ $post->front_url }}#comments"
-                                   title="Comment on {{ $post->title }}">3</a></h3>
+                            <h3><a title="Comment on {{ $post->title }}" href="{{ $post->front_url }}#fb-comment-widget">
+                                    <span class="fb-comments-count"></span></a></h3>
                             <div class="comment-point"></div>
                         </div>
                     </div><!-- END .blog-title -->
