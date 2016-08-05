@@ -13,9 +13,11 @@
 
 Route::group(['namespace' => 'Front'], function () {
     Route::resource('/', 'HomeController', ['only' => ['index', 'store', 'show']]);
+
+    Route::get('category/{category}/{type?}', ['uses' => 'BlogController@filterByCategory', 'as' => 'category.show']);
+    Route::get('tag/{tag}/{type?}', ['uses' => 'BlogController@filterByTag', 'as' => 'tag.show']);
+
     Route::resource('blog', 'BlogController', ['only' => ['index', 'show']]);
-    Route::get('category/{category}', ['uses' => 'BlogController@filterByCategory', 'as' => 'category.show']);
-    Route::get('tag/{tag}', ['uses' => 'BlogController@filterByTag', 'as' => 'tag.show']);
 
     Route::post('shop/{shop}/cart', ['uses' => 'ShopController@addToCart', 'as' => 'shop.cart']);
     Route::post('shop/{shop}/review', ['uses' => 'ShopController@writeReview', 'as' => 'shop.review']);
@@ -32,13 +34,11 @@ Route::group(['prefix' => 'cms'], function () {
         Route::resource('posts', 'PostController', ['except' => ['show']]);
         Route::resource('tags', 'TagController', ['except' => ['show']]);
         Route::resource('categories', 'CategoryController', ['except' => ['show']]);
-        Route::resource('sliders', 'SliderController', ['except' => ['show'], 'parameters' => ['sliders' => 'settings']]);
         Route::resource('products', 'ProductController', ['except' => ['show']]);
         Route::resource('users', 'UserController', ['except' => ['show']]);
 
-        // Route::resource('roles', 'RoleController');
-        // Route::resource('comments', 'CommentController');
-        // Route::resource('menus', 'MenuController');
+        Route::resource('sliders', 'SliderController', ['except' => ['show'], 'parameters' => ['sliders' => 'settings']]);
+//        Route::resource('menus', 'MenuController', ['except' => ['show'], 'parameters' => ['menus' => 'settings']]);
     });
 });
 

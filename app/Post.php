@@ -113,14 +113,6 @@ class Post extends Model
         return $this->published_at != null;
     }
 
-//    public function getPublishStatusAttribute() {
-//        @if ($post->is_published)
-//                                                <span class="text-success"><strong>Published</strong> at {{ $post->published_at }}</span>
-//        @else
-//                                                <span class="text-warning"><strong>Draft</strong>
-//        @endif
-//    }
-
     public function getRepresentImagePathAttribute() {
         return $this->represent_image ? $this->represent_image->path :
             'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';

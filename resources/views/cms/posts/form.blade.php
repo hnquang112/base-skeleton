@@ -74,13 +74,13 @@
                             @if ($post->is_published)
                                 <span class="text-success"><strong>Published</strong> at {{ $post->published_at }}</span>
                             @else
-                                <span class="text-warning"><strong>Draft</strong>
+                                <span class="text-warning"><strong>Draft</strong></span>
                             @endif
                         </p>
 
                         <div class="checkbox">
                             <label><input name="do_publish" type="checkbox" value="{{ App\Post::STT_PUBLISHED }}"
-                                        {{ $post->is_published ? 'disabled=disabled' : '' }}>
+                                        {{ $post->is_published ? 'checked=checked' : '' }}>
                                 Also publish when saving</label>
                         </div>
                     </div><!-- /.box-body -->

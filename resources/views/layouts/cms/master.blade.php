@@ -17,7 +17,7 @@
     @inject ('_request', 'Illuminate\Http\Request')
     <link rel="canonical" href="{{ $_request->url() }}">
 
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>BaseSkeleton | Dashboard</title>
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="{{ asset('css/vendor.css') }}">

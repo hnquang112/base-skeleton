@@ -43,25 +43,12 @@
             <a class="sf-with-ul" href="{{ route('shop.index') }}">
                 Shop <span class="sf-sub-indicator"></span></a>
             <ul class="sub-menu" style="display: none; visibility: hidden;">
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-200" id="menu-item-200">
-                    <a href="http://themes.quitenicestuff.com/organicshopwp/?product_cat=skin-care">Skin Care</a>
-                </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-199" id="menu-item-199">
-                    <a href="http://themes.quitenicestuff.com/organicshopwp/?product_cat=bath-body-care">
-                        Bath &amp; Body Care</a>
-                </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-198" id="menu-item-198">
-                    <a href="http://themes.quitenicestuff.com/organicshopwp/?product_cat=fragrance">Fragrance</a>
-                </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-196" id="menu-item-196">
-                    <a href="http://themes.quitenicestuff.com/organicshopwp/?product_cat=make-up">Make-Up</a>
-                </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-195" id="menu-item-195">
-                    <a href="http://themes.quitenicestuff.com/organicshopwp/?product_cat=hair">Hair</a>
-                </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-197" id="menu-item-197">
-                    <a href="http://themes.quitenicestuff.com/organicshopwp/?product_cat=moisturisers">Moisturisers</a>
-                </li>
+                @foreach ($_allCategories as $cat)
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-{{ $cat->id }}"
+                        id="menu-item-{{ $cat->id }}">
+                        <a href="http://themes.quitenicestuff.com/organicshopwp/?product_cat=skin-care">Skin Care</a>
+                    </li>
+                @endforeach
             </ul>
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23" id="menu-item-23">

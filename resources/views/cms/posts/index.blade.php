@@ -39,9 +39,9 @@
                                     <th>Author</th>
                                     <th>Categories</th>
                                     <th>Tags</th>
-                                    <th>Status</th>
+                                    <th>Published At</th>
                                     <th>Created At</th>
-                                    <th>Last Updated At</th>
+                                    <th>Updated At</th>
                                     <th>View Post</th>
                                 </tr></thead>
                                 <tbody>
@@ -55,9 +55,9 @@
                                             <td>{{ $post->tag_names }}</td>
                                             <td>
                                                 @if ($post->is_published)
-                                                    <span class="text-success"><strong>Published</strong> at {{ $post->published_at }}</span>
+                                                    <span class="text-success"><strong>{{ $post->published_at }}</strong></span>
                                                 @else
-                                                    <span class="text-warning"><strong>Draft</strong>
+                                                    <span class="text-warning"><strong>Draft</strong></span>
                                                 @endif
                                             </td>
                                             <td>{{ $post->created_at }}</td>
