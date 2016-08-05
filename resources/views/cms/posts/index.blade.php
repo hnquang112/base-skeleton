@@ -7,11 +7,6 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Posts</h3>
 
-                    {{--<!--Filter items-->--}}
-                    {{--<a href="{{ route('cms.posts.index') }}">All (442)</a> |--}}
-                    {{--<a href="{{ route('cms.posts.index', ['filter' => 'mine']) }}">Mine (215)</a> | --}}
-                    {{--<a href="{{ route('cms.posts.index', ['filter' => 'published']) }}">Published (442)</a>--}}
-
                     <div class="box-tools pull-right">
                         <a class="btn btn-primary" href="{{ route('cms.posts.create') }}">Create</a>
                     </div>
@@ -24,34 +19,12 @@
                             <i class="fa fa-square-o"></i></button>
 
                         <!-- Bunch delete button -->
-                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm">
+                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm" title="Delete">
                             <i class="fa fa-trash-o"></i></button>
 
-                        {{--<form id="js-form-filter-items" action="{{ route('cms.posts.create') }}" method="GET" style="display: inline">--}}
-                            {{--<div class="form-group">--}}
-                                {{--<select name="filter_date" class="form-control">--}}
-                                    {{--<option>Date</option>--}}
-                                    {{--<option>option 1</option>--}}
-                                    {{--<option>option 2</option>--}}
-                                    {{--<option>option 3</option>--}}
-                                    {{--<option>option 4</option>--}}
-                                    {{--<option>option 5</option>--}}
-                                {{--</select>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group">--}}
-                                {{--<select name="filter_category" class="form-control">--}}
-                                    {{--<option>All</option>--}}
-                                    {{--<option>option 1</option>--}}
-                                    {{--<option>option 2</option>--}}
-                                    {{--<option>option 3</option>--}}
-                                    {{--<option>option 4</option>--}}
-                                    {{--<option>option 5</option>--}}
-                                {{--</select>--}}
-                            {{--</div>--}}
-
-                            {{--<button type="submit" class="btn btn-default">Filter</button>--}}
-                        {{--</form>--}}
+                        {{--<!-- Bunch publish button -->--}}
+                        {{--<button id="js-button-publish" type="button" class="btn btn-success btn-sm" title="Publish">--}}
+                            {{--<i class="fa fa-share-alt"></i></button>--}}
                     </div>
                     <div class="table-responsive mailbox-messages">
                         <form id="js-form-delete" action="{{ route('cms.posts.destroy', $posts->first() ?
@@ -69,6 +42,7 @@
                                     <th>Status</th>
                                     <th>Created At</th>
                                     <th>Last Updated At</th>
+                                    <th>View Post</th>
                                 </tr></thead>
                                 <tbody>
                                     @foreach ($posts as $post)
@@ -88,6 +62,8 @@
                                             </td>
                                             <td>{{ $post->created_at }}</td>
                                             <td>{{ $post->updated_at }}</td>
+                                            <td><a href="{{ $post->front_url }}" class="btn btn-info btn-sm" target="_blank" title="View">
+                                                    <i class="fa fa-external-link"></i></a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

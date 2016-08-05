@@ -107,9 +107,11 @@ class PostController extends CmsController
      */
     public function update(Request $request, $post)
     {
+        dd($request->all());
         $this->validate($request, Post::$rulesForCreating);
 
-        if ($request->do_publish == Post::STT_PUBLISHED) $post->published_at = $request->do_publish;
+        if ($request->do_publish == Post::STT_PUBLISHED || $request->publish == Post::STT_PUBLISHED)
+            $post->published_at = $request->do_publish;
 
         if (!empty($request->represent_image)) {
             $post->represent_image_id = create_file_from_path($request->represent_image);

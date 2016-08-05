@@ -86,9 +86,9 @@
                     </div><!-- /.box-body -->
                     <div class="box-footer">
                         @if ($post->is_published)
-                            <button class="btn btn-warning btn-flat pull-left">Unpublish</button>
+                            <button class="btn btn-warning btn-flat pull-left" name="publish" value="0">Unpublish</button>
                         @else
-                            <button class="btn btn-info btn-flat pull-left">Publish</button>
+                            <button class="btn btn-info btn-flat pull-left" name="publish" value="1">Publish</button>
                         @endif
                         <button class="btn btn-primary btn-flat pull-right" onclick="$('#js-save-post-form').submit()">Save</button>
                     </div>
