@@ -24,14 +24,14 @@
 
 <!-- Vendor JS -->
 <script src="{{ asset('js/vendor.js') }}"></script>
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-purple',
-            radioClass: 'iradio_square-purple',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
+{{--<script>--}}
+    {{--$(function () {--}}
+        {{--$('input').iCheck({--}}
+            {{--checkboxClass: 'icheckbox_square-purple',--}}
+            {{--radioClass: 'iradio_square-purple',--}}
+            {{--increaseArea: '20%' // optional--}}
+        {{--});--}}
+    {{--});--}}
+{{--</script>--}}
 </body>
 </html>

@@ -29,7 +29,7 @@
                 @endif
             </div>
             <div class="row">
-                <div class="col-xs-8">
+                <div class="col-xs-8" style="padding-left: 35px">
                     <div class="checkbox icheck">
                         <label>
                             <input name="remember" type="checkbox"> Remember Me

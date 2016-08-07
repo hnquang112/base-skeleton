@@ -224,7 +224,9 @@
                         {{--</li>--}}
                     {{--</ul>--}}
                 {{--</li>--}}
-                <li class="dropdown">
+                <li title="View Page"><a href="{{ url('/') }}" target="_blank">
+                        <i class="fa fa-lg fa-crosshairs" aria-hidden="true"></i></a></li>
+                <li class="dropdown" title="Change Language">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="flag-icon flag-icon-us"></span>
                         English <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">

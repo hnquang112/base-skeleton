@@ -40,20 +40,23 @@
         </li>
         <li class="menu-item menu-item-type-post_type {{ $request->is('shop*') ? 'current_page_item' : '' }}
                 menu-item-object-page menu-item-26 " id="menu-item-26">
-            <a class="sf-with-ul" href="{{ route('shop.index') }}">
-                Shop <span class="sf-sub-indicator"></span></a>
-            <ul class="sub-menu" style="display: none; visibility: hidden;">
-                @foreach ($_allCategories as $cat)
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-{{ $cat->id }}"
-                        id="menu-item-{{ $cat->id }}">
-                        <a href="http://themes.quitenicestuff.com/organicshopwp/?product_cat=skin-care">Skin Care</a>
-                    </li>
-                @endforeach
-            </ul>
+            @if ($_allCategories->count() > 0)
+                <a class="sf-with-ul" href="{{ route('shop.index') }}">Shop<span class="sf-sub-indicator"></span></a>
+                <ul class="sub-menu" style="display: none; visibility: hidden;">
+                    @foreach ($_allCategories as $cat)
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-{{ $cat->id }}"
+                            id="menu-item-{{ $cat->id }}">
+                            <a href="http://themes.quitenicestuff.com/organicshopwp/?product_cat=skin-care">Skin Care</a>
+                        </li>
+                    @endforeach
+                </ul>
+            @else
+                <a href="{{ route('shop.index') }}">Shop</a>
+            @endif
         </li>
-        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23" id="menu-item-23">
-            <a href="http://themes.quitenicestuff.com/organicshopwp/testimonials/">Testimonials</a>
-        </li>
+        {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23" id="menu-item-23">--}}
+            {{--<a href="http://themes.quitenicestuff.com/organicshopwp/testimonials/">Testimonials</a>--}}
+        {{--</li>--}}
         <li class="menu-item menu-item-type-post_type {{ $request->is('blog*') ? 'current_page_item' : '' }} menu-item-object-page menu-item-24" id="menu-item-24">
             <a href="{{ route('blog.index') }}">Blog</a>
         </li>
