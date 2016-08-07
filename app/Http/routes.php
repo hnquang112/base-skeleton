@@ -23,6 +23,8 @@ Route::group(['namespace' => 'Front'], function () {
     Route::post('shop/{shop}/review', ['uses' => 'ShopController@writeReview', 'as' => 'shop.review']);
     Route::resource('shop', 'ShopController', ['only' => ['index', 'show']]);
     Route::resource('cart', 'CartController', ['only' => ['index', 'update']]);
+
+    Route::resource('contact', 'ContactController', ['only' => ['index', 'store']]);
 });
 
 Route::group(['prefix' => 'cms'], function () {

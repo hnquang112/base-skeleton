@@ -30,6 +30,8 @@
         }
     </style>
 
+    @stack ('styles')
+
     <!-- Meta tags -->
     {{-- See https://github.com/joshbuchea/HEAD for further neccesary tags --}}
 </head><!-- END head -->
@@ -71,5 +73,7 @@
             s0.parentNode.insertBefore(s1,s0);
         })();
     </script><!--End of Tawk.to Script-->
+
+    @stack ('scripts')
 </body><!-- END body -->
 </html>
