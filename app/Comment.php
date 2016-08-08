@@ -6,17 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Eloquent\Dialect\Json;
 
-class Comment extends Post {
+class Comment extends Model {
+    use SoftDeletes, Json;
 
-    protected $fillable = ['name', 'email', 'content', 'rating', 'post_id'];
+    protected $fillable = ['name', 'email', 'message', 'rating', 'post_id'];
 
     const TYP_CONTACT = 0;
     const TYP_REVIEW = 1;
 
     public static $rulesForCreatingContacts = [
         'name' => 'required|max:255',
-        'email' => 'required|max:255',
-        'content' => 'required'
+        'email' => 'required|email|max:255',
+        'message' => 'required'
     ];
 
     public function __construct() {
@@ -24,7 +25,7 @@ class Comment extends Post {
         $this->hintJsonStructure('meta', '{
             "name":null,
             "email":null,
-            "content":null,
+            "message":null,
             "rating":null,
             "post_id":null
         }');

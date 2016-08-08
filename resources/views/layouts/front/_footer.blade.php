@@ -40,7 +40,7 @@
         {{--Put facebook page widget here--}}
         <li class="col4">
             <div class="widget">
-                <div class="fb-page" data-href="https://www.facebook.com/Giamcaneothon" data-tabs="timeline"
+                <div class="fb-page" data-href="{{ config('services.facebook.page-url') }}" data-tabs="timeline"
                      data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false"
                      data-show-facepile="true"></div>
             </div>
@@ -54,7 +54,7 @@
         <!-- Secondary Menu -->
         <ul class="footer-menu">
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78" id="menu-item-78">
-                <a href="http://themes.quitenicestuff.com/organicshopwp/">Home</a>
+                <a href="{{ url('/') }}">Home</a>
             </li>
             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-80" id="menu-item-80">
                 <a href="#">Terms &amp; Conditions</a>
@@ -68,5 +68,4 @@
         </ul>
         <p>© Copyright 2016</p>
     </div>
-    <div class="fr"><img alt="" src="{{ asset('img/payment-methods1.png') }}"></div>
 </div><!-- END #footer-bottom -->

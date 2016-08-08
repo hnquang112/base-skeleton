@@ -32,7 +32,23 @@
 
                 <iframe width="100%" height="300" frameborder="0" style="border: 0; margin-bottom: 30px" allowfullscreen
                         src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJnRjORk8pdTERbUf4gs-HW4c&key=
-                        {{ config('services.google-maps.api-key') }}"></iframe>
+                        {{ config('services.google.maps-api-key') }}"></iframe>
+
+                @if (count($errors) > 0)
+                    <div class="msg fail">
+                        <ul class="list-fail">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @if (session('contact.saved'))
+                    <div class="msg success clearfix">
+                        <p class="fl">Email sent, thank you for contacting us</p>
+                    </div>
+                @endif
 
                 <h4>Send Us An Email</h4>
 
@@ -46,12 +62,12 @@
 
                     <div class="field-row">
                         <label for="email">Email <span>(required)</span></label>
-                        <input type="text" name="email" id="email" class="text_input" value="">
+                        <input type="email" name="email" id="email" class="text_input" value="">
                     </div>
 
                     <div class="field-row">
                         <label for="message_text">Message <span>(required)</span></label>
-                        <textarea name="content" id="message_text" class="text_input" cols="60" rows="9"></textarea>
+                        <textarea name="message" id="message_text" class="text_input" cols="60" rows="9"></textarea>
                     </div>
 
                     <button class="button2" type="submit">Send Email</button>

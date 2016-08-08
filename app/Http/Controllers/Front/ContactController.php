@@ -23,6 +23,10 @@ class ContactController extends FrontController {
         $comment->type = Comment::TYP_CONTACT;
         $comment->fill($request->all());
 
-        $comment->save();
+        if ($comment->save()) {
+            return back()->with('contact.saved', true);
+        }
+
+        return back();
     }
 }

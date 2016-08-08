@@ -43,7 +43,7 @@
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.7&appId=177428942597875";
+            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.7&appId={{ config('services.facebook.app-id') }}";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
 
@@ -67,7 +67,7 @@
         (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
             s1.async=true;
-            s1.src='https://embed.tawk.to/57a1ea0214e2f0af26fe0d76/default';
+            s1.src='https://embed.tawk.to/{{ config('services.tawk-to.api-key') }}/default';
             s1.charset='UTF-8';
             s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);

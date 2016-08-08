@@ -39,8 +39,17 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
-    'google-maps' => [
-        'api-key' => 'AIzaSyAFtg67FGkPzztwBYPRq1EnvupxMLvRFJc'
+    'google' => [
+        'maps-api-key' => 'AIzaSyAFtg67FGkPzztwBYPRq1EnvupxMLvRFJc'
+    ],
+
+    'facebook' => [
+        'app-id' => '177428942597875',
+        'page-url' => 'https://www.facebook.com/Giamcaneothon'
+    ],
+
+    'tawk-to' => [
+        'api-key' => '57a1ea0214e2f0af26fe0d76'
     ]
 
 ];
