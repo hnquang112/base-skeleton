@@ -60,11 +60,11 @@
         <li class="menu-item menu-item-type-post_type {{ $request->is('blog*') ? 'current_page_item' : '' }} menu-item-object-page menu-item-24" id="menu-item-24">
             <a href="{{ route('blog.index') }}">Blog</a>
         </li>
-        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22" id="menu-item-22">
-            <a href="http://themes.quitenicestuff.com/organicshopwp/contact/">Contact</a>
+        <li class="menu-item menu-item-type-post_type {{ $request->is('contact*') ? 'current_page_item' : '' }} menu-item-object-page menu-item-22" id="menu-item-22">
+            <a href="{{ route('contact.index') }}">Contact</a>
         </li>
     </ul>
-    <form action="http://themes.quitenicestuff.com/organicshopwp/" class="fr" id="menu-search" method="get" name="menu-search">
+    <form action="{{ url('/') }}" class="fr" id="menu-search" method="get" name="menu-search">
         <input name="s" type="text">
     </form>
 </div><!-- END .main-menu-wrapper -->

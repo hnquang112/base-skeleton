@@ -8,13 +8,21 @@
 
 namespace App\Http\Controllers\Front;
 
+use Illuminate\Http\Request;
+use App\Comment;
 
 class ContactController extends FrontController {
     public function index() {
         return view('front.contact.index');
     }
 
-    public function store() {
-        
+    public function store(Request $request) {
+        $this->validate($request, Comment::$rulesForCreatingContacts);
+
+        $comment = new Comment;
+        $comment->type = Comment::TYP_CONTACT;
+        $comment->fill($request->all());
+
+        $comment->save();
     }
 }
