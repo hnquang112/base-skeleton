@@ -86,6 +86,14 @@ var copyPaths = [{
     dest: 'flags'
 }];
 
+var versioningPaths = [
+    'css/vendor.css',
+    'css/vendor.front.css',
+    'js/vendor.js',
+    'js/vendor.front.js',
+    'js/common.js'
+];
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -111,4 +119,8 @@ elixir(function (mix) {
     copyPaths.forEach(function (path) {
         mix.copy(assetPath + path.src, publicPath + path.dest)
     });
+
+    mix.copy(assetPath + 'icons', publicPath + 'build/img');
+
+    mix.version(versioningPaths);
 });

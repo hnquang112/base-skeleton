@@ -20,7 +20,7 @@ class ContactController extends FrontController {
         $this->validate($request, Comment::$rulesForCreatingContacts);
 
         $comment = new Comment;
-        $comment->type = Comment::TYP_CONTACT;
+        $comment->type = Comment::TYP_FEEDBACK;
         $comment->fill($request->all());
 
         if ($comment->save()) {

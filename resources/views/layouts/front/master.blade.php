@@ -18,7 +18,7 @@
     <title>Organic Shop | A Responsive WordPress Theme for eCommerce Websites</title>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ asset('css\vendor.front.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ elixir('css/vendor.front.css') }}" type="text/css">
     <style type="text/css">
         h1, h2, h3, h4, h5, h6, #ui-datepicker-div .ui-datepicker-title, .dropcap, .ui-tabs .ui-tabs-nav li,
         #title-wrapper h1, #main-menu li, #main-menu li span, .caption, .accommodation_img_price {
@@ -59,7 +59,7 @@
     <script>
         var slideshow_autoplay = true;var slideshow_speed = 7000;
     </script>
-    <script src="{{ asset('js/vendor.front.js') }}"></script>
+    <script src="{{ elixir('js/vendor.front.js') }}"></script>
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">

@@ -396,6 +396,15 @@
 
 @media only screen and (max-width: 479px) {
 
+    body {
+        background: none;
+        padding-bottom: 0 !important;
+    }
+
+    .wrapper {
+        width: 100%;
+    }
+
     .columns-2 li.col2 {
         width: 100%;
         margin: 0;
@@ -473,6 +482,15 @@
 }
 
 @media only screen and (max-width: 320px) {
+
+    body {
+        background: none;
+        padding-bottom: 0 !important;
+    }
+
+    .wrapper {
+        width: 100%;
+    }
 
     .topbar-right ul li {
         float: none;

@@ -11,7 +11,7 @@ class Comment extends Model {
 
     protected $fillable = ['name', 'email', 'message', 'rating', 'post_id'];
 
-    const TYP_CONTACT = 0;
+    const TYP_FEEDBACK = 0;
     const TYP_REVIEW = 1;
 
     public static $rulesForCreatingContacts = [
@@ -31,7 +31,17 @@ class Comment extends Model {
         }');
     }
 
+    /**
+     * Relationships
+     */
     public function post() {
         return $this->belongsTo('App\Post', "meta->>'post_id'", 'id');
+    }
+
+    /**
+     * Scopes
+     */
+    public function scopeFeedback($query) {
+        return $query->where('type', self::TYP_FEEDBACK);
     }
 }

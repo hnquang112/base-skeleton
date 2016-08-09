@@ -77,6 +77,12 @@
                     <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.users.create') }}"><i class="fa fa-circle-o"></i> Add New User</a>
                     </li>
+                    <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.reviews.index') }}"><i class="fa fa-circle-o"></i> Reviews</a>
+                    </li>
+                    <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.feedback.index') }}"><i class="fa fa-circle-o"></i> Feedback</a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview">

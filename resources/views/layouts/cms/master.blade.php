@@ -20,7 +20,7 @@
     <title>BaseSkeleton | Dashboard</title>
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="{{ asset('css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ elixir('css/vendor.css') }}">
 
     @stack ('styles')
 
@@ -60,8 +60,8 @@
     </div><!-- ./wrapper -->
 
     <!-- Vendor JS -->
-    <script src="{{ asset('js/vendor.js') }}"></script>
-    <script src="{{ asset('js/common.js') }}"></script>
+    <script src="{{ elixir('js/vendor.js') }}"></script>
+    <script src="{{ elixir('js/common.js') }}"></script>
 
     @stack ('scripts')
 </body>
