@@ -17,7 +17,7 @@ class ContactController extends FrontController {
     }
 
     public function store(Request $request) {
-        $this->validate($request, Comment::$rulesForCreatingContacts);
+        $this->validate($request, Comment::$rulesForCreatingFeedback);
 
         $comment = new Comment;
         $comment->type = Comment::TYP_FEEDBACK;

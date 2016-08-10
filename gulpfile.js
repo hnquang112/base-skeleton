@@ -69,21 +69,26 @@ var copyPaths = [{
 }, {
     src: 'images',
     dest: 'img'
+// }, {
+//     src: 'plugins/iCheck/**',
+//     dest: 'css'
+}, {
+    src: 'plugins/flexslider/**',
+    dest: 'css/fonts'
+}];
+
+var copyBuildPaths = [{
+    src: 'plugins/flag-icon-css/**',
+    dest: 'flags'
+}, {
+    src: 'icons',
+    dest: 'img'
 }, {
     src: 'fonts',
     dest: 'fonts'
 }, {
-    src: 'plugins/iCheck/**',
-    dest: 'css'
-}, {
     src: 'plugins/summernote/**',
     dest: 'css/font'
-}, {
-    src: 'plugins/flexslider/**',
-    dest: 'css/fonts'
-}, {
-    src: 'plugins/flag-icon-css/**',
-    dest: 'flags'
 }];
 
 var versioningPaths = [
@@ -120,7 +125,9 @@ elixir(function (mix) {
         mix.copy(assetPath + path.src, publicPath + path.dest)
     });
 
-    mix.copy(assetPath + 'icons', publicPath + 'build/img');
+    copyBuildPaths.forEach(function (path) {
+        mix.copy(assetPath + path.src, publicPath + 'build/' + path.dest)
+    });
 
     mix.version(versioningPaths);
 });

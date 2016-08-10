@@ -5,9 +5,8 @@
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Tags</h3>
-                </div>
-                <!-- /.box-header -->
+                    <h3 class="box-title">Feedback</h3>
+                </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="mailbox-controls form-inline">
                         <!-- Check all button -->
@@ -17,32 +16,37 @@
                         <!-- Bunch delete button -->
                         <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm" title="Delete">
                             <i class="fa fa-trash-o"></i></button>
+
+                        <!-- Mark as read button -->
+                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm" title="Mark as read">
+                            <i class="fa fa-eye"></i></button>
                     </div>
                     <div class="table-responsive mailbox-messages">
                         <form id="js-form-delete" method="POST"
-                              action="{{ route('cms.tags.destroy', $tags->first() ? $tags->first()->id : 0) }}" >
+                              action="{{ route('cms.feedback.destroy', $feedback->first() ? $feedback->first()->id : 0) }}" >
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
                             <table class="table table-hover datatable">
                                 <thead><tr>
                                     <th></th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>No. of Posts</th>
-                                    <th>No. of Products</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Message</th>
                                     <th>Dates</th>
                                 </tr></thead>
                                 <tbody>
-                                @foreach ($tags as $cat)
+                                @foreach ($feedback as $fb)
                                     <tr>
-                                        <td><input name="selected_ids[]" type="checkbox" value="{{ $cat->id }}"></td>
-                                        <td><a href="{{ route('cms.tags.edit', $cat->id) }}"><strong>
-                                                    {{ $cat->name }}</strong></a></td>
-                                        <td>{{ $cat->description }}</td>
-                                        <td>{{ $cat->posts_count }}</td>
-                                        <td>qwe</td>
-                                        <td>{{ $cat->created_at }}</td>
+                                        <td><input name="selected_ids[]" type="checkbox" value="{{ $fb->id }}"></td>
+                                        <td><a href="{{ route('cms.feedback.edit', $fb->id) }}">
+                                                @if ($fb->is_read) <strong> @endif
+                                                    {{ $fb->name }}
+                                                @if ($fb->is_read) </strong> @endif
+                                            </a></td>
+                                        <td>{{ $fb->email }}</td>
+                                        <td>{{ $fb->message }}</td>
+                                        <td>{{ $fb->created_at }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -66,7 +70,8 @@
                     </div>
                     <!-- /.box-tools -->
                 </div>
-                <form action="{{ $tag->id ? route('cms.tags.update', $tag->id) : route('cms.tags.store') }}" method="POST">
+                <form action="{{ $newFb->id ? route('cms.feedback.update', $newFb->id) : route('cms.feedback.store') }}"
+                      method="POST">
                     {{ csrf_field() }}
 
                     <!-- /.box-header -->
@@ -75,19 +80,28 @@
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="">Name:</label>
                                 <input name="name" type="text" class="form-control" placeholder="Enter name"
-                                       value="{{ $tag->name }}">
+                                       value="{{ $newFb->name }}">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
                             </div>
-                            <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                                <label for="">Description:</label>
-                                <input name="description" type="text" class="form-control" placeholder="Enter description"
-                                       value="{{ $tag->description }}">
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="">Email:</label>
+                                <input name="email" type="email" class="form-control" placeholder="Enter email"
+                                       value="{{ $newFb->email }}">
 
-                                @if ($errors->has('description'))
-                                    <span class="help-block"><strong>{{ $errors->first('description') }}</strong></span>
+                                @if ($errors->has('email'))
+                                    <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
+                                <label for="">Message:</label>
+                                <input name="message" type="text" class="form-control" placeholder="Enter message"
+                                       value="{{ $newFb->message }}">
+
+                                @if ($errors->has('message'))
+                                    <span class="help-block"><strong>{{ $errors->first('message') }}</strong></span>
                                 @endif
                             </div>
                         </div>
