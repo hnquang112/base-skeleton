@@ -24,7 +24,7 @@ class FeedbackController extends CmsController {
         $this->validate($request, Comment::$rulesForCreatingFeedback);
 
         $feedback = new Comment;
-        $feedback->type == Comment::TYP_FEEDBACK;
+        $feedback->type = Comment::TYP_FEEDBACK;
         $feedback->fill($request->all());
 
         if ($feedback->save()) {

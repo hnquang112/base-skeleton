@@ -18,8 +18,8 @@
                             <i class="fa fa-trash-o"></i></button>
 
                         <!-- Mark as read button -->
-                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm" title="Mark as read">
-                            <i class="fa fa-eye"></i></button>
+                        {{--<button id="js-button-confirm-delete" type="button" class="btn btn-info btn-sm" title="Mark as read">--}}
+                            {{--<i class="fa fa-eye"></i></button>--}}
                     </div>
                     <div class="table-responsive mailbox-messages">
                         <form id="js-form-delete" method="POST"
@@ -40,9 +40,9 @@
                                     <tr>
                                         <td><input name="selected_ids[]" type="checkbox" value="{{ $fb->id }}"></td>
                                         <td><a href="{{ route('cms.feedback.edit', $fb->id) }}">
-                                                @if ($fb->is_read) <strong> @endif
+{{--                                                @if (!$fb->is_read) <strong> @endif--}}
                                                     {{ $fb->name }}
-                                                @if ($fb->is_read) </strong> @endif
+{{--                                                @if (!$fb->is_read) </strong> @endif--}}
                                             </a></td>
                                         <td>{{ $fb->email }}</td>
                                         <td>{{ $fb->message }}</td>

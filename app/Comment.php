@@ -9,7 +9,8 @@ use Eloquent\Dialect\Json;
 class Comment extends Model {
     use SoftDeletes, Json;
 
-    protected $fillable = ['type', 'name', 'email', 'message', 'rating', 'post_id'];
+    protected $dates = ['deleted_at'];
+    protected $fillable = ['name', 'email', 'message', 'rating', 'post_id'];
     protected $jsonColumns = ['meta'];
 
     const TYP_FEEDBACK = 0;
@@ -36,10 +37,10 @@ class Comment extends Model {
     /**
      * Accessors
      */
-    public function getIsReadAttribute() {
-        if (in_array(auth()->user()->id, $this->read_by_users ?: [])) return true;
-        return false;
-    }
+//    public function getIsReadAttribute() {
+//        if (empty($this->read_by_users) || in_array(auth()->user()->id, $this->read_by_users)) return true;
+//        return false;
+//    }
 
     /**
      * Relationships

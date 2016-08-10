@@ -38,7 +38,7 @@
             </li>
             <li class="treeview{{ $request->is('cms/products*') ? ' active' : '' }}">
                 <a href="#">
-                    <i class="fa fa-paper-plane-o"></i> <span>Products</span>
+                    <i class="fa fa-paper-plane"></i> <span>Products</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
@@ -78,16 +78,16 @@
                         <a href="{{ route('cms.users.create') }}"><i class="fa fa-circle-o"></i> Add New User</a>
                     </li>
                     <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.reviews.index') }}"><i class="fa fa-circle-o"></i> Reviews</a>
+                        <a href="{{ route('cms.reviews.index') }}"><i class="fa fa-comment"></i> Reviews</a>
                     </li>
                     <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.feedback.index') }}"><i class="fa fa-circle-o"></i> Feedback</a>
+                        <a href="{{ route('cms.feedback.index') }}"><i class="fa fa-envelope"></i> Feedback</a>
                     </li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-file-text-o"></i> <span>Settings</span>
+                    <i class="fa fa-file-text"></i> <span>Settings</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
