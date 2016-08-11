@@ -168,7 +168,8 @@ return [
         Former\FormerServiceProvider::class,
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
     ],
 
@@ -221,6 +222,7 @@ return [
         'Flash' => Laracasts\Flash\Flash::class,
         'Former' => Former\Facades\Former::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
     ],
 

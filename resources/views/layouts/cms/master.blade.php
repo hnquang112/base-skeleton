@@ -21,6 +21,11 @@
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="{{ elixir('css/vendor.css') }}">
+    <style>
+        textarea {
+            resize: vertical;
+        }
+    </style>
 
     @stack ('styles')
 

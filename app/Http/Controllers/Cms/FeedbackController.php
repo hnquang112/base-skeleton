@@ -20,6 +20,13 @@ class FeedbackController extends CmsController {
         return view('cms.feedback.index', compact('feedback', 'newFb'));
     }
 
+    public function create() {
+        $feedback = new Comment;
+        $feedback->type = Comment::TYP_FEEDBACK;
+
+        return view('cms.feedback.form', compact('feedback'));
+    }
+
     public function store(Request $request) {
         $this->validate($request, Comment::$rulesForCreatingFeedback);
 
@@ -32,6 +39,30 @@ class FeedbackController extends CmsController {
         } else {
             flash()->error('Save failed');
         }
+
+        return back();
+    }
+
+    public function edit($feedback) {
+        return view('cms.feedback.form', compact('feedback'));
+    }
+
+    public function update(Request $request, $feedback) {
+        $this->validate($request, Comment::$rulesForCreatingFeedback);
+
+        $feedback->fill($request->all());
+
+        if ($feedback->save()) {
+            flash()->success('Saved successfully');
+        } else {
+            flash()->error('Save failed');
+        }
+
+        return back();
+    }
+
+    public function destroy(Request $request) {
+        $this->deleteMultipleItems(Comment::class, $request->selected_ids);
 
         return back();
     }

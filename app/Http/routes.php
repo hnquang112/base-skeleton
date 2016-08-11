@@ -46,4 +46,6 @@ Route::group(['prefix' => 'cms'], function () {
     });
 });
 
-Route::get('home', 'HomeController@index');
+Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'api'], function () {
+    Route::resource('qr_codes', 'QrController', ['only' => ['store']]);
+});

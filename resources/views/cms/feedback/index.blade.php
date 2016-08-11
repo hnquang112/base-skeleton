@@ -97,8 +97,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
                                 <label for="">Message:</label>
-                                <input name="message" type="text" class="form-control" placeholder="Enter message"
-                                       value="{{ $newFb->message }}">
+                                <textarea name="message" class="form-control" placeholder="Enter message" rows="5">{{ $newFb->message }}</textarea>
 
                                 @if ($errors->has('message'))
                                     <span class="help-block"><strong>{{ $errors->first('message') }}</strong></span>

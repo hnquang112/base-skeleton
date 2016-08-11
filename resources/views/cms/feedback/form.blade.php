@@ -9,27 +9,36 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form action="{{ $category->id ? route('cms.categories.update', $category->id) : route('cms.categories.store') }}"
+                <form action="{{ $feedback->id ? route('cms.feedback.update', $feedback->id) : route('cms.feedback.store') }}"
                       method="POST">
                     {{ csrf_field() }}
-                    {{ $category->id ? method_field('PUT') : '' }}
+                    {{ $feedback->id ? method_field('PUT') : '' }}
 
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="">Name:</label>
-                            <input name="name" type="text" class="form-control" placeholder="Enter name" value="{{ $category->name }}">
+                            <input name="name" type="text" class="form-control" placeholder="Enter name"
+                                   value="{{ $feedback->name }}">
 
                             @if ($errors->has('name'))
                                 <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                             @endif
                         </div>
-                        <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="">Description:</label>
-                            <input name="description" type="text" class="form-control" placeholder="Enter description"
-                                   value="{{ $category->description }}">
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="">Email:</label>
+                            <input name="email" type="email" class="form-control" placeholder="Enter email"
+                                   value="{{ $feedback->email }}">
 
-                            @if ($errors->has('description'))
-                                <span class="help-block"><strong>{{ $errors->first('description') }}</strong></span>
+                            @if ($errors->has('email'))
+                                <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
+                            <label for="">Message:</label>
+                            <textarea name="message" class="form-control" placeholder="Enter message" rows="5">{{ $feedback->message }}</textarea>
+
+                            @if ($errors->has('message'))
+                                <span class="help-block"><strong>{{ $errors->first('message') }}</strong></span>
                             @endif
                         </div>
                     </div>
