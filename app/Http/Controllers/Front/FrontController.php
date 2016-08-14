@@ -12,6 +12,10 @@ use App\Http\Controllers\Controller;
 use Session;
 
 class FrontController extends Controller {
+    public function __construct() {
+        \Debugbar::debug('123');
+    }
+
     public function getSessionId() {
         return Session::getId();
     }

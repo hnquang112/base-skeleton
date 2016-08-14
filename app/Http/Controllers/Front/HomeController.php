@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends FrontController
 {
+    // GET: /
     public function index(Request $request) {
         return view('front.home.index');
     }

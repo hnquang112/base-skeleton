@@ -13,16 +13,19 @@ use App\Post;
 
 class BlogController extends FrontController
 {
+    // GET: /blog
     public function index(Request $request) {
         $posts = Post::with('tags', 'represent_image')->published()->orderByDesc('published_at')->paginate(5);
 
         return view('front.blog.index', compact('posts'));
     }
 
+    // GET: /blog/lorem-ipsum
     public function show(Request $request, $post) {
         return view('front.blog.show', compact('post'));
     }
 
+    // GET: /category/lorem-ipsum/{prod|post}
     public function filterByCategory($taxo, $postType = 'prod') {
         $taxoType = 'cat';
 
@@ -35,6 +38,7 @@ class BlogController extends FrontController
         return view('front.blog.filter', compact('taxo', 'taxoType', 'postType', 'posts'));
     }
 
+    // GET: /tag/lorem-ipsum/{prod|post}
     public function filterByTag($taxo, $postType = 'prod') {
         $taxoType = 'tag';
 
@@ -44,6 +48,6 @@ class BlogController extends FrontController
             $posts = $taxo->getRelatedProducts();
         }
 
-        return view('front.blog.filter', compact('taxo', 'taxoType', 'posts'));
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'postType', 'posts'));
     }
 }

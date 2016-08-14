@@ -2,7 +2,7 @@
 
 @push ('meta')
     <meta property="og:url"           content="{{ $post->front_url }}" />
-    <meta property="og:type"          content="website" />
+    <meta property="og:type"          content="article" />
     <meta property="og:title"         content="{{ $post->title }}" />
     <meta property="og:description"   content="{{ $post->short_description }}" />
     <meta property="og:image"         content="{{ $post->represent_image_path }}" />
