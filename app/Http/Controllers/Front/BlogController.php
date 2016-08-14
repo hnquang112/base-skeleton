@@ -23,16 +23,26 @@ class BlogController extends FrontController
         return view('front.blog.show', compact('post'));
     }
 
-    public function filterByCategory($taxo) {
+    public function filterByCategory($taxo, $postType = 'prod') {
         $taxoType = 'cat';
-        $posts = $taxo->getRelatedPosts();
 
-        return view('front.blog.filter', compact('taxo', 'taxoType', 'posts'));
+        if ($postType == 'post') {
+            $posts = $taxo->getRelatedPosts();
+        } else {
+            $posts = $taxo->getRelatedProducts();
+        }
+
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'postType', 'posts'));
     }
 
-    public function filterByTag($taxo) {
+    public function filterByTag($taxo, $postType = 'prod') {
         $taxoType = 'tag';
-        $posts = $taxo->getRelatedPosts();
+
+        if ($postType == 'post') {
+            $posts = $taxo->getRelatedPosts();
+        } else {
+            $posts = $taxo->getRelatedProducts();
+        }
 
         return view('front.blog.filter', compact('taxo', 'taxoType', 'posts'));
     }

@@ -1,5 +1,13 @@
 @extends ('layouts.front.master')
 
+@push ('meta')
+    <meta property="og:url"           content="{{ $post->front_url }}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="{{ $post->title }}" />
+    <meta property="og:description"   content="{{ $post->short_description }}" />
+    <meta property="og:image"         content="{{ $post->represent_image_path }}" />
+@endpush
+
 @section ('content')
     <div id="page-header"><img src="{{ asset('img/page-header1.jpg') }}" alt=""></div>
 
@@ -79,9 +87,6 @@
                         {{--</form>--}}
                     {{--</div><!-- #respond -->--}}
                 {{--</div><!--END .reply_container -->--}}
-
-                <div class="fb-like" data-href="{{ $post->front_url }}" data-layout="standard" data-action="like"
-                     data-size="small" data-show-faces="true" data-share="true"></div>
 
                 @include ('layouts.front._comment', ['identifier' => 'blog-' . $post->slug])
             </li>

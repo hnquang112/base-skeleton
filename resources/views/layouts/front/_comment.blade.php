@@ -1,4 +1,5 @@
 @inject ('_request', 'Illuminate\Http\Request')
+
 {{--<div id="disqus_thread"></div>--}}
 {{--<script>--}}
     {{--var disqus_config = function () {--}}
@@ -14,5 +15,11 @@
     {{--})();--}}
 {{--</script>--}}
 {{--<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>--}}
+
+<div class="fb-like" data-href="{{ $_request->url() }}" data-layout="standard" data-action="like"
+     data-size="small" data-show-faces="true" data-share="true"></div>
+
+<div class="fb-share-button" data-layout="button_count" data-mobile_iframe="true"
+     data-href="{{ $_request->url() }}"></div>
 
 <div id="fb-comment-widget" class="fb-comments" data-width="100%" data-numposts="5"></div>

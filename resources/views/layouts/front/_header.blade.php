@@ -46,7 +46,7 @@
                     @foreach ($_allCategories as $cat)
                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-{{ $cat->id }}"
                             id="menu-item-{{ $cat->id }}">
-                            <a href="http://themes.quitenicestuff.com/organicshopwp/?product_cat=skin-care">Skin Care</a>
+                            <a href="{{ $cat->front_url }}">{{ ucfirst($cat->name) }}</a>
                         </li>
                     @endforeach
                 </ul>

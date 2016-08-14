@@ -19,7 +19,8 @@ class Comment extends Model {
     public static $rulesForCreatingFeedback = [
         'name' => 'required|max:255',
         'email' => 'required|email|max:255',
-        'message' => 'required'
+        'message' => 'required',
+        'g-recaptcha-response' => 'required|captcha'
     ];
 
     public function __construct() {

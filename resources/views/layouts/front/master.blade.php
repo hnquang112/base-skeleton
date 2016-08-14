@@ -34,6 +34,7 @@
 
     <!-- Meta tags -->
     {{-- See https://github.com/joshbuchea/HEAD for further neccesary tags --}}
+    @stack ('meta')
 </head><!-- END head -->
 
 <!-- BEGIN body -->
@@ -73,6 +74,8 @@
             s0.parentNode.insertBefore(s1,s0);
         })();
     </script><!--End of Tawk.to Script-->
+
+    <script src="https://google.com/recaptcha/api.js?hl=en"></script>
 
     @stack ('scripts')
 </body><!-- END body -->

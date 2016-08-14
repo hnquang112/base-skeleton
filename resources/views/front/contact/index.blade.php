@@ -57,20 +57,24 @@
 
                     <div class="field-row">
                         <label for="contact_name">Name <span>(required)</span></label>
-                        <input type="text" name="name" id="contact_name" class="text_input" value="">
+                        <input type="text" name="name" id="contact_name" class="text_input" value="{{ old('name') }}">
                     </div>
 
                     <div class="field-row">
                         <label for="email">Email <span>(required)</span></label>
-                        <input type="email" name="email" id="email" class="text_input" value="">
+                        <input type="email" name="email" id="email" class="text_input" value="{{ old('email') }}">
                     </div>
 
                     <div class="field-row">
                         <label for="message_text">Message <span>(required)</span></label>
-                        <textarea name="message" id="message_text" class="text_input" cols="60" rows="9"></textarea>
+                        <textarea name="message" id="message_text" class="text_input" cols="60" rows="9">{{ old('message') }}</textarea>
                     </div>
 
-                    <button class="button2" type="submit">Send Email</button>
+                    <div class="field-row">
+                        {!! app('captcha')->display() !!}
+                    </div>
+
+                    <button class="button2" type="submit" style="margin-top: 20px">Send Email</button>
                 </form>
             </li><!-- END .col-main -->
             @include ('layouts.front._sidebar')

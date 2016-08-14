@@ -9,7 +9,7 @@
 
             <!-- BEGIN .col-main -->
             <li class="col-main">
-                <h2 class="page-title">All posts {{ $taxoType == 'cat' ? 'in' : 'tagged'}} {{ ucfirst($taxo->name) }}</h2>
+                <h2 class="page-title">All {{ $postType == 'prod' ? 'products' : 'posts'  }} {{ $taxoType == 'cat' ? 'in' : 'tagged'}} {{ ucfirst($taxo->name) }}</h2>
 
                 <!--BEGIN .search_results -->
                 <ol class="search-results">

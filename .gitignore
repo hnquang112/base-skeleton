@@ -10,4 +10,5 @@ public/img
 public/js
 public/flags
 public/build
+public/packages
 *.iml

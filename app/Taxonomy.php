@@ -63,6 +63,11 @@ class Taxonomy extends Model {
      * Helpers
      */
     public function getRelatedPosts() {
-        return $this->posts()->published()->orderBy('title')->get();
+        return $this->posts()->blogPosts()->published()->orderBy('title')->get();
     }
+
+    public function getRelatedProducts() {
+        return $this->posts()->products()->published()->orderBy('title')->get();
+    }
+
 }
