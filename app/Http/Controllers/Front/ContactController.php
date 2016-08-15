@@ -12,10 +12,13 @@ use Illuminate\Http\Request;
 use App\Comment;
 
 class ContactController extends FrontController {
+
+    // GET: /contact
     public function index() {
         return view('front.contact.index');
     }
 
+    // POST: /contact
     public function store(Request $request) {
         $this->validate($request, Comment::$rulesForCreatingFeedback);
 

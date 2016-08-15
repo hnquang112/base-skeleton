@@ -8,9 +8,7 @@
 
 namespace App\Http\Controllers\Cms;
 
-
-class DashboardController extends CmsController
-{
+class DashboardController extends CmsController {
     // GET: /cms/dashboard
     public function index() {
         return view('cms.dashboard.index');

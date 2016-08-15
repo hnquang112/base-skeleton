@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Cms;
 use Illuminate\Http\Request;
 use App\Category;
 
-class CategoryController extends CmsController
-{
+class CategoryController extends CmsController {
+
     // GET: /cms/categories
     public function index(Request $request) {
         $categories = Category::withCount('posts')->get();

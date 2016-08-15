@@ -18,9 +18,9 @@
                             @foreach (App\Setting::$languages as $code => $label)
                                 <label class="radio-inline">
                                     <input type="radio" name="front_page_language" id="lang_{{ $code }}" value="{{ $code }}"
-                                        {{--{{ $code == App\Setting::getSiteConfigValue('front_page_language') ? 'checked=checked' : '' }}--}}
+                                        {{ $code == App\Setting::getSiteConfigValue('front_page_language') ? 'checked=checked' : '' }}
                                     >
-                                    <span class="flag-icon flag-icon-{{ $code }}"></span> {{ $label }}
+                                    <span class="flag-icon flag-icon-{{ $label['flag'] }}"></span> {{ $label['name'] }}
                                 </label>
                             @endforeach
 

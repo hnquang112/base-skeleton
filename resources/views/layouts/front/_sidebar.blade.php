@@ -3,7 +3,7 @@
     @if (isset($hasPriceFilter) && $hasPriceFilter)
         <div class="widget">
             <div class="widget-title clearfix">
-                <h4 class="tag-title">Price Filter</h4>
+                <h4 class="tag-title">@lang ('front.common.price_filter')</h4>
             </div>
             <form method="GET" action="{{ route('shop.index') }}">
                 <div class="price_slider_wrapper">
@@ -31,7 +31,7 @@
 
     <div class="widget">
         <div class="widget-title clearfix">
-            <h4 class="tag-title">Categories</h4>
+            <h4 class="tag-title">{{ trans_choice('front.common.categories', 2) }}</h4>
         </div>
         <ul>
             @foreach ($_allCategories as $_cat)
@@ -44,7 +44,7 @@
     </div>
     <div class="widget">
         <div class="widget-title clearfix">
-            <h4 class="tag-title">Tags</h4>
+            <h4 class="tag-title">{{ trans_choice('front.common.tags', 2) }}</h4>
         </div>
         <ul class="wp-tag-cloud">
             @foreach ($_allTags as $_tag)
@@ -56,7 +56,7 @@
     </div>
     <div class="widget">
         <div class="widget-title clearfix">
-            <h4 class="tag-title">Recent Posts</h4>
+            <h4 class="tag-title">{{ trans_choice('front.common.recent_posts', 2) }}</h4>
         </div>
         <ul class="latest-posts-list clearfix">
             @foreach ($_recentPosts as $_post)

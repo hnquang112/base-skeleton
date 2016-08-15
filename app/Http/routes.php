@@ -32,6 +32,9 @@ Route::group(['prefix' => 'cms'], function () {
 
     Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms'], function () {
         Route::get('/', ['uses' => 'CmsController@gate', 'as' => 'cms.index']);
+        Route::get('/{lang}', ['as' => 'cms.language', 'uses' => 'CmsController@changeLanguage'])
+            ->where(['lang' => '(vi|en)']);
+
         Route::resource('dashboard', 'DashboardController', ['only' => ['index']]);
         Route::resource('posts', 'PostController', ['except' => ['show']]);
         Route::resource('tags', 'TagController', ['except' => ['show']]);

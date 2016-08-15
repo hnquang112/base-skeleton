@@ -7,13 +7,15 @@
  */
 
 return [
-    'header.checkout' => 'checkout',
-    'header.my_account' => 'my account',
+    'header.checkout' => 'Checkout',
+    'header.my_account' => 'My account',
     'header.cart_items' => 'item|items',
-    'menu.home' => 'home',
-    'menu.shop' => 'shop',
-    'menu.blog' => 'blog',
-    'menu.contact' => 'contact',
-    'common.categories' => 'category|categories',
-    'common.tags' => 'tag|tags',
+    'menu.home' => 'Home',
+    'menu.shop' => 'Shop',
+    'menu.blog' => 'Blog',
+    'menu.contact' => 'Contact',
+    'common.categories' => 'Category|Categories',
+    'common.tags' => 'Tag|Tags',
+    'common.recent_posts' => 'Recent Post|Recent Posts',
+    'common.price_filter' => 'Price Filter',
 ];

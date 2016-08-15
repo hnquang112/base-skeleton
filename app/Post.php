@@ -15,8 +15,8 @@ class Post extends Model
     use SoftDeletes, Sluggable, SluggableScopeHelpers, Json;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['title', 'short_description', 'published_at', 'content', 'short_description', 'seo_title',
-        'seo_description', 'seo_keywords', 'price', 'discount_price', 'is_in_stock', 'product_image_ids'];
+    protected $fillable = ['title', 'short_description', 'published_at', 'content', 'seo_title', 'seo_description',
+        'seo_keywords', 'price', 'discount_price', 'is_in_stock', 'product_image_ids'];
     protected $jsonColumns = ['meta'];
     protected $attributes = [
         'type' => self::TYP_BLOG,
@@ -38,7 +38,7 @@ class Post extends Model
         'represent_image' => 'active_url'
     ];
 
-     public function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->hintJsonStructure('meta', '{
             "short_description":null,
@@ -51,15 +51,14 @@ class Post extends Model
             "represent_image_id":null,
             "product_image_ids":[]
         }');
-     }
+    }
 
     /**
      * Return the sluggable configuration array for this model.
      *
      * @return array
      */
-    public function sluggable()
-    {
+    public function sluggable() {
         return [
             'slug' => [
                 'source' => 'title'

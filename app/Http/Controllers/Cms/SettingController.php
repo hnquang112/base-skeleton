@@ -13,21 +13,18 @@ use App\Setting;
 use Illuminate\Http\Request;
 
 class SettingController extends CmsController {
+
+    // GET: /cms/settings
     public function index() {
         return view('cms.settings.index');
     }
 
+    // POST: /cms/settings
     public function store(Request $request) {
         // Set language
-        $langConf = Setting::firstOrCreate([
-            'type' => Setting::TYP_SITE,
-            'meta->label' => 'front_page_language'
-        ]);
-//        $langConf = DB::table('settings')->where("meta->label", 'front_page_language')->count();
-        return ($langConf);
-        $langConf->value = $request->front_page_language;
-        $langConf->save();
+        Setting::setSiteConfigValue('front_page_language', $request->front_page_language);
 
+        flash()->success('Saved successfully');
         return back();
     }
 }

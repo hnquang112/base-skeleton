@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Cms;
 use Illuminate\Http\Request;
 use App\Tag;
 
-class TagController extends CmsController
-{
+class TagController extends CmsController {
+
+    // GET: /cms/tags
     public function index(Request $request) {
         $tags = Tag::withCount('posts')->get();
         $tag = new Tag;
@@ -14,12 +15,14 @@ class TagController extends CmsController
         return view('cms.tags.index', compact('tags', 'tag'));
     }
 
+    // GET: /cms/tags/create
     public function create() {
         $tag = new Tag;
 
         return view('cms.tags.form', compact('tag'));
     }
 
+    // POST: /cms/tags
     public function store(Request $request) {
         $this->validate($request, Tag::$rulesForCreating);
 
@@ -37,10 +40,12 @@ class TagController extends CmsController
         return back();
     }
 
+    // GET: /cms/tags/1/edit
     public function edit($tag) {
         return view('cms.tags.form', compact('tag'));
     }
 
+    // PUT: /cms/tags/1
     public function update(Request $request, $tag) {
         $this->validate($request, Tag::$rulesForCreating);
 
@@ -57,6 +62,7 @@ class TagController extends CmsController
         return back();
     }
 
+    // DELETE: /cms/tags/1
     public function destroy(Request $request) {
         $this->deleteMultipleItems(Tag::class, $request->selected_ids);
 

@@ -9,12 +9,17 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Setting;
 use App;
 use Session;
 
 class FrontController extends Controller {
     public function __construct() {
-        App::setLocale('vi');
+        $lang = Setting::getSiteConfigValue('front_page_language');
+
+        if (!App::isLocale($lang)) {
+            App::setLocale($lang);
+        }
     }
 
     public function getSessionId() {

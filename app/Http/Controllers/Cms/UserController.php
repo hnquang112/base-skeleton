@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 
 class UserController extends CmsController {
+
+    // GET: /cms/users
     public function index(Request $request) {
         $users = User::query();
 
@@ -16,12 +18,14 @@ class UserController extends CmsController {
         return view('cms.users.index', compact('users'));
     }
 
+    // GET: /cms/users/create
     public function create() {
         $user = new User;
 
         return view('cms.users.form', compact('user'));
     }
 
+    // POST: /cms/users
     public function store(Request $request) {
         $this->validate($request, User::$rulesForCreating);
 
@@ -39,10 +43,12 @@ class UserController extends CmsController {
         return back();
     }
 
+    // GET: /cms/users/1/edit
     public function edit($user) {
         return view('cms.users.form', compact('user'));
     }
 
+    // PUT: /cms/users/1
     public function update(Request $request, $user) {;
         $emailUpdateRule = 'email|required|max:255|unique:users,email,' . $user->id;
         $this->validate($request, User::extendRulesForUpdating(['email' => $emailUpdateRule]));
@@ -60,6 +66,7 @@ class UserController extends CmsController {
         return back();
     }
 
+    // DELETE: /cms/users/1
     public function destroy(Request $request) {
         $deleteIds = $request->selected_ids;
 

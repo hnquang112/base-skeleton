@@ -11,20 +11,27 @@ class Setting extends Model {
     use SoftDeletes, Json;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['type', 'label', 'description', 'value'];
+    protected $fillable = ['type', 'label', 'description', 'value', 'image_id'];
     protected $jsonColumns = ['meta'];
 
     const TYP_SLIDER = 0;
     const TYP_MENU = 1;
-    const TYP_SITE = 2;
+    const TYP_CONFIG = 2;
 
     public static $languages = [
-        'vi' => 'Tiếng Việt',
-        'en' => 'English',
+        'vi' => [
+            'name' => 'Tiếng Việt',
+            'flag' => 'vn'
+        ],
+        'en' => [
+            'name' => 'English',
+            'flag' => 'us'
+        ]
     ];
 
     public static $siteConfigLabels = [
         'front_page_language',
+        'cms_page_language',
     ];
 
     public static $rulesForCreatingSliders = [
@@ -63,15 +70,6 @@ class Setting extends Model {
     }
 
     /**
-     * Mutators
-     */
-    public function setImageIdAttribute($value) {
-        if (!empty($value)) {
-            $this->attributes['image_id'] = create_file_from_path($value);
-        }
-    }
-
-    /**
      * Scopes
      */
     public function scopeSliders($query) {
@@ -91,6 +89,13 @@ class Setting extends Model {
     }
 
     public static function getSiteConfigValue($key) {
-        return self::where('type', self::TYP_SITE)->where("meta->'label'", $key)->pluck(DB::raw("meta->'value'"));
+        return Setting::where('type', self::TYP_CONFIG)->where('meta->label', $key)->first()->value;
     }
+
+    public static function setSiteConfigValue($key, $value) {
+        Setting::updateOrCreate(['meta->label' => $key], [
+            'value' => $value
+        ]);
+    }
+
 }

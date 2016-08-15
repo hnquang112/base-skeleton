@@ -14,34 +14,20 @@ class PostController extends CmsController
      */
     protected $posts;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @param  TaskRepository  $tasks
-     * @return void
-     */
     public function __construct(PostRepository $posts)
     {
         $this->posts = $posts;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // GET: /cms/posts
     public function index(Request $request)
     {
-        $posts = Post::with('author', 'categories')->blogPosts()->orderByDesc('created_at')->paginate(10);
+        $posts = Post::with('author', 'categories', 'tags')->blogPosts()->orderByDesc('created_at')->get();
 
         return view('cms.posts.index', compact('posts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // GET: /cms/posts/create
     public function create()
     {
         $post = new Post;
@@ -51,12 +37,7 @@ class PostController extends CmsController
         return view('cms.posts.form', compact('post', 'categories', 'tags'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // POST: /cms/posts
     public function store(Request $request)
     {
         $this->validate($request, Post::$rulesForCreating);
@@ -84,12 +65,7 @@ class PostController extends CmsController
         return back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // GET: /cms/posts/1/edit
     public function edit($post)
     {
         $categories = $post->category_ids;
@@ -98,13 +74,7 @@ class PostController extends CmsController
         return view('cms.posts.form', compact('post', 'categories', 'tags'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // PUT: /cms/posts/1
     public function update(Request $request, $post)
     {
         $this->validate($request, Post::$rulesForCreating);
@@ -133,12 +103,7 @@ class PostController extends CmsController
         return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // DELETE: /cms/posts/1
     public function destroy(Request $request)
     {
         $this->deleteMultipleItems(Post::class, $request->selected_ids);

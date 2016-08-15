@@ -7,13 +7,15 @@
  */
 
 return [
-    'header.checkout' => 'thanh toan',
-    'header.my_account' => 'tai khoan',
-    'header.cart_items' => 'mon',
-    'menu.home' => 'trang chu',
-    'menu.shop' => 'san pham',
-    'menu.blog' => 'bai viet',
-    'menu.contact' => 'lien he',
-    'common.categories' => 'danh muc',
-    'common.tags' => 'the',
+    'header.checkout' => 'Thanh toán',
+    'header.my_account' => 'Tài khoản',
+    'header.cart_items' => 'món',
+    'menu.home' => 'Trang chủ',
+    'menu.shop' => 'Sản phẩm',
+    'menu.blog' => 'Bài viết',
+    'menu.contact' => 'Liên hệ',
+    'common.categories' => 'Danh mục',
+    'common.tags' => 'Thẻ',
+    'common.recent_posts' => 'Bài viết gần đây',
+    'common.price_filter' => 'Lọc theo giá',
 ];

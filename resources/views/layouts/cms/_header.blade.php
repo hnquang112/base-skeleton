@@ -224,14 +224,20 @@
                         {{--</li>--}}
                     {{--</ul>--}}
                 {{--</li>--}}
-                <li title="View Page"><a href="{{ url('/') }}" target="_blank">
+                <li title="View Front Page"><a href="{{ url('/') }}" target="_blank">
                         <i class="fa fa-lg fa-crosshairs" aria-hidden="true"></i></a></li>
-                <li class="dropdown" title="Change Language">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="flag-icon flag-icon-us"></span>
-                        English <span class="caret"></span></a>
+                <!-- Language selector -->
+                <li class="dropdown" title="Change CMS Page Language">
+                    <?php $lCms = App\Setting::getSiteConfigValue('cms_page_language') ?>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="flag-icon flag-icon-{{ App\Setting::$languages[$lCms]['flag'] }}"></span>
+                        {{ App\Setting::$languages[$lCms]['name'] }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"><span class="flag-icon flag-icon-vn"></span> Tiếng Việt</a></li>
-                        <li><a href="#"><span class="flag-icon flag-icon-us"></span> English</a></li>
+                        @foreach (App\Setting::$languages as $code => $label)
+                            <li><a href="{{ route('cms.language', $code) }}">
+                                    <span class="flag-icon flag-icon-{{ $label['flag'] }}"></span> {{ $label['name'] }}
+                                </a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <!-- User Account: style can be found in dropdown.less -->
