@@ -39,6 +39,7 @@ Route::group(['prefix' => 'cms'], function () {
         Route::resource('products', 'ProductController', ['except' => ['show']]);
         Route::resource('users', 'UserController', ['except' => ['show']]);
 
+        Route::resource('settings', 'SettingController', ['only' => ['index', 'store']]);
         Route::resource('sliders', 'SliderController', ['except' => ['show'], 'parameters' => ['sliders' => 'settings']]);
 //        Route::resource('menus', 'MenuController', ['except' => ['show'], 'parameters' => ['menus' => 'settings']]);
         Route::resource('reviews', 'ReviewController', ['except' => ['show'], 'parameters' => ['reviews' => 'comments']]);
@@ -49,3 +50,7 @@ Route::group(['prefix' => 'cms'], function () {
 Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'api'], function () {
     Route::resource('qr_codes', 'QrController', ['only' => ['store']]);
 });
+
+//Route::group(['namespace' => 'Api', 'middleware' => 'api'], function () {
+//    Route::resource('demo', 'QrController', ['only' => ['index', 'store']]);
+//});

@@ -7,6 +7,9 @@
  */
 
 return [
+    'header.checkout' => 'checkout',
+    'header.my_account' => 'my account',
+    'header.cart_items' => 'item|items',
     'menu.home' => 'home',
     'menu.shop' => 'shop',
     'menu.blog' => 'blog',

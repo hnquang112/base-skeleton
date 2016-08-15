@@ -16,14 +16,14 @@
     <div class="topbar-right clearfix">
         <ul class="clearfix">
             <li class="checkout-icon">
-                <a href="http://themes.quitenicestuff.com/organicshopwp/checkout/">Checkout</a>
+                <a href="http://themes.quitenicestuff.com/organicshopwp/checkout/">@lang ('front.header.checkout')</a>
             </li>
             <li class="myaccount-icon">
-                <a href="http://themes.quitenicestuff.com/organicshopwp/my-account/">My Account</a>
+                <a href="http://themes.quitenicestuff.com/organicshopwp/my-account/">@lang ('front.header.my_account')</a>
             </li>
         </ul>
         <div class="cart-top">
-            <p><a href="{{ route('cart.index') }}">{{ Cart::count() }} items</a></p>
+            <p><a href="{{ route('cart.index') }}">{{ Cart::count() }} {{ trans_choice('front.header.cart_items', Cart::count()) }}</a></p>
         </div>
     </div><!-- END .topbar-right -->
 </div><!-- END .topbar -->
@@ -36,12 +36,12 @@
     <ul class="fl clearfix sf-js-enabled" id="main-menu">
         <li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item
         page_item page-item-14 {{ $request->is('/') ? 'current_page_item' : '' }} menu-item-25">
-            <a href="{{ url('/') }}">Home</a>
+            <a href="{{ url('/') }}">@lang ('front.menu.home')</a>
         </li>
         <li class="menu-item menu-item-type-post_type {{ $request->is('shop*') ? 'current_page_item' : '' }}
                 menu-item-object-page menu-item-26 " id="menu-item-26">
             @if ($_allCategories->count() > 0)
-                <a class="sf-with-ul" href="{{ route('shop.index') }}">Shop<span class="sf-sub-indicator"></span></a>
+                <a class="sf-with-ul" href="{{ route('shop.index') }}">@lang ('front.menu.shop')<span class="sf-sub-indicator"></span></a>
                 <ul class="sub-menu" style="display: none; visibility: hidden;">
                     @foreach ($_allCategories as $cat)
                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-{{ $cat->id }}"
@@ -51,17 +51,17 @@
                     @endforeach
                 </ul>
             @else
-                <a href="{{ route('shop.index') }}">Shop</a>
+                <a href="{{ route('shop.index') }}">@lang ('front.menu.shop')</a>
             @endif
         </li>
         {{--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23" id="menu-item-23">--}}
             {{--<a href="http://themes.quitenicestuff.com/organicshopwp/testimonials/">Testimonials</a>--}}
         {{--</li>--}}
         <li class="menu-item menu-item-type-post_type {{ $request->is('blog*') ? 'current_page_item' : '' }} menu-item-object-page menu-item-24" id="menu-item-24">
-            <a href="{{ route('blog.index') }}">Blog</a>
+            <a href="{{ route('blog.index') }}">@lang ('front.menu.blog')</a>
         </li>
         <li class="menu-item menu-item-type-post_type {{ $request->is('contact*') ? 'current_page_item' : '' }} menu-item-object-page menu-item-22" id="menu-item-22">
-            <a href="{{ route('contact.index') }}">Contact</a>
+            <a href="{{ route('contact.index') }}">@lang ('front.menu.contact')</a>
         </li>
     </ul>
     <form action="{{ url('/') }}" class="fr" id="menu-search" method="get" name="menu-search">

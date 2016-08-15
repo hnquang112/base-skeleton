@@ -5,16 +5,27 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Eloquent\Dialect\Json;
+use DB;
 
 class Setting extends Model {
     use SoftDeletes, Json;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['type', 'label', 'description'];
+    protected $fillable = ['type', 'label', 'description', 'value'];
     protected $jsonColumns = ['meta'];
 
     const TYP_SLIDER = 0;
     const TYP_MENU = 1;
+    const TYP_SITE = 2;
+
+    public static $languages = [
+        'vi' => 'Tiếng Việt',
+        'en' => 'English',
+    ];
+
+    public static $siteConfigLabels = [
+        'front_page_language',
+    ];
 
     public static $rulesForCreatingSliders = [
         'label' => 'required|max:255',
@@ -32,7 +43,8 @@ class Setting extends Model {
             "description":null,
             "image_id":null,
             "menu_item":null,
-            "menu_url":null
+            "menu_url":null,
+            "value":null
         }');
     }
 
@@ -76,5 +88,9 @@ class Setting extends Model {
     public function delete() {
         $this->image()->delete();
         parent::delete();
+    }
+
+    public static function getSiteConfigValue($key) {
+        return self::where('type', self::TYP_SITE)->where("meta->'label'", $key)->pluck(DB::raw("meta->'value'"));
     }
 }

@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 use QrCode;
 
 class QrController extends ApiController {
+    public function index() {
+        return view('demo.create');
+    }
+
     public function store(Request $request) {
         return QrCode::size(300)->generate($request->info);
     }

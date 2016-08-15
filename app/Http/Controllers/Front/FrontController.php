@@ -9,11 +9,12 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App;
 use Session;
 
 class FrontController extends Controller {
     public function __construct() {
-        \Debugbar::debug('123');
+        App::setLocale('vi');
     }
 
     public function getSessionId() {
