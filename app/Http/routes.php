@@ -51,9 +51,6 @@ Route::group(['prefix' => 'cms'], function () {
 });
 
 Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'api'], function () {
-    Route::resource('qr_codes', 'QrController', ['only' => ['store']]);
+    Route::resource('qr_codes', 'QrController', ['only' => ['index', 'store']]);
+    Route::resource('files', 'FileController', ['only' => ['index', 'store', 'show', 'destroy']]);
 });
-
-//Route::group(['namespace' => 'Api', 'middleware' => 'api'], function () {
-//    Route::resource('demo', 'QrController', ['only' => ['index', 'store']]);
-//});

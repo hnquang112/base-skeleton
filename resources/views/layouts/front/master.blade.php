@@ -34,6 +34,8 @@
 
     <!-- Meta tags -->
     {{-- See https://github.com/joshbuchea/HEAD for further neccesary tags --}}
+    <meta property="fb:app_id" content="{{ config('services.facebook.app-id') }}"/>
+
     @stack ('meta')
 </head><!-- END head -->
 

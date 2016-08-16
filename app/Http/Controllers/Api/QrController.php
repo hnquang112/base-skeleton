@@ -13,7 +13,7 @@ use QrCode;
 
 class QrController extends ApiController {
     public function index() {
-        return view('demo.create');
+        return view('demo.qr.create');
     }
 
     public function store(Request $request) {

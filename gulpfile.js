@@ -13,14 +13,17 @@ var cmsScriptPaths = [
     // '../../../bower_components/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js',
     // '../../../bower_components/AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js',
     '../../../bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js',
-    '../../../bower_components/AdminLTE/plugins/chartjs/Chart.min.js',
+    // '../../../bower_components/AdminLTE/plugins/chartjs/Chart.min.js',
     // '../../../bower_components/AdminLTE/plugins/iCheck/icheck.min.js',
     '../../../bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js',
     '../../../bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js',
     '../../../bower_components/AdminLTE/plugins/select2/select2.full.min.js',
     '../../../bower_components/summernote/dist/summernote.min.js',
     '../../../bower_components/summernote/dist/lang/summernote-vi-VN.min.js',
-    '../../../bower_components/toastr/toastr.min.js'
+    // '../../../bower_components/toastr/toastr.min.js',
+    '../../../bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js',
+    '../../../bower_components/blueimp-file-upload/js/jquery.iframe-transport.js',
+    '../../../bower_components/blueimp-file-upload/js/jquery.fileupload.js'
 ];
 
 var cmsStylePaths = [
@@ -34,7 +37,7 @@ var cmsStylePaths = [
     '../../../bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css',
     '../../../bower_components/AdminLTE/plugins/select2/select2.min.css',
     '../../../bower_components/summernote/dist/summernote.css',
-    '../../../bower_components/toastr/toastr.min.css',
+    // '../../../bower_components/toastr/toastr.min.css',
     '../../../bower_components/flag-icon-css/css/flag-icon.min.css'
 ];
 
@@ -69,9 +72,6 @@ var copyPaths = [{
 }, {
     src: 'images',
     dest: 'img'
-// }, {
-//     src: 'plugins/iCheck/**',
-//     dest: 'css'
 }, {
     src: 'plugins/flexslider/**',
     dest: 'css/fonts'

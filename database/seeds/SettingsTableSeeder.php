@@ -16,17 +16,17 @@ class SettingsTableSeeder extends Seeder
         Setting::updateOrCreate(['meta->label' => 'front_page_language'], [
             'label' => 'front_page_language',
             'type' => Setting::TYP_CONFIG,
-            'value' => 'vi'
+            'config_value' => 'vi'
         ]);
 
         // Set default language of cms page is English
         Setting::updateOrCreate(['meta->label' => 'cms_page_language'], [
             'label' => 'cms_page_language',
             'type' => Setting::TYP_CONFIG,
-            'value' => 'en'
+            'config_value' => 'en'
         ]);
 
-        // Seed the slider
+        // Seed the slider and quotes
         $faker = Faker\Factory::create();
 
         $limit = 10;

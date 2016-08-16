@@ -19,6 +19,9 @@ class File extends Model {
     protected $fillable = ['path', 'description'];
     protected $jsonColumns = ['meta'];
 
+    const TYP_EXTERNAL = 0;
+    const TYP_INTERNAL = 1;
+
     /**
      * Validations
      */
@@ -31,7 +34,12 @@ class File extends Model {
         parent::__construct();
         $this->hintJsonStructure('meta', '{
             "path":null,
-            "description":null
+            "description":null,
+            "name":null,
+            "client_name":null,
+            "mime":null,
+            "client_mime":null,
+            "size":null
         }');
     }
 

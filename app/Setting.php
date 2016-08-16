@@ -17,6 +17,7 @@ class Setting extends Model {
     const TYP_SLIDER = 0;
     const TYP_MENU = 1;
     const TYP_CONFIG = 2;
+    const TYP_QUOTE = 3;
 
     public static $languages = [
         'vi' => [
@@ -51,7 +52,9 @@ class Setting extends Model {
             "image_id":null,
             "menu_item":null,
             "menu_url":null,
-            "value":null
+            "config_value":null,
+            "quote_content":null,
+            "quote_author":null
         }');
     }
 
@@ -89,12 +92,12 @@ class Setting extends Model {
     }
 
     public static function getSiteConfigValue($key) {
-        return Setting::where('type', self::TYP_CONFIG)->where('meta->label', $key)->first()->value;
+        return Setting::where('type', self::TYP_CONFIG)->where('meta->label', $key)->first()->config_value;
     }
 
     public static function setSiteConfigValue($key, $value) {
         Setting::updateOrCreate(['meta->label' => $key], [
-            'value' => $value
+            'config_value' => $value
         ]);
     }
 

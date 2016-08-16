@@ -11,7 +11,7 @@
     <meta name='msapplication-tap-highlight' content='no'>
     <meta name='description' content=''/><!----**********ADD WEB DESCRIPTION---->
     <meta name='keywords' content=''/><!----**********ADD WEB KEYWORDS---->
-    <meta name='author' content=''/><!----**********ADD WEB AUTHOR---->
+    <meta name='author' content='hnquang112'/><!----**********ADD WEB AUTHOR---->
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     @inject ('_request', 'Illuminate\Http\Request')
