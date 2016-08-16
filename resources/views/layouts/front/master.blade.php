@@ -37,6 +37,8 @@
     <meta property="fb:app_id" content="{{ config('services.facebook.app-id') }}"/>
 
     @stack ('meta')
+
+    @include ('layouts._analytic')
 </head><!-- END head -->
 
 <!-- BEGIN body -->
