@@ -37,6 +37,23 @@ function get_auth_admin_type() {
 }
 
 function get_front_lang_attribute($attr = null) {
-    if ($attr == null) return Setting::getSiteConfigValue('front_page_language');
-    return Setting::$languages[Setting::getSiteConfigValue('front_page_language')][$attr];
+    $lang = Setting::getSiteConfigValue('front_page_language');
+    $fallback = 'en';
+
+    if (is_null($attr)) {
+        return !empty($lang) ? $lang : $fallback;
+    }
+
+    return !empty($lang) ? Setting::$languages[$lang][$attr] : $fallback;
+}
+
+function get_cms_lang_attribute($attr = null) {
+    $lang = Setting::getSiteConfigValue('cms_page_language');
+    $fallback = 'en';
+
+    if (is_null($attr)) {
+        return !empty($lang) ? $lang : $fallback;
+    }
+
+    return !empty($lang) ? Setting::$languages[$lang][$attr] : $fallback;
 }

@@ -94,7 +94,9 @@ class Setting extends Model {
     }
 
     public static function getSiteConfigValue($key) {
-        return Setting::where('type', self::TYP_CONFIG)->where('meta->label', $key)->first()->config_value;
+        $conf = Setting::where('type', self::TYP_CONFIG)->where('meta->label', $key);
+        if ($conf->count() > 0) return Setting::where('type', self::TYP_CONFIG)->where('meta->label', $key)->first()->config_value;
+        return null;
     }
 
     public static function setSiteConfigValue($key, $value) {

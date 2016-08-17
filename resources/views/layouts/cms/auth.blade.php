@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ get_cms_lang_attribute() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,14 +24,6 @@
 
 <!-- Vendor JS -->
 <script src="{{ elixir('js/vendor.js') }}"></script>
-{{--<script>--}}
-    {{--$(function () {--}}
-        {{--$('input').iCheck({--}}
-            {{--checkboxClass: 'icheckbox_square-purple',--}}
-            {{--radioClass: 'iradio_square-purple',--}}
-            {{--increaseArea: '20%' // optional--}}
-        {{--});--}}
-    {{--});--}}
-{{--</script>--}}
+
 </body>
 </html>
