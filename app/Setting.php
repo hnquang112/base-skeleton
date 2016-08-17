@@ -22,11 +22,13 @@ class Setting extends Model {
     public static $languages = [
         'vi' => [
             'name' => 'Tiếng Việt',
-            'flag' => 'vn'
+            'flag' => 'vn',
+            'code' => 'vi_VN',
         ],
         'en' => [
             'name' => 'English',
-            'flag' => 'us'
+            'flag' => 'us',
+            'code' => 'en_US',
         ]
     ];
 

@@ -70,7 +70,7 @@
                         </div><!-- /.box-tools -->
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        <p>Status: 
+                        <p>Status:
                             @if ($post->is_published)
                                 <span class="text-success"><strong>Published</strong> at {{ $post->published_at }}</span>
                             @else
@@ -92,29 +92,6 @@
                         @endif
                         <button class="btn btn-primary btn-flat pull-right" onclick="$('#js-save-post-form').submit()">Save</button>
                     </div>
-                </div><!-- /.box -->
-
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Categories</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                        </div><!-- /.box-tools -->
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="form-group">
-                            @forelse (App\Category::lists('name', 'id') as $id => $name)
-                                <div class="checkbox">
-                                    <label><input name="category_ids[]" type="checkbox" value="{{ $id }}"
-                                        {{ in_array($id, $categories) ? 'checked' : '' }}> {{ $name }}</label>
-                                </div>
-                            @empty
-                                <p>Please add categories</p>
-                            @endforelse
-                        </div>
-                    </div> <!-- /.box-body -->
                 </div><!-- /.box -->
 
                 <div class="box box-warning">
@@ -145,7 +122,8 @@
                         </div><!-- /.box-tools -->
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        <p>Use these services to upload image: <a href="https://www.flickr.com/" target="blank">Flickr</a>, <a href="http://imgur.com/" target="blank">Imgur</a>, <a href="http://2.pik.vn/" target="blank">pik.vn</a></p>
+                        <p>Use these services to upload image: <a href="https://www.flickr.com/" target="blank">Flickr</a>,
+                            <a href="http://imgur.com/" target="blank">Imgur</a>, <a href="http://2.pik.vn/" target="blank">pik.vn</a></p>
                         <label for="">Image URL:</label>
                         <div class="input-group input-group-sm">
                             <input name="represent_image" id="js-input-image-url" type="text" class="form-control" placeholder="Paste URL of the uploaded image">

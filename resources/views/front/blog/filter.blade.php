@@ -9,7 +9,13 @@
 
             <!-- BEGIN .col-main -->
             <li class="col-main">
-                <h2 class="page-title">All {{ $postType == 'prod' ? 'products' : 'posts'  }} {{ $taxoType == 'cat' ? 'in' : 'tagged'}} {{ ucfirst($taxo->name) }}</h2>
+                <h2 class="page-title">
+{{--                    All {{ $postType == 'prod' ? 'products' : 'posts'  }} {{ $taxoType == 'cat' ? 'in' : 'tagged'}} {{ ucfirst($taxo->name) }}--}}
+                    @lang ('front.blog.title', [
+                    'object' => trans_choice('front.common.' . ($postType == 'prod' ? 'products' : 'posts'), 2),
+                    'verb' => trans('front.blog.title_verb.' . ($taxoType == 'cat' ? 'in' : 'tagged'))])
+                    {{ ucfirst($taxo->name) }}
+                </h2>
 
                 <!--BEGIN .search_results -->
                 <ol class="search-results">

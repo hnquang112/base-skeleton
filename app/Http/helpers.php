@@ -7,6 +7,7 @@
  */
 use Carbon\Carbon;
 use App\File;
+use App\Setting;
 
 function format_date_as_string($date) {
     return Carbon::parse($date)->format('d/m/Y');
@@ -33,4 +34,9 @@ function create_file_from_path($path) {
 function get_auth_admin_type() {
     if (!auth()->check()) return null;
     return auth()->user()->type;
+}
+
+function get_front_lang_attribute($attr = null) {
+    if ($attr == null) return Setting::getSiteConfigValue('front_page_language');
+    return Setting::$languages[Setting::getSiteConfigValue('front_page_language')][$attr];
 }

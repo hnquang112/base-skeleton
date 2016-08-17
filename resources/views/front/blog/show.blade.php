@@ -20,7 +20,8 @@
                 <div class="post-40 post type-post status-publish format-standard hentry blog-title-single clearfix">
                     <div class="fl">
                         <h2>{{ $post->title }}
-                            <span>Posted {{ format_date_as_string($post->published_at) }} | Tags:
+                            <span>@lang ('front.blog.body.posted') {{ format_date_as_string($post->published_at) }} |
+                                {{ trans_choice('front.common.tags', $post->tags()->count()) }}:
                                 @foreach ($post->tags as $key => $tag)
                                     <a href="{{ $tag->front_url }}" rel="tag">{{ $tag->name }}</a>
                                     @if ($key < $post->tags()->count() - 1), @endif
@@ -29,7 +30,7 @@
                         </h2>
                     </div>
                     <div class="comment-count fr">
-                        <h3><a title="Comment on {{ $post->title }}" href="{{ $post->front_url }}#fb-comment-widget">
+                        <h3><a title="@lang ('front.blog.body.comment_on') {{ $post->title }}" href="{{ $post->front_url }}#fb-comment-widget">
                                 <span class="fb-comments-count"></span></a></h3>
                         <div class="comment-point"></div>
                     </div>

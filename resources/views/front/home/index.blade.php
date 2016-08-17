@@ -5,12 +5,12 @@
     
     <!-- BEGIN .section-mini2 -->
     <div class="section-mini2">
-        <div class="tag-title-wrap clearfix"><h4 class="tag-title">Featured Products</h4></div>
+        <div class="tag-title-wrap clearfix"><h4 class="tag-title">{{ trans_choice('front.home.featured_products', 2) }}</h4></div>
         <ul class="products">
             <li class="first">
                 <a href="http://themes.quitenicestuff.com/organicshopwp/shop/summer-berry-soap/">
                     <div class="product-image">
-                        <span class="onsale">Sale!</span>
+                        <span class="onsale">@lang ('front.home.product.sale')</span>
                         <img alt="image4" class="attachment-shop_catalog wp-post-image"
                              src="http://placehold.it/285x285" title="image4">
                     </div>
@@ -21,7 +21,7 @@
                 </a>
                 <p class="product-button clearfix">
                     <a class="button2 product_type_simple" data-product_id="69" rel="nofollow"
-                       href="http://themes.quitenicestuff.com/organicshopwp/?add-to-cart=69">Add to cart</a></p>
+                       href="http://themes.quitenicestuff.com/organicshopwp/?add-to-cart=69">@lang ('front.home.product.add_to_cart')</a></p>
             </li>
             <li>
                 <a href="http://themes.quitenicestuff.com/organicshopwp/shop/luxury-spa-set/">

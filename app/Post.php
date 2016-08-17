@@ -113,7 +113,7 @@ class Post extends Model
     }
 
     public function getRepresentImagePathAttribute() {
-        return $this->represent_image ? $this->represent_image->path :
+        return !empty($this->represent_image) ? $this->represent_image->path :
             'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
     }
 

@@ -3,7 +3,7 @@
 <!--[if IE 7]>    <html dir="ltr" lang="en-US" class="ie7"> <![endif]-->
 <!--[if IE 8]>    <html dir="ltr" lang="en-US" class="ie8"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html dir="ltr" lang="en-US">
+<html dir="ltr" lang="{{ get_front_lang_attribute() }}">
 <!--<![endif]-->
 
 <!-- BEGIN head -->
@@ -48,7 +48,7 @@
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.7&appId={{ config('services.facebook.app-id') }}";
+            js.src = "//connect.facebook.net/{{ get_front_lang_attribute('code') }}/sdk.js#xfbml=1&version=v2.7&appId={{ config('services.facebook.app-id') }}";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
 
@@ -79,7 +79,7 @@
         })();
     </script><!--End of Tawk.to Script-->
 
-    <script src="https://google.com/recaptcha/api.js?hl=en"></script>
+    <script src="https://google.com/recaptcha/api.js?hl={{ get_front_lang_attribute() }}"></script>
 
     @stack ('scripts')
 </body><!-- END body -->

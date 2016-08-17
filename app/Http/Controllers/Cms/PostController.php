@@ -22,7 +22,7 @@ class PostController extends CmsController
     // GET: /cms/posts
     public function index(Request $request)
     {
-        $posts = Post::with('author', 'categories', 'tags')->blogPosts()->orderByDesc('created_at')->get();
+        $posts = Post::with('author', 'tags')->blogPosts()->orderByDesc('created_at')->get();
 
         return view('cms.posts.index', compact('posts'));
     }
@@ -31,10 +31,9 @@ class PostController extends CmsController
     public function create()
     {
         $post = new Post;
-        $categories = [];
         $tags = [];
 
-        return view('cms.posts.form', compact('post', 'categories', 'tags'));
+        return view('cms.posts.form', compact('post', 'tags'));
     }
 
     // POST: /cms/posts
@@ -54,7 +53,6 @@ class PostController extends CmsController
         $post->fill($request->except('do_publish', 'represent_image'));
 
         if ($post->save()) {
-            $post->syncCategories($request->input('category_ids', []));
             $post->syncTags($request->input('tag_ids', []));
 
             flash()->success('Saved successfully');
@@ -68,10 +66,9 @@ class PostController extends CmsController
     // GET: /cms/posts/1/edit
     public function edit($post)
     {
-        $categories = $post->category_ids;
         $tags = $post->tag_ids;
 
-        return view('cms.posts.form', compact('post', 'categories', 'tags'));
+        return view('cms.posts.form', compact('post', 'tags'));
     }
 
     // PUT: /cms/posts/1
@@ -92,7 +89,6 @@ class PostController extends CmsController
         $post->fill($request->except('do_publish', 'represent_image'));
 
         if ($post->save()) {
-            $post->syncCategories($request->input('category_ids', []));
             $post->syncTags($request->input('tag_ids', []));
 
             flash()->success('Saved successfully');

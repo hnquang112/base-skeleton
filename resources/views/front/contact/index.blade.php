@@ -19,12 +19,9 @@
 
                         <!--BEGIN .contact_list -->
                         <ul class="contact_list">
-                            <li class="address"><span>1 London Road, SE1</span>
-                            </li>
-                            <li class="phone"><span>+44 01235 934698</span>
-                            </li>
-                            <li class="email"><span>email [at] website [dot] com</span>
-                            </li>
+                            <li class="address"><span>1 London Road, SE1</span></li>
+                            <li class="phone"><span>+44 01235 934698</span></li>
+                            <li class="email"><span>email [at] website [dot] com</span></li>
                             <!--END .contact_list -->
                         </ul>
                     </li>
@@ -46,27 +43,27 @@
 
                 @if (session('contact.saved'))
                     <div class="msg success clearfix">
-                        <p class="fl">Email sent, thank you for contacting us</p>
+                        <p class="fl">@lang ('contact.email_sent')</p>
                     </div>
                 @endif
 
-                <h4>Send Us An Email</h4>
+                <h4>@lang ('front.contact.send_email')</h4>
 
                 <form action="{{ route('contact.store') }}" id="contactform" class="clearfix" method="post">
                     {{ csrf_field() }}
 
                     <div class="field-row">
-                        <label for="contact_name">Name <span>(required)</span></label>
+                        <label for="contact_name">@lang ('front.contact.field.name') <span>(@lang ('front.contact.field.required'))</span></label>
                         <input type="text" name="name" id="contact_name" class="text_input" value="{{ old('name') }}">
                     </div>
 
                     <div class="field-row">
-                        <label for="email">Email <span>(required)</span></label>
+                        <label for="email">@lang ('front.contact.field.email') <span>(@lang ('front.contact.field.required'))</span></label>
                         <input type="email" name="email" id="email" class="text_input" value="{{ old('email') }}">
                     </div>
 
                     <div class="field-row">
-                        <label for="message_text">Message <span>(required)</span></label>
+                        <label for="message_text">@lang ('front.contact.field.message') <span>(@lang ('front.contact.field.required'))</span></label>
                         <textarea name="message" id="message_text" class="text_input" cols="60" rows="9">{{ old('message') }}</textarea>
                     </div>
 
@@ -74,7 +71,7 @@
                         {!! app('captcha')->display() !!}
                     </div>
 
-                    <button class="button2" type="submit" style="margin-top: 20px">Send Email</button>
+                    <button class="button2" type="submit" style="margin-top: 20px">@lang ('front.contact.field.send_email')</button>
                 </form>
             </li><!-- END .col-main -->
             @include ('layouts.front._sidebar')
