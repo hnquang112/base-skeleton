@@ -7,7 +7,7 @@
     <div class="section">
         <ul class="columns-content page-content clearfix">
             <li class="col-main">
-                <h2 class="page-title">Contact</h2>
+                <h2 class="page-title">@lang ('front.contact.title')</h2>
 
                 <ul class="columns-2 clearfix">
                     <li class="col2">
@@ -15,7 +15,7 @@
                     </li>
 
                     <li class="col2">
-                        <h4>Details</h4>
+                        <h4>@lang ('front.contact.detail')</h4>
 
                         <!--BEGIN .contact_list -->
                         <ul class="contact_list">

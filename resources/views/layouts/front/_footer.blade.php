@@ -3,7 +3,7 @@
     <ul class="columns-4 clearfix">
         <li class="col4">
             <div class="widget">
-                <div class="widget-title clearfix"><h6>Customer Services</h6></div>
+                <div class="widget-title clearfix"><h6>@lang ('front.footer.customer_services')</h6></div>
                 <ul>
                     <li class="contact-phone">+44 01235 934698</li>
                     <li class="contact-mail">email [at] website [dot] com</li>
@@ -12,7 +12,7 @@
         </li>
         <li class="col4">
             <div class="widget">
-                <div class="widget-title clearfix"><h6>Categories</h6></div>
+                <div class="widget-title clearfix"><h6>{{ trans_choice('front.common.categories', 2) }}</h6></div>
                 <ul>
                     @foreach ($_allCategories as $_cat)
                         <li class="cat-item cat-item-{{ $_cat->id }}">
@@ -25,7 +25,7 @@
         </li>
         <li class="col4">
             <div class="widget">
-                <div class="widget-title clearfix"><h6>Tags</h6></div>
+                <div class="widget-title clearfix"><h6>{{ trans_choice('front.common.tags', 2) }}</h6></div>
                 <ul class="wp-tag-cloud">
                     @foreach ($_allTags as $_tag)
                         <li><a href="{{ $_tag->front_url }}" class="tag-link-{{ $_tag->id }}" title="1 topic" style="font-size: 14px;">
@@ -54,18 +54,18 @@
         <!-- Secondary Menu -->
         <ul class="footer-menu">
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78" id="menu-item-78">
-                <a href="{{ url('/') }}">Home</a>
+                <a href="{{ url('/') }}">@lang ('front.menu.home')</a>
             </li>
-            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-80" id="menu-item-80">
-                <a href="#">Terms &amp; Conditions</a>
-            </li>
-            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-79" id="menu-item-79">
-                <a href="#">Return Policy</a>
-            </li>
+            {{--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-80" id="menu-item-80">--}}
+                {{--<a href="#">Terms &amp; Conditions</a>--}}
+            {{--</li>--}}
+            {{--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-79" id="menu-item-79">--}}
+                {{--<a href="#">Return Policy</a>--}}
+            {{--</li>--}}
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-77" id="menu-item-77">
-                <a href="http://themes.quitenicestuff.com/organicshopwp/contact/">Contact</a>
+                <a href="{{ route('contact.index') }}">@lang ('front.menu.contact')</a>
             </li>
         </ul>
-        <p>© Copyright 2016</p>
+        <p>@lang ('front.footer.copyright')</p>
     </div>
 </div><!-- END #footer-bottom -->

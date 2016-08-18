@@ -18,11 +18,12 @@
     <title>Organic Shop | A Responsive WordPress Theme for eCommerce Websites</title>
 
     <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
     <link rel="stylesheet" href="{{ elixir('css/vendor.front.css') }}" type="text/css">
     <style type="text/css">
         h1, h2, h3, h4, h5, h6, #ui-datepicker-div .ui-datepicker-title, .dropcap, .ui-tabs .ui-tabs-nav li,
         #title-wrapper h1, #main-menu li, #main-menu li span, .caption, .accommodation_img_price {
-            font-family: 'Cardo', serif;
+            font-family: 'EB Garamond', serif;
         }
 
         #site-title {

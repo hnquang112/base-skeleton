@@ -21,6 +21,8 @@ return [
     'common.products' => 'Product|Products',
     'common.posts' => 'Post|Posts',
     'blog.title' => 'All :object :verb ',
+    'blog.title_object.products' => 'products',
+    'blog.title_object.posts' => 'posts',
     'blog.title_verb.tagged' => 'tagged',
     'blog.title_verb.in' => 'in',
     'blog.body.no_posts' => 'No posts',
@@ -38,4 +40,7 @@ return [
     'home.product.sale' => 'Sale!',
     'home.product.add_to_cart' => 'Add to cart',
     'footer.customer_services' => 'Customer Services',
+    'footer.copyright' => '© 2016. All Rights Reserved',
+    'contact.title' => 'Contact',
+    'contact.detail' => 'Details',
 ];

@@ -43,15 +43,14 @@ var cmsStylePaths = [
 
 var scriptPaths = [
     '../../../resources/assets/plugins/organic.shop.theme/js/jquery-1.7.2.min.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/jquery-ui.js',
+    '../../../resources/assets/plugins/organic.shop.theme/js/jquery-ui-1.8.24.min.js',
     '../../../resources/assets/plugins/organic.shop.theme/js/hoverIntent.js',
     '../../../resources/assets/plugins/organic.shop.theme/js/superfish.js',
     '../../../resources/assets/plugins/organic.shop.theme/js/flexslider-2.1.min.js',
     '../../../resources/assets/plugins/organic.shop.theme/js/prettyPhoto-3.1.4.min.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/jquery.numeric.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/scripts.js',
+    '../../../resources/assets/plugins/organic.shop.theme/js/jquery.numeric-1.3.js',
     '../../../resources/assets/plugins/organic.shop.theme/js/blockUI-2.39.min.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/price-slider.js'
+    '../../../resources/assets/plugins/organic.shop.theme/js/scripts.js'
 ];
 
 var stylePaths = [
