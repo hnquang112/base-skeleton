@@ -7,7 +7,7 @@
             @if ($paginator->currentPage() > 1)
                 <span class="fl"><a href="{{ $paginator->previousPageUrl() }}">← Newer posts</a></span>
             @endif
-            @if ($paginator->currentPage() < $paginator->count())
+            @if ($paginator->hasMorePages())
                 <span class="fr"><a href="{{ $paginator->nextPageUrl() }}">Older posts →</a></span>
             @endif
         </p>
