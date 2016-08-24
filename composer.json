@@ -29,7 +29,8 @@
         "anhskohbo/no-captcha": "^2.1",
         "tymon/jwt-auth": "^0.5.9",
         "fzaninotto/faker": "^1.6",
-        "fideloper/proxy": "^3.1"
+        "fideloper/proxy": "^3.1",
+        "codesleeve/laravel-stapler": "^1.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

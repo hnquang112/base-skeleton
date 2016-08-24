@@ -83,7 +83,7 @@
                                 <div id="review_form">
                                     <div id="respond">
                                         <h3 id="reply-title">Be the first to review “Summer Berry Soap” <small><a rel="nofollow" id="cancel-comment-reply-link" href="/organicshopwp/shop/summer-berry-soap/#respond" style="display:none;">Cancel reply</a></small></h3>
-                                        <form action="http://themes.quitenicestuff.com/organicshopwp/wp-comments-post.php" method="post" id="commentform">
+                                        <form action="{{ route('shop.review') }}" method="post" id="commentform">
                                             <p class="comment-form-author">
                                                 <label for="author">Name</label> <span class="required">*</span>
                                                 <input id="author" name="author" type="text" value="" size="30" aria-required="true">
@@ -94,8 +94,13 @@
                                             </p>
                                             <p class="comment-form-rating">
                                                 <label for="rating">Rating</label>
-                                                <p class="stars"><span><a class="star-1" href="#">1</a><a class="star-2" href="#">2</a><a class="star-3" href="#">3</a><a class="star-4" href="#">4</a><a class="star-5" href="#">5</a></span>
-                                                </p>
+                                                <p class="stars"><span>
+                                                    <a class="star-1" href="#">1</a>
+                                                    <a class="star-2" href="#">2</a>
+                                                    <a class="star-3" href="#">3</a>
+                                                    <a class="star-4" href="#">4</a>
+                                                    <a class="star-5" href="#">5</a>
+                                                </span></p>
                                                 <select name="rating" id="rating" style="display: none;">
                                                     <option value="">Rate…</option>
                                                     <option value="5">Perfect</option>
