@@ -8,6 +8,7 @@ use App\Post;
 use App\Tag;
 use App\Category;
 use App\Product;
+use Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -26,28 +27,28 @@ class RouteServiceProvider extends ServiceProvider
      * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    public function boot(Router $router)
+    public function boot()
     {
-        parent::boot($router);
+        parent::boot();
 
-        $router->model('posts', 'App\Post');
-        $router->model('categories', 'App\Category');
-        $router->model('tags', 'App\Tag');
-        $router->model('settings', 'App\Setting');
-        $router->model('products', 'App\Post');
-        $router->model('users', 'App\User');
-        $router->model('comments', 'App\Comment');
+        Route::model('posts', 'App\Post');
+        Route::model('categories', 'App\Category');
+        Route::model('tags', 'App\Tag');
+        Route::model('settings', 'App\Setting');
+        Route::model('products', 'App\Post');
+        Route::model('users', 'App\User');
+        Route::model('comments', 'App\Comment');
         
-        $router->bind('blog', function ($slug) {
+        Route::bind('blog', function ($slug) {
             return Post::findBySlugOrFail($slug);
         });
-        $router->bind('tag', function ($slug) {
+        Route::bind('tag', function ($slug) {
             return Tag::findBySlugOrFail($slug);
         });
-        $router->bind('category', function ($slug) {
+        Route::bind('category', function ($slug) {
             return Category::findBySlugOrFail($slug);
         });
-        $router->bind('shop', function ($slug) {
+        Route::bind('shop', function ($slug) {
             return Product::findBySlugOrFail($slug);
         });
     }
