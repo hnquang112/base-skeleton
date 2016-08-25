@@ -173,6 +173,7 @@ return [
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
+        Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
 
     ],
 

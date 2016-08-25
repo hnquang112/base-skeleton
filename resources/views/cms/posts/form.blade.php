@@ -125,12 +125,13 @@
                         <p>Use these services to upload image: <a href="https://www.flickr.com/" target="blank">Flickr</a>,
                             <a href="http://imgur.com/" target="blank">Imgur</a>, <a href="http://2.pik.vn/" target="blank">pik.vn</a></p>
                         <label for="">Image URL:</label>
-                        <div class="input-group input-group-sm">
-                            <input name="represent_image" id="js-input-image-url" type="text" class="form-control" placeholder="Paste URL of the uploaded image">
-                            <span class="input-group-btn">
-                                <button id="js-button-get-image-from-url" type="button" class="btn btn-info btn-flat" disabled="disabled">Get</button>
-                            </span>
-                        </div>
+                        <input name="represent_image" id="js-input-image-url" type="file" class="form-control" placeholder="Paste URL of the uploaded image">
+                        {{--<div class="input-group input-group-sm">--}}
+                            {{--<input name="represent_image" id="js-input-image-url" type="text" class="form-control" placeholder="Paste URL of the uploaded image">--}}
+                            {{--<span class="input-group-btn">--}}
+                                {{--<button id="js-button-get-image-from-url" type="button" class="btn btn-info btn-flat" disabled="disabled">Get</button>--}}
+                            {{--</span>--}}
+                        {{--</div>--}}
 
                         <p id="js-p-get-result" class="margin text-red"></p>
 
