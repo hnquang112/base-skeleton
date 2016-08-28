@@ -438,6 +438,7 @@ a,button {
     border-top: 3px solid;
     border-color: transparent;
     background: url(../img/darkdotsv.png) repeat-y right;
+    font-size: 1.1em;
 }
 
 /*#main-menu li:last-child a {

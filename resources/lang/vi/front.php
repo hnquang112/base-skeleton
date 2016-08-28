@@ -38,9 +38,9 @@ return [
     'contact.field.send_email' => 'Gửi E-mail',
     'home.featured_products' => 'Sản phẩm nổi bật',
     'home.product.sale' => 'Sale!',
-    'home.product.add_to_cart' => 'Thêm vào giỏ hàng',
+    'home.product.add_to_cart' => 'Thêm giỏ hàng',
     'footer.customer_services' => 'Dịch vụ khách hàng',
-    'footer.copyright' => '© 2016. All Rights Reserved',
+    'footer.copyright' => 'Bản quyền © 2016.',
     'contact.title' => 'Liên hệ',
     'contact.detail' => 'Chi tiết'
 ];

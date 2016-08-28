@@ -21,8 +21,7 @@ function format_price_with_currency($price, $currency = 'đ') {
 function create_file_from_path($path) {
     if (!empty($path)) {
         $file = new File;
-        $file->type = File::TYP_EXTERNAL;
-        $file->path = $path;
+        $file->file = $path;
         $file->save();
 
         return $file->id;

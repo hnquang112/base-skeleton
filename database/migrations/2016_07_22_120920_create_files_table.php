@@ -15,7 +15,6 @@ class CreateFilesTable extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('type')->default(0);
-            $table->jsonb('meta')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -48,7 +48,7 @@
                                     <input name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty"
                                            class="qty-text" maxlength="12">
                                 </div>
-                                <button type="submit" class="single_add_to_cart_button button3 fr alt">Add to cart</button>
+                                <button type="submit" class="single_add_to_cart_button button3 fr alt">@lang ('front.home.product.add_to_cart')</button>
                             </form>
 
                             <div class="product_meta">
@@ -83,7 +83,7 @@
                                 <div id="review_form">
                                     <div id="respond">
                                         <h3 id="reply-title">Be the first to review “Summer Berry Soap” <small><a rel="nofollow" id="cancel-comment-reply-link" href="/organicshopwp/shop/summer-berry-soap/#respond" style="display:none;">Cancel reply</a></small></h3>
-                                        <form action="{{ route('shop.review') }}" method="post" id="commentform">
+                                        <form action="{{ route('shop.review', $product->slug) }}" method="post" id="commentform">
                                             <p class="comment-form-author">
                                                 <label for="author">Name</label> <span class="required">*</span>
                                                 <input id="author" name="author" type="text" value="" size="30" aria-required="true">
@@ -155,7 +155,7 @@
                                 <p class="product-button clearfix">
                                     <a href="http://themes.quitenicestuff.com/organicshopwp/shop/oak-candle-set-2/?add-to-cart=60"
                                         rel="nofollow" data-product-id="{{ $prod->id }}" class="button2 product_type_simple">
-                                        Add to cart</a>
+                                        @lang ('front.home.product.add_to_cart')</a>
                                 </p>
                             </li>
                         @endforeach

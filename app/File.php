@@ -25,11 +25,14 @@ class File extends Model implements StaplerableInterface {
     public function __construct() {
         parent::__construct();
         $this->hasAttachedFile('file', [
-            'styles' => [
-                'medium' => '300x300',
-                'thumb' => '100x100'
-            ]
+            'styles' => config('laravel-stapler.stapler.styles'),
+            'url' => config('laravel-stapler.filesystem.url'),
+            'path' => config('laravel-stapler.filesystem.path'),
         ]);
+    }
+
+    public function getPathAttribute() {
+        return $this->file->url('medium');
     }
 
 }

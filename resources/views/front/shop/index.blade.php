@@ -9,7 +9,8 @@
 
             <!-- BEGIN .col-main -->
             <li class="col-main">
-                <h2 class="page-title">All Products</h2>
+                <h2 class="page-title">@lang('front.blog.title', [
+                'object' => trans('front.blog.title_object.products'), 'verb' => ''])</h2>
                 <div class="page-description"></div>
 
                 <ul class="columns-3 clearfix product-list">
@@ -33,7 +34,7 @@
                             </a>
                             <p class="product-button clearfix">
                                 <a href="http://themes.quitenicestuff.com/organicshopwp/shop/?add-to-cart=74" rel="nofollow"
-                                   data-product-id="{{ $product->id }}" class="button2 product_type_simple">Add to cart</a>
+                                   data-product-id="{{ $product->id }}" class="button2 product_type_simple">@lang ('front.home.product.add_to_cart')</a>
                             </p>
                         </li>
                     @empty
