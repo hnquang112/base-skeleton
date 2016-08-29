@@ -8,13 +8,12 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 
 class File extends Model implements StaplerableInterface {
-    use SoftDeletes, EloquentTrait;
+    use EloquentTrait;
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['file'];
