@@ -16,7 +16,6 @@ class CreateFilesTable extends Migration
             $table->increments('id');
             $table->integer('type')->default(0);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

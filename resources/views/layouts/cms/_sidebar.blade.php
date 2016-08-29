@@ -85,17 +85,20 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ $request->is('cms/settings*') || $request->is('cms/sliders*') || $request->is('cms/media*') ? ' active' : '' }}">
                 <a href="#">
                     <i class="fa fa-gears"></i> <span>Settings</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li {{ $request->is('cms/sliders*') ? 'class=active' : '' }}>
+                    <li {{ $request->is('cms/settings*') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.settings.index') }}"><i class="fa fa-cog"></i> General Settings</a>
                     </li>
                     <li {{ $request->is('cms/sliders*') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.sliders.index') }}"><i class="fa fa-picture-o"></i> Slider</a>
+                        <a href="{{ route('cms.sliders.index') }}"><i class="fa fa-picture-o"></i> Home Slider</a>
+                    </li>
+                    <li {{ $request->is('cms/media*') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.media.index') }}"><i class="fa fa-camera"></i> Uploaded Media</a>
                     </li>
                 </ul>
             </li>

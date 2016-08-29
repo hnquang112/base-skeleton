@@ -47,6 +47,7 @@ Route::group(['prefix' => 'cms'], function () {
 //        Route::resource('menus', 'MenuController', ['except' => ['show'], 'parameters' => ['menus' => 'settings']]);
         Route::resource('reviews', 'ReviewController', ['except' => ['show'], 'parameters' => ['reviews' => 'comments']]);
         Route::resource('feedback', 'FeedbackController', ['except' => ['show'], 'parameters' => ['feedback' => 'comments']]);
+        Route::resource('media', 'MediaController', ['only' => 'index']);
     });
 });
 
