@@ -9,10 +9,11 @@ use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Eloquent\Dialect\Json;
 use Carbon\Carbon;
 use DB;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Post extends Model
 {
-    use SoftDeletes, Sluggable, SluggableScopeHelpers, Json;
+    use SoftDeletes, Sluggable, SluggableScopeHelpers, Json, SearchableTrait;
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['title', 'short_description', 'published_at', 'content', 'seo_title', 'seo_description',
@@ -36,6 +37,25 @@ class Post extends Model
         'short_description' => 'required|max:255',
         'content' => 'required',
         'represent_image' => 'image'
+    ];
+
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        'columns' => [
+            'posts.title' => 10,
+            'posts.content' => 10,
+            'users.bio' => 2,
+            'users.email' => 5,
+            'posts.title' => 2,
+            'posts.body' => 1,
+        ],
+        'joins' => [
+            'posts' => ['users.id','posts.user_id'],
+        ],
     ];
 
     public function __construct() {

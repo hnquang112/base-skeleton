@@ -165,13 +165,12 @@ return [
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-        Former\FormerServiceProvider::class,
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+//        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
 
@@ -224,11 +223,10 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Flash' => Laracasts\Flash\Flash::class,
-        'Former' => Former\Facades\Former::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
-        'JWTAuth' => Tymon\JWTAuthFacades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuthFacades\JWTFactory::class,
+//        'JWTAuth' => Tymon\JWTAuthFacades\JWTAuth::class,
+//        'JWTFactory' => Tymon\JWTAuthFacades\JWTFactory::class,
 
     ],
 

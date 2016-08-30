@@ -30,7 +30,7 @@ jQuery(document).ready(function() {
 	jQuery("<option />", {
 		"selected": "selected",
 		"value": "",
-		"text": "Go to..."
+		"text": "Đi đến..."
 	}).appendTo("#main-menu-wrapper select");
 
 	// Populate dropdown with menu items
