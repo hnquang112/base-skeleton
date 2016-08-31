@@ -12,7 +12,8 @@
 */
 
 Route::group(['namespace' => 'Front'], function () {
-    Route::resource('/', 'HomeController', ['only' => ['index', 'store', 'show']]);
+    Route::resource('/', 'HomeController', ['only' => ['index']]);
+    Route::get('search', ['uses' => 'HomeController@search', 'as' => 'index.search']);
 
     Route::get('category/{category}/{type?}', ['uses' => 'BlogController@filterByCategory', 'as' => 'category.show']);
     Route::get('tag/{tag}/{type?}', ['uses' => 'BlogController@filterByTag', 'as' => 'tag.show']);

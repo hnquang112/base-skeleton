@@ -64,7 +64,8 @@
             <a href="{{ route('contact.index') }}">@lang ('front.menu.contact')</a>
         </li>
     </ul>
-    <form action="{{ url('/') }}" class="fr" id="menu-search" method="get" name="menu-search">
-        <input name="s" type="text">
+    <form action="{{ route('index.search') }}" class="fr" id="menu-search" method="get" name="menu-search">
+        {{--{{ csrf_field() }}--}}
+        <input name="q" type="text">
     </form>
 </div><!-- END .main-menu-wrapper -->

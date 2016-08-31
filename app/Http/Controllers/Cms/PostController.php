@@ -22,7 +22,7 @@ class PostController extends CmsController
     // GET: /cms/posts
     public function index(Request $request)
     {
-        $posts = Post::with('author', 'tags')->blogPosts()->orderByDesc('created_at')->get();
+        $posts = Post::with('author', 'tags')->articles()->orderByDesc('created_at')->get();
 
         return view('cms.posts.index', compact('posts'));
     }

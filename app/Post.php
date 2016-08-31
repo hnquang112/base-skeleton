@@ -20,10 +20,10 @@ class Post extends Model
         'seo_keywords', 'price', 'discount_price', 'is_in_stock', 'product_image_ids'];
     protected $jsonColumns = ['meta'];
     protected $attributes = [
-        'type' => self::TYP_BLOG,
+        'type' => self::TYP_ARTICLE,
     ];
 
-    const TYP_BLOG = 0;
+    const TYP_ARTICLE = 0;
     const TYP_PRODUCT = 1;
 
     const STT_DRAFT = 0;
@@ -48,13 +48,6 @@ class Post extends Model
         'columns' => [
             'posts.title' => 10,
             'posts.content' => 10,
-            'users.bio' => 2,
-            'users.email' => 5,
-            'posts.title' => 2,
-            'posts.body' => 1,
-        ],
-        'joins' => [
-            'posts' => ['users.id','posts.user_id'],
         ],
     ];
 
@@ -164,8 +157,8 @@ class Post extends Model
         // if ($inputs->has('filter_category')) $query = $query->where()
     }
 
-    public function scopeBlogPosts($query) {
-        return $query->where('type', self::TYP_BLOG);
+    public function scopeArticles($query) {
+        return $query->where('type', self::TYP_ARTICLE);
     }
 
     public function scopeProducts($query) {
