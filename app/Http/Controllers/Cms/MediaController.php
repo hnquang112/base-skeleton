@@ -39,35 +39,6 @@ class MediaController extends CmsController {
             ->with($this->getViewVars());
     }
 
-    public function showTinyMCE()
-    {
-        return $this->app['view']
-            ->make($this->package . '::tinymce')
-            ->with($this->getViewVars());
-    }
-
-    public function showTinyMCE4()
-    {
-        return $this->app['view']
-            ->make($this->package . '::tinymce4')
-            ->with($this->getViewVars());
-    }
-
-    public function showCKeditor4()
-    {
-        return $this->app['view']
-            ->make($this->package . '::ckeditor4')
-            ->with($this->getViewVars());
-    }
-
-    public function showPopup($input_id)
-    {
-        return $this->app['view']
-            ->make($this->package . '::standalonepopup')
-            ->with($this->getViewVars())
-            ->with(compact('input_id'));
-    }
-
     public function showFilePicker($input_id)
     {
         $type = Request::input('type');
@@ -133,7 +104,7 @@ class MediaController extends CmsController {
     protected function getViewVars()
     {
         $dir = 'packages/barryvdh/' . $this->package;
-        $locale = str_replace("-",  "_", $this->app->config->get('app.locale'));
+        $locale = get_cms_lang_attribute();
         if (!file_exists($this->app['path.public'] . "/$dir/js/i18n/elfinder.$locale.js")) {
             $locale = false;
         }

@@ -17,6 +17,9 @@ class CreatePostTagPivotTable extends Migration
             $table->integer('tag_id')->unsigned()->index();
             $table->integer('post_id')->unsigned()->index();
             $table->timestamps();
+
+            $table->foreign('tag_id')->references('id')->on('taxonomies');
+            $table->foreign('post_id')->references('id')->on('posts');
         });
     }
 

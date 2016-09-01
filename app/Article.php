@@ -19,4 +19,8 @@ class Article extends Post {
         return parent::newQuery($excludeDeleted)->articles();
     }
 
+    public function getFrontUrlAttribute() {
+        return route('blog.show', $this->slug);
+    }
+
 }

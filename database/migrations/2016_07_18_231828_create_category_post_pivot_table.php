@@ -17,6 +17,9 @@ class CreateCategoryPostPivotTable extends Migration
             $table->integer('category_id')->unsigned()->index();
             $table->integer('post_id')->unsigned()->index();
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('taxonomies');
+            $table->foreign('post_id')->references('id')->on('posts');
         });
     }
 

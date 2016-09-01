@@ -8,7 +8,7 @@
                     <h3 class="box-title">Posts</h3>
 
                     <div class="box-tools pull-right">
-                        <a class="btn btn-primary" href="{{ route('cms.posts.create') }}">Create</a>
+                        <a class="btn btn-primary" href="{{ route('cms.articles.create') }}">Create</a>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -27,8 +27,8 @@
                             {{--<i class="fa fa-share-alt"></i></button>--}}
                     </div>
                     <div class="table-responsive mailbox-messages">
-                        <form id="js-form-delete" action="{{ route('cms.posts.destroy', $posts->first() ?
-                            $posts->first()->id : 0) }}" method="POST">
+                        <form id="js-form-delete" action="{{ route('cms.articles.destroy', $articles->first() ?
+                            $articles->first()->id : 0) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
@@ -45,24 +45,24 @@
                                     <th>View Post</th>
                                 </tr></thead>
                                 <tbody>
-                                    @foreach ($posts as $post)
+                                    @foreach ($articles as $article)
                                         <tr>
-                                            <td><input name="selected_ids[]" type="checkbox" value="{{ $post->id }}"></td>
-                                            <td><a href="{{ route('cms.posts.edit', $post->id) }}"><strong>
-                                                        {{ $post->title }}</strong></a></td>
-                                            <td>{{ $post->author->display_name }}</td>
-                                            <td>{{ $post->category_names }}</td>
-                                            <td>{{ $post->tag_names }}</td>
+                                            <td><input name="selected_ids[]" type="checkbox" value="{{ $article->id }}"></td>
+                                            <td><a href="{{ route('cms.articles.edit', $article->id) }}"><strong>
+                                                        {{ $article->title }}</strong></a></td>
+                                            <td>{{ $article->author->display_name }}</td>
+                                            <td>{{ $article->category_names }}</td>
+                                            <td>{{ $article->tag_names }}</td>
                                             <td>
-                                                @if ($post->is_published)
-                                                    <span class="text-success"><strong>{{ $post->published_at }}</strong></span>
+                                                @if ($article->is_published)
+                                                    <span class="text-success"><strong>{{ $article->published_at }}</strong></span>
                                                 @else
                                                     <span class="text-warning"><strong>Draft</strong></span>
                                                 @endif
                                             </td>
-                                            <td>{{ $post->created_at }}</td>
-                                            <td>{{ $post->updated_at }}</td>
-                                            <td><a href="{{ $post->front_url }}" class="btn btn-info btn-sm" target="_blank" title="View">
+                                            <td>{{ $article->created_at }}</td>
+                                            <td>{{ $article->updated_at }}</td>
+                                            <td><a href="{{ $article->front_url }}" class="btn btn-info btn-sm" target="_blank" title="View">
                                                     <i class="fa fa-external-link"></i></a></td>
                                         </tr>
                                     @endforeach

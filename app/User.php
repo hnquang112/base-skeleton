@@ -89,7 +89,7 @@ class User extends Authenticatable
      * Relationships
      */
     public function posts() {
-        return $this->hasMany('App\Post', 'author_id');
+        return $this->hasMany('App\Post', 'user_id');
     }
 
     /**

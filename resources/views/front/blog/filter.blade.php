@@ -10,20 +10,20 @@
             <!-- BEGIN .col-main -->
             <li class="col-main">
                 <h2 class="page-title">
-{{--                    All {{ $postType == 'prod' ? 'products' : 'posts'  }} {{ $taxoType == 'cat' ? 'in' : 'tagged'}} {{ ucfirst($taxo->name) }}--}}
+{{--                    All {{ $articleType == 'prod' ? 'products' : 'posts'  }} {{ $taxoType == 'cat' ? 'in' : 'tagged'}} {{ ucfirst($taxo->name) }}--}}
                     @lang ('front.blog.title', [
-                    'object' => trans('front.blog.title_object.' . ($postType == 'prod' ? 'products' : 'posts')),
+                    'object' => trans('front.blog.title_object.' . ($articleType == 'prod' ? 'products' : 'articles')),
                     'verb' => trans('front.blog.title_verb.' . ($taxoType == 'cat' ? 'in' : 'tagged'))])
                     {{ ucfirst($taxo->name) }}
                 </h2>
 
                 <!--BEGIN .search_results -->
                 <ol class="search-results">
-                    @foreach ($posts as $post)
-                        <li><strong><a href="{{ $post->front_url }}" rel="bookmark" title="{{ $post->title }}">
-                                    {{ $post->title }}</a></strong>
+                    @foreach ($articles as $article)
+                        <li><strong><a href="{{ $article->front_url }}" rel="bookmark" title="{{ $article->title }}">
+                                    {{ $article->title }}</a></strong>
                             <br>
-                            <p>{{ $post->short_description }}</p>
+                            <p>{{ $article->short_description }}</p>
                         </li>
                     @endforeach
                 </ol><!--END .search_results -->

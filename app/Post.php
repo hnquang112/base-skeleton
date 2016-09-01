@@ -46,8 +46,8 @@ class Post extends Model
      */
     protected $searchable = [
         'columns' => [
-            'posts.title' => 10,
-            'posts.content' => 10,
+            'articles.title' => 10,
+            'articles.content' => 10,
         ],
     ];
 
@@ -83,7 +83,7 @@ class Post extends Model
      * Relationships
      */
     public function author() {
-        return $this->belongsTo('App\User', 'author_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function categories() {
@@ -117,10 +117,6 @@ class Post extends Model
         return $this->tags()->lists('taxonomies.id')->toArray();
     }
 
-    public function getFrontUrlAttribute() {
-        return route('blog.show', $this->slug);
-    }
-
     public function getIsPublishedAttribute() {
         return $this->published_at != null;
     }
@@ -141,7 +137,7 @@ class Post extends Model
      * Scopes
      */
     public function scopeMine($query) {
-        return $query->where('author_id', auth()->user()->id);
+        return $query->where('user_id', auth()->user()->id);
     }
 
     public function scopePublished($query) {
@@ -163,15 +159,6 @@ class Post extends Model
 
     public function scopeProducts($query) {
         return $query->where('type', self::TYP_PRODUCT);
-    }
-
-    public function scopeSimilar($query) {
-        return $query->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
-            ->select('posts.*', DB::raw('COUNT(*) AS matched_tags'))
-            ->whereIn('post_tag.tag_id', DB::table('post_tag')->where('post_id', $this->id)->lists('tag_id'))
-            ->where('posts.id', '<>', $this->id)
-            ->groupBy('posts.id')->havingRaw('COUNT(*) > 1')
-            ->orderBy('matched_tags', 'desc')->take(3);
     }
 
     /**
@@ -197,5 +184,12 @@ class Post extends Model
 
             $this->tags()->attach($tag->id);
         }
+    }
+
+    public function delete() {
+        $this->categories()->detach();
+        $this->tags()->detach();
+
+        parent::delete();
     }
 }

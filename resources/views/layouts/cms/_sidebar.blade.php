@@ -22,17 +22,17 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="treeview{{ $request->is('cms/posts*') ? ' active' : '' }}">
+            <li class="treeview{{ $request->is('cms/articles*') ? ' active' : '' }}">
                 <a href="#">
-                    <i class="fa fa-edit"></i> <span>Posts</span>
+                    <i class="fa fa-edit"></i> <span>Articles</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li {{ $request->is('cms/posts*') && !$request->is('cms/posts/create') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.posts.index') }}"><i class="fa fa-circle-o"></i> Posts List</a>
+                    <li {{ $request->is('cms/articles*') && !$request->is('cms/articles/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.articles.index') }}"><i class="fa fa-circle-o"></i> Articles List</a>
                     </li>
-                    <li {{ $request->is('cms/posts/create') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.posts.create') }}"><i class="fa fa-circle-o"></i> Write New Post</a>
+                    <li {{ $request->is('cms/articles/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.articles.create') }}"><i class="fa fa-circle-o"></i> Write New Article</a>
                     </li>
                 </ul>
             </li>

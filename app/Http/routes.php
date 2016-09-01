@@ -37,7 +37,7 @@ Route::group(['prefix' => 'cms'], function () {
             ->where(['lang' => '(vi|en)']);
 
         Route::resource('dashboard', 'DashboardController', ['only' => ['index']]);
-        Route::resource('posts', 'PostController', ['except' => ['show']]);
+        Route::resource('articles', 'ArticleController', ['except' => ['show']]);
         Route::resource('tags', 'TagController', ['except' => ['show']]);
         Route::resource('categories', 'CategoryController', ['except' => ['show']]);
         Route::resource('products', 'ProductController', ['except' => ['show']]);

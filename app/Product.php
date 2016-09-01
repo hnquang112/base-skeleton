@@ -43,4 +43,14 @@ class Product extends Post {
         if (empty($start) && empty($end)) return $query;
         return $query->whereBetween(DB::raw("meta->'price'"), [$start, $end]);
     }
+
+    public function scopeSimilar($query) {
+        return $query->join('post_tag', 'post_tag.post_id', '=', 'articles.id')
+            ->select('articles.*', DB::raw('COUNT(*) AS matched_tags'))
+            ->whereIn('post_tag.tag_id', DB::table('post_tag')->where('post_id', $this->id)->lists('tag_id'))
+            ->where('articles.id', '<>', $this->id)
+            ->groupBy('articles.id')->havingRaw('COUNT(*) > 1')
+            ->orderBy('matched_tags', 'desc')->take(3);
+    }
+
 }
