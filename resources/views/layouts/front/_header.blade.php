@@ -4,9 +4,9 @@
 <div class="topbar clearfix">
     <ul class="social-icons fl">
         {{--<li><a href="#"><span id="twitter_icon"></span></a></li>--}}
-        <li><a href="#"><span id="facebook_icon"></span></a></li>
+        <li><a href="{{ config('services.facebook.page-url') }}" target="_blank"><span id="facebook_icon"></span></a></li>
         {{--<li><a href="#"><span id="googleplus_icon"></span></a></li>--}}
-        <li><a href="#"><span id="skype_icon"></span></a></li>
+        <li><a href="{{ config('services.facebook.messenger-url') }}" target="_blank"><span id="skype_icon"></span></a></li>
         {{--<li><a href="#"><span id="flickr_icon"></span></a></li>--}}
         {{--<li><a href="#"><span id="linkedin_icon"></span></a></li>--}}
         {{--<li><a href="#"><span id="vimeo_icon"></span></a></li>--}}

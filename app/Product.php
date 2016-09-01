@@ -45,11 +45,11 @@ class Product extends Post {
     }
 
     public function scopeSimilar($query) {
-        return $query->join('post_tag', 'post_tag.post_id', '=', 'articles.id')
-            ->select('articles.*', DB::raw('COUNT(*) AS matched_tags'))
+        return $query->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
+            ->select('posts.*', DB::raw('COUNT(*) AS matched_tags'))
             ->whereIn('post_tag.tag_id', DB::table('post_tag')->where('post_id', $this->id)->lists('tag_id'))
-            ->where('articles.id', '<>', $this->id)
-            ->groupBy('articles.id')->havingRaw('COUNT(*) > 1')
+            ->where('posts.id', '<>', $this->id)
+            ->groupBy('posts.id')->havingRaw('COUNT(*) > 1')
             ->orderBy('matched_tags', 'desc')->take(3);
     }
 

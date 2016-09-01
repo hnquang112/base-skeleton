@@ -48,7 +48,8 @@ return [
 
     'facebook' => [
         'app-id' => '177428942597875',
-        'page-url' => 'https://www.facebook.com/Giamcaneothon'
+        'page-url' => 'https://www.facebook.com/Giamcaneothon',
+        'messenger-url' => 'https://www.messenger.com/t/Giamcaneothon/'
     ],
 
     'tawk-to' => [

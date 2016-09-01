@@ -173,6 +173,7 @@ return [
 //        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
+        Sofa\Eloquence\ServiceProvider::class,
 
     ],
 

@@ -8,12 +8,10 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Eloquent\Dialect\Json;
 use Carbon\Carbon;
-use DB;
-use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Post extends Model
 {
-    use SoftDeletes, Sluggable, SluggableScopeHelpers, Json, SearchableTrait;
+    use SoftDeletes, Sluggable, SluggableScopeHelpers, Json;
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['title', 'short_description', 'published_at', 'content', 'seo_title', 'seo_description',
@@ -22,6 +20,7 @@ class Post extends Model
     protected $attributes = [
         'type' => self::TYP_ARTICLE,
     ];
+    protected $searchableColumns = ['title', 'content'];
 
     const TYP_ARTICLE = 0;
     const TYP_PRODUCT = 1;
@@ -37,18 +36,6 @@ class Post extends Model
         'short_description' => 'required|max:255',
         'content' => 'required',
         'represent_image' => 'image'
-    ];
-
-    /**
-     * Searchable rules.
-     *
-     * @var array
-     */
-    protected $searchable = [
-        'columns' => [
-            'articles.title' => 10,
-            'articles.content' => 10,
-        ],
     ];
 
     public function __construct() {
@@ -148,9 +135,9 @@ class Post extends Model
         return $query->orderBy($field, 'DESC');
     }
 
-    public function scopeFilter($query, $inputs) {
-        // if ($inputs->has('filter_date')) $query = $query->where()
-        // if ($inputs->has('filter_category')) $query = $query->where()
+    public function scopeSearch($query, $keyword) {
+        return $query->where('title', 'like', "%$keyword%")
+            ->orWhere('content', 'like', "%$keyword%");
     }
 
     public function scopeArticles($query) {

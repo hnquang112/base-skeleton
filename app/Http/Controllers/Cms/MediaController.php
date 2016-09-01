@@ -39,15 +39,6 @@ class MediaController extends CmsController {
             ->with($this->getViewVars());
     }
 
-    public function showFilePicker($input_id)
-    {
-        $type = Request::input('type');
-        return $this->app['view']
-            ->make($this->package . '::filepicker')
-            ->with($this->getViewVars())
-            ->with(compact('input_id','type'));
-    }
-
     public function showConnector()
     {
         $roots = $this->app->config->get('elfinder.roots', []);

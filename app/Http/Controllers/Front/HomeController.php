@@ -8,8 +8,9 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Product;
 use Illuminate\Http\Request;
-use App\Post;
+use App\Article;
 
 class HomeController extends FrontController
 {
@@ -18,13 +19,15 @@ class HomeController extends FrontController
         return view('front.home.index');
     }
 
-    // GET: /search?q=abc
+    // GET: /search?q=lorem-ipsum
     public function search(Request $request) {
         if (!empty($request->q)) {
-//            return Post::articles()->published()->count();
-            return $results = Post::search($request->q)->published()->get()->count();
+            $keyword = $request->q;
 
-            return view('front.home.search', compact('results'));
+            $articles = Article::search($keyword)->published()->get();
+            $products = Product::search($keyword)->get();
+
+            return view('front.home.search', compact('keyword', 'articles', 'products'));
         }
 
         return back();
