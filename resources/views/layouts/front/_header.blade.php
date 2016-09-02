@@ -19,7 +19,7 @@
                 <a href="http://themes.quitenicestuff.com/organicshopwp/checkout/">@lang ('front.header.checkout')</a>
             </li>
             <li class="myaccount-icon">
-                <a href="http://themes.quitenicestuff.com/organicshopwp/my-account/">@lang ('front.header.my_account')</a>
+                <a href="{{ route('account.index') }}">@lang ('front.header.my_account')</a>
             </li>
         </ul>
         <div class="cart-top">

@@ -8,7 +8,7 @@
         <ul class="columns-content page-content clearfix">
             <!-- BEGIN .col-main -->
             <li class="col-main">
-                <h2 class="page-title">{{ trans_choice('articles', 2) }}</h2>
+                <h2 class="page-title">{{ trans_choice('front.common.articles', 2) }}</h2>
 
                 @forelse ($articles as $article)
                     <!-- BEGIN .blog-title -->

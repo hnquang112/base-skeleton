@@ -36,6 +36,8 @@
     <!-- Meta tags -->
     {{-- See https://github.com/joshbuchea/HEAD for further neccesary tags --}}
     <meta property="fb:app_id" content="{{ config('services.facebook.app-id') }}"/>
+    <meta name="theme-color" content="#80b600">
+    <meta name="google" value="notranslate">
 
     @stack ('meta')
 

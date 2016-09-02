@@ -174,6 +174,7 @@ return [
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
         Sofa\Eloquence\ServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
     ],
 
@@ -228,6 +229,7 @@ return [
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 //        'JWTAuth' => Tymon\JWTAuthFacades\JWTAuth::class,
 //        'JWTFactory' => Tymon\JWTAuthFacades\JWTFactory::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

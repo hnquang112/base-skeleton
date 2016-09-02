@@ -15,6 +15,10 @@ Route::group(['namespace' => 'Front'], function () {
     Route::resource('/', 'HomeController', ['only' => ['index']]);
     Route::get('search', ['uses' => 'HomeController@search', 'as' => 'index.search']);
 
+    Route::resource('account', 'AccountController', ['only' => 'index']);
+    Route::get('account/facebook', ['uses' => 'AccountController@redirectToProvider', 'as' => 'auth.redirect']);
+    Route::get('account/facebook/callback', ['uses' => 'AccountController@handleProviderCallback', 'as' => 'auth.callback']);
+
     Route::get('category/{category}/{type?}', ['uses' => 'BlogController@filterByCategory', 'as' => 'category.show']);
     Route::get('tag/{tag}/{type?}', ['uses' => 'BlogController@filterByTag', 'as' => 'tag.show']);
 

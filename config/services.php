@@ -49,7 +49,11 @@ return [
     'facebook' => [
         'app-id' => '177428942597875',
         'page-url' => 'https://www.facebook.com/Giamcaneothon',
-        'messenger-url' => 'https://www.messenger.com/t/Giamcaneothon/'
+        'messenger-url' => 'https://www.messenger.com/t/Giamcaneothon/',
+
+        'client_id' => '177428942597875',
+        'client_secret' => 'de4afc5cdcc848b287a444bafbace320',
+        'redirect' => url('/') . '/account/facebook/callback',
     ],
 
     'tawk-to' => [
