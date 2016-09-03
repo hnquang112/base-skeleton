@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Front;
 
 use Socialite;
+use App\Repositories\ProfileRepository;
 
 class AccountController extends FrontController {
     // GET: /account
@@ -22,11 +23,18 @@ class AccountController extends FrontController {
     }
 
     // GET: /account/facebook/callback
-    public function handleProviderCallback() {
-        $user = Socialite::driver('facebook')->user();
+    public function handleProviderCallback(ProfileRepository $service) {
+        $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
 
-        dd($user->getEmail());
+        auth()->guard('web')->login($user);
 
-        // $user->token;
+        return redirect()->route('account.index');
+    }
+
+    // GET: /account/logout
+    public function logout() {
+        auth()->guard('web')->logout();
+
+        return redirect('/');
     }
 }

@@ -45,4 +45,7 @@ return [
     'contact.detail' => 'Details',
     'search.title' => 'Search Results',
     'search.no_results' => 'No results were found.',
+    'account.title' => 'My Account',
+    'account.fb_login_btn' => 'Login with Facebook',
+    'account.logout_btn' => 'Logout',
 ];

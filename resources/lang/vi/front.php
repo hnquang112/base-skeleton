@@ -45,4 +45,7 @@ return [
     'contact.detail' => 'Chi tiết',
     'search.title' => 'Kết quả tìm kiếm',
     'search.no_results' => 'Không có kết quả nào phù hợp.',
+    'account.title' => 'Tài khoản',
+    'account.fb_login_btn' => 'Đăng nhập với Facebook',
+    'account.logout_btn' => 'Đăng xuất',
 ];

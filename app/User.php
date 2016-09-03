@@ -5,12 +5,10 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Eloquent\Dialect\Json;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Hash;
 use Carbon\Carbon;
 use Gravatar;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     use Json, SoftDeletes;
 
     /**
@@ -89,7 +87,11 @@ class User extends Authenticatable
      * Relationships
      */
     public function posts() {
-        return $this->hasMany('App\Post', 'user_id');
+        return $this->hasMany('App\Post');
+    }
+
+    public function profiles() {
+        return $this->hasMany('App\Profile');
     }
 
     /**

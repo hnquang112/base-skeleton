@@ -53,7 +53,8 @@ return [
 
         'client_id' => '177428942597875',
         'client_secret' => 'de4afc5cdcc848b287a444bafbace320',
-        'redirect' => url('/') . '/account/facebook/callback',
+        'redirect' => env('FB_CALLBACK_URL', '/account/facebook/callback'),
+        // add url to https://developers.facebook.com/apps/177428942597875/fb-login/
     ],
 
     'tawk-to' => [

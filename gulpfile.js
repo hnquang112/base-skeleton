@@ -63,7 +63,8 @@ var stylePaths = [
     '../../../resources/assets/plugins/organic.shop.theme/css/superfish.css',
     '../../../resources/assets/plugins/organic.shop.theme/css/prettyPhoto.css',
     '../../../resources/assets/plugins/organic.shop.theme/css/flexslider.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/fancybox-1.3.4.min.css'
+    '../../../resources/assets/plugins/organic.shop.theme/css/fancybox-1.3.4.min.css',
+    '../../../resources/assets/plugins/organic.shop.theme/css/social-buttons.min.css'
 ];
 
 // Add src and dest paths of file for copying task

@@ -15,11 +15,17 @@
     </ul><!-- BEGIN .topbar-right -->
     <div class="topbar-right clearfix">
         <ul class="clearfix">
+            <li class="myaccount-icon">
+                <a href="{{ route('account.index') }}">
+                    @if (auth()->guard('web')->check())
+                        Xin chào {{ auth()->guard('web')->user()->display_name }}
+                    @else
+                        @lang ('front.header.my_account')
+                    @endif
+                </a>
+            </li>
             <li class="checkout-icon">
                 <a href="http://themes.quitenicestuff.com/organicshopwp/checkout/">@lang ('front.header.checkout')</a>
-            </li>
-            <li class="myaccount-icon">
-                <a href="{{ route('account.index') }}">@lang ('front.header.my_account')</a>
             </li>
         </ul>
         <div class="cart-top">
