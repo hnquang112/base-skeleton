@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Front;
 
 use Socialite;
+use Cart;
 use App\Repositories\ProfileRepository;
 
 class AccountController extends FrontController {
@@ -33,6 +34,7 @@ class AccountController extends FrontController {
 
     // GET: /account/logout
     public function logout() {
+        Cart::destroy();
         auth()->guard('web')->logout();
 
         return redirect('/');

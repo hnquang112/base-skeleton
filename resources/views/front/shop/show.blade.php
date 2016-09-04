@@ -42,14 +42,15 @@
                                 <p>{{ $product->short_description }}</p>
                             </div>
 
-                            <form action="{{ route('shop.cart', [$product->slug]) }}" class="qty-product-single clearfix cart" method="POST">
-                                {{ csrf_field() }}
+                            <div class="qty-product-single clearfix cart">
                                 <div class="qty-fields-large clearfix fl">
                                     <input name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty"
-                                           class="qty-text" maxlength="12">
+                                           class="qty-text js-qty-add-to-cart" maxlength="12" readonly>
                                 </div>
-                                <button type="submit" class="single_add_to_cart_button button3 fr alt">@lang ('front.home.product.add_to_cart')</button>
-                            </form>
+                                <button class="single_add_to_cart_button button3 fr alt js-add-to-cart" data-product-id="{{ $product->id }}">
+                                    @lang ('front.home.product.add_to_cart')
+                                </button>
+                            </div>
 
                             <div class="product_meta">
                                 <span class="posted_in">Category:

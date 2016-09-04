@@ -3,8 +3,9 @@
 namespace App;
 
 use DB;
+use Gloudemans\Shoppingcart\Contracts\Buyable;
 
-class Product extends Post {
+class Product extends Post implements Buyable {
     protected $table = 'posts';
     protected $attributes = [
         'type' => self::TYP_PRODUCT,
@@ -25,6 +26,10 @@ class Product extends Post {
 
     public function getFrontUrlAttribute() {
         return route('shop.show', $this->slug);
+    }
+
+    public function getCurrentPriceAttribute() {
+        return $this->is_on_sale ? $this->discount_price : $this->price;
     }
 
     public function scopeSortByAlphabet($query) {
@@ -51,6 +56,33 @@ class Product extends Post {
             ->where('posts.id', '<>', $this->id)
             ->groupBy('posts.id')->havingRaw('COUNT(*) > 1')
             ->orderBy('matched_tags', 'desc')->take(3);
+    }
+
+    /**
+     * Get the identifier of the Buyable item.
+     *
+     * @return int|string
+     */
+    public function getBuyableIdentifier() {
+        return $this->id;
+    }
+
+    /**
+     * Get the description or title of the Buyable item.
+     *
+     * @return string
+     */
+    public function getBuyableDescription() {
+        return $this->title;
+    }
+
+    /**
+     * Get the price of the Buyable item.
+     *
+     * @return float
+     */
+    public function getBuyablePrice() {
+        return $this->current_price;
     }
 
 }

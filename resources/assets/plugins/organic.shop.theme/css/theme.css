@@ -750,7 +750,6 @@ table address {
     text-transform: capitalize;
     padding: 8px 10px 8px 8px;
     position: relative;
-    z-index: 100;
     margin: 0;
     line-height: 100%;
 }
@@ -764,7 +763,6 @@ table address {
     top: 0px;
     border-width: 16px 16px;
     border-style: solid;
-    z-index: 10;
 }
 
 .product-title, .product-price {
@@ -2302,7 +2300,6 @@ ul.comment-list li li {
     width: 16px;
     height: 16px;
     position: absolute;
-    z-index: 2;
     -webkit-border-radius: 99%;
     -moz-border-radius: 99%;
     -o-border-radius: 99%;

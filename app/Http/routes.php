@@ -25,10 +25,11 @@ Route::group(['namespace' => 'Front'], function () {
 
     Route::resource('blog', 'BlogController', ['only' => ['index', 'show']]);
 
-    Route::post('shop/{shop}/cart', ['uses' => 'ShopController@addToCart', 'as' => 'shop.cart']);
-    Route::post('shop/{shop}/review', ['uses' => 'ShopController@writeReview', 'as' => 'shop.review']);
+    Route::post('shop/{products}/review', ['uses' => 'ShopController@writeReview', 'as' => 'shop.review']);
     Route::resource('shop', 'ShopController', ['only' => ['index', 'show']]);
-    Route::resource('cart', 'CartController', ['only' => ['index', 'update']]);
+
+    Route::post('shop/{products}/cart', ['uses' => 'CartController@store', 'as' => 'cart.store']);
+    Route::resource('cart', 'CartController', ['only' => ['index', 'update', 'destroy']]);
 
     Route::resource('contact', 'ContactController', ['only' => ['index', 'store']]);
 });

@@ -33,8 +33,8 @@
                                 </p>
                             </a>
                             <p class="product-button clearfix">
-                                <a href="http://themes.quitenicestuff.com/organicshopwp/shop/?add-to-cart=74" rel="nofollow"
-                                   data-product-id="{{ $product->id }}" class="button2 product_type_simple">@lang ('front.home.product.add_to_cart')</a>
+                                <buton data-product-id="{{ $product->id }}" class="button2 js-add-to-cart">
+                                    @lang ('front.home.product.add_to_cart')</buton>
                             </p>
                         </li>
                     @empty

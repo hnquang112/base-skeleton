@@ -35,13 +35,16 @@
 
     <!-- Meta tags -->
     {{-- See https://github.com/joshbuchea/HEAD for further neccesary tags --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="fb:app_id" content="{{ config('services.facebook.app-id') }}"/>
     <meta name="theme-color" content="#80b600">
     <meta name="google" value="notranslate">
 
     @stack ('meta')
 
-    @include ('layouts._analytic')
+    @if (!app()->environment('local'))
+        @include ('layouts._analytic')
+    @endif
 </head><!-- END head -->
 
 <!-- BEGIN body -->
@@ -69,18 +72,20 @@
     </script>
     <script src="{{ elixir('js/vendor.front.js') }}"></script>
 
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/{{ config('services.tawk-to.api-key') }}/default';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script><!--End of Tawk.to Script-->
+    @if (!app()->environment('local'))
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/{{ config('services.tawk-to.api-key') }}/default';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script><!--End of Tawk.to Script-->
+    @endif
 
     <script src="https://google.com/recaptcha/api.js?hl={{ get_front_lang_attribute() }}"></script>
 

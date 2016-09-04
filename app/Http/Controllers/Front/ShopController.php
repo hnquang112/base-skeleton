@@ -47,13 +47,6 @@ class ShopController extends FrontController {
         return view('front.shop.show', compact('product', 'similarProducts'));
     }
 
-    // POST: /shop/lorem-ipsum/cart
-    public function addToCart(Request $request, $product) {
-        Cart::add($product->id, $product->title, $request->quantity, $product->price);
-
-        return redirect()->route('cart.index');
-    }
-
     // POST: /shop/lorem-ipsum/review
     public function writeReview() {
 

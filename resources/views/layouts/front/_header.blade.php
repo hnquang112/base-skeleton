@@ -29,7 +29,9 @@
             </li>
         </ul>
         <div class="cart-top">
-            <p><a href="{{ route('cart.index') }}">{{ Cart::count() }} {{ trans_choice('front.header.cart_items', Cart::count()) }}</a></p>
+            <p><a href="{{ route('cart.index') }}">
+                <span id="js-cart-items-count">{{ Cart::count() }}</span> {{ trans_choice('front.header.cart_items', Cart::count()) }}
+            </a></p>
         </div>
     </div><!-- END .topbar-right -->
 </div><!-- END .topbar -->
