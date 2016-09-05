@@ -32,41 +32,37 @@
 
                             <p class="form-row" id="billing_full_name_field">
                                 <label for="billing_full_name" class="">Full Name <abbr class="required" title="required">*</abbr></label>
-                                <input type="text" class="input-text" name="billing_full_name" id="billing_full_name" placeholder="Full Name"
+                                <input type="text" class="input-text" name="display_name" id="billing_full_name" placeholder="Full Name"
                                        value="{{ $user->display_name }}" required>
                             </p>
 
                             <p class="form-row" id="billing_address_field">
-                                <label for="billing_address" class="">Address <abbr class="required" title="required">*</abbr>
-                                </label>
-                                <input type="text" class="input-text" name="billing_address" id="billing_address" placeholder="Address"
+                                <label for="billing_address" class="">Address <abbr class="required" title="required">*</abbr></label>
+                                <input type="text" class="input-text" name="address" id="billing_address" placeholder="Address"
                                        value="{{ $user->address }}" required>
                             </p>
 
                             <p class="form-row form-row-first" id="billing_city_field">
-                                <label for="billing_city" class="">Town/City <abbr class="required" title="required">*</abbr>
-                                </label>
-                                <input type="text" class="input-text" name="billing_city" id="billing_city" placeholder="Town/City"
+                                <label for="billing_city" class="">Town/City <abbr class="required" title="required">*</abbr></label>
+                                <input type="text" class="input-text" name="city" id="billing_city" placeholder="Town/City"
                                        value="{{ $user->city }}" required>
                             </p>
 
                             <p class="form-row form-row-last update_totals_on_change" id="billing_country_field">
                                 <label for="billing_country" class="">County</label>
-                                <input type="text" class="input-text" value="{{ $user->country }}" placeholder="County" name="billing_country" id="billing_country">
+                                <input type="text" class="input-text" value="{{ $user->country }}" placeholder="County" name="country" id="billing_country">
                             </p>
                             <div class="clear"></div>
 
                             <p class="form-row form-row-first" id="billing_email_field">
-                                <label for="billing_email" class="">Email Address <abbr class="required" title="required">*</abbr>
-                                </label>
-                                <input type="email" class="input-text" name="billing_email" id="billing_email" placeholder="Email Address"
+                                <label for="billing_email" class="">Email Address <abbr class="required" title="required">*</abbr></label>
+                                <input type="email" class="input-text" name="email" id="billing_email" placeholder="Email Address"
                                        value="{{ $user->email }}" required>
                             </p>
 
                             <p class="form-row form-row-last" id="billing_phone_field">
-                                <label for="billing_phone" class="">Phone <abbr class="required" title="required">*</abbr>
-                                </label>
-                                <input type="text" class="input-text" name="billing_phone" id="billing_phone" placeholder="Phone"
+                                <label for="billing_phone" class="">Phone <abbr class="required" title="required">*</abbr></label>
+                                <input type="text" class="input-text" name="phone" id="billing_phone" placeholder="Phone"
                                        value="{{ $user->phone }}" required>
                             </p>
                             <div class="clear"></div>
@@ -125,7 +121,7 @@
 
                             <p class="form-row notes" id="order_comments_field">
                                 <label for="order_comments" class="">Order Notes</label>
-                                <textarea name="order_comments" class="input-text" id="order_comments" cols="5" rows="2"
+                                <textarea name="delivery_note" class="input-text" id="order_comments" cols="5" rows="2"
                                           placeholder="Notes about your order, e.g. special notes for delivery."
                                         style="resize: vertical"></textarea>
                             </p>
