@@ -16,6 +16,10 @@ class Product extends Post implements Buyable {
         'discount_price' => 'numeric|min:0|max:1000000000'
     ];
 
+    public function orders() {
+        return $this->belongsToMany('App\Order', 'order_post', 'post_id', 'order_id');
+    }
+
     public function newQuery($excludeDeleted = true) {
         return parent::newQuery($excludeDeleted)->products();
     }

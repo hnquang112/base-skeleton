@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li class="checkout-icon">
-                <a href="http://themes.quitenicestuff.com/organicshopwp/checkout/">@lang ('front.header.checkout')</a>
+                <a href="{{ route('checkout.index') }}">@lang ('front.header.checkout')</a>
             </li>
         </ul>
         <div class="cart-top">
@@ -73,7 +73,6 @@
         </li>
     </ul>
     <form action="{{ route('index.search') }}" class="fr" id="menu-search" method="get" name="menu-search">
-        {{--{{ csrf_field() }}--}}
         <input name="q" type="text">
     </form>
 </div><!-- END .main-menu-wrapper -->

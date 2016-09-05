@@ -12,7 +12,8 @@
                 <h2 class="page-title">Cart</h2>
 
                 @if ($cartData->count() == 0)
-                    <p>Cart is empty</p>
+                    <p>Your cart is currently empty.</p>
+                    <p><a class="button2 buttonpad" href="{{ route('shop.index') }}">← Return To Shop</a></p>
                 @else
                     <table class="product-table">
                         <thead>
@@ -33,11 +34,11 @@
                                             data-cart-row="{{ $cartItem->rowId }}">×</a></td>
 
                                     <!-- Product Name -->
-                                    <td data-title="Product Name" class="product-name">
+                                    <td data-title="Product Name" class="product-name" style="text-align: left">
                                         <a href="{{ $cartItem->model->front_url }}">{{ $cartItem->name }}</a> </td>
 
                                     <!-- Product price -->
-                                    <td data-title="Price">
+                                    <td data-title="Price" style="text-align: right">
                                         <span class="amount js-product-price">{{ $cartItem->price }}</span>đ</td>
 
                                     <!-- Quantity inputs -->
@@ -51,7 +52,7 @@
                                     </td>
 
                                     <!-- Product subtotal -->
-                                    <td data-title="Total" class="product-subtotal">
+                                    <td data-title="Total" class="product-subtotal" style="text-align: right">
                                         <span class="amount js-cart-row-price">{{ $cartItem->price * $cartItem->qty }}</span>đ</td>
                                 </tr>
                             @endforeach
@@ -66,7 +67,7 @@
                         {{--</div>--}}
 
                         <div class="cart-buttons fr">
-                            <a href="http://themes.quitenicestuff.com/organicshopwp/checkout/" class="button2 buttonpad" style="margin: 2px 0 0 0;">Proceed to Checkout →</a>
+                            <a href="{{ route('checkout.index') }}" class="button2 buttonpad" style="margin-bottom: 20px">Proceed to Checkout →</a>
 
                             <input type="hidden" id="_n" name="_n" value="2669096c46">
                             <input type="hidden" name="_wp_http_referer" value="/organicshopwp/cart/">

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Cart;
 
 class CartController extends FrontController {
+
     // GET: /cart
     public function index() {
         $cartData = Cart::content();

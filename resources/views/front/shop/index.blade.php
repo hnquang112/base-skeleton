@@ -58,7 +58,6 @@
             </li><!-- END .col-main -->
 
             <!-- BEGIN .col-sidebar -->
-            {{ App\Product::max('meta->price') }}
             @include ('layouts.front._sidebar', [
                 'hasPriceFilter' => true,
                 'start' => Request::get('min_price'),

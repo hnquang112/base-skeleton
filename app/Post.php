@@ -20,7 +20,6 @@ class Post extends Model
     protected $attributes = [
         'type' => self::TYP_ARTICLE,
     ];
-    protected $searchableColumns = ['title', 'content'];
 
     const TYP_ARTICLE = 0;
     const TYP_PRODUCT = 1;

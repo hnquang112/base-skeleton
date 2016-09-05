@@ -79,7 +79,9 @@ class User extends Authenticatable {
 			"birthday":null,
 			"phone":null,
 			"address":null,
-			"gender":null
+			"gender":null,
+			"city":null,
+			"country":null
 		}');
     }
 

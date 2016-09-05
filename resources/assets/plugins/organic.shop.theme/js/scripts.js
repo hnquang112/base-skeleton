@@ -333,3 +333,14 @@ jQuery(document).ready(function(e) {
         })
     });
 });
+
+jQuery(document).ready(function(e) {
+	e("a.showlogin").click(function() {
+		e("div.login").slideToggle();
+		return !1
+	});
+	e("#shiptobilling input").change(function() {
+		e("div.shipping_address").hide();
+		e(this).is(":checked") || e("div.shipping_address").slideDown()
+	}).change();
+});

@@ -29,12 +29,11 @@ class AccountController extends FrontController {
 
         auth()->guard('web')->login($user);
 
-        return redirect()->route('account.index');
+        return back();
     }
 
     // GET: /account/logout
     public function logout() {
-        Cart::destroy();
         auth()->guard('web')->logout();
 
         return redirect('/');

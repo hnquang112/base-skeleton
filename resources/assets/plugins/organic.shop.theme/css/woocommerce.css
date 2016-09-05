@@ -1365,7 +1365,6 @@ form .form-row input.input-text,form .form-row textarea {
 }
 
 form .form-row textarea {
-    height: 3.5em;
     line-height: 1.5em;
     display: block;
     -moz-box-shadow: none;
@@ -1383,7 +1382,7 @@ form .form-row-last {
     float: right;
 }
 
-form.login,form.checkout_coupon,form.register {
+div.login,form.checkout_coupon,form.register {
     border: 1px solid #e0dadf;
     padding: 20px;
     margin: 2em 0;

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfilesTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,9 @@ class CreateProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function($table) {
+        Schema::create('orders', function($table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('provider');
-            $table->biginteger('uid')->unsigned();
-            $table->string('access_token');
-            $table->string('access_token_secret');
             $table->jsonb('meta')->nullable();
             $table->timestamps();
 
@@ -33,6 +29,6 @@ class CreateProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('orders');
     }
 }
