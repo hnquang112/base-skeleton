@@ -438,6 +438,7 @@ a,button {
     border-top: 3px solid;
     border-color: transparent;
     background: url(../img/darkdotsv.png) repeat-y right;
+    font-size: 1.1em;
 }
 
 /*#main-menu li:last-child a {
@@ -749,7 +750,6 @@ table address {
     text-transform: capitalize;
     padding: 8px 10px 8px 8px;
     position: relative;
-    z-index: 100;
     margin: 0;
     line-height: 100%;
 }
@@ -763,7 +763,6 @@ table address {
     top: 0px;
     border-width: 16px 16px;
     border-style: solid;
-    z-index: 10;
 }
 
 .product-title, .product-price {
@@ -1199,7 +1198,7 @@ hr {
 }
 
 #reviews #comments ol.commentlist li .comment-text,
-form.login, form.checkout_coupon, form.register {
+div.login, form.checkout_coupon, form.register {
     -webkit-border-radius: 0 !important;
     -moz-border-radius: 0 !important;
     -o-border-radius: 0 !important;
@@ -2301,7 +2300,6 @@ ul.comment-list li li {
     width: 16px;
     height: 16px;
     position: absolute;
-    z-index: 2;
     -webkit-border-radius: 99%;
     -moz-border-radius: 99%;
     -o-border-radius: 99%;

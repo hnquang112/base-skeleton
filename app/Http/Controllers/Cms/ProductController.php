@@ -35,7 +35,7 @@ class ProductController extends CmsController {
 
         $product = new Product;
 
-        $product->author_id = $this->getCurrentUser()->id;
+        $product->user_id = $this->getCurrentUser()->id;
         $product->published_at = Product::STT_PUBLISHED;
 
             $product->fill($request->except('represent_image'));

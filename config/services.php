@@ -48,7 +48,13 @@ return [
 
     'facebook' => [
         'app-id' => '177428942597875',
-        'page-url' => 'https://www.facebook.com/Giamcaneothon'
+        'page-url' => 'https://www.facebook.com/Giamcaneothon',
+        'messenger-url' => 'https://www.messenger.com/t/Giamcaneothon/',
+
+        'client_id' => '177428942597875',
+        'client_secret' => 'de4afc5cdcc848b287a444bafbace320',
+        'redirect' => env('FB_CALLBACK_URL', '/account/facebook/callback'),
+        // add url to https://developers.facebook.com/apps/177428942597875/fb-login/
     ],
 
     'tawk-to' => [

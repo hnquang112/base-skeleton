@@ -22,6 +22,7 @@
     "summernote": "^0.8.1",
     "toastr": "^2.1.2",
     "flag-icon-css": "^2.3.1",
-    "blueimp-file-upload": "^9.12.5"
+    "blueimp-file-upload": "^9.12.5",
+    "vanillatoasts": "*"
   }
 }

@@ -22,7 +22,6 @@ jQuery(document).ready(function() {
 	});
 
 	// Mobile Menu
-
 	// Create the dropdown base
 	jQuery("<select />").appendTo("#main-menu-wrapper");
 
@@ -30,7 +29,7 @@ jQuery(document).ready(function() {
 	jQuery("<option />", {
 		"selected": "selected",
 		"value": "",
-		"text": "Go to..."
+		"text": "Đi đến..."
 	}).appendTo("#main-menu-wrapper select");
 
 	// Populate dropdown with menu items
@@ -49,10 +48,9 @@ jQuery(document).ready(function() {
 
 	// Quantity Buttons
 	jQuery(function () {
-
-		jQuery("form .qty-text").numeric();
-		jQuery("form .qty-text").before('<input type="button" class="plusminus minus" id="minus1" value="-">');
-		jQuery("form .qty-text").after('<input type="button" class="plusminus plus" id="plus1" value="+">');
+		jQuery(".qty-product-single .qty-text").numeric();
+		jQuery(".qty-product-single .qty-text").before('<input type="button" class="plusminus minus" id="minus1" value="-">');
+		jQuery(".qty-product-single .qty-text").after('<input type="button" class="plusminus plus" id="plus1" value="+">');
 
 		jQuery(".plusminus").click(function () {
 			var jQuerybutton = jQuery(this);
@@ -60,22 +58,16 @@ jQuery(document).ready(function() {
 
 			if (jQuerybutton.val() == "+") {
 				var newVal = parseFloat(oldValue) + 1;
-			}
-
-			else {
+			} else {
 				if (oldValue > 1) {
 					var newVal = parseFloat(oldValue) - 1;
-				}
-
-				else {
+				} else {
 					var newVal = 1;
 				}
 			}
 
-			jQuerybutton.parent().find(".qty-text").val(newVal);
-
+			jQuerybutton.parent().find(".qty-text").val(newVal).change();
 		});
-
 	});
 
 	// Disable backspace for quantity buttons
@@ -189,22 +181,166 @@ jQuery(document).ready(function(e) {
 	});
 });
 
-// Slider
-jQuery(window).load(function(){
-  jQuery('.slider').flexslider({
-    animation: "slide",
-	controlNav: false,
-	slideshow: slideshow_autoplay,
-	slideshowSpeed: slideshow_speed
-  });
+jQuery(document).ready(function(e) {
+	e(".woocommerce_tabs .panel").hide();
+	e(".woocommerce_tabs ul.tabs li a").click(function() {
+		var t = e(this)
+			, n = t.closest(".woocommerce_tabs");
+		e("ul.tabs li", n).removeClass("active");
+		e("div.panel", n).hide();
+		e("div" + t.attr("href")).show();
+		t.parent().addClass("active");
+		return !1
+	});
+	e(".woocommerce_tabs").each(function() {
+		var t = window.location.hash;
+		t.toLowerCase().indexOf("comment-") >= 0 ? e("ul.tabs li.reviews_tab a", e(this)).click() : e("ul.tabs li:first a", e(this)).click()
+	});
+	e("p.stars a").click(function() {
+		var t = e(this);
+		e("#rating").val(t.text());
+		e("p.stars a").removeClass("active");
+		t.addClass("active");
+		return !1
+	});
+	e("#review_form #submit").live("click", function() {
+		var t = e("#rating").val();
+		if (e("#rating").size() > 0 && !t && woocommerce_params.review_rating_required == "yes") {
+			alert(woocommerce_params.required_rating_text);
+			return !1
+		}
+	})
 });
 
+// Slider
 jQuery(window).load(function(){
-  jQuery('.slider-single').flexslider({
-    animation: "slide",
-	controlNav: true,
-	directionNav: false,
-	slideshow: slideshow_autoplay,
-	slideshowSpeed: slideshow_speed
-  });
+	jQuery('.slider, .slider-single').flexslider({
+		animation: "slide",
+		controlNav: false,
+		slideshow: slideshow_autoplay,
+		slideshowSpeed: slideshow_speed
+	});
+});
+
+// Custom scripts
+jQuery(document).ready(function(e) {
+	jQuery.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+		}
+	});
+
+	// Add to cart button
+	jQuery('.js-add-to-cart').on('click', function () {
+		var productId = e(this).attr('data-product-id'),
+            quantity = e('.js-qty-add-to-cart').val() || 1,
+			url = '/shop/' + productId + '/cart';
+
+		// res = [
+        //  'error' => 0,
+		// 		'message' => 'Added to cart',
+		// 		'data' => [
+		// 		    'product_id' => $product->id,
+		// 		    'cart_count' => Cart::count()
+		//  ]
+		// ]
+		jQuery.ajax({
+			url: url,
+			dataType: 'json',
+			type: 'post',
+            data: {
+			    quantity: quantity
+            },
+			success: function (res) {
+            	if (res.error == 0) {
+					var type = 'success';
+
+					e('#js-cart-items-count').text(res.data.cart_count);
+				} else {
+					var type = 'error';
+				}
+
+				VanillaToasts.create({
+					text: res.message,
+					type: type,
+					timeout: 3000
+				});
+			},
+			error: function (err) {
+				console.log(err)
+			}
+		})
+	});
+
+    // Update a cart row
+    jQuery('.js-cart-row-qty').on('change', function () {
+        var quantity = jQuery(this).val(),
+            cartId = jQuery(this).attr('data-cart-row'),
+            url = '/cart/' + cartId,
+            prodPrice = e(this).closest('.cart_table_item').find('.js-product-price').text(),
+            newPrice = prodPrice * quantity;
+
+        e(this).closest('.cart_table_item').find('.js-cart-row-price').text(newPrice);
+
+        jQuery.ajax({
+            url: url,
+            dataType: 'json',
+            type: 'put',
+            data: {
+                quantity: quantity
+            },
+            success: function (res) {
+                if (res.error == 0) {
+                    // update total price
+                    e('.js-cart-order-total').text(res.data.total_price)
+                }
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    });
+
+    // Remove a cart row
+    jQuery('.js-remove-cart-row').on('click', function () {
+        var cartId = jQuery(this).attr('data-cart-row'),
+            url = '/cart/' + cartId;
+
+        e(this).closest('.cart_table_item').remove();
+
+        jQuery.ajax({
+            url: url,
+            dataType: 'json',
+            type: 'delete',
+            success: function (res) {
+                if (res.error == 0) {
+                    // update total price
+                    e('.js-cart-order-total').text(res.data.total_price);
+                    var type = 'success'
+                } else {
+                    var type = 'error'
+                }
+
+                VanillaToasts.create({
+                    text: res.message,
+                    type: type,
+                    timeout: 3000
+                });
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    });
+});
+
+jQuery(document).ready(function(e) {
+	e("a.showlogin").click(function() {
+		e("div.login").slideToggle();
+		return !1
+	});
+	e("#shiptobilling input").change(function() {
+		e("div.shipping_address").hide();
+		e(this).is(":checked") || e("div.shipping_address").slideDown()
+	}).change();
 });

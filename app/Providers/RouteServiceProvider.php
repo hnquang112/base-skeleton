@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use App\Post;
+use App\Article;
 use App\Tag;
 use App\Category;
 use App\Product;
@@ -31,16 +31,16 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        Route::model('posts', 'App\Post');
+        Route::model('articles', 'App\Article');
         Route::model('categories', 'App\Category');
         Route::model('tags', 'App\Tag');
         Route::model('settings', 'App\Setting');
-        Route::model('products', 'App\Post');
+        Route::model('products', 'App\Product');
         Route::model('users', 'App\User');
         Route::model('comments', 'App\Comment');
         
         Route::bind('blog', function ($slug) {
-            return Post::findBySlugOrFail($slug);
+            return Article::findBySlugOrFail($slug);
         });
         Route::bind('tag', function ($slug) {
             return Tag::findBySlugOrFail($slug);

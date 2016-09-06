@@ -9,7 +9,7 @@ class CategoryController extends CmsController {
 
     // GET: /cms/categories
     public function index(Request $request) {
-        $categories = Category::withCount('posts')->get();
+        $categories = Category::withCount('articles')->get();
         $category = new Category;
 
         return view('cms.categories.index', compact('categories', 'category'));

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Post;
+use App\Article;
 use App\Product;
 use App\User;
 
@@ -19,13 +19,13 @@ class PostsTableSeeder extends Seeder
         $limit = 30;
 
         for ($i = 0; $i < $limit; $i++) {
-            $post = new Post;
+            $post = new Article;
             $post->title = $faker->catchPhrase;
             $post->short_description = $faker->text;
             $post->content = $faker->realText($maxNbChars = 200, $indexSize = 2);
-            $post->author_id = User::where('username', 'admin')->first()->id;
-            $post->represent_image_id = create_file_from_path($faker->imageUrl(640, 480, 'cats'));
-            $post->published_at = $faker->numberBetween(Post::STT_DRAFT, Post::STT_PUBLISHED);
+            $post->user_id = User::where('username', 'admin')->first()->id;
+            $post->represent_image_id = create_file_from_path('http://www.fillmurray.com/640/480');
+            $post->published_at = $faker->numberBetween(Article::STT_DRAFT, Article::STT_PUBLISHED);
 
             $post->save();
         }
@@ -35,8 +35,8 @@ class PostsTableSeeder extends Seeder
             $product->title = $faker->catchPhrase;
             $product->short_description = $faker->text;
             $product->content = $faker->realText($maxNbChars = 200, $indexSize = 2);
-            $product->author_id = User::where('username', 'admin')->first()->id;
-            $product->represent_image_id = create_file_from_path($faker->imageUrl(366, 275, 'cats'));
+            $product->user_id = User::where('username', 'admin')->first()->id;
+            $product->represent_image_id = create_file_from_path('http://www.fillmurray.com/366/275');
             $product->price = $faker->randomDigitNotNull * 10000;
             $product->discount_price = $product->price * (100 - $faker->numberBetween(10, 15)) / 100;
 

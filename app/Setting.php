@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Eloquent\Dialect\Json;
-use DB;
 
 class Setting extends Model {
     use SoftDeletes, Json;

@@ -8,7 +8,6 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Eloquent\Dialect\Json;
 use Carbon\Carbon;
-use DB;
 
 class Post extends Model
 {
@@ -19,10 +18,10 @@ class Post extends Model
         'seo_keywords', 'price', 'discount_price', 'is_in_stock', 'product_image_ids'];
     protected $jsonColumns = ['meta'];
     protected $attributes = [
-        'type' => self::TYP_BLOG,
+        'type' => self::TYP_ARTICLE,
     ];
 
-    const TYP_BLOG = 0;
+    const TYP_ARTICLE = 0;
     const TYP_PRODUCT = 1;
 
     const STT_DRAFT = 0;
@@ -35,7 +34,7 @@ class Post extends Model
         'title' => 'required|max:255',
         'short_description' => 'required|max:255',
         'content' => 'required',
-        'represent_image' => 'active_url'
+        'represent_image' => 'image'
     ];
 
     public function __construct() {
@@ -70,7 +69,7 @@ class Post extends Model
      * Relationships
      */
     public function author() {
-        return $this->belongsTo('App\User', 'author_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function categories() {
@@ -104,10 +103,6 @@ class Post extends Model
         return $this->tags()->lists('taxonomies.id')->toArray();
     }
 
-    public function getFrontUrlAttribute() {
-        return route('blog.show', $this->slug);
-    }
-
     public function getIsPublishedAttribute() {
         return $this->published_at != null;
     }
@@ -128,7 +123,7 @@ class Post extends Model
      * Scopes
      */
     public function scopeMine($query) {
-        return $query->where('author_id', auth()->user()->id);
+        return $query->where('user_id', auth()->user()->id);
     }
 
     public function scopePublished($query) {
@@ -139,26 +134,17 @@ class Post extends Model
         return $query->orderBy($field, 'DESC');
     }
 
-    public function scopeFilter($query, $inputs) {
-        // if ($inputs->has('filter_date')) $query = $query->where()
-        // if ($inputs->has('filter_category')) $query = $query->where()
+    public function scopeSearch($query, $keyword) {
+        return $query->where('title', 'like', "%$keyword%")
+            ->orWhere('content', 'like', "%$keyword%");
     }
 
-    public function scopeBlogPosts($query) {
-        return $query->where('type', self::TYP_BLOG);
+    public function scopeArticles($query) {
+        return $query->where('type', self::TYP_ARTICLE);
     }
 
     public function scopeProducts($query) {
         return $query->where('type', self::TYP_PRODUCT);
-    }
-
-    public function scopeSimilar($query) {
-        return $query->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
-            ->select('posts.*', DB::raw('COUNT(*) AS matched_tags'))
-            ->whereIn('post_tag.tag_id', DB::table('post_tag')->where('post_id', $this->id)->lists('tag_id'))
-            ->where('posts.id', '<>', $this->id)
-            ->groupBy('posts.id')->havingRaw('COUNT(*) > 1')
-            ->orderBy('matched_tags', 'desc')->take(3);
     }
 
     /**
@@ -184,5 +170,12 @@ class Post extends Model
 
             $this->tags()->attach($tag->id);
         }
+    }
+
+    public function delete() {
+        $this->categories()->detach();
+        $this->tags()->detach();
+
+        parent::delete();
     }
 }

@@ -64,7 +64,7 @@
 
                     <div class="field-row">
                         <label for="message_text">@lang ('front.contact.field.message') <span>(@lang ('front.contact.field.required'))</span></label>
-                        <textarea name="message" id="message_text" class="text_input" cols="60" rows="9">{{ old('message') }}</textarea>
+                        <textarea name="message" id="message_text" class="text_input" cols="60" rows="9" style="resize: vertical">{{ old('message') }}</textarea>
                     </div>
 
                     <div class="field-row">

@@ -4,9 +4,9 @@
 <div class="topbar clearfix">
     <ul class="social-icons fl">
         {{--<li><a href="#"><span id="twitter_icon"></span></a></li>--}}
-        <li><a href="#"><span id="facebook_icon"></span></a></li>
+        <li><a href="{{ config('services.facebook.page-url') }}" target="_blank"><span id="facebook_icon"></span></a></li>
         {{--<li><a href="#"><span id="googleplus_icon"></span></a></li>--}}
-        <li><a href="#"><span id="skype_icon"></span></a></li>
+        <li><a href="{{ config('services.facebook.messenger-url') }}" target="_blank"><span id="skype_icon"></span></a></li>
         {{--<li><a href="#"><span id="flickr_icon"></span></a></li>--}}
         {{--<li><a href="#"><span id="linkedin_icon"></span></a></li>--}}
         {{--<li><a href="#"><span id="vimeo_icon"></span></a></li>--}}
@@ -15,15 +15,23 @@
     </ul><!-- BEGIN .topbar-right -->
     <div class="topbar-right clearfix">
         <ul class="clearfix">
-            <li class="checkout-icon">
-                <a href="http://themes.quitenicestuff.com/organicshopwp/checkout/">@lang ('front.header.checkout')</a>
-            </li>
             <li class="myaccount-icon">
-                <a href="http://themes.quitenicestuff.com/organicshopwp/my-account/">@lang ('front.header.my_account')</a>
+                <a href="{{ route('account.index') }}">
+                    @if (auth()->guard('web')->check())
+                        Xin chào {{ auth()->guard('web')->user()->display_name }}
+                    @else
+                        @lang ('front.header.my_account')
+                    @endif
+                </a>
+            </li>
+            <li class="checkout-icon">
+                <a href="{{ route('checkout.index') }}">@lang ('front.header.checkout')</a>
             </li>
         </ul>
         <div class="cart-top">
-            <p><a href="{{ route('cart.index') }}">{{ Cart::count() }} {{ trans_choice('front.header.cart_items', Cart::count()) }}</a></p>
+            <p><a href="{{ route('cart.index') }}">
+                <span id="js-cart-items-count">{{ Cart::count() }}</span> {{ trans_choice('front.header.cart_items', Cart::count()) }}
+            </a></p>
         </div>
     </div><!-- END .topbar-right -->
 </div><!-- END .topbar -->
@@ -64,7 +72,7 @@
             <a href="{{ route('contact.index') }}">@lang ('front.menu.contact')</a>
         </li>
     </ul>
-    <form action="{{ url('/') }}" class="fr" id="menu-search" method="get" name="menu-search">
-        <input name="s" type="text">
+    <form action="{{ route('index.search') }}" class="fr" id="menu-search" method="get" name="menu-search">
+        <input name="q" type="text">
     </form>
 </div><!-- END .main-menu-wrapper -->

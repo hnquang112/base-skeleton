@@ -172,13 +172,13 @@ div.product .out-of-stock,#content div.product .out-of-stock {
     color: red;
 }
 
-div.product div.images,#content div.product div.images {
+div.product div.img,#content div.product div.img {
     float: left;
     width: 48%;
     margin-bottom: 2em;
 }
 
-div.product div.images img,#content div.product div.images img {
+div.product div.img img,#content div.product div.img img {
     display: block;
     width: 100%;
     height: auto;
@@ -191,27 +191,27 @@ div.product div.images img,#content div.product div.images img {
     transition: all ease-in-out .2s;
 }
 
-div.product div.images div.thumbnails,#content div.product div.images div.thumbnails {
+div.product div.img div.thumbnails,#content div.product div.img div.thumbnails {
     padding-top: 1em;
 }
 
-div.product div.images div.thumbnails:after,#content div.product div.images div.thumbnails:after {
+div.product div.img div.thumbnails:after,#content div.product div.img div.thumbnails:after {
     content: "";
     display: block;
     clear: both;
 }
 
-div.product div.images div.thumbnails a,#content div.product div.images div.thumbnails a {
+div.product div.img div.thumbnails a,#content div.product div.img div.thumbnails a {
     float: left;
     width: 30.75%;
     margin-right: 3.8%;
 }
 
-div.product div.images div.thumbnails a.last,#content div.product div.images div.thumbnails a.last {
+div.product div.img div.thumbnails a.last,#content div.product div.img div.thumbnails a.last {
     margin-right: 0;
 }
 
-div.product div.images div.thumbnails a.first,#content div.product div.images div.thumbnails a.first {
+div.product div.img div.thumbnails a.first,#content div.product div.img div.thumbnails a.first {
     clear: both;
 }
 
@@ -614,7 +614,7 @@ a.button.loading:before,button.button.loading:before,input.button.loading:before
     right: 0;
     left: 0;
     bottom: 0;
-    background: url(../images/ajax-loader.gif) center no-repeat rgba(255,255,255,0.65);
+    background: url(../img/ajax-loader.gif) center no-repeat rgba(255,255,255,0.65);
 }
 
 a.button.added:before,button.button.added:before,input.button.added:before,#respond input#submit.added:before,#content input.button.added:before {
@@ -625,7 +625,7 @@ a.button.added:before,button.button.added:before,input.button.added:before,#resp
     top: .35em;
     right: -26px;
     text-indent: 0;
-    background: url(../images/success.png) no-repeat;
+    background: url(../img/success.png) no-repeat;
 }
 
 a.button:hover,button.button:hover,input.button:hover,#respond input#submit:hover,#content input.button:hover {
@@ -863,11 +863,11 @@ a.button.alt:hover,button.button.alt:hover,input.button.alt:hover,#respond input
     float: right;
     width: 80px;
     height: 16px;
-    background: url(../images/star.png) repeat-x left 0;
+    background: url(../img/star.png) repeat-x left 0;
 }
 
 .star-rating span {
-    background: url(../images/star.png) repeat-x left -32px;
+    background: url(../img/star.png) repeat-x left -32px;
     height: 0;
     padding-top: 16px;
     overflow: hidden;
@@ -919,7 +919,7 @@ p.stars span {
     height: 16px;
     position: relative;
     float: left;
-    background: url(../images/star.png) repeat-x left 0;
+    background: url(../img/star.png) repeat-x left 0;
 }
 
 p.stars span a {
@@ -934,11 +934,11 @@ p.stars span a {
 }
 
 p.stars span a:hover,p.stars span a:focus {
-    background: url(../images/star.png) repeat-x left -16px;
+    background: url(../img/star.png) repeat-x left -16px;
 }
 
 p.stars span a.active {
-    background: url(../images/star.png) repeat-x left -32px;
+    background: url(../img/star.png) repeat-x left -32px;
 }
 
 p.stars span a.star-1 {
@@ -1088,7 +1088,7 @@ table.cart a.remove,#content table.cart a.remove {
     height: 16px;
     width: 16px;
     text-indent: -9999px;
-    background: url(../images/remove.png) #e0dadf;
+    background: url(../img/remove.png) #e0dadf;
 }
 
 table.cart a.remove:hover,#content table.cart a.remove:hover {
@@ -1365,7 +1365,6 @@ form .form-row input.input-text,form .form-row textarea {
 }
 
 form .form-row textarea {
-    height: 3.5em;
     line-height: 1.5em;
     display: block;
     -moz-box-shadow: none;
@@ -1383,7 +1382,7 @@ form .form-row-last {
     float: right;
 }
 
-form.login,form.checkout_coupon,form.register {
+div.login,form.checkout_coupon,form.register {
     border: 1px solid #e0dadf;
     padding: 20px;
     margin: 2em 0;
@@ -1659,7 +1658,7 @@ ul.digital-downloads li .count {
 .widget_layered_nav ul li.chosen a {
     padding: 0 6px 0 18px;
     border: 1px solid #ad74a2;
-    background: #ad74a2 url(../images/cross_white.png) no-repeat 6px center;
+    background: #ad74a2 url(../img/cross_white.png) no-repeat 6px center;
     box-shadow: inset 0 1px 1px rgba(255,255,255,0.5) #888;
     -webkit-box-shadow: inset 0 1px 1px rgba(255,255,255,0.5) #888;
     -moz-box-shadow: inset 0 1px 1px rgba(255,255,255,0.5) #888;

@@ -34,7 +34,7 @@ class SettingsTableSeeder extends Seeder
         for ($i = 0; $i < $limit; $i++) {
             $slider = new Setting;
             $slider->type = Setting::TYP_SLIDER;
-            $slider->image_id = create_file_from_path($faker->imageUrl(960, 416, 'cats'));
+            $slider->image_id = create_file_from_path('http://www.fillmurray.com/960/416');
             $slider->label = $faker->catchPhrase;
 
             $slider->save();

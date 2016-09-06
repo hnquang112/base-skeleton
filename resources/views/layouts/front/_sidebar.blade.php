@@ -56,7 +56,7 @@
     </div>
     <div class="widget">
         <div class="widget-title clearfix">
-            <h4 class="tag-title">{{ trans_choice('front.common.recent_posts', 2) }}</h4>
+            <h4 class="tag-title">{{ trans_choice('front.common.recent_articles', 2) }}</h4>
         </div>
         <ul class="latest-posts-list clearfix">
             @foreach ($_recentPosts as $_post)

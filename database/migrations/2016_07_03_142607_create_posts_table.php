@@ -17,12 +17,15 @@ class CreatePostsTable extends Migration
             $table->integer('type');
             $table->string('title');
             $table->longText('content');
-            $table->integer('author_id');
+            $table->integer('user_id');
             $table->string('slug');
             $table->jsonb('meta')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->index(['title', 'content', 'slug']);
         });
     }
 

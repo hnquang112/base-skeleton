@@ -9,20 +9,20 @@
 namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\Article;
 
 class BlogController extends FrontController
 {
     // GET: /blog
     public function index(Request $request) {
-        $posts = Post::with('tags', 'represent_image')->published()->orderByDesc('published_at')->paginate(5);
+        $articles = Article::with('tags', 'represent_image')->published()->orderByDesc('published_at')->paginate(5);
 
-        return view('front.blog.index', compact('posts'));
+        return view('front.blog.index', compact('articles'));
     }
 
     // GET: /blog/lorem-ipsum
-    public function show(Request $request, $post) {
-        return view('front.blog.show', compact('post'));
+    public function show(Request $request, $article) {
+        return view('front.blog.show', compact('article'));
     }
 
     // GET: /category/lorem-ipsum/{prod|post}
@@ -30,12 +30,12 @@ class BlogController extends FrontController
         $taxoType = 'cat';
 
         if ($postType == 'post') {
-            $posts = $taxo->getRelatedPosts();
+            $articles = $taxo->getRelatedPosts();
         } else {
-            $posts = $taxo->getRelatedProducts();
+            $articles = $taxo->getRelatedProducts();
         }
 
-        return view('front.blog.filter', compact('taxo', 'taxoType', 'postType', 'posts'));
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'postType', 'articles'));
     }
 
     // GET: /tag/lorem-ipsum/{prod|post}
@@ -43,11 +43,11 @@ class BlogController extends FrontController
         $taxoType = 'tag';
 
         if ($postType == 'post') {
-            $posts = $taxo->getRelatedPosts();
+            $articles = $taxo->getRelatedPosts();
         } else {
-            $posts = $taxo->getRelatedProducts();
+            $articles = $taxo->getRelatedProducts();
         }
 
-        return view('front.blog.filter', compact('taxo', 'taxoType', 'postType', 'posts'));
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'postType', 'articles'));
     }
 }
