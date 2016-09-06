@@ -29,7 +29,7 @@ class PurchaseController extends FrontController {
             $user = new User;
         }
 
-        return view('front.shop.purchase', compact('cartData', 'user'));
+        return view('front.purchase.create', compact('cartData', 'user'));
     }
 
     // POST: /checkout
@@ -39,26 +39,28 @@ class PurchaseController extends FrontController {
         // create new order with user id above and the shipping info if provided
         // attach products from cart to created order
         // inform that the order is created and notify via billing email
-        dd($request->all());
 
-        $user = User::whereEmail($request->billing_email)->first();
+        $user = User::whereEmail($request->email)->first();
 
         if (!$user) {
             $user = new User;
-//            $user->fill($request->only('email', 'display_name', 'address', 'phone', 'city', 'country'));
             $user->fill($request->all());
+            $user->type = User::USER;
 
             $user->save();
         }
 
         $order = new Order;
         if ($request->ship_to_billing != 1) {
+            $this->validate($request, Order::$rules);
             $order->ship_to_billing = 0;
         }
-//        $order->fill($request->only('shipping_full_name', 'shipping_address', 'shipping_city', 'shipping_phone',
-//            'shipping_country', 'shipping_email', 'delivery_note'));
         $order->fill($request->all());
         $order->user()->associate($user);
+
+        if (!$order->save()) {
+            return back();
+        }
 
         $tmpCartItems = [];
         foreach (Cart::content() as $cartItem) {
@@ -68,9 +70,14 @@ class PurchaseController extends FrontController {
             ];
         }
         $order->products()->attach($tmpCartItems);
-        $order->save();
 
-        return back();
+        Cart::destroy();
+
+        return redirect()->route('checkout.show', $order->code);
+    }
+
+    public function show($order) {
+        return view('front.purchase.show', compact('order'));
     }
 
 }

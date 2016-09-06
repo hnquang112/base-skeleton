@@ -15,6 +15,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function($table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->string('code')->nullable();
             $table->jsonb('meta')->nullable();
             $table->timestamps();
 

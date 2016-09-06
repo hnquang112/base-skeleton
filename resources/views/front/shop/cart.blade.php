@@ -39,7 +39,7 @@
 
                                     <!-- Product price -->
                                     <td data-title="Price" style="text-align: right">
-                                        <span class="amount js-product-price">{{ $cartItem->price }}</span>đ</td>
+                                        <span class="amount js-product-price">{{ format_price_with_currency($cartItem->price, '') }}</span>đ</td>
 
                                     <!-- Quantity inputs -->
                                     <td data-title="Quantity" class="qty-table product-quantity">
@@ -53,7 +53,7 @@
 
                                     <!-- Product subtotal -->
                                     <td data-title="Total" class="product-subtotal" style="text-align: right">
-                                        <span class="amount js-cart-row-price">{{ $cartItem->price * $cartItem->qty }}</span>đ</td>
+                                        <span class="amount js-cart-row-price">{{ format_price_with_currency($cartItem->price * $cartItem->qty, '') }}</span>đ</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -8,6 +8,7 @@ use App\Article;
 use App\Tag;
 use App\Category;
 use App\Product;
+use App\Order;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -37,6 +38,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('products', 'App\Product');
         $router->model('users', 'App\User');
         $router->model('comments', 'App\Comment');
+        $router->model('orders', 'App\Order');
         
         $router->bind('blog', function ($slug) {
             return Article::findBySlugOrFail($slug);
@@ -49,6 +51,10 @@ class RouteServiceProvider extends ServiceProvider
         });
         $router->bind('shop', function ($slug) {
             return Product::findBySlugOrFail($slug);
+        });
+        $router->bind('checkout', function ($code) {
+            // sort by created time, in case code is duplicated
+            return Order::whereCode($code)->orderBy('created_at', 'desc')->first();
         });
     }
 
