@@ -23,7 +23,7 @@
         "darrylkuhn/dialect": "dev-master",
         "anahkiasen/former": "^4.0",
         "barryvdh/laravel-elfinder": "^0.3.7",
-        "gloudemans/shoppingcart": "^2.1",
+        "gloudemans/shoppingcart": "^2.2",
         "barryvdh/laravel-ide-helper": "^2.2",
         "simplesoftwareio/simple-qrcode": "^1.4",
         "anhskohbo/no-captcha": "^2.1",
