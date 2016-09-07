@@ -5,12 +5,10 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Eloquent\Dialect\Json;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Hash;
 use Carbon\Carbon;
 use Gravatar;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     use Json, SoftDeletes;
 
     /**
@@ -19,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'display_name', 'username', 'type', 'address', 'phone', 'city', 'country'
     ];
 
     /**
@@ -42,7 +40,7 @@ class User extends Authenticatable
     ];
 
     protected $jsonColumns = ['meta'];
-    
+
     const MASTER = 0;
     const ADMIN = 1;
     const EDITOR = 2;
@@ -55,10 +53,22 @@ class User extends Authenticatable
     const STT_ACTIVE = 1;
 
     public static $roleNames = [
-        0 => 'Web Master',
-        1 => 'Administrator',
-        2 => 'Content Editor',
-        3 => 'User'
+        self::MASTER => 'Web Master',
+        self::ADMIN => 'Administrator',
+        self::EDITOR => 'Content Editor',
+        self::USER => 'User'
+    ];
+
+    public static $rulesForCreating = [
+        'display_name' => 'required|max:255',
+        'email' => 'email|required|max:255|unique:users,email',
+        'username' => 'required|alpha_dash|max:255',
+        'password' => 'required|confirmed'
+    ];
+
+    public static $rulesForUpdating = [
+        'display_name' => 'required|max:255',
+        'password' => 'confirmed'
     ];
 
     public function __construct() {
@@ -69,7 +79,9 @@ class User extends Authenticatable
 			"birthday":null,
 			"phone":null,
 			"address":null,
-			"gender":null
+			"gender":null,
+			"city":null,
+			"country":null
 		}');
     }
 
@@ -77,7 +89,11 @@ class User extends Authenticatable
      * Relationships
      */
     public function posts() {
-        return $this->hasMany('App\Post', 'author_id');
+        return $this->hasMany('App\Post');
+    }
+
+    public function profiles() {
+        return $this->hasMany('App\Profile');
     }
 
     /**
@@ -88,13 +104,11 @@ class User extends Authenticatable
     }
 
     public function getAvatarImageAttribute() {
-        if (!empty($this->profile_image)) {
-            return asset($this->profile_image);
-        }
-
-        return Gravatar::get($this->email);
+        if (!empty($this->profile_image)) return asset($this->profile_image);
+        if (!empty($this->email)) return Gravatar::get($this->email);
+        return null;
     }
-    
+
     /**
      * Mutators
      */
@@ -105,16 +119,26 @@ class User extends Authenticatable
     /**
      * Scopes
      */
-    public function scopeFilterMasters($query) {
-        return $query->whereType(self::MASTER);
+    public function scopeFilterNotMaster($query) {
+        return $query->where('type', '<>', self::MASTER);
     }
 
-    public function scopeFilterAdmins($query) {
-        return $query->whereType(self::ADMIN);
+    /**
+     * Helpers
+     */
+    public static function getRolesByAuthUser() {
+        $roles = self::$roleNames;
+        unset($roles[self::MASTER]);
+
+        if (auth()->check() && auth()->user()->type == self::ADMIN) {
+            unset($roles[self::ADMIN]);
+        }
+
+        return $roles;
     }
 
-    public function scopeFilterUsers($query) {
-        return $query->whereType(self::USER);
+    public static function extendRulesForUpdating($rules = []) {
+        return array_merge(self::$rulesForUpdating, $rules);
     }
-    
+
 }

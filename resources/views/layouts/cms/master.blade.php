@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ get_cms_lang_attribute() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,16 +11,21 @@
     <meta name='msapplication-tap-highlight' content='no'>
     <meta name='description' content=''/><!----**********ADD WEB DESCRIPTION---->
     <meta name='keywords' content=''/><!----**********ADD WEB KEYWORDS---->
-    <meta name='author' content=''/><!----**********ADD WEB AUTHOR---->
+    <meta name='author' content='hnquang112'/><!----**********ADD WEB AUTHOR---->
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     @inject ('_request', 'Illuminate\Http\Request')
     <link rel="canonical" href="{{ $_request->url() }}">
 
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>BaseSkeleton | Dashboard</title>
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="{{ asset('css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ elixir('css/vendor.css') }}">
+    <style>
+        textarea {
+            resize: vertical;
+        }
+    </style>
 
     @stack ('styles')
 
@@ -30,6 +35,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    @include ('layouts._analytic')
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
     <div class="wrapper">
@@ -60,8 +67,8 @@
     </div><!-- ./wrapper -->
 
     <!-- Vendor JS -->
-    <script src="{{ asset('js/vendor.js') }}"></script>
-    <script src="{{ asset('js/common.js') }}"></script>
+    <script src="{{ elixir('js/vendor.js') }}"></script>
+    <script src="{{ elixir('js/common.js') }}"></script>
 
     @stack ('scripts')
 </body>

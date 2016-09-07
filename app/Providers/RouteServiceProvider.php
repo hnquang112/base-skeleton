@@ -4,10 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use App\Post;
+use App\Article;
 use App\Tag;
 use App\Category;
 use App\Product;
+use App\Order;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -30,14 +31,17 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot($router);
 
-        $router->model('posts', 'App\Post');
+        $router->model('articles', 'App\Article');
         $router->model('categories', 'App\Category');
         $router->model('tags', 'App\Tag');
         $router->model('settings', 'App\Setting');
-        $router->model('products', 'App\Post');
+        $router->model('products', 'App\Product');
+        $router->model('users', 'App\User');
+        $router->model('comments', 'App\Comment');
+        $router->model('orders', 'App\Order');
         
         $router->bind('blog', function ($slug) {
-            return Post::findBySlugOrFail($slug);
+            return Article::findBySlugOrFail($slug);
         });
         $router->bind('tag', function ($slug) {
             return Tag::findBySlugOrFail($slug);
@@ -47,6 +51,10 @@ class RouteServiceProvider extends ServiceProvider
         });
         $router->bind('shop', function ($slug) {
             return Product::findBySlugOrFail($slug);
+        });
+        $router->bind('checkout', function ($code) {
+            // sort by created time, in case code is duplicated
+            return Order::whereCode($code)->orderBy('created_at', 'desc')->first();
         });
     }
 

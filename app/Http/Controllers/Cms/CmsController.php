@@ -9,13 +9,31 @@
 namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
+use App\Setting;
+use App;
 
-class CmsController extends Controller
-{
+class CmsController extends Controller {
+
+    public function __construct() {
+        $lang = Setting::getSiteConfigValue('cms_page_language');
+
+        if (!App::isLocale($lang)) {
+            App::setLocale($lang);
+        }
+    }
+
+    // GET: /cms
     public function gate() {
         if (auth()->check()) return redirect()->route('cms.dashboard.index');
 
         return redirect('/cms/login');
+    }
+
+    // GET: /cms/{vi|en}
+    public function changeLanguage($lang) {
+        Setting::setSiteConfigValue('cms_page_language', $lang);
+
+        return back();
     }
 
 	public function getCurrentUser() {

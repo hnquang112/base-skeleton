@@ -7,51 +7,101 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Eloquent\Dialect\Json;
 
 class Setting extends Model {
-  use SoftDeletes, Json;
+    use SoftDeletes, Json;
 
-  protected $dates = ['deleted_at'];
-  protected $fillable = ['type', 'label', 'description'];
-  protected $jsonColumns = ['meta'];
+    protected $dates = ['deleted_at'];
+    protected $fillable = ['type', 'label', 'description', 'value', 'image_id'];
+    protected $jsonColumns = ['meta'];
 
-  const TYP_SLIDER = 0;
+    const TYP_SLIDER = 0;
+    const TYP_MENU = 1;
+    const TYP_CONFIG = 2;
+    const TYP_QUOTE = 3;
 
-  public static $rulesForCreatingSliders = [
-    'label' => 'required|max:255',
-    'image' => 'required'
-  ];
+    public static $languages = [
+        'vi' => [
+            'name' => 'Tiếng Việt',
+            'flag' => 'vn',
+            'code' => 'vi_VN',
+        ],
+        'en' => [
+            'name' => 'English',
+            'flag' => 'us',
+            'code' => 'en_US',
+        ]
+    ];
 
-  public static $rulesForUpdatingSliders = [
-    'label' => 'required|max:255'
-  ];
+    public static $siteConfigLabels = [
+        'front_page_language',
+        'cms_page_language',
+    ];
 
-  public function __construct() {
-    parent::__construct();
-    $this->hintJsonStructure('meta', '{
-      "label":null,
-      "description":null
-    }');
-  }
+    public static $rulesForCreatingSliders = [
+        'label' => 'required|max:255',
+        'image' => 'required'
+    ];
 
-  public function image() {
-    return $this->hasOne('App\File', 'id', 'image_id');
-  }
+    public static $rulesForUpdatingSliders = [
+        'label' => 'required|max:255'
+    ];
 
-  public function getImagePathAttribute() {
-    return $this->image ? $this->image->path : '';
-  }
-
-  public function setImageIdAttribute($value) {
-    if (!empty($value)) {
-      $this->attributes['image_id'] = create_file_from_path($value);
+    public function __construct() {
+        parent::__construct();
+        $this->hintJsonStructure('meta', '{
+            "label":null,
+            "description":null,
+            "image_id":null,
+            "menu_item":null,
+            "menu_url":null,
+            "config_value":null,
+            "quote_content":null,
+            "quote_author":null
+        }');
     }
-  }
 
-  public function scopeSliders($query) {
-    return $query->whereType(self::TYP_SLIDER);
-  }
+    /**
+     * Relationships
+     */
+    public function image() {
+        return $this->hasOne('App\File', 'id', "meta->>'image_id'");
+    }
 
-  public function delete() {
-    $this->image()->delete();
-    parent::delete();
-  }
+    /**
+     * Accessors
+     */
+    public function getImagePathAttribute() {
+        return $this->image ? $this->image->path : '';
+    }
+
+    /**
+     * Scopes
+     */
+    public function scopeSliders($query) {
+        return $query->whereType(self::TYP_SLIDER);
+    }
+
+    public function scopeMenus($query) {
+        return $query->whereType(self::TYP_MENU);
+    }
+
+    /**
+     * Other functions
+     */
+    public function delete() {
+        $this->image()->delete();
+        parent::delete();
+    }
+
+    public static function getSiteConfigValue($key) {
+        $conf = Setting::where('type', self::TYP_CONFIG)->where('meta->label', $key);
+        if ($conf->count() > 0) return Setting::where('type', self::TYP_CONFIG)->where('meta->label', $key)->first()->config_value;
+        return null;
+    }
+
+    public static function setSiteConfigValue($key, $value) {
+        Setting::updateOrCreate(['meta->label' => $key], [
+            'config_value' => $value
+        ]);
+    }
+
 }

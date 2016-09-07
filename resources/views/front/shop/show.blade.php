@@ -42,14 +42,15 @@
                                 <p>{{ $product->short_description }}</p>
                             </div>
 
-                            <form action="{{ route('shop.cart', [$product->slug]) }}" class="qty-product-single clearfix cart" method="POST">
-                                {{ csrf_field() }}
+                            <div class="qty-product-single clearfix cart">
                                 <div class="qty-fields-large clearfix fl">
                                     <input name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty"
-                                           class="qty-text" maxlength="12">
+                                           class="qty-text js-qty-add-to-cart" maxlength="12" readonly>
                                 </div>
-                                <button type="submit" class="single_add_to_cart_button button3 fr alt">Add to cart</button>
-                            </form>
+                                <button class="single_add_to_cart_button button3 fr alt js-add-to-cart" data-product-id="{{ $product->id }}">
+                                    @lang ('front.home.product.add_to_cart')
+                                </button>
+                            </div>
 
                             <div class="product_meta">
                                 <span class="posted_in">Category:
@@ -83,7 +84,7 @@
                                 <div id="review_form">
                                     <div id="respond">
                                         <h3 id="reply-title">Be the first to review “Summer Berry Soap” <small><a rel="nofollow" id="cancel-comment-reply-link" href="/organicshopwp/shop/summer-berry-soap/#respond" style="display:none;">Cancel reply</a></small></h3>
-                                        <form action="http://themes.quitenicestuff.com/organicshopwp/wp-comments-post.php" method="post" id="commentform">
+                                        <form action="{{ route('shop.review', $product->slug) }}" method="post" id="commentform">
                                             <p class="comment-form-author">
                                                 <label for="author">Name</label> <span class="required">*</span>
                                                 <input id="author" name="author" type="text" value="" size="30" aria-required="true">
@@ -94,8 +95,13 @@
                                             </p>
                                             <p class="comment-form-rating">
                                                 <label for="rating">Rating</label>
-                                                <p class="stars"><span><a class="star-1" href="#">1</a><a class="star-2" href="#">2</a><a class="star-3" href="#">3</a><a class="star-4" href="#">4</a><a class="star-5" href="#">5</a></span>
-                                                </p>
+                                                <p class="stars"><span>
+                                                    <a class="star-1" href="#">1</a>
+                                                    <a class="star-2" href="#">2</a>
+                                                    <a class="star-3" href="#">3</a>
+                                                    <a class="star-4" href="#">4</a>
+                                                    <a class="star-5" href="#">5</a>
+                                                </span></p>
                                                 <select name="rating" id="rating" style="display: none;">
                                                     <option value="">Rate…</option>
                                                     <option value="5">Perfect</option>
@@ -150,7 +156,7 @@
                                 <p class="product-button clearfix">
                                     <a href="http://themes.quitenicestuff.com/organicshopwp/shop/oak-candle-set-2/?add-to-cart=60"
                                         rel="nofollow" data-product-id="{{ $prod->id }}" class="button2 product_type_simple">
-                                        Add to cart</a>
+                                        @lang ('front.home.product.add_to_cart')</a>
                                 </p>
                             </li>
                         @endforeach

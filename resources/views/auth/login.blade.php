@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
+        <a href="{{ route('cms.index') }}"><b>Base</b>Skeleton</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -29,7 +29,7 @@
                 @endif
             </div>
             <div class="row">
-                <div class="col-xs-8">
+                <div class="col-xs-8" style="padding-left: 35px">
                     <div class="checkbox icheck">
                         <label>
                             <input name="remember" type="checkbox"> Remember Me

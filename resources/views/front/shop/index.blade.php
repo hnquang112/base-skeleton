@@ -9,7 +9,8 @@
 
             <!-- BEGIN .col-main -->
             <li class="col-main">
-                <h2 class="page-title">All Products</h2>
+                <h2 class="page-title">@lang('front.blog.title', [
+                'object' => trans('front.blog.title_object.products'), 'verb' => ''])</h2>
                 <div class="page-description"></div>
 
                 <ul class="columns-3 clearfix product-list">
@@ -32,8 +33,8 @@
                                 </p>
                             </a>
                             <p class="product-button clearfix">
-                                <a href="http://themes.quitenicestuff.com/organicshopwp/shop/?add-to-cart=74" rel="nofollow"
-                                   data-product-id="{{ $product->id }}" class="button2 product_type_simple">Add to cart</a>
+                                <buton data-product-id="{{ $product->id }}" class="button2 js-add-to-cart">
+                                    @lang ('front.home.product.add_to_cart')</buton>
                             </p>
                         </li>
                     @empty
@@ -57,7 +58,6 @@
             </li><!-- END .col-main -->
 
             <!-- BEGIN .col-sidebar -->
-            {{ App\Product::max('meta->price') }}
             @include ('layouts.front._sidebar', [
                 'hasPriceFilter' => true,
                 'start' => Request::get('min_price'),

@@ -15,7 +15,7 @@
                             <i class="fa fa-square-o"></i></button>
 
                         <!-- Bunch delete button -->
-                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm">
+                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm" title="Delete">
                             <i class="fa fa-trash-o"></i></button>
                     </div>
                     <div class="table-responsive mailbox-messages">

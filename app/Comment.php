@@ -6,13 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Eloquent\Dialect\Json;
 
-class Comment extends Post {
-    const TYP_PAGE = 0;
-    const TYP_POST = 1;
+class Comment extends Model {
+    use SoftDeletes, Json;
 
-    public static $rulesForCreatingSliders = [
+    protected $dates = ['deleted_at'];
+    protected $fillable = ['name', 'email', 'message', 'rating', 'post_id'];
+    protected $jsonColumns = ['meta'];
+
+    const TYP_FEEDBACK = 0;
+    const TYP_REVIEW = 1;
+
+    public static $rulesForCreatingFeedback = [
         'name' => 'required|max:255',
-        'email' => 'required|max:255'
+        'email' => 'required|email|max:255',
+        'message' => 'required',
+        'g-recaptcha-response' => 'required|captcha'
     ];
 
     public function __construct() {
@@ -20,8 +28,32 @@ class Comment extends Post {
         $this->hintJsonStructure('meta', '{
             "name":null,
             "email":null,
-            "content":null,
-            "rating":null
+            "message":null,
+            "rating":null,
+            "post_id":null,
+            "read_by_users":[]
         }');
+    }
+
+    /**
+     * Accessors
+     */
+//    public function getIsReadAttribute() {
+//        if (empty($this->read_by_users) || in_array(auth()->user()->id, $this->read_by_users)) return true;
+//        return false;
+//    }
+
+    /**
+     * Relationships
+     */
+    public function post() {
+        return $this->belongsTo('App\Post', "meta->>'post_id'", 'id');
+    }
+
+    /**
+     * Scopes
+     */
+    public function scopeFeedback($query) {
+        return $query->where('type', self::TYP_FEEDBACK);
     }
 }

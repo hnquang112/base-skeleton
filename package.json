@@ -1,11 +1,22 @@
 {
+  "cacheDirectories": ["node_modules", "bower_components"],
   "private": true,
-  "scripts": {
-    "prod": "gulp --production",
-    "dev": "gulp watch"
+  "name": "base-skeleton",
+  "description": "a really cool app",
+  "version": "1.0.0",
+  "engines": {
+    "node": "6.3.1",
+    "npm": "3.10.3"
   },
   "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
     "gulp": "^3.9.1",
-    "laravel-elixir": "^5.0.0"
+    "laravel-elixir": "^5.0.0",
+    "bower": "^1.7.9"
+  },
+  "scripts": {
+    "postinstall": "bower install && gulp"
   }
 }

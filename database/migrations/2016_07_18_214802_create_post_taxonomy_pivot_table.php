@@ -19,6 +19,9 @@ class CreatePostTaxonomyPivotTable extends Migration
             $table->integer('taxonomy_type');
             $table->primary(['post_id', 'taxonomy_id']);
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('taxonomies');
+            $table->foreign('post_id')->references('id')->on('posts');
         });
     }
 

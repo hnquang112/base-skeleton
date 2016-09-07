@@ -1,5 +1,13 @@
 @extends ('layouts.front.master')
 
+@push ('meta')
+    <meta property="og:url"           content="{{ $article->front_url }}" />
+    <meta property="og:type"          content="article" />
+    <meta property="og:title"         content="{{ $article->title }}" />
+    <meta property="og:description"   content="{{ $article->short_description }}" />
+    <meta property="og:image"         content="{{ $article->represent_image_path }}" />
+@endpush
+
 @section ('content')
     <div id="page-header"><img src="{{ asset('img/page-header1.jpg') }}" alt=""></div>
 
@@ -7,21 +15,23 @@
     <div class="section">
         <ul class="columns-content page-content clearfix">
             <!-- BEGIN .col-main -->
-            <li class="col-main">
+            <li class="col-mai  n">
                 <!-- BEGIN .blog-title-single -->
                 <div class="post-40 post type-post status-publish format-standard hentry blog-title-single clearfix">
                     <div class="fl">
-                        <h2>{{ $post->title }}
-                            <span>Posted {{ format_date_as_string($post->published_at) }} | Tags:
-                                @foreach ($post->tags as $key => $tag)
+                        <h2>{{ $article->title }}
+                            <span>@lang ('front.blog.body.posted') {{ format_date_as_string($article->published_at) }} |
+                                {{ trans_choice('front.common.tags', $article->tags()->count()) }}:
+                                @foreach ($article->tags as $key => $tag)
                                     <a href="{{ $tag->front_url }}" rel="tag">{{ $tag->name }}</a>
-                                    @if ($key < $post->tags()->count() - 1), @endif
+                                    @if ($key < $article->tags()->count() - 1), @endif
                                 @endforeach
                             </span>
                         </h2>
                     </div>
                     <div class="comment-count fr">
-                        <h3><a href="{{ $post->front_url }}#comments" title="Comment on {{ $post->title }}">1</a></h3>
+                        <h3><a title="@lang ('front.blog.body.comment_on') {{ $article->title }}" href="{{ $article->front_url }}#fb-comment-widget">
+                                <span class="fb-comments-count"></span></a></h3>
                         <div class="comment-point"></div>
                     </div>
                 </div><!-- END .blog-title-single -->
@@ -29,11 +39,11 @@
                 <!-- BEGIN .blog-content -->
                 <div class="blog-content clearfix">
                     <div class="block-img1">
-                        <a href="{{ $post->front_url }}" rel="bookmark" title="{{ $post->title }}">
-                            <img src="{{ $post->represent_image_path }}" alt="" class="prev-image"></a>
+                        <a href="{{ $article->front_url }}" rel="bookmark" title="{{ $article->title }}">
+                            <img src="{{ $article->represent_image_path }}" alt="" class="prev-image"></a>
                     </div>
 
-                    {!! $post->content !!}
+                    {!! $article->content !!}
                 </div><!-- END .blog-content -->
 
                 <!-- BEGIN .reply_container -->
@@ -79,7 +89,7 @@
                     {{--</div><!-- #respond -->--}}
                 {{--</div><!--END .reply_container -->--}}
 
-                @include ('layouts.front._comment', ['identifier' => 'blog-' . $post->slug])
+                @include ('layouts.front._comment', ['identifier' => 'blog-' . $article->slug])
             </li>
 
             @include ('layouts.front._sidebar')

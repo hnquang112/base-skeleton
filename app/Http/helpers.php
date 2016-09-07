@@ -7,9 +7,10 @@
  */
 use Carbon\Carbon;
 use App\File;
+use App\Setting;
 
 function format_date_as_string($date) {
-    return Carbon::parse($date)->format('Y/m/d');
+    return Carbon::parse($date)->format('d/m/Y');
 }
 
 function format_price_with_currency($price, $currency = 'đ') {
@@ -20,11 +21,38 @@ function format_price_with_currency($price, $currency = 'đ') {
 function create_file_from_path($path) {
     if (!empty($path)) {
         $file = new File;
-        $file->path = $path;
+        $file->file = $path;
         $file->save();
 
         return $file->id;
     }
 
     return null;
+}
+
+function get_auth_admin_type() {
+    if (!auth()->check()) return null;
+    return auth()->user()->type;
+}
+
+function get_front_lang_attribute($attr = null) {
+    $lang = Setting::getSiteConfigValue('front_page_language');
+    $fallback = 'en';
+
+    if (is_null($attr)) {
+        return !empty($lang) ? $lang : $fallback;
+    }
+
+    return !empty($lang) ? Setting::$languages[$lang][$attr] : $fallback;
+}
+
+function get_cms_lang_attribute($attr = null) {
+    $lang = Setting::getSiteConfigValue('cms_page_language');
+    $fallback = 'en';
+
+    if (is_null($attr)) {
+        return !empty($lang) ? $lang : $fallback;
+    }
+
+    return !empty($lang) ? Setting::$languages[$lang][$attr] : $fallback;
 }

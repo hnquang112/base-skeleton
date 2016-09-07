@@ -22,23 +22,23 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="treeview{{ $request->is('cms/posts*') ? ' active' : '' }}">
+            <li class="treeview{{ $request->is('cms/articles*') ? ' active' : '' }}">
                 <a href="#">
-                    <i class="fa fa-edit"></i> <span>Posts</span>
+                    <i class="fa fa-edit"></i> <span>Articles</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li {{ $request->is('cms/posts*') && !$request->is('cms/posts/create') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.posts.index') }}"><i class="fa fa-circle-o"></i> Posts List</a>
+                    <li {{ $request->is('cms/articles*') && !$request->is('cms/articles/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.articles.index') }}"><i class="fa fa-circle-o"></i> Articles List</a>
                     </li>
-                    <li {{ $request->is('cms/posts/create') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.posts.create') }}"><i class="fa fa-circle-o"></i> Write New Post</a>
+                    <li {{ $request->is('cms/articles/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.articles.create') }}"><i class="fa fa-circle-o"></i> Write New Article</a>
                     </li>
                 </ul>
             </li>
             <li class="treeview{{ $request->is('cms/products*') ? ' active' : '' }}">
                 <a href="#">
-                    <i class="fa fa-paper-plane-o"></i> <span>Products</span>
+                    <i class="fa fa-paper-plane"></i> <span>Products</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
@@ -65,19 +65,40 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview{{ $request->is('cms/users*') ? ' active' : '' }}">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Users</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-file-text-o"></i> <span>Settings</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
+                    <li {{ $request->is('cms/users*') && !$request->is('cms/users/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.users.index') }}"><i class="fa fa-circle-o"></i> Users List</a>
+                    </li>
+                    <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.users.create') }}"><i class="fa fa-circle-o"></i> Add New User</a>
+                    </li>
+                    <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.reviews.index') }}"><i class="fa fa-comment"></i> Reviews</a>
+                    </li>
+                    <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.feedback.index') }}"><i class="fa fa-envelope"></i> Feedback</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview {{ $request->is('cms/settings*') || $request->is('cms/sliders*') || $request->is('cms/media*') ? ' active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-gears"></i> <span>Settings</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li {{ $request->is('cms/settings*') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.settings.index') }}"><i class="fa fa-cog"></i> General Settings</a>
+                    </li>
                     <li {{ $request->is('cms/sliders*') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.sliders.index') }}"><i class="fa fa-circle-o"></i> Slider</a>
+                        <a href="{{ route('cms.sliders.index') }}"><i class="fa fa-picture-o"></i> Home Slider</a>
+                    </li>
+                    <li {{ $request->is('cms/media*') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.media.index') }}"><i class="fa fa-camera"></i> Uploaded Media</a>
                     </li>
                 </ul>
             </li>

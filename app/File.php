@@ -8,31 +8,30 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Eloquent\Dialect\Json;
 use Illuminate\Database\Eloquent\Model;
+use Codesleeve\Stapler\ORM\StaplerableInterface;
+use Codesleeve\Stapler\ORM\EloquentTrait;
 
-class File extends Model {
-    use SoftDeletes, Json;
+class File extends Model implements StaplerableInterface {
+    use EloquentTrait;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['path', 'description'];
-    protected $jsonColumns = ['meta'];
+    protected $fillable = ['file'];
 
-    /**
-     * Validations
-     */
-    public static $rulesForCreating = [
-        'path' => 'required|max:255',
-        'description' => 'max:255'
-    ];
+    const TYP_EXTERNAL = 0;
+    const TYP_INTERNAL = 1;
 
     public function __construct() {
         parent::__construct();
-        $this->hintJsonStructure('meta', '{
-            "path":null,
-            "description":null
-        }');
+        $this->hasAttachedFile('file', [
+            'styles' => config('laravel-stapler.stapler.styles'),
+            'url' => config('laravel-stapler.filesystem.url'),
+            'path' => config('laravel-stapler.filesystem.path'),
+        ]);
+    }
+
+    public function getPathAttribute() {
+        return $this->file->url('medium');
     }
 
 }

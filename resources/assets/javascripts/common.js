@@ -73,60 +73,24 @@ var Common = {
     },
 
     setupButtonInFormPages: function() {
-        var $button = $('#js-button-get-image-from-url'),
-            $input = $('#js-input-image-url'),
-            $image = $('#js-image-thumbnail-gotten'),
-            $result = $('#js-p-get-result');
+        var $input = $('#js-input-image'),
+            $image = $('#js-image-thumbnail-gotten');
 
-        $input.keyup(function () {
-            if ($(this).val() != '') {
-                $button.removeAttr('disabled')
-            } else {
-                $button.attr('disabled', 'disabled')
-            }
-        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-        $button.click(function () {
-            testImage($input.val(), showThumbnail)
-        });
-
-        function testImage(url, callback, timeout) {
-            timeout = timeout || 5000;
-            var timedOut = false, timer;
-            var img = new Image();
-            img.onerror = img.onabort = function() {
-                if (!timedOut) {
-                    clearTimeout(timer);
-                    callback(url, -1);
+                reader.onload = function (e) {
+                    $image.attr('src', e.target.result);
                 }
-            };
-            img.onload = function() {
-                if (!timedOut) {
-                    clearTimeout(timer);
-                    callback(url, 1);
-                }
-            };
-            img.src = url;
-            timer = setTimeout(function() {
-                timedOut = true;
-                callback(url, 0);
-            }, timeout)
-        }
-            
-        function showThumbnail(url, result) {
-            if (result == -1) {
-                $result.text('Error');
-                $image.hide()
-            }
-            if (result == 0) {
-                $result.text('Time out');
-                $image.hide()
-            }
-            if (result == 1) {
-                $result.text('');
-                $image.attr('src', url).show()
+
+                reader.readAsDataURL(input.files[0]);
             }
         }
+
+        $input.change(function(){
+            readURL(this);
+        });
     },
 
     run: function () {

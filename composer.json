@@ -1,5 +1,13 @@
 {
-    "name": "laravel/laravel",
+    "name": "hnquang112/base-skeleton",
+    "authors": [
+        {
+            "name": "Ho Nhat Quang",
+            "email": "hnquang112@yahoo.com.vn",
+            "homepage": "http://hnquang.xyz",
+            "role": "Developer"
+        }
+    ],
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
@@ -13,12 +21,18 @@
         "laracasts/flash": "^2.0",
         "nesbot/carbon": "^1.21",
         "darrylkuhn/dialect": "dev-master",
-        "anahkiasen/former": "^4.0",
         "barryvdh/laravel-elfinder": "^0.3.7",
-        "gloudemans/shoppingcart": "^2.1"
+        "gloudemans/shoppingcart": "^2.1",
+        "barryvdh/laravel-ide-helper": "^2.2",
+        "simplesoftwareio/simple-qrcode": "^1.4",
+        "anhskohbo/no-captcha": "^2.1",
+        "tymon/jwt-auth": "^0.5.9",
+        "fideloper/proxy": "^3.1",
+        "codesleeve/laravel-stapler": "^1.0",
+        "laravel/socialite": "^2.0"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.4",
+        "fzaninotto/faker": "^1.6",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",

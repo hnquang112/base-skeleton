@@ -8,3 +8,8 @@ public/css
 public/fonts
 public/img
 public/js
+public/flags
+public/build
+public/packages
+public/uploads
+*.iml

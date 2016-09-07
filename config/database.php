@@ -78,6 +78,17 @@ return [
             'schema' => 'public',
         ],
 
+        'heroku' => [
+            'driver'   => 'pgsql',
+            'host'     => parse_url(getenv("DB_URL"))["host"],
+            'database' => substr(parse_url(getenv("DB_URL"))["path"], 1),
+            'username' => parse_url(getenv("DB_URL"))["user"],
+            'password' => parse_url(getenv("DB_URL"))["pass"],
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+        ],
+
     ],
 
     /*

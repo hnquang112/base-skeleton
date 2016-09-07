@@ -9,31 +9,45 @@
 namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\Article;
 
 class BlogController extends FrontController
 {
+    // GET: /blog
     public function index(Request $request) {
-        $posts = Post::with('tags', 'represent_image')->published()->orderByDesc('published_at')->paginate(5);
+        $articles = Article::with('tags', 'represent_image')->published()->orderByDesc('published_at')->paginate(5);
 
-        return view('front.blog.index', compact('posts'));
+        return view('front.blog.index', compact('articles'));
     }
 
-    public function show(Request $request, $post) {
-        return view('front.blog.show', compact('post'));
+    // GET: /blog/lorem-ipsum
+    public function show(Request $request, $article) {
+        return view('front.blog.show', compact('article'));
     }
 
-    public function filterByCategory($taxo) {
+    // GET: /category/lorem-ipsum/{prod|post}
+    public function filterByCategory($taxo, $postType = 'prod') {
         $taxoType = 'cat';
-        $posts = $taxo->getRelatedPosts();
 
-        return view('front.blog.filter', compact('taxo', 'taxoType', 'posts'));
+        if ($postType == 'post') {
+            $articles = $taxo->getRelatedPosts();
+        } else {
+            $articles = $taxo->getRelatedProducts();
+        }
+
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'postType', 'articles'));
     }
 
-    public function filterByTag($taxo) {
+    // GET: /tag/lorem-ipsum/{prod|post}
+    public function filterByTag($taxo, $postType = 'prod') {
         $taxoType = 'tag';
-        $posts = $taxo->getRelatedPosts();
 
-        return view('front.blog.filter', compact('taxo', 'taxoType', 'posts'));
+        if ($postType == 'post') {
+            $articles = $taxo->getRelatedPosts();
+        } else {
+            $articles = $taxo->getRelatedProducts();
+        }
+
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'postType', 'articles'));
     }
 }

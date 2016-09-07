@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'previous' => '&laquo; Trước',
-    'next'     => 'Tiếp &raquo;',
+    'previous' => '&laquo; Trước', // ← Newer articles
+    'next'     => 'Tiếp &raquo;', // Older articles →
 
 ];
