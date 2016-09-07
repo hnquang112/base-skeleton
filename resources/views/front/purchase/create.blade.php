@@ -22,6 +22,16 @@
                     </div>
                 @endif
 
+                @if (count($errors) > 0)
+                    <div class="msg fail">
+                        <ul class="list-fail">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form name="checkout" method="post" class="checkout" action="{{ route('checkout.store') }}">
                     {{ csrf_field() }}
                     <div class="col2-set" id="customer_details">
@@ -33,44 +43,46 @@
                             <p class="form-row" id="billing_full_name_field">
                                 <label for="billing_full_name" class="">Full Name <abbr class="required" title="required">*</abbr></label>
                                 <input type="text" class="input-text" name="display_name" id="billing_full_name" placeholder="Full Name"
-                                       value="{{ $user->display_name }}" required>
+                                       value="{{ old('display_name') ?: $user->display_name }}" required>
                             </p>
 
                             <p class="form-row" id="billing_address_field">
                                 <label for="billing_address" class="">Address <abbr class="required" title="required">*</abbr></label>
                                 <input type="text" class="input-text" name="address" id="billing_address" placeholder="Address"
-                                       value="{{ $user->address }}" required>
+                                       value="{{ old('address') ?: $user->address }}" required>
                             </p>
 
                             <p class="form-row form-row-first" id="billing_city_field">
                                 <label for="billing_city" class="">Town/City <abbr class="required" title="required">*</abbr></label>
                                 <input type="text" class="input-text" name="city" id="billing_city" placeholder="Town/City"
-                                       value="{{ $user->city }}" required>
+                                       value="{{ old('city') ?: $user->city }}" required>
                             </p>
 
                             <p class="form-row form-row-last update_totals_on_change" id="billing_country_field">
                                 <label for="billing_country" class="">County</label>
-                                <input type="text" class="input-text" value="{{ $user->country }}" placeholder="County" name="country" id="billing_country">
+                                <input type="text" class="input-text" placeholder="County" name="country" id="billing_country"
+                                       value="{{ old('country') ?: $user->country }}">
                             </p>
                             <div class="clear"></div>
 
                             <p class="form-row form-row-first" id="billing_email_field">
                                 <label for="billing_email" class="">Email Address <abbr class="required" title="required">*</abbr></label>
                                 <input type="email" class="input-text" name="email" id="billing_email" placeholder="Email Address"
-                                       value="{{ $user->email }}" required>
+                                       value="{{ old('email') ?: $user->email }}" required>
                             </p>
 
                             <p class="form-row form-row-last" id="billing_phone_field">
                                 <label for="billing_phone" class="">Phone <abbr class="required" title="required">*</abbr></label>
                                 <input type="text" class="input-text" name="phone" id="billing_phone" placeholder="Phone"
-                                       value="{{ $user->phone }}" required>
+                                       value="{{ old('phone') ?: $user->phone }}" required>
                             </p>
                             <div class="clear"></div>
                         </div>
 
-                        <div class="col-2">
+                        <div class="col-2" data-debug="{{ old('ship_to_billing') != 1 }}">
                             <p class="form-row" id="shiptobilling">
-                                <input id="shiptobilling-checkbox" class="input-checkbox" checked="checked" type="checkbox" name="ship_to_billing" value="1">
+                                <input id="shiptobilling-checkbox" class="input-checkbox" type="checkbox" name="ship_to_billing" value="1"
+                                       {{ old('ship_to_billing') != 1 ? '' : 'checked=checked' }}>
                                 <label for="shiptobilling-checkbox" class="checkbox">Ship to billing address?</label>
                             </p>
 
@@ -82,38 +94,39 @@
 
                             <div class="shipping_address" style="display: none;">
                                 <p class="form-row" id="shipping_full_name_field">
-                                    <label for="shipping_full_name" class="">Full Name <abbr class="required" title="required">*</abbr>
-                                    </label>
-                                    <input type="text" class="input-text" name="shipping_full_name" id="shipping_full_name" placeholder="Full Name" value="">
+                                    <label for="shipping_full_name" class="">Full Name <abbr class="required" title="required">*</abbr></label>
+                                    <input type="text" class="input-text" name="shipping_full_name" id="shipping_full_name" placeholder="Full Name"
+                                           value="{{ old('shipping_full_name') }}">
                                 </p>
 
                                 <p class="form-row" id="shipping_address_field">
-                                    <label for="shipping_address" class="">Address <abbr class="required" title="required">*</abbr>
-                                    </label>
-                                    <input type="text" class="input-text" name="shipping_address" id="shipping_address" placeholder="Address" value="">
+                                    <label for="shipping_address" class="">Address <abbr class="required" title="required">*</abbr></label>
+                                    <input type="text" class="input-text" name="shipping_address" id="shipping_address" placeholder="Address"
+                                           value="{{ old('shipping_address') }}">
                                 </p>
 
                                 <p class="form-row form-row-first" id="shipping_city_field">
-                                    <label for="shipping_city" class="">Town/City <abbr class="required" title="required">*</abbr>
-                                    </label>
-                                    <input type="text" class="input-text" name="shipping_city" id="shipping_city" placeholder="Town/City" value="">
+                                    <label for="shipping_city" class="">Town/City <abbr class="required" title="required">*</abbr></label>
+                                    <input type="text" class="input-text" name="shipping_city" id="shipping_city" placeholder="Town/City"
+                                           value="{{ old('shipping_city') }}">
                                 </p>
 
                                 <p class="form-row form-row-last update_totals_on_change" id="shipping_country_field">
                                     <label for="shipping_country" class="">County</label>
-                                    <input type="text" class="input-text" value="" placeholder="County" name="shipping_country" id="shipping_country">
+                                    <input type="text" class="input-text" placeholder="County" name="shipping_country" id="shipping_country"
+                                           value="{{ old('shipping_country') }}">
                                 </p>
 
                                 <p class="form-row form-row-first" id="shipping_email_field">
-                                    <label for="shipping_email" class="">Email Address <abbr class="required" title="required">*</abbr>
-                                    </label>
-                                    <input type="email" class="input-text" name="shipping_email" id="shipping_email" placeholder="Email Address" value="">
+                                    <label for="shipping_email" class="">Email Address <abbr class="required" title="required">*</abbr></label>
+                                    <input type="email" class="input-text" name="shipping_email" id="shipping_email" placeholder="Email Address"
+                                           value="{{ old('shipping_email') }}">
                                 </p>
 
                                 <p class="form-row form-row-last" id="shipping_phone_field">
-                                    <label for="shipping_phone" class="">Phone <abbr class="required" title="required">*</abbr>
-                                    </label>
-                                    <input type="text" class="input-text" name="shipping_phone" id="shipping_phone" placeholder="Phone" value="">
+                                    <label for="shipping_phone" class="">Phone <abbr class="required" title="required">*</abbr></label>
+                                    <input type="text" class="input-text" name="shipping_phone" id="shipping_phone" placeholder="Phone"
+                                           value="{{ old('shipping_phone') }}">
                                 </p>
 
                                 <div class="clear"></div>
@@ -146,7 +159,7 @@
                                     <tr class="checkout_table_item">
                                         <td class="product-name" style="text-align: left">{{ $cartItem->name }}</td>
                                         <td class="product-quantity">{{ $cartItem->qty }}</td>
-                                        <td class="product-total" style="text-align: right">{{ $cartItem->price }}đ</td>
+                                        <td class="product-total" style="text-align: right">{{ format_price_with_currency($cartItem->price) }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

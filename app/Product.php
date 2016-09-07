@@ -67,7 +67,7 @@ class Product extends Post implements Buyable {
      *
      * @return int|string
      */
-    public function getBuyableIdentifier() {
+    public function getBuyableIdentifier($options = []) {
         return $this->id;
     }
 
@@ -76,7 +76,7 @@ class Product extends Post implements Buyable {
      *
      * @return string
      */
-    public function getBuyableDescription() {
+    public function getBuyableDescription($options = []) {
         return $this->title;
     }
 
@@ -85,7 +85,7 @@ class Product extends Post implements Buyable {
      *
      * @return float
      */
-    public function getBuyablePrice() {
+    public function getBuyablePrice($options = []) {
         return $this->current_price;
     }
 

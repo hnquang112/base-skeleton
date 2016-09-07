@@ -31,7 +31,7 @@ Route::group(['namespace' => 'Front'], function () {
     Route::post('shop/{products}/cart', ['uses' => 'CartController@store', 'as' => 'cart.store']);
     Route::resource('cart', 'CartController', ['only' => ['index', 'update', 'destroy']]);
 
-    Route::resource('checkout', 'PurchaseController', ['only' => ['index', 'store']]);
+    Route::resource('checkout', 'PurchaseController', ['only' => ['index', 'store', 'show']]);
 
     Route::resource('contact', 'ContactController', ['only' => ['index', 'store']]);
 });
