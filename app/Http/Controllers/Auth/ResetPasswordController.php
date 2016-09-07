@@ -20,7 +20,6 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
-    protected $redirectPath = '/cms/dashboard';
     protected $redirectTo = '/cms/dashboard';
 
     /**

@@ -25,7 +25,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectPath = '/cms/dashboard';
     protected $redirectTo = '/cms/dashboard';
     protected $redirectAfterLogout = '/cms/login';
     protected $guard = 'cms';

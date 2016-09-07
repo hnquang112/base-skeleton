@@ -2,13 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use App\Article;
-use App\Tag;
-use App\Category;
-use App\Product;
-use Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -24,13 +19,10 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, etc.
      *
-     * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
     public function boot()
     {
-        parent::boot();
-
         Route::model('articles', 'App\Article');
         Route::model('categories', 'App\Category');
         Route::model('tags', 'App\Tag');
@@ -38,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('products', 'App\Product');
         Route::model('users', 'App\User');
         Route::model('comments', 'App\Comment');
-        
+
         Route::bind('blog', function ($slug) {
             return Article::findBySlugOrFail($slug);
         });
@@ -51,17 +43,20 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('shop', function ($slug) {
             return Product::findBySlugOrFail($slug);
         });
+
+        parent::boot();
     }
 
     /**
      * Define the routes for the application.
      *
-     * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    public function map(Router $router)
+    public function map()
     {
-        $this->mapWebRoutes($router);
+        $this->mapWebRoutes();
+
+        $this->mapApiRoutes();
 
         //
     }
@@ -71,15 +66,33 @@ class RouteServiceProvider extends ServiceProvider
      *
      * These routes all receive session state, CSRF protection, etc.
      *
-     * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    protected function mapWebRoutes(Router $router)
+    protected function mapWebRoutes()
     {
-        $router->group([
-            'namespace' => $this->namespace, 'middleware' => 'web',
+        Route::group([
+            'middleware' => 'web',
+            'namespace' => $this->namespace,
         ], function ($router) {
-            require app_path('Http/routes.php');
+            require base_path('routes/web.php');
+        });
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapApiRoutes()
+    {
+        Route::group([
+            'middleware' => 'api',
+            'namespace' => $this->namespace,
+            'prefix' => 'api',
+        ], function ($router) {
+            require base_path('routes/api.php');
         });
     }
 }
