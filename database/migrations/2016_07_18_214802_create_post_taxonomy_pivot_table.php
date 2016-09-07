@@ -20,7 +20,7 @@ class CreatePostTaxonomyPivotTable extends Migration
             $table->primary(['post_id', 'taxonomy_id']);
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('taxonomies');
+            $table->foreign('taxonomy_id')->references('id')->on('taxonomies');
             $table->foreign('post_id')->references('id')->on('posts');
         });
     }
@@ -32,6 +32,6 @@ class CreatePostTaxonomyPivotTable extends Migration
      */
     public function down()
     {
-        Schema::drop('post_taxonomy');
+        Schema::dropIfExists('post_taxonomy');
     }
 }

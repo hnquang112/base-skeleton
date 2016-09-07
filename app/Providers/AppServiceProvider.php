@@ -19,10 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('_allCategories', Category::all());
-        view()->share('_allTags', Tag::all());
-        view()->share('_allSliders', Setting::with('image')->sliders()->get());
-        view()->share('_recentPosts', Article::with('author')->published()->orderByDesc('published_at')->take(3));
+//        view()->share('_allCategories', Category::all());
+//        view()->share('_allTags', Tag::all());
+//        view()->share('_allSliders', Setting::with('image')->sliders()->get());
+//        view()->share('_recentPosts', Article::with('author')->published()->orderByDesc('published_at')->take(3));
 
         Order::observe(OrderObserver::class);
     }

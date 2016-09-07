@@ -44,14 +44,18 @@ class Taxonomy extends Model {
     /**
      * Relationships
      */
-    public function posts() {
-        return $this->belongsToMany('App\Post', 'post_taxonomy', 'taxonomy_id', 'post_id')
-            ->where('taxonomy_type', $this->type)->where('post_type', Post::TYP_BLOG)->withTimestamps();
+    public function articles() {
+        return $this->belongsToMany('App\Article', 'post_taxonomy', 'post_id', 'taxonomy_id')
+            ->withPivot('post_type', 'taxonomy_type')->withTimestamps()
+            ->wherePivot('taxonomy_type', $this->type)
+            ->wherePivot('post_type', Post::TYP_ARTICLE);
     }
 
     public function products() {
-        return $this->belongsToMany('App\Product', 'post_taxonomy', 'taxonomy_id', 'post_id')
-            ->where('taxonomy_type', $this->type)->where('post_type', Post::TYP_PRODUCT)->withTimestamps();
+        return $this->belongsToMany('App\Product', 'post_taxonomy', 'post_id', 'taxonomy_id')
+            ->withPivot('post_type', 'taxonomy_type')->withTimestamps()
+            ->wherePivot('taxonomy_type', $this->type)
+            ->wherePivot('post_type', Post::TYP_PRODUCT);
     }
 
     /**
@@ -68,12 +72,12 @@ class Taxonomy extends Model {
     /**
      * Helpers
      */
-    public function getRelatedPosts() {
-        return $this->posts()->articles()->published()->orderBy('title')->get();
+    public function getRelatedArticles() {
+        return $this->articles()->published()->orderBy('title')->get();
     }
 
     public function getRelatedProducts() {
-        return $this->posts()->products()->published()->orderBy('title')->get();
+        return $this->products()->published()->orderBy('title')->get();
     }
 
 }

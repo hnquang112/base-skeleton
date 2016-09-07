@@ -69,19 +69,21 @@ class Post extends Model
      * Relationships
      */
     public function author() {
-        return $this->belongsTo('App\User', 'author_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function categories() {
         return $this->belongsToMany('App\Category', 'post_taxonomy', 'post_id', 'taxonomy_id')
-            ->where('post_type', $this->type)->where('taxonomy_type', Taxonomy::TYP_CATEGORY)
-            ->withPivot('post_type', 'taxonomy_type')->withTimestamps();
+            ->withPivot('post_type', 'taxonomy_type')->withTimestamps()
+            ->wherePivot('post_type', $this->type)
+            ->wherePivot('taxonomy_type', Taxonomy::TYP_CATEGORY);
     }
 
     public function tags() {
         return $this->belongsToMany('App\Tag', 'post_taxonomy', 'post_id', 'taxonomy_id')
-            ->where('post_type', $this->type)->where('taxonomy_type', Taxonomy::TYP_TAG)
-            ->withPivot('post_type', 'taxonomy_type')->withTimestamps();
+            ->withPivot('post_type', 'taxonomy_type')->withTimestamps()
+            ->wherePivot('post_type', $this->type)
+            ->wherePivot('taxonomy_type', Taxonomy::TYP_TAG);
     }
 
     public function represent_image() {
@@ -155,7 +157,12 @@ class Post extends Model
      * Need to move to repository
      */
     public function syncCategories($categoryIds) {
-        $this->categories()->sync($categoryIds);
+        $tmpCatIds = [];
+        foreach ($categoryIds as $id) {
+            $tmpCatIds[$id] = ['post_type' => $this->type, 'taxonomy_type' => Taxonomy::TYP_CATEGORY];
+        }
+
+        $this->categories()->sync($tmpCatIds);
     }
 
     public function syncTags($tagIds) {
@@ -165,14 +172,19 @@ class Post extends Model
         // List of existed tags to be sync
         $syncItems = array_intersect($tagIds, $arrIds);
 
-        $this->tags()->sync($syncItems);
+        $tmpTagIds = [];
+        foreach ($syncItems as $id) {
+            $tmpTagIds[$id] = ['post_type' => $this->type, 'taxonomy_type' => Taxonomy::TYP_TAG];
+        }
+
+        $this->tags()->sync($tmpTagIds);
 
         foreach ($newTagNames as $name) {
             $tag = new Tag;
             $tag->name = $name;
             $tag->save();
 
-            $this->tags()->attach($tag->id);
+            $this->tags()->attach($tag->id, ['post_type' => $this->type, 'taxonomy_type' => Taxonomy::TYP_TAG]);
         }
     }
 
