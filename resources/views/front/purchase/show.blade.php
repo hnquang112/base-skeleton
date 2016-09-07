@@ -81,30 +81,35 @@
                         <header class="title">
                             <div class="tag-title-wrap clearfix"><h4 class="tag-title">Billing Address</h4></div>
                         </header>
-                        <address><p>
-                                asd wqe<br>
-                                awe<br>
-                                wqe<br>
-                                qwe<br>
-                                qwe<br>
-                                qwe<br>
-                                QWE<br>
-                                Trinidad and Tobago		</p></address>
+                        <address>
+                            <p>
+                                {{ $order->user->display_name }}<br>
+                                {{ $order->user->address }}<br>
+                                {{ $order->user->city }}<br>
+                                {{ $order->user->country }}
+                            </p>
+                        </address>
                     </div><!-- /.col-1 -->
 
                     <div class="col-2">
                         <header class="title">
                             <div class="tag-title-wrap clearfix"><h4 class="tag-title">Shipping Address</h4></div>
                         </header>
-                        <address><p>
-                                asd wqe<br>
-                                awe<br>
-                                wqe<br>
-                                qwe<br>
-                                qwe<br>
-                                qwe<br>
-                                QWE<br>
-                                Trinidad and Tobago		</p></address>
+                        <address>
+                            <p>
+                                @if ($order->ship_to_billing == 1)
+                                    {{ $order->user->display_name }}<br>
+                                    {{ $order->user->address }}<br>
+                                    {{ $order->user->city }}<br>
+                                    {{ $order->user->country }}
+                                @else
+                                    {{ $order->shipping_full_name }}<br>
+                                    {{ $order->shipping_address }}<br>
+                                    {{ $order->shipping_city }}<br>
+                                    {{ $order->shipping_country }}
+                                @endif
+                            </p>
+                        </address>
                     </div><!-- /.col-2 -->
                 </div><!-- /.col2-set -->
                 <div class="clear"></div>

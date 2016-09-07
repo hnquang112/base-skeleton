@@ -10,10 +10,10 @@ namespace App\Repositories;
 
 use App\Profile;
 use App\User;
-use Laravel\Socialite\Contracts\User as ProviderUser;
+use Laravel\Socialite\Contracts\User as UserProvider;
 
 class ProfileRepository {
-    public function createOrGetUser(ProviderUser $providerUser) {
+    public function createOrGetUser(UserProvider $providerUser) {
         $account = Profile::whereProvider(Profile::PRV_FACEBOOK)
             ->whereUid($providerUser->getId())->first();
 

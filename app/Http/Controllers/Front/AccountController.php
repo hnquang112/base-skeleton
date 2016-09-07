@@ -38,4 +38,5 @@ class AccountController extends FrontController {
 
         return redirect('/');
     }
+
 }

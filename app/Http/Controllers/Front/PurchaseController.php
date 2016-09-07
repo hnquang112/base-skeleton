@@ -76,7 +76,9 @@ class PurchaseController extends FrontController {
         return redirect()->route('checkout.show', $order->code);
     }
 
+    // GET: /checkout/123456
     public function show($order) {
+        // need to check authorization and session
         return view('front.purchase.show', compact('order'));
     }
 
