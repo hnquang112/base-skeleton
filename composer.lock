@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "088e184973e4641d4d538303bb9c11b3",
-    "content-hash": "396812970ba5a3f6624ef73757775afc",
+    "hash": "2bfd9950789e938aeeb1aa8640787e97",
+    "content-hash": "54d1e7ee95fdcacfec0732855f0a4e21",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -2528,108 +2528,6 @@
                 "wrapper"
             ],
             "time": "2016-04-24 02:00:22"
-        },
-        {
-            "name": "sofa/eloquence",
-            "version": "v5.2.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jarektkaczyk/eloquence.git",
-                "reference": "7d52943463b6ae135d638c80c0e7e270a5ca6df6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jarektkaczyk/eloquence/zipball/7d52943463b6ae135d638c80c0e7e270a5ca6df6",
-                "reference": "7d52943463b6ae135d638c80c0e7e270a5ca6df6",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "5.2.*",
-                "php": ">=5.5.9",
-                "sofa/hookable": "5.2.*"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.9.4",
-                "phpunit/phpunit": "4.5.0",
-                "squizlabs/php_codesniffer": "2.3.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Sofa\\Eloquence\\": "src"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jarek Tkaczyk",
-                    "email": "jarek@softonsofa.com",
-                    "homepage": "http://softonsofa.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Flexible Searchable, Mappable, Metable, Validation and more extensions for Laravel Eloquent ORM.",
-            "keywords": [
-                "eloquent",
-                "laravel",
-                "mappable",
-                "metable",
-                "mutable",
-                "searchable"
-            ],
-            "time": "2016-08-25 03:25:46"
-        },
-        {
-            "name": "sofa/hookable",
-            "version": "v5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jarektkaczyk/hookable.git",
-                "reference": "ae87508e072737a602832acdd62272867152c775"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jarektkaczyk/hookable/zipball/ae87508e072737a602832acdd62272867152c775",
-                "reference": "ae87508e072737a602832acdd62272867152c775",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "5.2.*",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "crysalead/kahlan": "~1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Sofa\\Hookable\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jarek Tkaczyk",
-                    "email": "jarek@softonsofa.com",
-                    "homepage": "http://softonsofa.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Laravel Eloquent hooks system.",
-            "keywords": [
-                "eloquent",
-                "laravel"
-            ],
-            "time": "2016-01-14 21:06:40"
         },
         {
             "name": "studio-42/elfinder",
