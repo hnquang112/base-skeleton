@@ -94,19 +94,19 @@ class Post extends Model
      * Accessors
      */
     public function getCategoryNamesAttribute() {
-        return implode($this->categories()->lists('name')->toArray(), ', ');
+        return implode($this->categories()->pluck('name')->toArray(), ', ');
     }
 
     public function getTagNamesAttribute() {
-        return implode($this->tags()->lists('name')->toArray(), ', ');
+        return implode($this->tags()->pluck('name')->toArray(), ', ');
     }
 
     public function getCategoryIdsAttribute() {
-        return $this->categories()->lists('taxonomies.id')->toArray();
+        return $this->categories()->pluck('taxonomies.id')->toArray();
     }
 
     public function getTagIdsAttribute() {
-        return $this->tags()->lists('taxonomies.id')->toArray();
+        return $this->tags()->pluck('taxonomies.id')->toArray();
     }
 
     public function getIsPublishedAttribute() {
@@ -166,7 +166,7 @@ class Post extends Model
     }
 
     public function syncTags($tagIds) {
-        $arrIds = Tag::lists('id')->toArray();
+        $arrIds = Tag::pluck('id')->toArray();
         // List names of new tags
         $newTagNames = array_diff($tagIds, $arrIds);
         // List of existed tags to be sync

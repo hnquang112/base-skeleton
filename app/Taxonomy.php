@@ -81,7 +81,7 @@ class Taxonomy extends Model {
     }
 
     public function getRelatedProducts() {
-        return $this->products()->published()->orderBy('title')->get();
+        return $this->products()->orderBy('title')->get();
     }
 
 }

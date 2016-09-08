@@ -105,7 +105,7 @@
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <select name="tag_ids[]" class="form-control select2" multiple style="width: 100%">
-                            @foreach (App\Tag::lists('name', 'id') as $id => $name)
+                            @foreach (App\Tag::pluck('name', 'id') as $id => $name)
                                 <option value="{{ $id }}" {{ in_array($id, $tags) ? 'selected' : '' }}>{{ $name }}</option>
                             @endforeach
                         </select>
