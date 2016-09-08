@@ -4,6 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Article;
+use App\Tag;
+use App\Category;
+use App\Product;
+use App\Order;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -43,7 +48,10 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('shop', function ($slug) {
             return Product::findBySlugOrFail($slug);
         });
-
+        Route::bind('checkout', function ($code) {
+            // sort by created time, in case code is duplicated
+            return Order::whereCode($code)->orderBy('created_at', 'desc')->first();
+        });
         parent::boot();
     }
 
