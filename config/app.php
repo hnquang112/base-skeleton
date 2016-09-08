@@ -177,7 +177,6 @@ return [
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
-        Sofa\Eloquence\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*

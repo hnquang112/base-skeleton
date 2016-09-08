@@ -278,8 +278,12 @@
                                     <i class="fa fa-user-secret"></i> Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{ url('/cms/logout') }}" class="btn btn-default btn-flat">
-                                    <i class="fa fa-sign-out"></i> Sign out</a>
+                                <form action="{{ url('/logout') }}" method="post">
+                                    {{ csrf_field() }}
+
+                                    <button class="btn btn-default btn-flat">
+                                        <i class="fa fa-sign-out"></i> Sign out</button>
+                                </form>
                             </div>
                         </li>
                     </ul>
