@@ -15,7 +15,7 @@ class ProductController extends CmsController {
 
     // GET: /cms/products
     public function index() {
-        $products = Product::all();
+        $products = Product::orderByDesc('created_at')->get();
 
         return view('cms.products.index', compact('products'));
     }

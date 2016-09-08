@@ -45,14 +45,14 @@ class Taxonomy extends Model {
      * Relationships
      */
     public function articles() {
-        return $this->belongsToMany('App\Article', 'post_taxonomy', 'post_id', 'taxonomy_id')
+        return $this->belongsToMany('App\Article', 'post_taxonomy', 'taxonomy_id', 'post_id')
             ->withPivot('post_type', 'taxonomy_type')->withTimestamps()
             ->wherePivot('taxonomy_type', $this->type)
             ->wherePivot('post_type', Post::TYP_ARTICLE);
     }
 
     public function products() {
-        return $this->belongsToMany('App\Product', 'post_taxonomy', 'post_id', 'taxonomy_id')
+        return $this->belongsToMany('App\Product', 'post_taxonomy', 'taxonomy_id', 'post_id')
             ->withPivot('post_type', 'taxonomy_type')->withTimestamps()
             ->wherePivot('taxonomy_type', $this->type)
             ->wherePivot('post_type', Post::TYP_PRODUCT);
@@ -67,6 +67,10 @@ class Taxonomy extends Model {
 
     public function scopeTags($query) {
         return $query->whereType(self::TYP_TAG);
+    }
+
+    public function scopeOrderByDesc($query, $field) {
+        return $query->orderBy($field, 'DESC');
     }
 
     /**

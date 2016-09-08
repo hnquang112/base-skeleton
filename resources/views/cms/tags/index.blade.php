@@ -29,7 +29,7 @@
                                     <th></th>
                                     <th>Title</th>
                                     <th>Description</th>
-                                    {{--<th>No. of Posts</th>--}}
+                                    <th>No. of Posts</th>
                                     <th>No. of Products</th>
                                     <th>Dates</th>
                                 </tr></thead>
@@ -40,7 +40,7 @@
                                         <td><a href="{{ route('cms.tags.edit', $cat->id) }}"><strong>
                                                     {{ $cat->name }}</strong></a></td>
                                         <td>{{ $cat->description }}</td>
-{{--                                        <td>{{ $cat->articles_count }}</td>--}}
+                                        <td>{{ $cat->articles_count }}</td>
                                         <td>{{ $cat->products_count }}</td>
                                         <td>{{ $cat->created_at }}</td>
                                     </tr>

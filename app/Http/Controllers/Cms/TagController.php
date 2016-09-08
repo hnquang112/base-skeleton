@@ -9,7 +9,7 @@ class TagController extends CmsController {
 
     // GET: /cms/tags
     public function index(Request $request) {
-        $tags = Tag::withCount('products')->get();
+        $tags = Tag::withCount(['products', 'articles'])->orderByDesc('created_at')->get();
         $tag = new Tag;
 
         return view('cms.tags.index', compact('tags', 'tag'));
