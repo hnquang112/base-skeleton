@@ -9,7 +9,7 @@
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form action="{{ url('/cms/login') }}" method="POST">
+        <form action="{{ url('/login') }}" method="POST">
             {{ csrf_field() }}
 
             <div class="form-group has-feedback{{ $errors->has('username') ? ' has-error' : '' }}">
@@ -44,7 +44,7 @@
             </div>
         </form>
 
-        <a href="{{ url('cms/password/reset') }}">I forgot my password</a><br>
+        <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
     </div>
     <!-- /.login-box-body -->
 @endsection

@@ -75,10 +75,10 @@ return [
             'model' => App\User::class,
         ],
 
-         'admins' => [
-             'driver' => 'eloquent',
-             'table' => App\Admin::class,
-         ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'table' => App\Admin::class,
+        ],
     ],
 
     /*
@@ -103,7 +103,6 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
         ],

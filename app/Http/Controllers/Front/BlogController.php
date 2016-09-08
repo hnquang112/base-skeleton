@@ -26,28 +26,28 @@ class BlogController extends FrontController
     }
 
     // GET: /category/lorem-ipsum/{prod|post}
-    public function filterByCategory($taxo, $postType = 'prod') {
+    public function filterByCategory($taxo, $articleType = 'prod') {
         $taxoType = 'cat';
 
-        if ($postType == 'post') {
-            $articles = $taxo->getRelatedPosts();
+        if ($articleType == 'post') {
+            $articles = $taxo->getRelatedArticles();
         } else {
             $articles = $taxo->getRelatedProducts();
         }
 
-        return view('front.blog.filter', compact('taxo', 'taxoType', 'postType', 'articles'));
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'articleType', 'articles'));
     }
 
     // GET: /tag/lorem-ipsum/{prod|post}
-    public function filterByTag($taxo, $postType = 'prod') {
+    public function filterByTag($taxo, $articleType = 'prod') {
         $taxoType = 'tag';
 
-        if ($postType == 'post') {
-            $articles = $taxo->getRelatedPosts();
+        if ($articleType == 'post') {
+            $articles = $taxo->getRelatedArticles();
         } else {
             $articles = $taxo->getRelatedProducts();
         }
 
-        return view('front.blog.filter', compact('taxo', 'taxoType', 'postType', 'articles'));
+        return view('front.blog.filter', compact('taxo', 'taxoType', 'articleType', 'articles'));
     }
 }
