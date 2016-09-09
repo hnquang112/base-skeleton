@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use App\Article;
 use App\Tag;
@@ -24,49 +24,47 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, etc.
      *
-     * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    public function boot(Router $router)
+    public function boot()
     {
-        parent::boot($router);
+        Route::model('articles', 'App\Article');
+        Route::model('categories', 'App\Category');
+        Route::model('tags', 'App\Tag');
+        Route::model('settings', 'App\Setting');
+        Route::model('products', 'App\Product');
+        Route::model('users', 'App\User');
+        Route::model('comments', 'App\Comment');
 
-        $router->model('articles', 'App\Article');
-        $router->model('categories', 'App\Category');
-        $router->model('tags', 'App\Tag');
-        $router->model('settings', 'App\Setting');
-        $router->model('products', 'App\Product');
-        $router->model('users', 'App\User');
-        $router->model('comments', 'App\Comment');
-        $router->model('orders', 'App\Order');
-        
-        $router->bind('blog', function ($slug) {
+        Route::bind('blog', function ($slug) {
             return Article::findBySlugOrFail($slug);
         });
-        $router->bind('tag', function ($slug) {
+        Route::bind('tag', function ($slug) {
             return Tag::findBySlugOrFail($slug);
         });
-        $router->bind('category', function ($slug) {
+        Route::bind('category', function ($slug) {
             return Category::findBySlugOrFail($slug);
         });
-        $router->bind('shop', function ($slug) {
+        Route::bind('shop', function ($slug) {
             return Product::findBySlugOrFail($slug);
         });
-        $router->bind('checkout', function ($code) {
+        Route::bind('checkout', function ($code) {
             // sort by created time, in case code is duplicated
             return Order::whereCode($code)->orderBy('created_at', 'desc')->first();
         });
+        parent::boot();
     }
 
     /**
      * Define the routes for the application.
      *
-     * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    public function map(Router $router)
+    public function map()
     {
-        $this->mapWebRoutes($router);
+        $this->mapWebRoutes();
+
+        $this->mapApiRoutes();
 
         //
     }
@@ -76,15 +74,33 @@ class RouteServiceProvider extends ServiceProvider
      *
      * These routes all receive session state, CSRF protection, etc.
      *
-     * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    protected function mapWebRoutes(Router $router)
+    protected function mapWebRoutes()
     {
-        $router->group([
-            'namespace' => $this->namespace, 'middleware' => 'web',
+        Route::group([
+            'middleware' => 'web',
+            'namespace' => $this->namespace,
         ], function ($router) {
-            require app_path('Http/routes.php');
+            require base_path('routes/web.php');
+        });
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapApiRoutes()
+    {
+        Route::group([
+            'middleware' => 'api',
+            'namespace' => $this->namespace,
+            'prefix' => 'api',
+        ], function ($router) {
+            require base_path('routes/api.php');
         });
     }
 }

@@ -2,14 +2,16 @@
 
 namespace App;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Eloquent\Dialect\Json;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use Gravatar;
 
-class User extends Authenticatable {
-    use Json, SoftDeletes;
+class User extends Authenticatable
+{
+    use Notifiable, Json, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

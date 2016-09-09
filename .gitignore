@@ -1,8 +1,11 @@
-/vendor
 /node_modules
-/bower_components
+/public/storage
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
 .env
-.idea
+/bower_components
 npm-debug*
 public/css
 public/fonts
@@ -13,3 +16,4 @@ public/build
 public/packages
 public/uploads
 *.iml
+hello-docker

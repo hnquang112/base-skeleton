@@ -79,10 +79,10 @@
                             <div class="clear"></div>
                         </div>
 
-                        <div class="col-2" data-debug="{{ old('ship_to_billing') != 1 }}">
+                        <div class="col-2">
                             <p class="form-row" id="shiptobilling">
                                 <input id="shiptobilling-checkbox" class="input-checkbox" type="checkbox" name="ship_to_billing" value="1"
-                                       {{ old('ship_to_billing') != 1 ? '' : 'checked=checked' }}>
+                                       {{ old('ship_to_billing') != 1 && old('display_name') ? '' : 'checked=checked' }}>
                                 <label for="shiptobilling-checkbox" class="checkbox">Ship to billing address?</label>
                             </p>
 

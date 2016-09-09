@@ -24,9 +24,7 @@ class CmsController extends Controller {
 
     // GET: /cms
     public function gate() {
-        if (auth()->check()) return redirect()->route('cms.dashboard.index');
-
-        return redirect('/cms/login');
+        return redirect()->route('cms.dashboard.index');
     }
 
     // GET: /cms/{vi|en}
