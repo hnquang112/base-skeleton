@@ -34,11 +34,12 @@ class PurchaseController extends FrontController {
 
     // POST: /checkout
     public function store(Request $request) {
-        // check if billing email is existed
-        // create new or get the user with corresponding email
-        // create new order with user id above and the shipping info if provided
-        // attach products from cart to created order
-        // inform that the order is created and notify via billing email
+        // TODO: inform that the order is created and notify via billing email
+
+        if ($request->ship_to_billing != 1) {
+            $this->validate($request, User::$rulesForShipping);
+            $this->validate($request, Order::$rules);
+        }
 
         $user = User::whereEmail($request->email)->first();
 
@@ -52,7 +53,6 @@ class PurchaseController extends FrontController {
 
         $order = new Order;
         if ($request->ship_to_billing != 1) {
-            $this->validate($request, Order::$rules);
             $order->ship_to_billing = 0;
         }
         $order->fill($request->all());
@@ -73,7 +73,7 @@ class PurchaseController extends FrontController {
 
         Cart::destroy();
 
-        return redirect()->route('checkout.show', $order->code);
+        return redirect($order->front_url);
     }
 
     // GET: /checkout/123456

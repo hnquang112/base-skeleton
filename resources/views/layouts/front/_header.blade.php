@@ -24,6 +24,11 @@
                     @endif
                 </a>
             </li>
+            @if (auth()->guard('web')->check())
+                <li>
+                    <a href="{{ route('auth.logout') }}">@lang ('front.account.logout_btn')</a>
+                </li>
+            @endif
             <li class="checkout-icon">
                 <a href="{{ route('checkout.index') }}">@lang ('front.header.checkout')</a>
             </li>

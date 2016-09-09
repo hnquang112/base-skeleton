@@ -9,13 +9,23 @@
 namespace App\Http\Controllers\Front;
 
 use Socialite;
-use Cart;
 use App\Repositories\ProfileRepository;
+use Illuminate\Http\Request;
+use App\User;
 
 class AccountController extends FrontController {
+    public function __construct() {
+        $this->middleware('auth:web')->only('edit', 'store');
+    }
+
     // GET: /account
     public function index() {
-        return view('front.account.index');
+        $isLoggedIn = auth()->guard('web')->check();
+        $user = null;
+        if ($isLoggedIn) $user = auth()->guard('web')->user();
+        $orders = $user->orders()->orderByDesc('created_at')->get();
+
+        return view('front.account.index', compact('isLoggedIn', 'user', 'orders'));
     }
 
     // GET: /account/facebook
@@ -37,6 +47,30 @@ class AccountController extends FrontController {
         auth()->guard('web')->logout();
 
         return redirect('/');
+    }
+
+    // GET: /account/address/{billing|shipping}
+    public function edit() {
+        $user = auth()->guard('web')->user();
+
+        return view('front.account.addresses', compact('user'));
+    }
+
+    // POST: /account
+    public function store(Request $request) {
+        $user = auth()->guard('web')->user();
+
+        if ($request->submit_from == 'billing') {
+            $this->validate($request, User::$rulesForBilling);
+            $emailUpdateRule = 'email|required|max:255|unique:users,email,' . $user->id;
+            $this->validate($request, User::extendRulesForUpdating(User::$rulesForBilling, ['email' => $emailUpdateRule]));
+
+            $user->fill($request->only('display_name', 'address', 'city', 'country', 'email', 'phone'));
+            $user->save();
+        } elseif ($request->submit_from == 'shipping') {
+            $this->validate($request, User::$rulesForShipping);
+            $user->fill($request->only('shipping_first_name', 'shipping_address', 'shipping_city', 'shipping_country'));
+        }
     }
 
 }

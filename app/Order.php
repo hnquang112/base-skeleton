@@ -10,17 +10,13 @@ use DB;
 class Order extends Model {
     use Json;
 
-    protected $fillable = ['shipping_full_name', 'shipping_address', 'shipping_city', 'shipping_country', 'shipping_email',
-        'shipping_phone', 'delivery_note', 'ship_to_billing'];
+    protected $fillable = ['delivery_note', 'ship_to_billing', 'shipping_email', 'shipping_phone',];
     protected $jsonColumns = ['meta'];
 
     /**
      * Validations
      */
     public static $rules = [
-        'shipping_full_name' => 'required',
-        'shipping_address' => 'required',
-        'shipping_city' => 'required',
         'shipping_email' => 'required',
         'shipping_phone' => 'required'
     ];
@@ -29,13 +25,9 @@ class Order extends Model {
         parent::__construct();
         $this->hintJsonStructure('meta', '{
             "ship_to_billing":null,
-            "shipping_full_name":null,
-            "shipping_address":null,
-            "shipping_city":null,
-            "shipping_country":null,
+            "delivery_note":null,
             "shipping_email":null,
-            "shipping_phone":null,
-            "delivery_note":null
+            "shipping_phone":null
         }');
     }
 
@@ -49,6 +41,14 @@ class Order extends Model {
 
     public function getTotalPriceAttribute() {
         return DB::table('order_post')->whereOrderId($this->id)->sum('price');
+    }
+
+    public function getFrontUrlAttribute() {
+        return route('checkout.show', $this->code);
+    }
+
+    public function scopeOrderByDesc($query, $field) {
+        return $query->orderBy($field, 'DESC');
     }
 
 }

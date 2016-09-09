@@ -30,7 +30,8 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('account/facebook', ['uses' => 'AccountController@redirectToProvider', 'as' => 'auth.redirect']);
     Route::get('account/facebook/callback', ['uses' => 'AccountController@handleProviderCallback', 'as' => 'auth.callback']);
     Route::get('account/logout', ['uses' => 'AccountController@logout', 'as' => 'auth.logout']);
-    Route::resource('account', 'AccountController', ['only' => 'index']);
+    Route::get('account/address', ['uses' => 'AccountController@edit', 'as' => 'account.edit']);
+    Route::resource('account', 'AccountController', ['only' => ['index', 'store']]);
 
     Route::resource('checkout', 'PurchaseController', ['only' => ['index', 'store', 'show']]);
 });

@@ -103,10 +103,10 @@
                                     {{ $order->user->city }}<br>
                                     {{ $order->user->country }}
                                 @else
-                                    {{ $order->shipping_full_name }}<br>
-                                    {{ $order->shipping_address }}<br>
-                                    {{ $order->shipping_city }}<br>
-                                    {{ $order->shipping_country }}
+                                    {{ $order->user->shipping_full_name }}<br>
+                                    {{ $order->user->shipping_address }}<br>
+                                    {{ $order->user->shipping_city }}<br>
+                                    {{ $order->user->shipping_country }}
                                 @endif
                             </p>
                         </address>

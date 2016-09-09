@@ -51,7 +51,7 @@ class UserController extends CmsController {
     // PUT: /cms/users/1
     public function update(Request $request, $user) {;
         $emailUpdateRule = 'email|required|max:255|unique:users,email,' . $user->id;
-        $this->validate($request, User::extendRulesForUpdating(['email' => $emailUpdateRule]));
+        $this->validate($request, User::extendRulesForUpdating(self::$rulesForUpdating, ['email' => $emailUpdateRule]));
 
         $user->fill($request->all());
 

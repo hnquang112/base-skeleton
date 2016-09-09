@@ -19,7 +19,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'display_name', 'username', 'type', 'address', 'phone', 'city', 'country'
+        'email', 'display_name', 'username', 'type', 'address', 'phone', 'city', 'country', 'shipping_full_name',
+        'shipping_address', 'shipping_city', 'shipping_country',
     ];
 
     /**
@@ -73,6 +74,19 @@ class User extends Authenticatable
         'password' => 'confirmed'
     ];
 
+    public static $rulesForShipping = [
+        'shipping_full_name' => 'required',
+        'shipping_address' => 'required',
+        'shipping_city' => 'required'
+    ];
+
+    public static $rulesForBilling = [
+        'display_name' => 'required',
+        'address' => 'required',
+        'city' => 'required',
+        'phone' => 'required'
+    ];
+
     public function __construct() {
         parent::__construct();
         $this->hintJsonStructure('meta', '{
@@ -83,7 +97,11 @@ class User extends Authenticatable
 			"address":null,
 			"gender":null,
 			"city":null,
-			"country":null
+			"country":null,
+			"shipping_full_name":null,
+            "shipping_address":null,
+            "shipping_city":null,
+            "shipping_country":null
 		}');
     }
 
@@ -98,6 +116,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Profile');
     }
 
+    public function orders() {
+        return $this->hasMany('App\Order');
+    }
+
     /**
      * Accessors
      */
@@ -109,6 +131,10 @@ class User extends Authenticatable
         if (!empty($this->profile_image)) return asset($this->profile_image);
         if (!empty($this->email)) return Gravatar::get($this->email);
         return null;
+    }
+
+    public function getIsManagerAttribute() {
+        return in_array($this->type, [self::MASTER. self::ADMIN, self::EDITOR]);
     }
 
     /**
@@ -139,8 +165,8 @@ class User extends Authenticatable
         return $roles;
     }
 
-    public static function extendRulesForUpdating($rules = []) {
-        return array_merge(self::$rulesForUpdating, $rules);
+    public static function extendRulesForUpdating($rules, $newRules = []) {
+        return array_merge($rules, $newRules);
     }
 
 }
