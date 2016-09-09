@@ -21,9 +21,11 @@ class AccountController extends FrontController {
     // GET: /account
     public function index() {
         $isLoggedIn = auth()->guard('web')->check();
-        $user = null;
-        if ($isLoggedIn) $user = auth()->guard('web')->user();
-        $orders = $user->orders()->orderByDesc('created_at')->get();
+        $user = $orders = null;
+        if ($isLoggedIn) {
+            $user = auth()->guard('web')->user();
+            $orders = $user->orders()->orderByDesc('created_at')->get();
+        }
 
         return view('front.account.index', compact('isLoggedIn', 'user', 'orders'));
     }
@@ -53,7 +55,7 @@ class AccountController extends FrontController {
     public function edit() {
         $user = auth()->guard('web')->user();
 
-        return view('front.account.addresses', compact('user'));
+        return view('front.account.edit', compact('user'));
     }
 
     // POST: /account
@@ -61,15 +63,17 @@ class AccountController extends FrontController {
         $user = auth()->guard('web')->user();
 
         if ($request->submit_from == 'billing') {
-            $this->validate($request, User::$rulesForBilling);
             $emailUpdateRule = 'email|required|max:255|unique:users,email,' . $user->id;
-            $this->validate($request, User::extendRulesForUpdating(User::$rulesForBilling, ['email' => $emailUpdateRule]));
 
+            $this->validate($request, User::extendRulesForUpdating(User::$rulesForBilling, ['email' => $emailUpdateRule]));
             $user->fill($request->only('display_name', 'address', 'city', 'country', 'email', 'phone'));
-            $user->save();
         } elseif ($request->submit_from == 'shipping') {
             $this->validate($request, User::$rulesForShipping);
-            $user->fill($request->only('shipping_first_name', 'shipping_address', 'shipping_city', 'shipping_country'));
+            $user->fill($request->only('shipping_full_name', 'shipping_address', 'shipping_city', 'shipping_country'));
+        }
+
+        if ($user->save()) {
+            return redirect()->route('account.index');
         }
     }
 

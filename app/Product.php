@@ -20,6 +20,10 @@ class Product extends Post implements Buyable {
         return $this->belongsToMany('App\Order', 'order_post', 'post_id', 'order_id');
     }
 
+    public function reviews() {
+        return $this->hasMany('App\Comment', "meta->post_id", 'id');
+    }
+
     public function newQuery($excludeDeleted = true) {
         return parent::newQuery($excludeDeleted)->products();
     }

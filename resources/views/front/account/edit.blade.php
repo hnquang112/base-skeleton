@@ -70,7 +70,7 @@
 
                     <p class="form-row form-row-first" id="shipping_first_name_field">
                         <label for="shipping_first_name" class="">Full Name <abbr class="required" title="required">*</abbr></label>
-                        <input type="text" class="input-text" name="shipping_first_name" id="shipping_first_name" placeholder="First Name"
+                        <input type="text" class="input-text" name="shipping_full_name" id="shipping_first_name" placeholder="First Name"
                                value="{{ old('shipping_full_name') ?: $user->shipping_full_name }}">
                     </p>
                     <div class="clear"></div>

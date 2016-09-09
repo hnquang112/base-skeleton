@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Comment;
 use App\Product;
 use Cart;
 use Illuminate\Http\Request;
@@ -43,12 +44,22 @@ class ShopController extends FrontController {
     // GET: /shop/lorem-ipsum
     public function show($product) {
         $similarProducts = $product->similar()->get();
+        $reviews = $product->reviews;
 
-        return view('front.shop.show', compact('product', 'similarProducts'));
+        return view('front.shop.show', compact('product', 'similarProducts', 'reviews'));
     }
 
     // POST: /shop/lorem-ipsum/review
-    public function writeReview() {
+    public function writeReview(Request $request, $product) {
+        $review = new Comment;
+        $review->type = Comment::TYP_REVIEW;
+        $review->post_id = $product->id;
+        $review->fill($request->all());
 
+        if ($review->save()) {
+            return redirect($product->front_url . '#reviews');
+        }
+
+        return back();
     }
 }

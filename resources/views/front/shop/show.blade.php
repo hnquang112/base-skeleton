@@ -66,68 +66,105 @@
 
                 <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
                     <ul class="nav clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-                        <li class="description_tab ui-state-default ui-corner-top ui-tabs-selected ui-state-active"><a href="#tabs-tab-title-1">Description</a>
+                        <li class="description_tab ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
+                            <a href="#description">Description</a>
                         </li>
-                        <li class="reviews_tab ui-state-default ui-corner-top"><a href="#tabs-tab-title-2">Reviews (0)</a>
+                        <li class="reviews_tab ui-state-default ui-corner-top">
+                            <a href="#reviews">Reviews ({{ $reviews->count() }})</a>
                         </li>
                     </ul>
-                    <div id="tabs-tab-title-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+                    <div id="description" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                         <p>{!! $product->content !!}</p>
                     </div>
-                    <div id="tabs-tab-title-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
-                        <div id="reviews">
-                            <div id="comments">
-                                <h2>Reviews</h2>
-                                <p>There are no reviews yet, would you like to <a href="#review_form" class="inline show_review_form">submit yours</a>?</p>
-                            </div>
-                            <div id="review_form_wrapper" style="display: none;">
-                                <div id="review_form">
-                                    <div id="respond">
-                                        <h3 id="reply-title">Be the first to review “Summer Berry Soap” <small><a rel="nofollow" id="cancel-comment-reply-link" href="/organicshopwp/shop/summer-berry-soap/#respond" style="display:none;">Cancel reply</a></small></h3>
-                                        <form action="{{ route('shop.review', $product->slug) }}" method="post" id="commentform">
-                                            <p class="comment-form-author">
-                                                <label for="author">Name</label> <span class="required">*</span>
-                                                <input id="author" name="author" type="text" value="" size="30" aria-required="true">
-                                            </p>
-                                            <p class="comment-form-email">
-                                                <label for="email">Email</label> <span class="required">*</span>
-                                                <input id="email" name="email" type="text" value="" size="30" aria-required="true">
-                                            </p>
-                                            <p class="comment-form-rating">
-                                                <label for="rating">Rating</label>
-                                                <p class="stars"><span>
-                                                    <a class="star-1" href="#">1</a>
-                                                    <a class="star-2" href="#">2</a>
-                                                    <a class="star-3" href="#">3</a>
-                                                    <a class="star-4" href="#">4</a>
-                                                    <a class="star-5" href="#">5</a>
-                                                </span></p>
-                                                <select name="rating" id="rating" style="display: none;">
-                                                    <option value="">Rate…</option>
-                                                    <option value="5">Perfect</option>
-                                                    <option value="4">Good</option>
-                                                    <option value="3">Average</option>
-                                                    <option value="2">Not that bad</option>
-                                                    <option value="1">Very Poor</option>
-                                                </select>
-                                            </p>
-                                            <p class="comment-form-comment">
-                                                <label for="comment">Your Review</label>
-                                                <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
-                                            </p>
-                                            <input type="hidden" id="_n" name="_n" value="f238789892">
-                                            <input type="hidden" name="_wp_http_referer" value="/organicshopwp/shop/summer-berry-soap/">
-                                            <p class="form-submit">
-                                                <input name="submit" type="submit" id="submit" value="Submit Review">
-                                                <input type="hidden" name="comment_post_ID" value="69" id="comment_post_ID">
-                                                <input type="hidden" name="comment_parent" id="comment_parent" value="0">
-                                            </p>
-                                        </form>
-                                    </div><!-- #respond -->
+                    <div id="reviews" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+                        <div id="comments">
+                            @if ($reviews->count() > 0)
+                                <div itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                                    <div class="star-rating" title="Rated 5.00 out of 5">
+                                        {{--80px is 100%--}}
+                                        <span style="width:80px"><span itemprop="ratingValue" class="rating">5.00</span> out of 5</span>
+                                    </div>
+                                    <h2><span itemprop="ratingCount" class="count">{{ $reviews->count() }}</span> review for {{ $product->title }}</h2>
                                 </div>
-                            </div>
-                            <div class="clear"></div>
+
+                                <ol class="commentlist">
+                                    @foreach ($reviews as $review)
+                                    <li itemprop="reviews" itemscope="" itemtype="http://schema.org/Review" class="comment even thread-even depth-1" id="li-comment-{{ $review->id }}">
+                                        <div id="comment-{{ $review->id }}" class="comment_container">
+                                            <img alt="" src="{{ Gravatar::get($review->email) }}" class="avatar avatar-60 photo" height="60" width="60">
+                                            <div class="comment-text">
+                                                <div itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" class="star-rating" title="5">
+                                                    <span style="width:80px"><span itemprop="ratingValue">5</span> out of 5</span>
+                                                </div>
+
+                                                <p class="meta">
+                                                    <strong itemprop="author">{{ $review->name }}</strong> –
+                                                    <time itemprop="datePublished" time="" datetime="{{ $review->created_at }}">Aug 30th 2012</time>:
+                                                </p>
+
+                                                <div itemprop="description" class="description">
+                                                    <p>{{ $review->message }}</p>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </li>
+                                    @endforeach
+                                </ol>
+                                <p class="add_review"><a href="#review_form" class="inline show_review_form button2">Add Review</a></p>
+                            @else
+                                <h2>Reviews</h2>
+
+                                <p>There are no reviews yet, would you like to <a href="#review_form" class="inline show_review_form">submit yours</a>?</p>
+                            @endif
                         </div>
+                        <div id="review_form_wrapper" style="display: none;">
+                            <div id="review_form">
+                                <div id="respond">
+                                    <h3 id="reply-title">Be the first to review “Summer Berry Soap” <small><a rel="nofollow" id="cancel-comment-reply-link" href="/organicshopwp/shop/summer-berry-soap/#respond" style="display:none;">Cancel reply</a></small></h3>
+
+                                    <form action="{{ route('shop.review', $product->id) }}" method="post" id="commentform">
+                                        {{ csrf_field() }}
+
+                                        <p class="comment-form-author">
+                                            <label for="author">Name</label> <span class="required">*</span>
+                                            <input id="author" name="name" type="text" value="" size="30" required>
+                                        </p>
+                                        <p class="comment-form-email">
+                                            <label for="email">Email</label> <span class="required">*</span>
+                                            <input id="email" name="email" type="email" value="" size="30" required>
+                                        </p>
+                                        <p class="comment-form-rating">
+                                            <label for="rating">Rating</label>
+                                            <p class="stars"><span>
+                                                <a class="star-1" href="#">1</a>
+                                                <a class="star-2" href="#">2</a>
+                                                <a class="star-3" href="#">3</a>
+                                                <a class="star-4" href="#">4</a>
+                                                <a class="star-5" href="#">5</a>
+                                            </span></p>
+                                            <select name="rating" id="rating" style="display: none;">
+                                                <option value="">Rate…</option>
+                                                <option value="5">Perfect</option>
+                                                <option value="4">Good</option>
+                                                <option value="3">Average</option>
+                                                <option value="2">Not that bad</option>
+                                                <option value="1">Very Poor</option>
+                                            </select>
+                                        </p>
+                                        <p class="comment-form-comment">
+                                            <label for="comment">Your Review</label>
+                                            <textarea id="comment" name="message" cols="45" rows="8" required></textarea>
+                                        </p>
+                                        <p class="form-submit">
+                                            <button id="submit">Submit Review</button>
+                                        </p>
+                                    </form>
+                                </div><!-- #respond -->
+                            </div>
+                        </div>
+                        <div class="clear"></div>
                     </div>
                 </div>
 

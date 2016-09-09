@@ -10,7 +10,7 @@ class Comment extends Model {
     use SoftDeletes, Json;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['name', 'email', 'message', 'rating', 'post_id'];
+    protected $fillable = ['name', 'email', 'message', 'rating'];
     protected $jsonColumns = ['meta'];
 
     const TYP_FEEDBACK = 0;
@@ -47,7 +47,7 @@ class Comment extends Model {
      * Relationships
      */
     public function post() {
-        return $this->belongsTo('App\Post', "meta->>'post_id'", 'id');
+        return $this->belongsTo('App\Post', "meta->post_id", 'id');
     }
 
     /**
