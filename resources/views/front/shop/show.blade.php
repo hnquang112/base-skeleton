@@ -80,36 +80,42 @@
                         <div id="comments">
                             @if ($reviews->count() > 0)
                                 <div itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                                    <div class="star-rating" title="Rated 5.00 out of 5">
+                                    <div class="star-rating" title="Rated {{ $product->average_rating }} out of 5">
                                         {{--80px is 100%--}}
-                                        <span style="width:80px"><span itemprop="ratingValue" class="rating">5.00</span> out of 5</span>
+                                        <span style="width:{{ calc_stars_from_rating($product->average_rating) }}px">
+                                            <span itemprop="ratingValue" class="rating">{{ $product->average_rating }}</span> out of 5
+                                        </span>
                                     </div>
                                     <h2><span itemprop="ratingCount" class="count">{{ $reviews->count() }}</span> review for {{ $product->title }}</h2>
                                 </div>
 
                                 <ol class="commentlist">
                                     @foreach ($reviews as $review)
-                                    <li itemprop="reviews" itemscope="" itemtype="http://schema.org/Review" class="comment even thread-even depth-1" id="li-comment-{{ $review->id }}">
-                                        <div id="comment-{{ $review->id }}" class="comment_container">
-                                            <img alt="" src="{{ Gravatar::get($review->email) }}" class="avatar avatar-60 photo" height="60" width="60">
-                                            <div class="comment-text">
-                                                <div itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating" class="star-rating" title="5">
-                                                    <span style="width:80px"><span itemprop="ratingValue">5</span> out of 5</span>
-                                                </div>
+                                        <li itemprop="reviews" itemscope="{{ $review->rating }}" itemtype="http://schema.org/Review"
+                                            class="comment even thread-even depth-1" id="li-comment-{{ $review->id }}">
+                                            <div id="comment-{{ $review->id }}" class="comment_container">
+                                                <img alt="" src="{{ Gravatar::get($review->email) }}" class="avatar avatar-60 photo" height="60" width="60">
+                                                <div class="comment-text">
+                                                    <div itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating"
+                                                         class="star-rating" title="{{ $review->rating }}">
+                                                        <span style="width:{{ calc_stars_from_rating($review->rating) }}px">
+                                                            <span itemprop="ratingValue">{{ $review->rating }}</span> out of 5
+                                                        </span>
+                                                    </div>
 
-                                                <p class="meta">
-                                                    <strong itemprop="author">{{ $review->name }}</strong> –
-                                                    <time itemprop="datePublished" time="" datetime="{{ $review->created_at }}">Aug 30th 2012</time>:
-                                                </p>
+                                                    <p class="meta">
+                                                        <strong itemprop="author">{{ $review->name }}</strong> –
+                                                        <time itemprop="datePublished" time="" datetime="{{ $review->created_at }}">{{ $review->created_at }}</time>:
+                                                    </p>
 
-                                                <div itemprop="description" class="description">
-                                                    <p>{{ $review->message }}</p>
+                                                    <div itemprop="description" class="description">
+                                                        <p>{{ $review->message }}</p>
+                                                    </div>
+                                                    <div class="clear"></div>
                                                 </div>
                                                 <div class="clear"></div>
                                             </div>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </li>
+                                        </li>
                                     @endforeach
                                 </ol>
                                 <p class="add_review"><a href="#review_form" class="inline show_review_form button2">Add Review</a></p>

@@ -29,7 +29,6 @@ class Comment extends Model {
             "name":null,
             "email":null,
             "message":null,
-            "rating":null,
             "post_id":null,
             "read_by_users":[]
         }');

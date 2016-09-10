@@ -56,3 +56,8 @@ function get_cms_lang_attribute($attr = null) {
 
     return !empty($lang) ? Setting::$languages[$lang][$attr] : $fallback;
 }
+
+function calc_stars_from_rating($rating) {
+    // rating from 1 to 5. stars' width is 80px
+    return $rating / 5 * 80;
+}

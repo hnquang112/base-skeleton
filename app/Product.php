@@ -40,6 +40,10 @@ class Product extends Post implements Buyable {
         return $this->is_on_sale ? $this->discount_price : $this->price;
     }
 
+    public function getAverageRatingAttribute() {
+        return round($this->reviews()->avg('rating'), 1);
+    }
+
     public function scopeSortByAlphabet($query) {
         return $query->orderBy('title');
     }
