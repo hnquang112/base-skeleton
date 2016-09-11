@@ -13,7 +13,7 @@
 
                 <ul class="columns-2 product-single-content clearfix">
                     <li class="post-73 product type-product status-publish hentry col2 clearfix" id="product-73">
-                        @if ($product->is_on_sale) <span class="onsale">Sale!</span> @endif
+                        @if ($product->is_on_sale) <span class="onsale">@lang ('front.home.product.sale')</span> @endif
                         <div class="images">
                             <a itemprop="image" href="{{ $product->represent_image_path }}"
                                class="zoom" rel="thumbnails" title="image2">

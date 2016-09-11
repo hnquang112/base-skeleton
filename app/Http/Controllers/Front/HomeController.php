@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Comment;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Article;
@@ -16,7 +17,9 @@ class HomeController extends FrontController
 {
     // GET: /
     public function index(Request $request) {
-        return view('front.home.index');
+        $featuredProducts = Product::featured()->get();
+        $reviews = Comment::feedback()->featured()->get();
+        return view('front.home.index', compact('featuredProducts', 'reviews'));
     }
 
     // GET: /search?q=lorem-ipsum

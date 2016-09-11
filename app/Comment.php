@@ -55,4 +55,17 @@ class Comment extends Model {
     public function scopeFeedback($query) {
         return $query->where('type', self::TYP_FEEDBACK);
     }
+
+    public function scopeReviews($query) {
+        return $query->where('type', self::TYP_REVIEW);
+    }
+
+    public function scopeOrderByDesc($query, $field) {
+        return $query->orderBy($field, 'DESC');
+    }
+
+    public function scopeFeatured($query) {
+        return $query->orderByDesc('created_at')->take(2);
+    }
+
 }

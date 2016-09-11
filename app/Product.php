@@ -70,6 +70,10 @@ class Product extends Post implements Buyable {
             ->orderBy('matched_tags', 'desc')->take(3);
     }
 
+    public function scopeFeatured($query) {
+        return $query->orderByDesc('created_at')->take(4);
+    }
+
     /**
      * Get the identifier of the Buyable item.
      *

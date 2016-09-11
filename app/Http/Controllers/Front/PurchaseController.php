@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Notifications\OrderCreated;
 use Illuminate\Http\Request;
 use Cart;
 use App\User;
@@ -70,6 +71,9 @@ class PurchaseController extends FrontController {
             ];
         }
         $order->products()->attach($tmpCartItems);
+
+        // notify via email
+        $user->notify(new OrderCreated($order));
 
         Cart::destroy();
 

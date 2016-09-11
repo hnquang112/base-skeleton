@@ -18,7 +18,7 @@
                         <li class="{{ $key % 3 == 0 ? 'first' : ($key % 3 == 2 ? 'last' : '') }}">
                             <a href="{{ $product->front_url }}">
                                 <div class="product-image">
-                                    @if ($product->is_on_sale) <span class="onsale">Sale!</span> @endif
+                                    @if ($product->is_on_sale) <span class="onsale">@lang ('front.home.product.sale')</span> @endif
                                     <img src="{{ $product->represent_image_path }}" alt="{{ $product->title }}"
                                          title="{{ $product->title }}" class="attachment-shop_catalog wp-post-image">
                                 </div>
