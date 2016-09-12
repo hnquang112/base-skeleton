@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers\Cms;
 
-use DB;
+use Cache;
 use App\Setting;
 use Illuminate\Http\Request;
 
@@ -23,6 +23,7 @@ class SettingController extends CmsController {
     public function store(Request $request) {
         // Set language
         Setting::setSiteConfigValue('front_page_language', $request->front_page_language);
+        Cache::forget('front.language');
 
         flash()->success('Saved successfully');
         return back();

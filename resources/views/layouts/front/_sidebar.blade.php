@@ -59,17 +59,17 @@
             <h4 class="tag-title">{{ trans_choice('front.common.recent_articles', 2) }}</h4>
         </div>
         <ul class="latest-posts-list clearfix">
-            @foreach ($_recentPosts as $_post)
+            @foreach ($_recentArticles as $_articles)
                 <li class="clearfix">
                     <div class="lpl-img">
-                        <a href="{{ $_post->front_url }}" rel="bookmark">
-                            <img width="66" height="66" src="{{ $_post->represent_image_path }}" alt="{{ $_post->title }}">
+                        <a href="{{ $_articles->front_url }}" rel="bookmark">
+                            <img width="66" height="66" src="{{ $_articles->represent_image_path }}" alt="{{ $_articles->title }}">
                         </a>
                     </div>
                     <div class="lpl-content">
-                        <h6><a href="{{ $_post->front_url }}" rel="bookmark">{{ $_post->title }}</a>
-                            <span> Posted {{ format_date_as_string($_post->published_at) }}
-                                By {{ $_post->author->display_name }}</span></h6>
+                        <h6><a href="{{ $_articles->front_url }}" rel="bookmark">{{ $_articles->title }}</a>
+                            <span> Posted {{ format_date_as_string($_articles->published_at) }}
+                                By {{ $_articles->author->display_name }}</span></h6>
                     </div>
                 </li>
             @endforeach

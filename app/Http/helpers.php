@@ -36,7 +36,7 @@ function get_auth_admin_type() {
 }
 
 function get_front_lang_attribute($attr = null) {
-    $lang = Setting::getSiteConfigValue('front_page_language');
+    $lang = Cache::get('front.language');
     $fallback = 'en';
 
     if (is_null($attr)) {
