@@ -15,8 +15,8 @@ Route::group(['namespace' => 'Front'], function () {
     Route::resource('/', 'HomeController', ['only' => ['index']]);
     Route::get('search', ['uses' => 'HomeController@search', 'as' => 'index.search']);
 
-    Route::get('category/{category}/{type?}', ['uses' => 'BlogController@filterByCategory', 'as' => 'category.show']);
-    Route::get('tag/{tag}/{type?}', ['uses' => 'BlogController@filterByTag', 'as' => 'tag.show']);
+    Route::get('category/{category_slug}/{type?}', ['uses' => 'BlogController@filterByCategory', 'as' => 'category.show']);
+    Route::get('tag/{tag_slug}/{type?}', ['uses' => 'BlogController@filterByTag', 'as' => 'tag.show']);
 
     Route::resource('blog', 'BlogController', ['only' => ['index', 'show']]);
     Route::resource('contact', 'ContactController', ['only' => ['index', 'store']]);
@@ -51,9 +51,9 @@ Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms
     Route::resource('users', 'UserController', ['except' => ['show']]);
 
     Route::resource('settings', 'SettingController', ['only' => ['index', 'store']]);
-    Route::resource('sliders', 'SliderController', ['except' => ['show'], 'parameters' => ['sliders' => 'settings']]);
-//        Route::resource('menus', 'MenuController', ['except' => ['show'], 'parameters' => ['menus' => 'settings']]);
-    Route::resource('reviews', 'ReviewController', ['except' => ['show'], 'parameters' => ['reviews' => 'comments']]);
-    Route::resource('feedback', 'FeedbackController', ['except' => ['show'], 'parameters' => ['feedback' => 'comments']]);
+    Route::resource('sliders', 'SliderController', ['except' => ['show'], 'parameters' => ['sliders' => 'setting']]);
+//        Route::resource('menus', 'MenuController', ['except' => ['show'], 'parameters' => ['menus' => 'setting']]);
+    Route::resource('reviews', 'ReviewController', ['except' => ['show'], 'parameters' => ['reviews' => 'comment']]);
+    Route::resource('feedback', 'FeedbackController', ['except' => ['show'], 'parameters' => ['feedback' => 'comment']]);
     Route::resource('media', 'MediaController', ['only' => 'index']);
 });

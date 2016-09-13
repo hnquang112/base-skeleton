@@ -28,21 +28,21 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::model('articles', 'App\Article');
-        Route::model('categories', 'App\Category');
-        Route::model('tags', 'App\Tag');
-        Route::model('settings', 'App\Setting');
-        Route::model('products', 'App\Product');
-        Route::model('users', 'App\User');
-        Route::model('comments', 'App\Comment');
+        Route::model('article', 'App\Article');
+        Route::model('category', 'App\Category');
+        Route::model('tag', 'App\Tag');
+        Route::model('setting', 'App\Setting');
+        Route::model('product', 'App\Product');
+        Route::model('user', 'App\User');
+        Route::model('comment', 'App\Comment');
 
         Route::bind('blog', function ($slug) {
             return Article::findBySlugOrFail($slug);
         });
-        Route::bind('tag', function ($slug) {
+        Route::bind('tag_slug', function ($slug) {
             return Tag::findBySlugOrFail($slug);
         });
-        Route::bind('category', function ($slug) {
+        Route::bind('category_slug', function ($slug) {
             return Category::findBySlugOrFail($slug);
         });
         Route::bind('shop', function ($slug) {
