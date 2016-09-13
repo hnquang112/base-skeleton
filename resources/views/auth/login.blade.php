@@ -14,7 +14,7 @@
 
             <div class="form-group has-feedback{{ $errors->has('username') ? ' has-error' : '' }}">
                 <input name="username" type="text" class="form-control" placeholder="Username" autofocus="autofocus">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
 
                 @if ($errors->has('username'))
                     <span class="help-block"><strong>{{ $errors->first('username') }}</strong></span>
@@ -38,7 +38,8 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Login
+                    <span class="glyphicon glyphicon-log-in"></span></button>
                 </div>
                 <!-- /.col -->
             </div>

@@ -48,6 +48,9 @@
                     <li {{ $request->is('cms/products/create') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.products.create') }}"><i class="fa fa-circle-o"></i> Add New Product</a>
                     </li>
+                    <li {{ $request->is('cms/reviews/*') ? 'class=active' : '' }}>
+                        <a href="{{ route('cms.reviews.index') }}"><i class="fa fa-star-half-o"></i> Reviews</a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview{{ $request->is('cms/categories*') || $request->is('cms/tags*')

@@ -10,17 +10,27 @@ class Comment extends Model {
     use SoftDeletes, Json;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['name', 'email', 'message', 'rating'];
+    protected $fillable = ['name', 'email', 'message', 'rating', 'post_id'];
     protected $jsonColumns = ['meta'];
 
     const TYP_FEEDBACK = 0;
     const TYP_REVIEW = 1;
+    const STT_DISAPPROVED = 0;
+    const STT_APPROVED = 1;
 
     public static $rulesForCreatingFeedback = [
         'name' => 'required|max:255',
         'email' => 'required|email|max:255',
         'message' => 'required',
         'g-recaptcha-response' => 'required|captcha'
+    ];
+
+    public static $rulesForCreatingReview = [
+        'name' => 'required|max:255',
+        'email' => 'required|email|max:255',
+        'message' => 'required',
+        'rating' => 'required',
+        'post_id' => 'required'
     ];
 
     public function __construct() {
@@ -31,13 +41,17 @@ class Comment extends Model {
             "message":null,
             "post_id":null,
             "rating":null,
-            "read_by_users":[]
+            "read_by_users":[],
+            "status":null
         }');
     }
 
     /**
      * Accessors
      */
+    public function getStatusClassAttribute() {
+        return $this->status ? 'thumbs-o-up' : 'thumbs-o-down';
+    }
 //    public function getIsReadAttribute() {
 //        if (empty($this->read_by_users) || in_array(auth()->user()->id, $this->read_by_users)) return true;
 //        return false;

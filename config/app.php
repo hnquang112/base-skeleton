@@ -178,6 +178,7 @@ return [
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Spatie\Analytics\AnalyticsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -242,6 +243,8 @@ return [
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+
     ],
 
 ];

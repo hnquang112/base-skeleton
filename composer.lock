@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "30aa252ad1458614cb77316168763027",
-    "content-hash": "94db1a2ff1bc5990574fe12160190378",
+    "hash": "7752bd1700ad380c338f51086e26d0ef",
+    "content-hash": "1a480e73cf0124f35afbc2094540da67",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -940,6 +940,49 @@
             "time": "2016-09-05 06:26:29"
         },
         {
+            "name": "google/apiclient",
+            "version": "v1.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/google/google-api-php-client.git",
+                "reference": "85309a3520bb5f53368d43e35fd24f43c9556323"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/85309a3520bb5f53368d43e35fd24f43c9556323",
+                "reference": "85309a3520bb5f53368d43e35fd24f43c9556323",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-v1-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Google/autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Client library for Google APIs",
+            "homepage": "http://developers.google.com/api-client-library/php",
+            "keywords": [
+                "google"
+            ],
+            "time": "2016-06-06 21:22:48"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "6.2.1",
             "source": {
@@ -1419,16 +1462,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.3.7",
+            "version": "v5.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "443764337de22705c115abe169472c24446764bd"
+                "reference": "f6fbb481672f8dc4bc6882d5d654bbfa3588c8ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/443764337de22705c115abe169472c24446764bd",
-                "reference": "443764337de22705c115abe169472c24446764bd",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f6fbb481672f8dc4bc6882d5d654bbfa3588c8ec",
+                "reference": "f6fbb481672f8dc4bc6882d5d654bbfa3588c8ec",
                 "shasum": ""
             },
             "require": {
@@ -1542,7 +1585,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-09-08 17:10:45"
+            "time": "2016-09-12 14:08:29"
         },
         {
             "name": "laravel/socialite",
@@ -2657,6 +2700,63 @@
             "time": "2016-04-24 02:00:22"
         },
         {
+            "name": "spatie/laravel-analytics",
+            "version": "2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-analytics.git",
+                "reference": "50531d2ee760d67b19100450b1f89e7615338c5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-analytics/zipball/50531d2ee760d67b19100450b1f89e7615338c5b",
+                "reference": "50531d2ee760d67b19100450b1f89e7615338c5b",
+                "shasum": ""
+            },
+            "require": {
+                "google/apiclient": "^1.1",
+                "illuminate/contracts": "~5.1.0|~5.2.0|~5.3.0",
+                "illuminate/support": "~5.1.0|~5.2.0|~5.3.0",
+                "nesbot/carbon": "^1.21",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "orchestra/database": "3.3.x@dev",
+                "orchestra/testbench": "3.3.x@dev",
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Analytics\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://murze.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel 5 package to retrieve Google Analytics data.",
+            "homepage": "https://github.com/spatie/laravel-analytics",
+            "keywords": [
+                "analytics",
+                "google",
+                "laravel",
+                "reports",
+                "retrieve",
+                "spatie"
+            ],
+            "time": "2016-08-23 15:06:52"
+        },
+        {
             "name": "spatie/laravel-responsecache",
             "version": "1.1.6",
             "source": {
@@ -2717,16 +2817,16 @@
         },
         {
             "name": "studio-42/elfinder",
-            "version": "2.1.14",
+            "version": "2.1.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Studio-42/elFinder.git",
-                "reference": "02c19ae09a36ec83a837b28eb5b232f5ce7b0bd9"
+                "reference": "2370a0af78b4ca0f028bacb3fb9c3d092ff0ae81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/02c19ae09a36ec83a837b28eb5b232f5ce7b0bd9",
-                "reference": "02c19ae09a36ec83a837b28eb5b232f5ce7b0bd9",
+                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/2370a0af78b4ca0f028bacb3fb9c3d092ff0ae81",
+                "reference": "2370a0af78b4ca0f028bacb3fb9c3d092ff0ae81",
                 "shasum": ""
             },
             "require": {
@@ -2771,7 +2871,7 @@
             ],
             "description": "File manager for web",
             "homepage": "http://elfinder.org",
-            "time": "2016-07-25 00:34:19"
+            "time": "2016-09-12 01:53:22"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4034,16 +4134,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.5.2",
+            "version": "1.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "da8529775f14f4fdae33f916eb0cf65f6afbddbc"
+                "reference": "94e5ca3e90aa5b34663780393e10914f7438f991"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/da8529775f14f4fdae33f916eb0cf65f6afbddbc",
-                "reference": "da8529775f14f4fdae33f916eb0cf65f6afbddbc",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/94e5ca3e90aa5b34663780393e10914f7438f991",
+                "reference": "94e5ca3e90aa5b34663780393e10914f7438f991",
                 "shasum": ""
             },
             "require": {
@@ -4072,7 +4172,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2016-09-06 16:07:05"
+            "time": "2016-09-07 15:34:10"
         },
         {
             "name": "phpdocumentor/reflection-common",

@@ -33,5 +33,19 @@ class UsersTableSeeder extends Seeder
         $admin->type = User::ADMIN;
         $admin->display_name = 'Admin';
         $admin->save();
+
+        // Set default language of front page is Vietnamese
+        Setting::updateOrCreate(['meta->label' => 'front_page_language'], [
+            'label' => 'front_page_language',
+            'type' => Setting::TYP_CONFIG,
+            'config_value' => 'vi'
+        ]);
+
+        // Set default language of cms page is English
+        Setting::updateOrCreate(['meta->label' => 'cms_page_language'], [
+            'label' => 'cms_page_language',
+            'type' => Setting::TYP_CONFIG,
+            'config_value' => 'en'
+        ]);
     }
 }
