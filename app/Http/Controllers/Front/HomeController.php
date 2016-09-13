@@ -18,7 +18,7 @@ class HomeController extends FrontController
     // GET: /
     public function index(Request $request) {
         $featuredProducts = Product::featured()->get();
-        $reviews = Comment::feedback()->featured()->get();
+        $reviews = Comment::with('product')->reviews()->featured()->get();
 
         return view('front.home.index', compact('featuredProducts', 'reviews'));
     }

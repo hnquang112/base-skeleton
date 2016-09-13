@@ -30,6 +30,7 @@ class Comment extends Model {
             "email":null,
             "message":null,
             "post_id":null,
+            "rating":null,
             "read_by_users":[]
         }');
     }
@@ -45,8 +46,8 @@ class Comment extends Model {
     /**
      * Relationships
      */
-    public function post() {
-        return $this->belongsTo('App\Post', "meta->post_id", 'id');
+    public function product() {
+        return $this->belongsTo('App\Product', "meta->post_id", 'id');
     }
 
     /**
@@ -65,7 +66,7 @@ class Comment extends Model {
     }
 
     public function scopeFeatured($query) {
-        return $query->orderByDesc('created_at')->take(2);
+        return $query->orderByDesc('meta->rating')->orderByDesc('created_at')->take(2);
     }
 
 }

@@ -62,7 +62,7 @@
                 'hasPriceFilter' => true,
                 'start' => Request::get('min_price'),
                 'end' => Request::get('max_price'),
-                'max' => App\Product::max(DB::raw("cast(meta->>'price' as integer)"))])
+                'max' => Cache::get('front.max_product_prices')])
         </ul>
     </div><!-- END .section -->
 @endsection

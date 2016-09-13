@@ -21,10 +21,10 @@ Route::group(['namespace' => 'Front'], function () {
     Route::resource('blog', 'BlogController', ['only' => ['index', 'show']]);
     Route::resource('contact', 'ContactController', ['only' => ['index', 'store']]);
 
-    Route::post('shop/{products}/review', ['uses' => 'ShopController@writeReview', 'as' => 'shop.review']);
+    Route::post('shop/{product}/review', ['uses' => 'ShopController@writeReview', 'as' => 'shop.review']);
     Route::resource('shop', 'ShopController', ['only' => ['index', 'show']]);
 
-    Route::post('shop/{products}/cart', ['uses' => 'CartController@store', 'as' => 'cart.store']);
+    Route::post('shop/{product}/cart', ['uses' => 'CartController@store', 'as' => 'cart.store']);
     Route::resource('cart', 'CartController', ['only' => ['index', 'update', 'destroy']]);
 
     Route::get('account/facebook', ['uses' => 'AccountController@redirectToProvider', 'as' => 'auth.redirect']);

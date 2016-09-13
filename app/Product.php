@@ -41,7 +41,7 @@ class Product extends Post implements Buyable {
     }
 
     public function getAverageRatingAttribute() {
-        return round($this->reviews()->avg('rating'), 1);
+        return round($this->reviews()->avg(DB::raw("cast(meta->>'rating' as integer)")), 1);
     }
 
     public function scopeSortByAlphabet($query) {

@@ -4,12 +4,14 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Cache;
+use DB;
+use App;
 use App\Setting;
 use App\Category;
 use App\Tag;
 use App\Article;
+use App\Product;
 use Carbon\Carbon;
-use App;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -35,15 +37,15 @@ class ViewServiceProvider extends ServiceProvider
             Cache::put('front.all_sliders', Setting::with('image')->sliders()->get(), $expiresIn7days);
         }
 
-        if (!Cache::has('front.recent_posts')) {
-            Cache::put('front.recent_posts', Article::with('author')->published()->orderByDesc('published_at')->paginate(3),
+        if (!Cache::has('front.recent_articles')) {
+            Cache::put('front.recent_articles', Article::with('author')->published()->orderByDesc('published_at')->paginate(3),
                 $expiresIn7days);
         }
 
         view()->share('_allCategories', Cache::get('front.all_categories'));
         view()->share('_allTags', Cache::get('front.all_tags'));
         view()->share('_allSliders', Cache::get('front.all_sliders'));
-        view()->share('_recentArticles', Cache::get('front.recent_posts'));
+        view()->share('_recentArticles', Cache::get('front.recent_articles'));
 
         // set language
         if (!Cache::has('front.language')) {
@@ -52,6 +54,11 @@ class ViewServiceProvider extends ServiceProvider
 
         if (!App::isLocale(Cache::get('front.language'))) {
             App::setLocale(Cache::get('front.language'));
+        }
+
+        // max product price
+        if (!Cache::has('front.max_product_prices')) {
+            Cache::put('front.max_product_prices', Product::max(DB::raw("cast(meta->>'price' as integer)")), $expiresIn7days);
         }
     }
 
