@@ -12,6 +12,8 @@ use App\Comment;
 use Illuminate\Http\Request;
 
 class ReviewController extends CmsController {
+
+    // GET: /cms/reviews
     public function index() {
         $reviews = Comment::reviews()->orderByDesc('created_at')->get();
         $review = new Comment;
@@ -19,17 +21,20 @@ class ReviewController extends CmsController {
         return view('cms.reviews.index', compact('reviews', 'review'));
     }
 
+    // GET: /cms/reviews/create
     public function create() {
+        $review = new Comment;
 
+        return view('cms.reviews.form', compact('review'));
     }
 
+    // POST: /cms/reviews
     public function store(Request $request) {
         $this->validate($request, Comment::$rulesForCreatingReview);
 
         $review = new Comment;
         $review->type = Comment::TYP_REVIEW;
         $review->fill($request->all());
-
 
         if ($review->save()) {
             flash()->success('Saved successfully');
@@ -40,15 +45,30 @@ class ReviewController extends CmsController {
         return back();
     }
 
-    public function edit() {
-
+    // GET: /cms/reviews/1/edit
+    public function edit($review) {
+        return view('cms.reviews.form', compact('review'));
     }
 
-    public function update() {
+    // PUT: /cms/reviews/1
+    public function update(Request $request, $review) {
+        $this->validate($request, Comment::$rulesForCreatingReview);
 
+        $review->fill($request->all());
+
+        if ($review->save()) {
+            flash()->success('Saved successfully');
+        } else {
+            flash()->error('Save failed');
+        }
+
+        return back();
     }
 
-    public function destroy() {
+    // DELETE: /cms/reviews/1
+    public function destroy(Request $request) {
+        $this->deleteMultipleItems(Category::class, $request->selected_ids);
 
+        return back();
     }
 }

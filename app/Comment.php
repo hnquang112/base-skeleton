@@ -52,6 +52,7 @@ class Comment extends Model {
     public function getStatusClassAttribute() {
         return $this->status ? 'thumbs-o-up' : 'thumbs-o-down';
     }
+
 //    public function getIsReadAttribute() {
 //        if (empty($this->read_by_users) || in_array(auth()->user()->id, $this->read_by_users)) return true;
 //        return false;
@@ -81,6 +82,10 @@ class Comment extends Model {
 
     public function scopeFeatured($query) {
         return $query->orderByDesc('meta->rating')->orderByDesc('created_at')->take(2);
+    }
+
+    public function scopeApproved($query) {
+        return $query->where('meta->status', self::STT_APPROVED);
     }
 
 }

@@ -49,6 +49,7 @@ Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms
     Route::resource('categories', 'CategoryController', ['except' => ['show']]);
     Route::resource('products', 'ProductController', ['except' => ['show']]);
     Route::resource('users', 'UserController', ['except' => ['show']]);
+    Route::resource('orders', 'OrderController');
 
     Route::resource('settings', 'SettingController', ['only' => ['index', 'store']]);
     Route::resource('sliders', 'SliderController', ['except' => ['show'], 'parameters' => ['sliders' => 'setting']]);

@@ -35,6 +35,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('product', 'App\Product');
         Route::model('user', 'App\User');
         Route::model('comment', 'App\Comment');
+        Route::model('order', 'App\Order');
 
         Route::bind('blog', function ($slug) {
             return Article::findBySlugOrFail($slug);
@@ -50,7 +51,7 @@ class RouteServiceProvider extends ServiceProvider
         });
         Route::bind('checkout', function ($code) {
             // sort by created time, in case code is duplicated
-            return Order::whereCode($code)->orderBy('created_at', 'desc')->first();
+            return Order::whereCode($code)->orderByDesc('created_at')->first();
         });
         parent::boot();
     }

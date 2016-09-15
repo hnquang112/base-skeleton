@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Categories</h3>
+                    <h3 class="box-title">Reviews</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -20,7 +20,7 @@
                     </div>
                     <div class="table-responsive mailbox-messages">
                         <form id="js-form-delete" method="POST"
-                              action="{{ route('cms.categories.destroy', $reviews->first() ? $reviews->first()->id : 0) }}" >
+                              action="{{ route('cms.reviews.destroy', $reviews->first() ? $reviews->first()->id : 0) }}" >
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
@@ -39,7 +39,7 @@
                                 @foreach ($reviews as $rev)
                                     <tr>
                                         <td><input name="selected_ids[]" type="checkbox" value="{{ $rev->id }}"></td>
-                                        <td><a href="{{ route('cms.categories.edit', $rev->id) }}"><strong>
+                                        <td><a href="{{ route('cms.reviews.edit', $rev->id) }}"><strong>
                                                     {{ $rev->name }}</strong></a></td>
                                         <td>{{ $rev->email }}</td>
                                         <td>{{ $rev->message }}</td>
