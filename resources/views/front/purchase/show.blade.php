@@ -9,14 +9,14 @@
 
             <!-- BEGIN .col-main -->
             <li class="col-main">
-                <h2 class="page-title">Order Received</h2>
-                <p>Thank you. Your order has been received.</p>
+                <h2 class="page-title">@lang ('front.checkout.order_received')</h2>
+                <p>@lang ('front.checkout.order_received_info')</p>
                 <table class="product-table">
                     <thead>
                         <tr>
-                            <th>Order</th>
-                            <th>Date</th>
-                            <th>Total</th>
+                            <th>@lang ('front.checkout.product')</th>
+                            <th>@lang ('front.checkout.date')</th>
+                            <th>@lang ('front.checkout.total')</th>
                             {{--<th>Payment method</th>--}}
                         </tr>
                     </thead>
@@ -30,16 +30,16 @@
                     </tbody>
                 </table>
 
-                <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order wont be shipped until the funds have cleared in our account.</p>
-                <h2>Our Details</h2>
+                {{--<p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order wont be shipped until the funds have cleared in our account.</p>--}}
+                <h2>@lang ('front.checkout.our_detail')</h2>
 
-                <div class="tag-title-wrap clearfix"><h4 class="tag-title">Order Details</h4></div>
+                <div class="tag-title-wrap clearfix"><h4 class="tag-title">@lang ('front.checkout.order_detail')</h4></div>
                 <table width="100%">
                     <thead>
                         <tr>
-                            <th class="product-name">Product</th>
-                            <th class="product-quantity">Qty</th>
-                            <th class="product-total">Totals</th>
+                            <th class="product-name">@lang ('front.checkout.product')</th>
+                            <th class="product-quantity">@lang ('front.checkout.qty')</th>
+                            <th class="product-total">@lang ('front.checkout.total')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,24 +62,24 @@
                             {{--<td>Free Shipping</td>--}}
                         {{--</tr>--}}
                         <tr>
-                            <th scope="row" colspan="2" style="text-align: right;">Order Total:</th>
+                            <th scope="row" colspan="2" style="text-align: right;">@lang ('front.checkout.order_total'):</th>
                             <td>{{ format_price_with_currency($order->total_price) }}</td>
                         </tr>
                     </tfoot>
                 </table>
 
                 <header>
-                    <div class="tag-title-wrap clearfix"><h4 class="tag-title">Customer details</h4></div>
+                    <div class="tag-title-wrap clearfix"><h4 class="tag-title">@lang ('front.checkout.customer_detail')</h4></div>
                 </header>
                 <ul class="customer_details">
-                    <li>Email: {{ $order->user->email }}</li>
-                    <li>Telephone: {{ $order->user->phone }}</li>
+                    <li>@lang ('front.account.address.email'): {{ $order->user->email }}</li>
+                    <li>@lang ('front.account.address.phone'): {{ $order->user->phone }}</li>
                 </ul>
 
                 <div class="col2-set addresses">
                     <div class="col-1">
                         <header class="title">
-                            <div class="tag-title-wrap clearfix"><h4 class="tag-title">Billing Address</h4></div>
+                            <div class="tag-title-wrap clearfix"><h4 class="tag-title">@lang ('front.account.address.billing')</h4></div>
                         </header>
                         <address>
                             <p>
@@ -93,7 +93,7 @@
 
                     <div class="col-2">
                         <header class="title">
-                            <div class="tag-title-wrap clearfix"><h4 class="tag-title">Shipping Address</h4></div>
+                            <div class="tag-title-wrap clearfix"><h4 class="tag-title">@lang ('front.account.address.shipping')</h4></div>
                         </header>
                         <address>
                             <p>

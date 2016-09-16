@@ -47,6 +47,32 @@ class Order extends Model {
         return route('checkout.show', $this->code);
     }
 
+    public function getUserNameAttribute() {
+        // if ship_to_billing = 1 return bill name
+        // else return ship name
+        return $this->ship_to_billing ? $this->user->display_name : $this->user->shipping_full_name;
+    }
+
+    public function getUserAddressAttribute() {
+        return $this->ship_to_billing ? $this->user->address : $this->user->shipping_address;
+    }
+
+    public function getUserCityAttribute() {
+        return $this->ship_to_billing ? $this->user->city : $this->user->shipping_city;
+    }
+
+    public function getUserCountryAttribute() {
+        return $this->ship_to_billing ? $this->user->country : $this->user->shipping_country;
+    }
+
+    public function getUserPhoneAttribute() {
+        return $this->ship_to_billing ? $this->user->phone : $this->shipping_phone;
+    }
+
+    public function getUserEmailAttribute() {
+        return $this->ship_to_billing ? $this->user->email : $this->shipping_email;
+    }
+
     public function scopeOrderByDesc($query, $field) {
         return $query->orderBy($field, 'DESC');
     }

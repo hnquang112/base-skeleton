@@ -28,9 +28,7 @@
                 </ul>
 
                 <iframe width="100%" height="300" frameborder="0" style="border: 0; margin-bottom: 30px" allowfullscreen
-                        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJnRjORk8pdTERbUf4gs-HW4c&key=
-                        {{ config('services.google.maps-api-key') }}"></iframe>
-
+                        src="https://www.google.com/maps/embed/v1/place?q={{ '364 Cong Hoa, Tan Binh' }}&key={{ config('services.google.maps-api-key') }}"></iframe>
                 @if (count($errors) > 0)
                     <div class="msg fail">
                         <ul class="list-fail">

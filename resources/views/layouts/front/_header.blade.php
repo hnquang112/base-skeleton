@@ -18,7 +18,7 @@
             <li class="myaccount-icon">
                 <a href="{{ route('account.index') }}">
                     @if (auth()->guard('web')->check())
-                        Xin chào {{ auth()->guard('web')->user()->display_name }}
+                        @lang ('front.header.hello') {{ auth()->guard('web')->user()->display_name }}
                     @else
                         @lang ('front.header.my_account')
                     @endif

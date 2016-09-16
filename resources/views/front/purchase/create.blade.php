@@ -8,15 +8,15 @@
 
             <!-- BEGIN .col-main -->
             <li class="col-main">
-                <h2 class="page-title">Checkout</h2>
+                <h2 class="page-title">@lang ('front.checkout.title')</h2>
 
                 @if (!auth()->guard('web')->check())
                     <div class="msg notice">
-                        <p>Already registered? <a href="javascript:void(0)" class="showlogin">Click here to login</a></p>
+                        <p>@lang ('front.checkout.register_question) <a href="javascript:void(0)" class="showlogin">@lang ('front.checkout.click_to_login')</a></p>
                     </div>
 
                     <div class="login" style="display: none;">
-                        <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section.</p>
+                        <p>@lang ('front.checkout.login_description')</p>
 
                         @include ('front.account._fb_login_button')
                     </div>
@@ -37,42 +37,42 @@
                     <div class="col2-set" id="customer_details">
                         <div class="col-1">
                             <div class="tag-title-wrap clearfix">
-                                <h4 class="tag-title">Billing Address</h4>
+                                <h4 class="tag-title">@lang ('front.account.address.billing')</h4>
                             </div>
 
                             <p class="form-row" id="billing_full_name_field">
-                                <label for="billing_full_name" class="">Full Name <abbr class="required" title="required">*</abbr></label>
+                                <label for="billing_full_name">@lang ('front.account.address.full_name) <abbr class="required" title="required">*</abbr></label>
                                 <input type="text" class="input-text" name="display_name" id="billing_full_name" placeholder="Full Name"
                                        value="{{ old('display_name') ?: $user->display_name }}" required>
                             </p>
 
                             <p class="form-row" id="billing_address_field">
-                                <label for="billing_address" class="">Address <abbr class="required" title="required">*</abbr></label>
+                                <label for="billing_address">@lang ('front.account.address.address) <abbr class="required" title="required">*</abbr></label>
                                 <input type="text" class="input-text" name="address" id="billing_address" placeholder="Address"
                                        value="{{ old('address') ?: $user->address }}" required>
                             </p>
 
                             <p class="form-row form-row-first" id="billing_city_field">
-                                <label for="billing_city" class="">Town/City <abbr class="required" title="required">*</abbr></label>
+                                <label for="billing_city">@lang ('front.account.address.city) <abbr class="required" title="required">*</abbr></label>
                                 <input type="text" class="input-text" name="city" id="billing_city" placeholder="Town/City"
                                        value="{{ old('city') ?: $user->city }}" required>
                             </p>
 
                             <p class="form-row form-row-last update_totals_on_change" id="billing_country_field">
-                                <label for="billing_country" class="">County</label>
+                                <label for="billing_country">@lang ('front.account.address.country)</label>
                                 <input type="text" class="input-text" placeholder="County" name="country" id="billing_country"
                                        value="{{ old('country') ?: $user->country }}">
                             </p>
                             <div class="clear"></div>
 
                             <p class="form-row form-row-first" id="billing_email_field">
-                                <label for="billing_email" class="">Email Address <abbr class="required" title="required">*</abbr></label>
+                                <label for="billing_email">@lang ('front.account.address.email) <abbr class="required" title="required">*</abbr></label>
                                 <input type="email" class="input-text" name="email" id="billing_email" placeholder="Email Address"
                                        value="{{ old('email') ?: $user->email }}" required>
                             </p>
 
                             <p class="form-row form-row-last" id="billing_phone_field">
-                                <label for="billing_phone" class="">Phone <abbr class="required" title="required">*</abbr></label>
+                                <label for="billing_phone">@lang ('front.account.address.phone) <abbr class="required" title="required">*</abbr></label>
                                 <input type="text" class="input-text" name="phone" id="billing_phone" placeholder="Phone"
                                        value="{{ old('phone') ?: $user->phone }}" required>
                             </p>
@@ -83,48 +83,48 @@
                             <p class="form-row" id="shiptobilling">
                                 <input id="shiptobilling-checkbox" class="input-checkbox" type="checkbox" name="ship_to_billing" value="1"
                                        {{ old('ship_to_billing') != 1 && old('display_name') ? '' : 'checked=checked' }}>
-                                <label for="shiptobilling-checkbox" class="checkbox">Ship to billing address?</label>
+                                <label for="shiptobilling-checkbox" class="checkbox">@lang ('front.account.address.ship_to_billing')</label>
                             </p>
 
                             <div class="tag-title-wrap clearfix">
-                                <h4 class="tag-title">Shipping Address</h4>
+                                <h4 class="tag-title">@lang ('front.account.address.shipping)</h4>
                             </div>
 
                             <div class="clearboth"></div>
 
                             <div class="shipping_address" style="display: none;">
                                 <p class="form-row" id="shipping_full_name_field">
-                                    <label for="shipping_full_name" class="">Full Name <abbr class="required" title="required">*</abbr></label>
+                                    <label for="shipping_full_name">@lang ('front.account.address.full_name) <abbr class="required" title="required">*</abbr></label>
                                     <input type="text" class="input-text" name="shipping_full_name" id="shipping_full_name" placeholder="Full Name"
                                            value="{{ old('shipping_full_name') }}">
                                 </p>
 
                                 <p class="form-row" id="shipping_address_field">
-                                    <label for="shipping_address" class="">Address <abbr class="required" title="required">*</abbr></label>
+                                    <label for="shipping_address">@lang ('front.account.address.address) <abbr class="required" title="required">*</abbr></label>
                                     <input type="text" class="input-text" name="shipping_address" id="shipping_address" placeholder="Address"
                                            value="{{ old('shipping_address') }}">
                                 </p>
 
                                 <p class="form-row form-row-first" id="shipping_city_field">
-                                    <label for="shipping_city" class="">Town/City <abbr class="required" title="required">*</abbr></label>
+                                    <label for="shipping_city">@lang ('front.account.address.city) <abbr class="required" title="required">*</abbr></label>
                                     <input type="text" class="input-text" name="shipping_city" id="shipping_city" placeholder="Town/City"
                                            value="{{ old('shipping_city') }}">
                                 </p>
 
                                 <p class="form-row form-row-last update_totals_on_change" id="shipping_country_field">
-                                    <label for="shipping_country" class="">County</label>
+                                    <label for="shipping_country">@lang ('front.account.address.country)</label>
                                     <input type="text" class="input-text" placeholder="County" name="shipping_country" id="shipping_country"
                                            value="{{ old('shipping_country') }}">
                                 </p>
 
                                 <p class="form-row form-row-first" id="shipping_email_field">
-                                    <label for="shipping_email" class="">Email Address <abbr class="required" title="required">*</abbr></label>
+                                    <label for="shipping_email">@lang ('front.account.address.email) <abbr class="required" title="required">*</abbr></label>
                                     <input type="email" class="input-text" name="shipping_email" id="shipping_email" placeholder="Email Address"
                                            value="{{ old('shipping_email') }}">
                                 </p>
 
                                 <p class="form-row form-row-last" id="shipping_phone_field">
-                                    <label for="shipping_phone" class="">Phone <abbr class="required" title="required">*</abbr></label>
+                                    <label for="shipping_phone">@lang ('front.account.address.phone) <abbr class="required" title="required">*</abbr></label>
                                     <input type="text" class="input-text" name="shipping_phone" id="shipping_phone" placeholder="Phone"
                                            value="{{ old('shipping_phone') }}">
                                 </p>
@@ -133,7 +133,7 @@
                             </div>
 
                             <p class="form-row notes" id="order_comments_field">
-                                <label for="order_comments" class="">Order Notes</label>
+                                <label for="order_comments">@lang ('front.account.address.note')</label>
                                 <textarea name="delivery_note" class="input-text" id="order_comments" cols="5" rows="2"
                                           placeholder="Notes about your order, e.g. special notes for delivery."
                                         style="resize: vertical"></textarea>
@@ -142,16 +142,16 @@
                     </div>
 
                     <div class="tag-title-wrap clearfix">
-                        <h4 class="tag-title">Your order</h4>
+                        <h4 class="tag-title">@lang ('front.checkout.your_order')</h4>
                     </div>
 
                     <div id="order_review">
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="product-name">Product</th>
-                                    <th class="product-quantity">Qty</th>
-                                    <th class="product-total">Totals</th>
+                                    <th class="product-name">@lang ('front.checkout.product')</th>
+                                    <th class="product-quantity">@lang ('front.checkout.qty')</th>
+                                    <th class="product-total">@lang ('front.checkout.total')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -178,7 +178,7 @@
                                     {{--</td>--}}
                                 {{--</tr>--}}
                                 <tr class="total">
-                                    <td colspan="2"><strong>Order Total</strong></td>
+                                    <td colspan="2"><strong>@lang ('front.checkout.order_total')</strong></td>
                                     <td style="text-align: right"><strong>{{ Cart::subtotal(0, '.', ',') }}đ</strong></td>
                                 </tr>
                             </tfoot>
@@ -210,7 +210,7 @@
                         {{--</ul>--}}
 
                         <div class="form-row place-order">
-                            <button class="button" id="place_order">Place order</button>
+                            <button class="button" id="place_order">@lang ('front.checkout.order_btn')</button>
                             <div class="clear"></div>
                         </div>
                     </div>

@@ -24,14 +24,14 @@ class CartController extends FrontController {
     public function store(Request $request, $product) {
         if ($request->quantity > 0 && Cart::add($product, $request->quantity)) {
             $err = 0;
-            $msg = 'Added to cart.';
+            $msg = trans('front.cart.added');
             $data = [
                 'product_id' => $product->id,
                 'cart_count' => Cart::count()
             ];
         } else {
             $err = 1;
-            $msg = 'Error!';
+            $msg = trans('front.common.error');
             $data = [];
         }
 
@@ -48,13 +48,13 @@ class CartController extends FrontController {
         if ($qty > 0) {
             Cart::update($cart, $qty);
             $err = 0;
-            $msg = 'Cart updated.';
+            $msg = trans('front.cart.updated');
             $data = [
                 'total_price' => Cart::subtotal(0, '.', ',')
             ];
         } else {
             $err = 1;
-            $msg = 'Error.';
+            $msg = trans('front.common.error');
             $data = [];
         }
 
@@ -70,13 +70,13 @@ class CartController extends FrontController {
         if (Cart::get($cart)) {
             Cart::remove($cart);
             $err = 0;
-            $msg = 'Cart item removed.';
+            $msg = trans('front.cart.removed');
             $data = [
                 'total_price' => Cart::subtotal(0, '.', ',')
             ];
         } else {
             $err = 1;
-            $msg = 'Error.';
+            $msg = trans('front.common.error');
             $data = [];
         }
 

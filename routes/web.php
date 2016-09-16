@@ -49,6 +49,8 @@ Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms
     Route::resource('categories', 'CategoryController', ['except' => ['show']]);
     Route::resource('products', 'ProductController', ['except' => ['show']]);
     Route::resource('users', 'UserController', ['except' => ['show']]);
+
+    Route::get('orders/{checkout}/print', ['uses' => 'OrderController@printOrder', 'as' => 'orders.print']);
     Route::resource('orders', 'OrderController');
 
     Route::resource('settings', 'SettingController', ['only' => ['index', 'store']]);
