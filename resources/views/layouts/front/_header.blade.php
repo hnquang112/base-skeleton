@@ -78,6 +78,6 @@
         </li>
     </ul>
     <form action="{{ route('index.search') }}" class="fr" id="menu-search" method="get" name="menu-search">
-        <input name="q" type="text">
+        <input name="q" type="text" placeholder="@lang ('front.common.keyword')">
     </form>
 </div><!-- END .main-menu-wrapper -->

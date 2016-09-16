@@ -20,6 +20,7 @@ class AccountController extends FrontController {
 
     // GET: /account
     public function index() {
+//        auth()->guard('web')->login(User::find(1));
         $isLoggedIn = auth()->guard('web')->check();
         $user = $orders = null;
         if ($isLoggedIn) {

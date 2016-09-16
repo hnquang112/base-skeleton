@@ -51,18 +51,21 @@
                     {{ csrf_field() }}
 
                     <div class="field-row">
-                        <label for="contact_name">@lang ('front.contact.field.name') <span>(@lang ('front.contact.field.required'))</span></label>
-                        <input type="text" name="name" id="contact_name" class="text_input" value="{{ old('name') }}">
+                        <label for="contact_name">@lang ('front.contact.field.name') <span>(*)</span></label>
+                        <input type="text" name="name" id="contact_name" class="text_input" value="{{ old('name') }}"
+                               placeholder="@lang ('front.common.placeholder.name')">
                     </div>
 
                     <div class="field-row">
-                        <label for="email">@lang ('front.contact.field.email') <span>(@lang ('front.contact.field.required'))</span></label>
-                        <input type="email" name="email" id="email" class="text_input" value="{{ old('email') }}">
+                        <label for="email">@lang ('front.contact.field.email') <span>(*)</span></label>
+                        <input type="email" name="email" id="email" class="text_input" value="{{ old('email') }}"
+                               placeholder="@lang ('front.common.placeholder.email')">
                     </div>
 
                     <div class="field-row">
-                        <label for="message_text">@lang ('front.contact.field.message') <span>(@lang ('front.contact.field.required'))</span></label>
-                        <textarea name="message" id="message_text" class="text_input" cols="60" rows="9" style="resize: vertical">{{ old('message') }}</textarea>
+                        <label for="message_text">@lang ('front.contact.field.message') <span>(*)</span></label>
+                        <textarea name="message" id="message_text" class="text_input" cols="60" rows="9" style="resize: vertical"
+                                  placeholder="@lang ('front.common.placeholder.message')">{{ old('message') }}</textarea>
                     </div>
 
                     <div class="field-row">
