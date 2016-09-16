@@ -32,7 +32,9 @@ class OrderController extends CmsController {
 
     // GET: /cms/orders/1
     public function show($order) {
-        return view('cms.orders.show', compact('order'));
+        $layout = 'detail';
+
+        return view('cms.orders.show', compact('order', 'layout'));
     }
 
     // GET: /cms/orders/1/edit
@@ -54,7 +56,9 @@ class OrderController extends CmsController {
 
     // GET: /cms/orders/123456/print
     public function printOrder($order) {
-        return view('cms.orders.print', compact('order'));
+        $layout = 'print';
+
+        return view('cms.orders.show', compact('order', 'layout'));
     }
 
 }

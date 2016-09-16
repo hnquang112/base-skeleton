@@ -94,7 +94,7 @@
                                value="{{ old('shipping_country') ?: $user->shipping_country }}">
                     </p>
                     <div class="clear"></div>
-                    
+
                     <a class="button2" href="{{ route('account.index') }}" style="margin: 15px 0 0 0;">@lang ('front.account.address.cancel_btn')</a>
                     <div class="fr">
                         <button class="button2" name="submit_from" value="shipping" style="margin: 15px 0 0 0;">@lang ('front.account.address.save_btn')</button>
