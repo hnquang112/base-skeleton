@@ -32,7 +32,7 @@
                     <!--BEGIN .search-results -->
                     <ol class="search-results">
                         @forelse ($articles as $article)
-                            <li><strong><a href="{{ $article->front_url }}" rel="bookmark" title="Moisturisers">{{ $article->title }}</a></strong>
+                            <li><strong><a href="{{ $article->front_url }}" rel="bookmark" title="{{ $article->title }}">{{ $article->title }}</a></strong>
                                 <br></li>
                         @empty
                             <p>@lang ('front.search.no_results')</p>

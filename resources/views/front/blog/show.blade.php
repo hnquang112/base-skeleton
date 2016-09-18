@@ -15,7 +15,7 @@
     <div class="section">
         <ul class="columns-content page-content clearfix">
             <!-- BEGIN .col-main -->
-            <li class="col-mai  n">
+            <li class="col-main">
                 <!-- BEGIN .blog-title-single -->
                 <div class="post-40 post type-post status-publish format-standard hentry blog-title-single clearfix">
                     <div class="fl">

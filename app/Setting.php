@@ -34,6 +34,9 @@ class Setting extends Model {
     public static $siteConfigLabels = [
         'front_page_language',
         'cms_page_language',
+        'store_address',
+        'store_phone',
+        'store_email',
     ];
 
     public static $rulesForCreatingSliders = [
@@ -99,8 +102,9 @@ class Setting extends Model {
     }
 
     public static function setSiteConfigValue($key, $value) {
-        Setting::updateOrCreate(['meta->label' => $key], [
-            'config_value' => $value
+        Setting::updateOrCreate(['meta->label' => $key, 'type' => self::TYP_CONFIG], [
+            'type' => self::TYP_CONFIG,
+            'config_value' => $value,
         ]);
     }
 

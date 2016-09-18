@@ -67,10 +67,10 @@
                 <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
                     <ul class="nav clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
                         <li class="description_tab ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
-                            <a href="#description">Description</a>
+                            <a href="#description">@lang ('front.shop.description_tab')</a>
                         </li>
                         <li class="reviews_tab ui-state-default ui-corner-top">
-                            <a href="#reviews">Reviews ({{ $reviews->count() }})</a>
+                            <a href="#reviews">@lang ('front.shop.review_tab') ({{ $reviews->count() }})</a>
                         </li>
                     </ul>
                     <div id="description" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
@@ -80,13 +80,14 @@
                         <div id="comments">
                             @if ($reviews->count() > 0)
                                 <div itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                                    <div class="star-rating" title="Rated {{ $product->average_rating }} out of 5">
+                                    <div class="star-rating" title="@lang ('front.shop.review.out_of', ['rating' => $product->average_rating])"{{--Rated :x out of 5--}}>
                                         {{--80px is 100%--}}
                                         <span style="width:{{ calc_stars_from_rating($product->average_rating) }}px">
-                                            <span itemprop="ratingValue" class="rating">{{ $product->average_rating }}</span> out of 5
+                                            <span itemprop="ratingValue" class="rating">{{ $product->average_rating }}</span> @lang ('front.shop.review.out_of') 5
                                         </span>
                                     </div>
-                                    <h2><span itemprop="ratingCount" class="count">{{ $reviews->count() }}</span> review for {{ $product->title }}</h2>
+                                    <h2><span itemprop="ratingCount" class="count">{{ $reviews->count() }}</span> {{ trans_choice('front.shop.review.count', $reviews->count()) }}
+                                        {{ $product->title }}</h2>
                                 </div>
 
                                 <ol class="commentlist">
@@ -99,7 +100,7 @@
                                                     <div itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating"
                                                          class="star-rating" title="{{ $review->rating }}">
                                                         <span style="width:{{ calc_stars_from_rating($review->rating) }}px">
-                                                            <span itemprop="ratingValue">{{ $review->rating }}</span> out of 5
+                                                            <span itemprop="ratingValue">{{ $review->rating }}</span> @lang ('front.shop.review.out_of') 5
                                                         </span>
                                                     </div>
 
@@ -118,31 +119,31 @@
                                         </li>
                                     @endforeach
                                 </ol>
-                                <p class="add_review"><a href="#review_form" class="inline show_review_form button2">Add Review</a></p>
+                                <p class="add_review"><a href="#review_form" class="inline show_review_form button2">@lang ('front.shop.review.add_btn')</a></p>
                             @else
-                                <h2>Reviews</h2>
+                                <h2>@lang ('front.shop.review_tab')</h2>
 
-                                <p>There are no reviews yet, would you like to <a href="#review_form" class="inline show_review_form">submit yours</a>?</p>
+                                <p>@lang ('front.shop.review.no_reviews') <a href="#review_form" class="inline show_review_form">@lang ('front.shop.review.submit_yours')</a>?</p>
                             @endif
                         </div>
                         <div id="review_form_wrapper" style="display: none;">
                             <div id="review_form">
                                 <div id="respond">
-                                    <h3 id="reply-title">Be the first to review “Summer Berry Soap” <small><a rel="nofollow" id="cancel-comment-reply-link" href="/organicshopwp/shop/summer-berry-soap/#respond" style="display:none;">Cancel reply</a></small></h3>
+                                    <h3 id="reply-title">@lang ('front.shop.review.be_the_first') “{{ $product->title }}”</h3>
 
                                     <form action="{{ route('shop.review', $product->id) }}" method="post" id="commentform">
                                         {{ csrf_field() }}
 
                                         <p class="comment-form-author">
-                                            <label for="author">Name</label> <span class="required">*</span>
+                                            <label for="author">@lang ('front.shop.review.name')</label> <span class="required">*</span>
                                             <input id="author" name="name" type="text" value="" size="30" required>
                                         </p>
                                         <p class="comment-form-email">
-                                            <label for="email">Email</label> <span class="required">*</span>
+                                            <label for="email">@lang ('front.shop.review.email')</label> <span class="required">*</span>
                                             <input id="email" name="email" type="email" value="" size="30" required>
                                         </p>
                                         <p class="comment-form-rating">
-                                            <label for="rating">Rating</label>
+                                            <label for="rating">@lang ('front.shop.review.rating')</label>
                                             <p class="stars"><span>
                                                 <a class="star-1" href="#">1</a>
                                                 <a class="star-2" href="#">2</a>
@@ -160,11 +161,11 @@
                                             </select>
                                         </p>
                                         <p class="comment-form-comment">
-                                            <label for="comment">Your Review</label>
+                                            <label for="comment">@lang ('front.shop.review.message')</label>
                                             <textarea id="comment" name="message" cols="45" rows="8" required></textarea>
                                         </p>
                                         <p class="form-submit">
-                                            <button id="submit">Submit Review</button>
+                                            <button id="submit">@lang ('front.shop.review.submit_btn')</button>
                                         </p>
                                     </form>
                                 </div><!-- #respond -->
@@ -175,7 +176,7 @@
                 </div>
 
                 <div class="related products">
-                    <h2>Related Products</h2>
+                    <h2>@lang ('front.shop.related_products')</h2>
 
                     <ul class="products">
                         @foreach ($similarProducts as $key => $prod)
@@ -197,9 +198,8 @@
                                     </p>
                                 </a>
                                 <p class="product-button clearfix">
-                                    <a href="http://themes.quitenicestuff.com/organicshopwp/shop/oak-candle-set-2/?add-to-cart=60"
-                                        rel="nofollow" data-product-id="{{ $prod->id }}" class="button2 product_type_simple">
-                                        @lang ('front.home.product.add_to_cart')</a>
+                                    <buton data-product-id="{{ $product->id }}" class="button2 js-add-to-cart">
+                                        @lang ('front.home.product.add_to_cart')</buton>
                                 </p>
                             </li>
                         @endforeach

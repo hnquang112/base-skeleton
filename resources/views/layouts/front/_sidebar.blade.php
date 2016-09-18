@@ -16,9 +16,9 @@
                         <input id="min_price" name="min_price" value="{{ $start }}" data-min="0" placeholder="Min price"
                             data-currency="đ" data-step="1000" type="hidden">
                         <input id="max_price" name="max_price" value="{{ $end }}" data-max="{{ $max }}" placeholder="Max price" type="hidden">
-                        <button type="submit" class="button">Filter</button>
+                        <button type="submit" class="button">@lang ('front.common.filter_btn')</button>
                         <div class="price_label" style="">
-                            Price: <span class="from">{{ format_price_with_currency($start) }}</span>
+                            @lang ('front.common.price'): <span class="from">{{ format_price_with_currency($start) }}</span>
                              — <span class="to">{{ format_price_with_currency($end) }}</span>
                         </div>
 
@@ -68,8 +68,8 @@
                     </div>
                     <div class="lpl-content">
                         <h6><a href="{{ $_articles->front_url }}" rel="bookmark">{{ $_articles->title }}</a>
-                            <span> Posted {{ format_date_as_string($_articles->published_at) }}
-                                By {{ $_articles->author->display_name }}</span></h6>
+                            <span>@lang ('front.common.posted') {{ format_date_as_string($_articles->published_at) }}
+                                @lang ('front.common.by') {{ $_articles->author->display_name }}</span></h6>
                     </div>
                 </li>
             @endforeach

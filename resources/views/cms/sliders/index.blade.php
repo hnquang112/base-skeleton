@@ -35,8 +35,8 @@
                                 @foreach ($sliders as $sld)
                                     <tr>
                                         <td><input name="selected_ids[]" type="checkbox" value="{{ $sld->id }}"></td>
-                                        <td><a href="{{ route('cms.sliders.edit', $sld->id) }}"><img src="{{ $sld->image_path }}" width="200px"></a></td>
-                                        <td>{{ $sld->label }}</td>
+                                        <td><img src="{{ $sld->image_path }}" width="200px"></td>
+                                        <td><a href="{{ route('cms.sliders.edit', $sld->id) }}">{{ $sld->label }}</a></td>
                                         <td>{{ $sld->created_at }}</td>
                                     </tr>
                                 @endforeach
@@ -59,7 +59,7 @@
                     </div><!-- /.box-tools -->
                 </div>
                 <form action="{{ $slider->id ? route('cms.sliders.update', $slider->id) : route('cms.sliders.store') }}"
-                      method="POST">
+                      method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <!-- /.box-header -->
@@ -75,23 +75,13 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                                <p>Use these services to upload image: <a href="https://www.flickr.com/" target="blank">Flickr</a>, <a href="http://imgur.com/"     target="blank">Imgur</a>, <a href="http://2.pik.vn/" target="blank">pik.vn</a></p>
-                                <label for="">Image URL:</label>
-
-                                <div class="input-group input-group-sm">
-                                    <input name="image" id="js-input-image-url" type="text" class="form-control" placeholder="Paste URL of the uploaded image">
-                                    <span class="input-group-btn">
-                                        <button id="js-button-get-image-from-url" type="button" class="btn btn-info btn-flat" disabled="disabled">Get</button>
-                                    </span>
-                                </div>
+                                <label for="">Image:</label>
+                                <input name="image" id="js-input-image" type="file" class="form-control" accept="image/*">
+                                <img id="js-image-thumbnail-gotten" src="{{ $slider->image_path }}" width="100%" height="auto">
 
                                 @if ($errors->has('image'))
-                                    <span class="help-block"><strong>{{ $errors->first('image') }}</strong></span>
+                                    <span class="help-block"><strong>{{ $slider->first('image') }}</strong></span>
                                 @endif
-
-                                <p id="js-p-get-result" class="margin text-red"></p>
-
-                                <img id="js-image-thumbnail-gotten" src="{{ $slider->image_path }}" width="100%" height="auto">
                             </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box-body -->

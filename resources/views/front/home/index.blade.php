@@ -36,9 +36,9 @@
 
     <!-- BEGIN .section -->
     <div class="section">
-        <div class="tag-title-wrap clearfix"><h4 class="tag-title">Testimonials</h4></div>
+        <div class="tag-title-wrap clearfix"><h4 class="tag-title">@lang ('front.home.testimonials')</h4></div>
         <ul class="columns-2 clearfix">
-            @forelse ($reviews as $review)
+            @foreach ($reviews as $review)
                 <li class="col2">
                     <div class="testimonial-wrapper clearfix">
                         <div class="testimonial-author-image"><img alt="" src="{{ Gravatar::get($review->email) }}"></div>
@@ -47,34 +47,9 @@
                         </div>
                         <div class="testimonial-speech"></div>
                     </div>
-                    <p class="testimonial-author">{{ $review->name }} - <span>Purchased {{ $review->product->title }}</span></p>
+                    <p class="testimonial-author">{{ $review->name }} - <span>@lang ('home.testimonials.purchased') {{ $review->product->title }}</span></p>
                 </li>
-            @empty
-                <li class="col2">
-                    <div class="testimonial-wrapper clearfix">
-                        <div class="testimonial-author-image"><img alt="" src="{{ Gravatar::get('user@example.com') }}"></div>
-                        <div class="testimonial-text">
-                            <p>“A top quality product delivered super quick!
-                                thanks so much Organic Shop, I shall definitely be
-                                using you guys again!”</p>
-                        </div>
-                        <div class="testimonial-speech"></div>
-                    </div>
-                    <p class="testimonial-author">Mike Jones - <span>Purchased Summer Berry Soap</span></p>
-                </li>
-                <li class="col2">
-                    <div class="testimonial-wrapper clearfix">
-                        <div class="testimonial-author-image"><img alt="" src="{{ Gravatar::get('user2@example.com') }}"></div>
-                        <div class="testimonial-text">
-                            <p>“I made a mistake with my order but Organic Shop
-                                let me change it free of charge, thanks! The
-                                delivery is also super quick!”</p>
-                        </div>
-                        <div class="testimonial-speech"></div>
-                    </div>
-                    <p class="testimonial-author">Sarah Cooper - <span>Purchased Seaweed Spa Set</span></p>
-                </li>
-            @endforelse
+            @endforeach
         </ul>
     </div><!-- END .section -->
 @endsection

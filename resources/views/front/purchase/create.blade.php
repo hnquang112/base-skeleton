@@ -42,38 +42,38 @@
 
                             <p class="form-row" id="billing_full_name_field">
                                 <label for="billing_full_name">@lang ('front.account.address.full_name') <abbr class="required" title="required">*</abbr></label>
-                                <input type="text" class="input-text" name="display_name" id="billing_full_name" placeholder="Full Name"
+                                <input type="text" class="input-text" name="display_name" id="billing_full_name" placeholder="@lang ('front.common.placeholder.name')"
                                        value="{{ old('display_name') ?: $user->display_name }}" required>
                             </p>
 
                             <p class="form-row" id="billing_address_field">
                                 <label for="billing_address">@lang ('front.account.address.address') <abbr class="required" title="required">*</abbr></label>
-                                <input type="text" class="input-text" name="address" id="billing_address" placeholder="Address"
+                                <input type="text" class="input-text" name="address" id="billing_address" placeholder="@lang ('front.common.placeholder.address')"
                                        value="{{ old('address') ?: $user->address }}" required>
                             </p>
 
                             <p class="form-row form-row-first" id="billing_city_field">
                                 <label for="billing_city">@lang ('front.account.address.city') <abbr class="required" title="required">*</abbr></label>
-                                <input type="text" class="input-text" name="city" id="billing_city" placeholder="Town/City"
+                                <input type="text" class="input-text" name="city" id="billing_city" placeholder="@lang ('front.common.placeholder.city')"
                                        value="{{ old('city') ?: $user->city }}" required>
                             </p>
 
                             <p class="form-row form-row-last update_totals_on_change" id="billing_country_field">
                                 <label for="billing_country">@lang ('front.account.address.country')</label>
-                                <input type="text" class="input-text" placeholder="County" name="country" id="billing_country"
+                                <input type="text" class="input-text" name="country" id="billing_country" placeholder="@lang ('front.common.placeholder.country')"
                                        value="{{ old('country') ?: $user->country }}">
                             </p>
                             <div class="clear"></div>
 
                             <p class="form-row form-row-first" id="billing_email_field">
                                 <label for="billing_email">@lang ('front.account.address.email') <abbr class="required" title="required">*</abbr></label>
-                                <input type="email" class="input-text" name="email" id="billing_email" placeholder="Email Address"
+                                <input type="email" class="input-text" name="email" id="billing_email" placeholder="@lang ('front.common.placeholder.email')"
                                        value="{{ old('email') ?: $user->email }}" required>
                             </p>
 
                             <p class="form-row form-row-last" id="billing_phone_field">
                                 <label for="billing_phone">@lang ('front.account.address.phone') <abbr class="required" title="required">*</abbr></label>
-                                <input type="text" class="input-text" name="phone" id="billing_phone" placeholder="Phone"
+                                <input type="text" class="input-text" name="phone" id="billing_phone" placeholder="@lang ('front.common.placeholder.phone')"
                                        value="{{ old('phone') ?: $user->phone }}" required>
                             </p>
                             <div class="clear"></div>
@@ -95,37 +95,37 @@
                             <div class="shipping_address" style="display: none;">
                                 <p class="form-row" id="shipping_full_name_field">
                                     <label for="shipping_full_name">@lang ('front.account.address.full_name') <abbr class="required" title="required">*</abbr></label>
-                                    <input type="text" class="input-text" name="shipping_full_name" id="shipping_full_name" placeholder="Full Name"
+                                    <input type="text" class="input-text" name="shipping_full_name" id="shipping_full_name" placeholder="@lang ('front.common.placeholder.name.alt')"
                                            value="{{ old('shipping_full_name') }}">
                                 </p>
 
                                 <p class="form-row" id="shipping_address_field">
                                     <label for="shipping_address">@lang ('front.account.address.address') <abbr class="required" title="required">*</abbr></label>
-                                    <input type="text" class="input-text" name="shipping_address" id="shipping_address" placeholder="Address"
+                                    <input type="text" class="input-text" name="shipping_address" id="shipping_address" placeholder="@lang ('front.common.placeholder.address.alt')"
                                            value="{{ old('shipping_address') }}">
                                 </p>
 
                                 <p class="form-row form-row-first" id="shipping_city_field">
                                     <label for="shipping_city">@lang ('front.account.address.city') <abbr class="required" title="required">*</abbr></label>
-                                    <input type="text" class="input-text" name="shipping_city" id="shipping_city" placeholder="Town/City"
+                                    <input type="text" class="input-text" name="shipping_city" id="shipping_city" placeholder="@lang ('front.common.placeholder.city.alt')"
                                            value="{{ old('shipping_city') }}">
                                 </p>
 
                                 <p class="form-row form-row-last update_totals_on_change" id="shipping_country_field">
                                     <label for="shipping_country">@lang ('front.account.address.country')</label>
-                                    <input type="text" class="input-text" placeholder="County" name="shipping_country" id="shipping_country"
+                                    <input type="text" class="input-text" name="shipping_country" id="shipping_country" placeholder="@lang ('front.common.placeholder.country.alt')"
                                            value="{{ old('shipping_country') }}">
                                 </p>
 
                                 <p class="form-row form-row-first" id="shipping_email_field">
                                     <label for="shipping_email">@lang ('front.account.address.email') <abbr class="required" title="required">*</abbr></label>
-                                    <input type="email" class="input-text" name="shipping_email" id="shipping_email" placeholder="Email Address"
+                                    <input type="email" class="input-text" name="shipping_email" id="shipping_email" placeholder="@lang ('front.common.placeholder.email.alt')"
                                            value="{{ old('shipping_email') }}">
                                 </p>
 
                                 <p class="form-row form-row-last" id="shipping_phone_field">
                                     <label for="shipping_phone">@lang ('front.account.address.phone') <abbr class="required" title="required">*</abbr></label>
-                                    <input type="text" class="input-text" name="shipping_phone" id="shipping_phone" placeholder="Phone"
+                                    <input type="text" class="input-text" name="shipping_phone" id="shipping_phone" placeholder="@lang ('front.common.placeholder.phone.alt')"
                                            value="{{ old('shipping_phone') }}">
                                 </p>
 
@@ -135,8 +135,8 @@
                             <p class="form-row notes" id="order_comments_field">
                                 <label for="order_comments">@lang ('front.account.address.note')</label>
                                 <textarea name="delivery_note" class="input-text" id="order_comments" cols="5" rows="2"
-                                          placeholder="Notes about your order, e.g. special notes for delivery."
-                                        style="resize: vertical"></textarea>
+                                          placeholder="@lang ('front.common.placeholder.note')"
+                                          style="resize: vertical"></textarea>
                             </p>
                         </div>
                     </div>

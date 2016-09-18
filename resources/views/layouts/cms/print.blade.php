@@ -12,7 +12,6 @@
     <meta name='description' content=''/><!----**********ADD WEB DESCRIPTION---->
     <meta name='keywords' content=''/><!----**********ADD WEB KEYWORDS---->
     <meta name='author' content='hnquang112'/><!----**********ADD WEB AUTHOR---->
-    <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     @inject ('_request', 'Illuminate\Http\Request')
     <link rel="canonical" href="{{ $_request->url() }}">
@@ -33,14 +32,9 @@
 
     @include ('layouts._analytic')
 </head>
-<body class="hold-transition skin-purple sidebar-mini">
-<div class="wrapper">
-    @yield ('content')
-</div><!-- ./wrapper -->
-
-<!-- Vendor JS -->
-<script src="{{ elixir('js/vendor.js') }}"></script>
-<script src="{{ elixir('js/common.js') }}"></script>
-
+<body onload="window.print();">
+    <div class="wrapper">
+        @yield ('content')
+    </div><!-- ./wrapper -->
 </body>
 </html>

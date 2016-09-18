@@ -25,6 +25,11 @@ class SettingController extends CmsController {
         Setting::setSiteConfigValue('front_page_language', $request->front_page_language);
         Cache::forget('front.language');
 
+        // Set contact
+        Setting::setSiteConfigValue('store_address', $request->store_address);
+        Setting::setSiteConfigValue('store_phone', $request->store_phone);
+        Setting::setSiteConfigValue('store_email', $request->store_email);
+
         flash()->success('Saved successfully');
         return back();
     }

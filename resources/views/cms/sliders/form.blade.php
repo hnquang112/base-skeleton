@@ -22,24 +22,13 @@
                             @endif
                         </div>
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                            <p>Use these services to upload image: <a href="https://www.flickr.com/" target="blank">Flickr</a>, <a href="http://imgur.com/" 
-                                target="blank">Imgur</a>, <a href="http://2.pik.vn/" target="blank">pik.vn</a></p>
-                            <label for="">Image URL:</label>
-
-                            <div class="input-group input-group-sm">
-                                <input name="image" id="js-input-image-url" type="text" class="form-control" placeholder="Paste URL of the uploaded image">
-                                <span class="input-group-btn">
-                                    <button id="js-button-get-image-from-url" type="button" class="btn btn-info btn-flat" disabled="disabled">Get</button>
-                                </span>
-                            </div>
+                            <label for="">Image:</label>
+                            <input name="image" id="js-input-image" type="file" class="form-control" accept="image/*">
+                            <img id="js-image-thumbnail-gotten" src="{{ $slider->image_path }}" width="100%" height="auto">
 
                             @if ($errors->has('image'))
                                 <span class="help-block"><strong>{{ $errors->first('image') }}</strong></span>
                             @endif
-
-                            <p id="js-p-get-result" class="margin text-red"></p>
-
-                            <img id="js-image-thumbnail-gotten" src="{{ $slider->image_path }}" width="auto" height="auto">
                         </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">

@@ -11,7 +11,7 @@
             <div class="col-md-9">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Post</h3>
+                        <h3 class="box-title">Article</h3>
                     </div><!-- /.box-header -->
 
                     <div class="box-body">
@@ -79,7 +79,7 @@
                         </p>
 
                         <div class="checkbox">
-                            <label><input name="do_publish" type="checkbox" value="{{ App\Post::STT_PUBLISHED }}"
+                            <label><input name="do_publish" type="checkbox" value="{{ App\Article::STT_PUBLISHED }}"
                                         {{ $article->is_published ? 'checked=checked' : '' }}>
                                 Also publish when saving</label>
                         </div>
