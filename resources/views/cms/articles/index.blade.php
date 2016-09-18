@@ -15,16 +15,24 @@
                 <div class="box-body">
                     <div class="mailbox-controls form-inline">
                         <!-- Check all button -->
-                        <button id="js-checkbox-toggle-check-all" type="button" class="btn btn-default btn-sm">
+                        <button id="js-checkbox-toggle-check-all" type="button" class="btn btn-default btn-sm" name="function"
+                                value="delete">
                             <i class="fa fa-square-o"></i></button>
 
                         <!-- Bunch delete button -->
-                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm" title="Delete">
+                        <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm" title="Delete" name="function"
+                                value="delete">
                             <i class="fa fa-trash-o"></i></button>
 
                         {{--<!-- Bunch publish button -->--}}
-                        {{--<button id="js-button-publish" type="button" class="btn btn-success btn-sm" title="Publish">--}}
-                            {{--<i class="fa fa-share-alt"></i></button>--}}
+                        <button id="js-button-publish" type="button" class="btn btn-success btn-sm" title="Publish" name="function"
+                                value="publish">
+                            <i class="fa fa-eye"></i></button>
+
+                        {{--<!-- Bunch unpublish button -->--}}
+                        <button id="js-button-unpublish" type="button" class="btn btn-warning btn-sm" title="Unpublish" name="function"
+                                value="unpublish">
+                            <i class="fa fa-eye-slash"></i></button>
                     </div>
                     <div class="table-responsive mailbox-messages">
                         <form id="js-form-delete" action="{{ route('cms.articles.destroy', $articles->first() ?
@@ -37,7 +45,7 @@
                                     <th></th>
                                     <th>Title</th>
                                     <th>Author</th>
-                                    <th>Categories</th>
+                                    {{--<th>Categories</th>--}}
                                     <th>Tags</th>
                                     <th>Published At</th>
                                     <th>Created At</th>
@@ -51,7 +59,7 @@
                                             <td><a href="{{ route('cms.articles.edit', $article->id) }}"><strong>
                                                         {{ $article->title }}</strong></a></td>
                                             <td>{{ $article->author->display_name }}</td>
-                                            <td>{{ $article->category_names }}</td>
+{{--                                            <td>{{ $article->category_names }}</td>--}}
                                             <td>{{ $article->tag_names }}</td>
                                             <td>
                                                 @if ($article->is_published)
@@ -62,8 +70,11 @@
                                             </td>
                                             <td>{{ $article->created_at }}</td>
                                             <td>{{ $article->updated_at }}</td>
-                                            <td><a href="{{ $article->front_url }}" class="btn btn-info btn-sm" target="_blank" title="View">
-                                                    <i class="fa fa-external-link"></i></a></td>
+                                            <td><a href="{{ $article->front_url }}" class="btn btn-info btn-xs" target="_blank" title="View">
+                                                    <i class="fa fa-external-link"></i></a>
+                                                <button data-href="{{ $article->front_url }}" class="btn btn-{{ $article->is_published ? 'warning' : 'success' }} btn-xs" title="Publish">
+                                                    <i class="fa fa-eye{{ $article->is_published ? '-slash' : '' }}"></i></button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

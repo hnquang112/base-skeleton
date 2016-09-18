@@ -10,7 +10,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                <button id="js-button-delete" type="button" class="btn btn-primary">Yes</button>
+                <button id="js-button-agree" type="button" class="btn btn-primary">Yes</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

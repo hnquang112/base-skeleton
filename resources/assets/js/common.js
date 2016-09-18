@@ -67,7 +67,18 @@ var Common = {
             }
         });
 
-        $('#js-button-delete').click(function () {
+        // Call modal for confirm multiple publish
+        $("#js-button-confirm-delete").click(function () {
+            var ids = $.map($('input[type="checkbox"]:checked'), function (c) {
+                return c.value
+            });
+
+            if (ids.length > 0) {
+                $('#js-modal-confirm-delete').modal()
+            }
+        });
+
+        $('#js-button-agree').click(function () {
             $('#js-form-delete').submit()
         })
     },

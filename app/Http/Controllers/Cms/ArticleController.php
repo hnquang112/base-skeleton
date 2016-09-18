@@ -7,29 +7,25 @@ use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 use App\Repositories\PostRepository;
 
-class ArticleController extends CmsController
-{
+class ArticleController extends CmsController {
     /**
      * The post repository instance.
      */
     protected $posts;
 
-    public function __construct(PostRepository $posts)
-    {
+    public function __construct(PostRepository $posts) {
         $this->posts = $posts;
     }
 
     // GET: /cms/articles
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $articles = Article::with('author', 'tags')->orderByDesc('created_at')->get();
 
         return view('cms.articles.index', compact('articles'));
     }
 
     // GET: /cms/articles/create
-    public function create()
-    {
+    public function create() {
         $article = new Article;
         $tags = [];
 
@@ -37,8 +33,7 @@ class ArticleController extends CmsController
     }
 
     // POST: /cms/articles
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $this->validate($request, Article::$rulesForCreating);
 
         $article = new Article;
@@ -64,16 +59,14 @@ class ArticleController extends CmsController
     }
 
     // GET: /cms/articles/1/edit
-    public function edit($article)
-    {
+    public function edit($article) {
         $tags = $article->tag_ids;
 
         return view('cms.articles.form', compact('article', 'tags'));
     }
 
     // PUT: /cms/articles/1
-    public function update(Request $request, $article)
-    {
+    public function update(Request $request, $article) {
         $this->validate($request, Article::$rulesForCreating);
 
         if ($request->do_publish == Article::STT_PUBLISHED || $request->publish == Article::STT_PUBLISHED) {
@@ -100,8 +93,7 @@ class ArticleController extends CmsController
     }
 
     // DELETE: /cms/articles/1
-    public function destroy(Request $request)
-    {
+    public function destroy(Request $request) {
         $this->deleteMultipleItems(Article::class, $request->selected_ids);
 
         return back();
@@ -110,6 +102,7 @@ class ArticleController extends CmsController
     /**
      * Toggle publish status of a post
      */
+    // POST: /cms/articles/1/publish
     public function togglePublish($article) {
         if (is_null($article->published_at)) {
             $article->published_at = Post::STT_PUBLISHED;
