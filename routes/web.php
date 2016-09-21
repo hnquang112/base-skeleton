@@ -44,11 +44,13 @@ Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms
         ->where(['lang' => '(vi|en)']);
 
     Route::resource('dashboard', 'DashboardController', ['only' => ['index']]);
-    Route::resource('articles', 'ArticleController', ['except' => ['show']]);
     Route::resource('tags', 'TagController', ['except' => ['show']]);
     Route::resource('categories', 'CategoryController', ['except' => ['show']]);
     Route::resource('products', 'ProductController', ['except' => ['show']]);
     Route::resource('users', 'UserController', ['except' => ['show']]);
+
+    Route::post('articles/{articles}/publish', ['uses' => 'ArticleController@publish', 'as' => 'articles.publish']);
+    Route::resource('articles', 'ArticleController', ['except' => ['show']]);
 
     Route::get('orders/{checkout}/print', ['uses' => 'OrderController@printOrder', 'as' => 'orders.print']);
     Route::resource('orders', 'OrderController');
