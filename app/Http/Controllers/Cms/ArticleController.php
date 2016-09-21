@@ -103,7 +103,7 @@ class ArticleController extends CmsController {
      * Toggle publish status of a post
      */
     // POST: /cms/articles/1/publish
-    public function togglePublish($article) {
+    public function publish($article) {
         if (is_null($article->published_at)) {
             $article->published_at = Post::STT_PUBLISHED;
         } else {

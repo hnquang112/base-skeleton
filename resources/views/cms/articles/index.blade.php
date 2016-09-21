@@ -24,15 +24,15 @@
                                 value="delete">
                             <i class="fa fa-trash-o"></i></button>
 
-                        {{--<!-- Bunch publish button -->--}}
-                        <button id="js-button-publish" type="button" class="btn btn-success btn-sm" title="Publish" name="function"
-                                value="publish">
-                            <i class="fa fa-eye"></i></button>
+                        <!-- Bunch publish button -->
+                        {{--<button id="js-button-publish" type="button" class="btn btn-success btn-sm" title="Publish" name="function"--}}
+                                {{--value="publish">--}}
+                            {{--<i class="fa fa-eye"></i></button>--}}
 
-                        {{--<!-- Bunch unpublish button -->--}}
-                        <button id="js-button-unpublish" type="button" class="btn btn-warning btn-sm" title="Unpublish" name="function"
-                                value="unpublish">
-                            <i class="fa fa-eye-slash"></i></button>
+                        <!-- Bunch unpublish button -->
+                        {{--<button id="js-button-unpublish" type="button" class="btn btn-warning btn-sm" title="Unpublish" name="function"--}}
+                                {{--value="unpublish">--}}
+                            {{--<i class="fa fa-eye-slash"></i></button>--}}
                     </div>
                     <div class="table-responsive mailbox-messages">
                         <form id="js-form-delete" action="{{ route('cms.articles.destroy', $articles->first() ?
@@ -72,7 +72,9 @@
                                             <td>{{ $article->updated_at }}</td>
                                             <td><a href="{{ $article->front_url }}" class="btn btn-info btn-xs" target="_blank" title="View">
                                                     <i class="fa fa-external-link"></i></a>
-                                                <button data-href="{{ $article->front_url }}" class="btn btn-{{ $article->is_published ? 'warning' : 'success' }} btn-xs" title="Publish">
+                                                <button data-href="{{ route('cms.articles.publish', $article->id) }}"
+                                                        class="btn js-button-publish-article btn-{{ $article->is_published ? 'warning' : 'success' }} btn-xs"
+                                                        title="{{ $article->is_published ? 'Unpublish' : 'Publish' }}">
                                                     <i class="fa fa-eye{{ $article->is_published ? '-slash' : '' }}"></i></button>
                                             </td>
                                         </tr>
