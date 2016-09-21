@@ -49,7 +49,7 @@ Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms
     Route::resource('products', 'ProductController', ['except' => ['show']]);
     Route::resource('users', 'UserController', ['except' => ['show']]);
 
-    Route::post('articles/{articles}/publish', ['uses' => 'ArticleController@publish', 'as' => 'articles.publish']);
+    Route::post('articles/{article}/publish', ['uses' => 'ArticleController@publish', 'as' => 'articles.publish']);
     Route::resource('articles', 'ArticleController', ['except' => ['show']]);
 
     Route::get('orders/{checkout}/print', ['uses' => 'OrderController@printOrder', 'as' => 'orders.print']);

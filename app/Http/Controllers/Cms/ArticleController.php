@@ -105,9 +105,9 @@ class ArticleController extends CmsController {
     // POST: /cms/articles/1/publish
     public function publish($article) {
         if (is_null($article->published_at)) {
-            $article->published_at = Post::STT_PUBLISHED;
+            $article->published_at = Article::STT_PUBLISHED;
         } else {
-            $article->published_at = Post::STT_DRAFT;
+            $article->published_at = Article::STT_DRAFT;
         }
 
         $article->save();

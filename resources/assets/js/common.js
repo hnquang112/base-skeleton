@@ -68,14 +68,34 @@ var Common = {
         });
 
         // Call modal for confirm multiple publish
-        $("#js-button-confirm-delete").click(function () {
-            var ids = $.map($('input[type="checkbox"]:checked'), function (c) {
-                return c.value
-            });
+        $(".js-button-publish-article").click(function (e) {
+            e.preventDefault();
+            var url = $(this).data('href');
 
-            if (ids.length > 0) {
-                $('#js-modal-confirm-delete').modal()
-            }
+            jQuery.ajax({
+                url: url,
+                dataType: 'json',
+                type: 'post',
+                success: function (res) {
+                    if (res.error == 0) {
+                        // var type = 'success';
+
+                        // e('#js-cart-items-count').text(res.data.cart_count);
+                    } else {
+                        // var type = 'error';
+                    }
+
+                    toastr["success"]("Are you the six fingered man?");
+                    // VanillaToasts.create({
+                    //     text: res.message,
+                    //     type: type,
+                    //     timeout: 3000
+                    // });
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            })
         });
 
         $('#js-button-agree').click(function () {
