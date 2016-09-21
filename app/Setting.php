@@ -97,15 +97,16 @@ class Setting extends Model {
 
     public static function getSiteConfigValue($key) {
         $conf = Setting::where('type', self::TYP_CONFIG)->where('meta->label', $key);
-        if ($conf->count() > 0) return Setting::where('type', self::TYP_CONFIG)->where('meta->label', $key)->first()->config_value;
+        if ($conf->count() > 0) return $conf->first()->config_value;
         return null;
     }
 
     public static function setSiteConfigValue($key, $value) {
-        Setting::updateOrCreate(['meta->label' => $key, 'type' => self::TYP_CONFIG], [
-            'type' => self::TYP_CONFIG,
-            'config_value' => $value,
-        ]);
+        $conf = Setting::firstOrNew(['meta->label' => $key, 'type' => self::TYP_CONFIG]);
+        $conf->type = self::TYP_CONFIG;
+        $conf->label = $key;
+        $conf->config_value = $value;
+        $conf->save();
     }
 
 }

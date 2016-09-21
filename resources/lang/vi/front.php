@@ -128,7 +128,7 @@ return [
     'shop.review.submit_yours' => 'đăng bình luận không',
     'shop.review.be_the_first' => 'Hãy là người bình luận đầu tiên',
     'shop.review.name' => 'Tên',
-    'shop.review.email' => 'Email',
+    'shop.review.email' => 'E-mail',
     'shop.review.rating' => 'Đánh giá',
     'shop.review.message' => 'Đánh giá của bạn',
     'shop.review.submit_btn' => 'Đăng bình luận',

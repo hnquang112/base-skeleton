@@ -5,8 +5,8 @@
             <div class="widget">
                 <div class="widget-title clearfix"><h6>@lang ('front.footer.customer_services')</h6></div>
                 <ul>
-                    <li class="contact-phone">+44 01235 934698</li>
-                    <li class="contact-mail">email [at] website [dot] com</li>
+                    <li class="contact-phone">{{ App\Setting::getSiteConfigValue('store_phone') }}</li>
+                    <li class="contact-mail">{{ App\Setting::getSiteConfigValue('store_email') }}</li>
                 </ul>
             </div>
         </li>

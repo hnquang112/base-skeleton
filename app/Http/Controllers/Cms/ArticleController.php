@@ -112,11 +112,14 @@ class ArticleController extends CmsController {
 
         if ($article->save()) {
             $err = 0;
-            $data = $article->published_at;
+            $data = [
+                'status' => $article->is_published,
+                'value' => $article->published_at ? $article->published_at->format('Y-m-d H:i:s') : 'Draft',
+            ];
             $msg = $article->is_published ? 'Published' : 'Unpublished';
         } else {
             $err = 1;
-            $data = 'Draft';
+            $data = [];
             $msg = 'Error!';
         }
 

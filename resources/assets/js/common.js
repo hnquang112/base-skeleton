@@ -68,10 +68,13 @@ var Common = {
         });
 
         // Publish or unpublish an article
-        $(".js-button-publish-article").click(function (e) {
+        $("body").on('click', '.js-button-publish-article', function (e) {
             e.preventDefault();
             var url = $(this).data('href'),
                 that = $(this);
+
+            that.siblings('.js-button-publish-article').toggleClass('hide');
+            that.toggleClass('hide');
 
             jQuery.ajax({
                 url: url,
@@ -81,17 +84,12 @@ var Common = {
                     if (res.error == 0) {
                         var type = 'success';
 
-                        that.parents('tr').find('js-publish-status').text(res.data)
+                        that.parents('tr').find('.js-publish-status').text(res.data.value);
                     } else {
                         var type = 'error'
                     }
 
                     toastr[type](res.message);
-                    // VanillaToasts.create({
-                    //     text: res.message,
-                    //     type: type,
-                    //     timeout: 3000
-                    // });
                 },
                 error: function (err) {
                     console.log(err)

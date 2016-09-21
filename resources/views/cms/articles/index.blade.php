@@ -72,10 +72,16 @@
                                             <td>{{ $article->updated_at }}</td>
                                             <td><a href="{{ $article->front_url }}" class="btn btn-info btn-xs" target="_blank" title="View">
                                                     <i class="fa fa-external-link"></i></a>
+
                                                 <button data-href="{{ route('cms.articles.publish', $article->id) }}"
-                                                        class="btn js-button-publish-article btn-{{ $article->is_published ? 'warning' : 'success' }} btn-xs"
-                                                        title="{{ $article->is_published ? 'Unpublish' : 'Publish' }}">
-                                                    <i class="fa fa-eye{{ $article->is_published ? '-slash' : '' }}"></i></button>
+                                                        class="btn js-button-publish-article btn-warning btn-xs {{ $article->is_published ?: 'hide' }}"
+                                                        title="Unpublish">
+                                                    <i class="fa fa-eye-slash"></i></button>
+
+                                                <button data-href="{{ route('cms.articles.publish', $article->id) }}"
+                                                        class="btn js-button-publish-article btn-success btn-xs {{ !$article->is_published ?: 'hide' }}"
+                                                        title="Publish">
+                                                    <i class="fa fa-eye"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach

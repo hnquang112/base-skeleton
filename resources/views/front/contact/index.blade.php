@@ -19,16 +19,16 @@
 
                         <!--BEGIN .contact_list -->
                         <ul class="contact_list">
-                            <li class="address"><span>1 London Road, SE1</span></li>
-                            <li class="phone"><span>+44 01235 934698</span></li>
-                            <li class="email"><span>email [at] website [dot] com</span></li>
+                            <li class="address"><span>{{ App\Setting::getSiteConfigValue('store_address') }}</span></li>
+                            <li class="phone"><span>{{ App\Setting::getSiteConfigValue('store_phone') }}</span></li>
+                            <li class="email"><span>{{ App\Setting::getSiteConfigValue('store_email') }}</span></li>
                             <!--END .contact_list -->
                         </ul>
                     </li>
                 </ul>
 
                 <iframe width="100%" height="300" frameborder="0" style="border: 0; margin-bottom: 30px" allowfullscreen
-                        src="https://www.google.com/maps/embed/v1/place?q={{ '364 Cong Hoa, Tan Binh' }}&key={{ config('services.google.maps-api-key') }}"></iframe>
+                        src="https://www.google.com/maps/embed/v1/place?q={{ App\Setting::getSiteConfigValue('store_address') }}&key={{ config('services.google.maps-api-key') }}"></iframe>
                 @if (count($errors) > 0)
                     <div class="msg fail">
                         <ul class="list-fail">

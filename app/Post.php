@@ -111,7 +111,7 @@ class Post extends Model
     }
 
     public function getIsPublishedAttribute() {
-        return $this->published_at != null;
+        return (int) ($this->published_at != null);
     }
 
     public function getRepresentImagePathAttribute() {
