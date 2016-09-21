@@ -110,8 +110,20 @@ class ArticleController extends CmsController {
             $article->published_at = Article::STT_DRAFT;
         }
 
-        $article->save();
+        if ($article->save()) {
+            $err = 0;
+            $data = $article->published_at;
+            $msg = $article->is_published ? 'Published' : 'Unpublished';
+        } else {
+            $err = 1;
+            $data = 'Draft';
+            $msg = 'Error!';
+        }
 
-        return $article->published_at;
+        return json_encode([
+            'error' => $err,
+            'message' => $msg,
+            'data' => $data
+        ]);
     }
 }

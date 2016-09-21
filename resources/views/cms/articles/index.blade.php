@@ -63,9 +63,9 @@
                                             <td>{{ $article->tag_names }}</td>
                                             <td>
                                                 @if ($article->is_published)
-                                                    <span class="text-success"><strong>{{ $article->published_at }}</strong></span>
+                                                    <span class="text-success"><strong class="js-publish-status">{{ $article->published_at }}</strong></span>
                                                 @else
-                                                    <span class="text-warning"><strong>Draft</strong></span>
+                                                    <span class="text-warning"><strong class="js-publish-status">Draft</strong></span>
                                                 @endif
                                             </td>
                                             <td>{{ $article->created_at }}</td>

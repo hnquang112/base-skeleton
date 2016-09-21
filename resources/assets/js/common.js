@@ -67,10 +67,11 @@ var Common = {
             }
         });
 
-        // Call modal for confirm multiple publish
+        // Publish or unpublish an article
         $(".js-button-publish-article").click(function (e) {
             e.preventDefault();
-            var url = $(this).data('href');
+            var url = $(this).data('href'),
+                that = $(this);
 
             jQuery.ajax({
                 url: url,
@@ -78,14 +79,14 @@ var Common = {
                 type: 'post',
                 success: function (res) {
                     if (res.error == 0) {
-                        // var type = 'success';
+                        var type = 'success';
 
-                        // e('#js-cart-items-count').text(res.data.cart_count);
+                        that.parents('tr').find('js-publish-status').text(res.data)
                     } else {
-                        // var type = 'error';
+                        var type = 'error'
                     }
 
-                    toastr["success"]("Are you the six fingered man?");
+                    toastr[type](res.message);
                     // VanillaToasts.create({
                     //     text: res.message,
                     //     type: type,
