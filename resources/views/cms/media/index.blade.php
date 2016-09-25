@@ -1,13 +1,11 @@
 @extends ('layouts.cms.master')
 
 @push ('styles')
-<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="{{ asset($dir.'/css/elfinder.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset($dir.'/css/theme.css') }}">
 @endpush
 
 @push ('scripts')
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script src="{{ asset($dir.'/js/elfinder.min.js') }}"></script>
 
 @if ($locale)

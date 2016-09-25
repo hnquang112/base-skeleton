@@ -23,9 +23,10 @@ var cmsScriptPaths = [
     '../../../bower_components/summernote/dist/summernote.min.js',
     '../../../bower_components/summernote/dist/lang/summernote-vi-VN.min.js',
     '../../../bower_components/toastr/toastr.min.js',
-    '../../../bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js',
-    '../../../bower_components/blueimp-file-upload/js/jquery.iframe-transport.js',
-    '../../../bower_components/blueimp-file-upload/js/jquery.fileupload.js'
+    '../../../bower_components/jquery-ui/jquery-ui.min.js',
+    // '../../../bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js',
+    // '../../../bower_components/blueimp-file-upload/js/jquery.iframe-transport.js',
+    // '../../../bower_components/blueimp-file-upload/js/jquery.fileupload.js',
 ];
 
 var cmsStylePaths = [
@@ -40,7 +41,8 @@ var cmsStylePaths = [
     '../../../bower_components/AdminLTE/plugins/select2/select2.min.css',
     '../../../bower_components/summernote/dist/summernote.css',
     '../../../bower_components/toastr/toastr.min.css',
-    '../../../bower_components/flag-icon-css/css/flag-icon.min.css'
+    '../../../bower_components/flag-icon-css/css/flag-icon.min.css',
+    '../../../bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css',
 ];
 
 var scriptPaths = [

@@ -1,38 +1,46 @@
-# Laravel PHP Framework
+## Base Skeleton CMS
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+### Description
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Base Skeleton is a CMS made with [Laravel 5.3](https://laravel.com) and running on [Docker](https://www.docker.com/) which 
+supports the following functions:
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+* `Product` and `Article` (blog post) management.
+* Classify `Products` and `Articles` by `Categories` ang `Tags`.
+* Social authentication and interaction integrated (support login, like, share and comment with Facebook).
+* `Cart` and `Order` management for `Product`.
+* `Rating` and `Review` management for `Article`.
 
-## Official Documentation
+### Instruction
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+###### Requirement
 
-## Contributing
+* Docker
+* Docker Compose
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+###### Installation
 
-## Security Vulnerabilities
+1. Go to project's `laradock` folder with `cd laradock` on your terminal.
+2. Run `docker-compose up -d` to setup server's stacks.
+3. Run `docker exec -it --user=laradock laradock_workspace_1 bash` to login the `workspace` container.
+4. Run `composer install` to install PHP dependencies.
+5. Run `php artisan migrate --seed` to create database schema and seed some default data.
+6. Run `npm i` to install Javascript dependencies. If you're on Docker for Windows or a guest VM with Windows host, run 
+the command above with `--no-bin-links` attribute.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+###### Daily Usage
 
-## License
+1. Go to `laradock` folder.
+2. Run `docker-compose up -d` to start server.
+3. Link to CMS page: `http://{ip_address}:8000/cms`, with credentials: `admin` / `admin`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
-
-## Inspiration By
+### Inspiration By
 
 * [L5ESK](https://github.com/sroutier/laravel-5.1-enterprise-starter-kit)
 * [Laradock](https://github.com/LaraDock/laradock)
 * [Prestissimo for Composer](https://github.com/hirak/prestissimo)
 
-## Installed Plugins
+### Plugins Included
 
 * [Generator](https://github.com/laracasts/Laravel-5-Generators-Extended)
 * [Debugbar](https://github.com/barryvdh/laravel-debugbar)
@@ -43,3 +51,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * [Dialect](https://github.com/darrylkuhn/dialect)
 * [Former](https://github.com/formers/former)
 * [Laravel Elfinder](https://github.com/barryvdh/laravel-elfinder)
+* [Shopping Cart](https://github.com/Crinsane/LaravelShoppingcart)
+* [Laravel Stapler](https://github.com/CodeSleeve/laravel-stapler)
+* [Socialite](https://github.com/laravel/socialite)
+* [No Captcha](https://github.com/anhskohbo/no-captcha)
+* ...

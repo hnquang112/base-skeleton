@@ -1,6 +1,6 @@
 /node_modules
 /public/storage
-/vendor
+vendor
 /.idea
 Homestead.json
 Homestead.yaml
@@ -8,10 +8,8 @@ Homestead.yaml
 /bower_components
 npm-debug*
 public/css
-public/fonts
 public/img
 public/js
-public/flags
 public/build
 public/packages
 public/uploads

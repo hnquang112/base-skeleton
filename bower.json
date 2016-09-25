@@ -23,6 +23,7 @@
     "toastr": "^2.1.2",
     "flag-icon-css": "^2.3.1",
     "blueimp-file-upload": "^9.12.5",
-    "vanillatoasts": "*"
+    "vanillatoasts": "*",
+    "jquery-ui": "jqueryui#^1.12.1"
   }
 }
