@@ -12,15 +12,17 @@ use Socialite;
 use App\Repositories\ProfileRepository;
 use Illuminate\Http\Request;
 use App\User;
+use Teepluss\Theme\Contracts\Theme;
 
 class AccountController extends FrontController {
-    public function __construct() {
+    public function __construct(Theme $theme) {
         $this->middleware('auth:web')->only('edit', 'store');
+        parent::__construct($theme);
     }
 
     // GET: /account
     public function index() {
-//        auth()->guard('web')->login(User::find(1));
+        auth()->guard('web')->login(User::find(1));
         $isLoggedIn = auth()->guard('web')->check();
         $user = $orders = null;
         if ($isLoggedIn) {
@@ -28,7 +30,7 @@ class AccountController extends FrontController {
             $orders = $user->orders()->orderByDesc('created_at')->get();
         }
 
-        return view('front.account.index', compact('isLoggedIn', 'user', 'orders'));
+        return $this->theme->scope('account.index', compact('isLoggedIn', 'user', 'orders'))->render();
     }
 
     // GET: /account/facebook
@@ -56,7 +58,7 @@ class AccountController extends FrontController {
     public function edit() {
         $user = auth()->guard('web')->user();
 
-        return view('front.account.edit', compact('user'));
+        return $this->theme->scope('account.edit', compact('user'))->render();
     }
 
     // POST: /account

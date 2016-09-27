@@ -20,7 +20,7 @@ class HomeController extends FrontController
         $featuredProducts = Product::featured()->get();
         $reviews = Comment::with('product')->reviews()->featured()->get();
 
-        return view('front.home.index', compact('featuredProducts', 'reviews'));
+        return $this->theme->scope('home.index', compact('featuredProducts', 'reviews'))->render();
     }
 
     // GET: /search?q=lorem-ipsum
@@ -31,7 +31,7 @@ class HomeController extends FrontController
             $articles = Article::search($keyword)->published()->get();
             $products = Product::search($keyword)->get();
 
-            return view('front.home.search', compact('keyword', 'articles', 'products'));
+            return $this->theme->scope('home.search', compact('keyword', 'articles', 'products'))->render();
         }
 
         return back();

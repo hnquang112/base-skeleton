@@ -30,7 +30,7 @@ class PurchaseController extends FrontController {
             $user = new User;
         }
 
-        return view('front.purchase.create', compact('cartData', 'user'));
+        return $this->theme->scope('purchase.create', compact('cartData', 'user'))->render();
     }
 
     // POST: /checkout
@@ -83,7 +83,7 @@ class PurchaseController extends FrontController {
     // GET: /checkout/123456
     public function show($order) {
         // need to check authorization and session
-        return view('front.purchase.show', compact('order'));
+        return $this->theme->scope('purchase.show', compact('order'))->render();
     }
 
 }

@@ -1,8 +1,3 @@
-@extends ('layouts.front.master')
-
-@section ('content')
-    <div id="page-header"><img src="{{ asset('img/page-header1.jpg') }}" alt=""></div>
-
     <!-- BEGIN .section -->
     <div class="section">
         <ul class="columns-content page-content clearfix">
@@ -41,7 +36,7 @@
                         <p>No products</p>
                     @endforelse
 
-                    @include ('layouts.front._pagination', ['paginator' => $products])
+                    {!! Theme::partial('pagination', ['paginator' => $products]) !!}
                 </ul>
 
                 <div class="clear"></div>
@@ -58,11 +53,11 @@
             </li><!-- END .col-main -->
 
             <!-- BEGIN .col-sidebar -->
-            @include ('layouts.front._sidebar', [
+            {!! Theme::partial('sidebar', [
                 'hasPriceFilter' => true,
                 'start' => Request::get('min_price'),
                 'end' => Request::get('max_price'),
-                'max' => Cache::get('front.max_product_prices')])
+                'max' => Cache::get('front.max_product_prices')
+            ]) !!}
         </ul>
     </div><!-- END .section -->
-@endsection

@@ -17,12 +17,12 @@ class BlogController extends FrontController
     public function index(Request $request) {
         $articles = Article::with('tags', 'represent_image')->published()->orderByDesc('published_at')->paginate(5);
 
-        return view('front.blog.index', compact('articles'));
+        return $this->theme->scope('blog.index', compact('articles'))->render();
     }
 
     // GET: /blog/lorem-ipsum
     public function show(Request $request, $article) {
-        return view('front.blog.show', compact('article'));
+        return $this->theme->scope('blog.show', compact('article'))->render();
     }
 
     // GET: /category/lorem-ipsum/{prod|post}
@@ -35,7 +35,7 @@ class BlogController extends FrontController
             $articles = $taxo->getRelatedProducts();
         }
 
-        return view('front.blog.filter', compact('taxo', 'taxoType', 'articleType', 'articles'));
+        return $this->theme->scope('blog.filter', compact('taxo', 'taxoType', 'articleType', 'articles'))->render();
     }
 
     // GET: /tag/lorem-ipsum/{prod|post}
@@ -48,6 +48,6 @@ class BlogController extends FrontController
             $articles = $taxo->getRelatedProducts();
         }
 
-        return view('front.blog.filter', compact('taxo', 'taxoType', 'articleType', 'articles'));
+        return $this->theme->scope('blog.filter', compact('taxo', 'taxoType', 'articleType', 'articles'))->render();
     }
 }

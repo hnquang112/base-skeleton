@@ -15,7 +15,7 @@ class ContactController extends FrontController {
 
     // GET: /contact
     public function index() {
-        return view('front.contact.index');
+        return $this->theme->scope('contact.index')->render();
     }
 
     // POST: /contact

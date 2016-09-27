@@ -1,7 +1,4 @@
-@extends ('layouts.front.master')
 
-@section ('content')
-    <div id="page-header"><img src="{{ asset('img/page-header1.jpg') }}" alt=""></div>
     <!-- BEGIN .section -->
     <div class="section">
         <ul class="columns-content page-content clearfix">
@@ -102,7 +99,6 @@
                 </form>
             </li><!-- END .col-main -->
 
-            @include ('layouts.front._sidebar')
+            {!! Theme::partial('sidebar') !!}
         </ul>
     </div><!-- END .section -->
-@endsection

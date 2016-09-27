@@ -56,7 +56,7 @@ var scriptPaths = [
     '../../../resources/assets/plugins/organic.shop.theme/js/blockUI-2.39.min.js',
     '../../../resources/assets/plugins/organic.shop.theme/js/fancybox-1.3.4.min.js',
     '../../../resources/assets/plugins/organic.shop.theme/js/scripts.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/vanillatoasts.js'
+    '../../../resources/assets/plugins/organic.shop.theme/js/vanillatoasts.js',
 ];
 
 var stylePaths = [
@@ -70,7 +70,7 @@ var stylePaths = [
     '../../../resources/assets/plugins/organic.shop.theme/css/flexslider.css',
     '../../../resources/assets/plugins/organic.shop.theme/css/fancybox-1.3.4.min.css',
     '../../../resources/assets/plugins/organic.shop.theme/css/social-buttons.min.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/vanillatoasts.css'
+    '../../../resources/assets/plugins/organic.shop.theme/css/vanillatoasts.css',
 ];
 
 // Add src and dest paths of file for copying task
