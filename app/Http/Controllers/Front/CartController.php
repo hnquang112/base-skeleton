@@ -17,7 +17,7 @@ class CartController extends FrontController {
     public function index() {
         $cartData = Cart::content();
 
-        return view('front.shop.cart',compact('cartData'));
+        return view('shop.cart', compact('cartData'));
     }
 
     // [AJAX] POST: /shop/lorem-ipsum/cart

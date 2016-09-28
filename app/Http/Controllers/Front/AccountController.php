@@ -28,7 +28,7 @@ class AccountController extends FrontController {
             $orders = $user->orders()->orderByDesc('created_at')->get();
         }
 
-        return view('front.account.index', compact('isLoggedIn', 'user', 'orders'));
+        return view('account.index', compact('isLoggedIn', 'user', 'orders'));
     }
 
     // GET: /account/facebook
@@ -56,7 +56,7 @@ class AccountController extends FrontController {
     public function edit() {
         $user = auth()->guard('web')->user();
 
-        return view('front.account.edit', compact('user'));
+        return view('account.edit', compact('user'));
     }
 
     // POST: /account

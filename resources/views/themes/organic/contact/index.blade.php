@@ -1,4 +1,4 @@
-@extends ('layouts.front.master')
+@extends ('front.organic.front.master')
 
 @section ('content')
     <div id="page-header"><img src="{{ asset('img/page-header1.jpg') }}" alt=""></div>
@@ -75,7 +75,7 @@
                     <button class="button2" type="submit" style="margin-top: 20px">@lang ('front.contact.field.send_email')</button>
                 </form>
             </li><!-- END .col-main -->
-            @include ('layouts.front._sidebar')
+            @include ('front.organic.front._sidebar')
         </ul>
     </div><!-- END .section -->
 @endsection

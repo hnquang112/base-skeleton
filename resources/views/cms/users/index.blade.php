@@ -1,4 +1,4 @@
-@extends ('layouts.cms.master')
+@extends ('front.organic.layouts.cms.master')
 
 @section ('content')
     <div class="row">

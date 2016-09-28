@@ -1,4 +1,4 @@
-@extends('layouts.cms.auth')
+@extends('front.organic.layouts.cms.auth')
 
 @section('content')
 

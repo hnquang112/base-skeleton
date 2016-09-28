@@ -179,6 +179,7 @@ return [
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
+        igaster\laravelTheme\themeServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -244,6 +245,7 @@ return [
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+        'Theme' => igaster\laravelTheme\Facades\Theme::class,
 
     ],
 

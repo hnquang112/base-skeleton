@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('front.organic.layouts.app')
 
 <!-- Main Content -->
 @section('content')

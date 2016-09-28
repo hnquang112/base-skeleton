@@ -1,4 +1,4 @@
-@extends ('layouts.cms.master')
+@extends ('front.organic.layouts.cms.master')
 
 @push ('styles')
 <link rel="stylesheet" type="text/css" href="{{ asset($dir.'/css/elfinder.min.css') }}">

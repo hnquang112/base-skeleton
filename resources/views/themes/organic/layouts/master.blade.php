@@ -43,7 +43,7 @@
     @stack ('meta')
 
     @if (!app()->environment('local'))
-        @include ('layouts._analytic')
+        @include ('front.organic.layouts._analytic')
     @endif
 </head><!-- END head -->
 
@@ -60,11 +60,11 @@
 
     <!-- BEGIN .wrapper -->
     <div class="wrapper">
-        @include ('layouts.front._header')
+        @include ('front.organic.front._header')
 
         @yield ('content')
 
-        @include ('layouts.front._footer')
+        @include ('front.organic.front._footer')
     </div><!-- END .wrapper -->
 
     <script>

@@ -36,20 +36,20 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    @include ('layouts._analytic')
+    @include ('front.organic.layouts._analytic')
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
     <div class="wrapper">
-        @include ('layouts.cms._header')
+        @include ('front.organic.layouts.cms._header')
 
         <!-- Left side column. contains the logo and sidebar -->
-        @include ('layouts.cms._sidebar')
+        @include ('front.organic.layouts.cms._sidebar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                @include ('layouts.cms._breadcrump')
+                @include ('front.organic.layouts.cms._breadcrump')
             </section>
 
             <!-- Main content -->
@@ -60,10 +60,10 @@
             </section><!-- /.content -->
         </div><!-- /.content-wrapper -->
 
-            @include ('layouts.cms._modals')
+            @include ('front.organic.layouts.cms._modals')
         @stack ('modals')
 
-        @include ('layouts.cms._footer')
+        @include ('front.organic.layouts.cms._footer')
     </div><!-- ./wrapper -->
 
     <!-- Vendor JS -->

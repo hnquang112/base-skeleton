@@ -1,7 +1,7 @@
-@extends ('layouts.front.master')
+@extends ('front.organic.front.master')
 
 @section ('content')
-    @include ('layouts.front._slider')
+    @include ('front.organic.front._slider')
     
     <!-- BEGIN .section-mini2 -->
     <div class="section-mini2">

@@ -30,7 +30,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    @include ('layouts._analytic')
+    @include ('front.organic.layouts._analytic')
 </head>
 <body onload="window.print();">
     <div class="wrapper">

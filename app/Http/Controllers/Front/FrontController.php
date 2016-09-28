@@ -10,10 +10,11 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Session;
+use Theme;
 
 class FrontController extends Controller {
     public function __construct() {
-
+        Theme::set('organic');
     }
 
     public function getSessionId() {

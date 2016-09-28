@@ -1,4 +1,4 @@
-@extends ('layouts.cms.' . ($layout == 'print' ? 'print' : 'master'))
+@extends ('front.organic.layouts.cms.' . ($layout == 'print' ? 'print' : 'master'))
 
 @section ('content')
     <section class="invoice">

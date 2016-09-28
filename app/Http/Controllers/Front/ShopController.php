@@ -38,7 +38,7 @@ class ShopController extends FrontController {
         $products = $products->paginate(12);
         $products->appends($request->all());
 
-        return view('front.shop.index', compact('products'));
+        return view('shop.index', compact('products'));
     }
 
     // GET: /shop/lorem-ipsum
@@ -46,7 +46,7 @@ class ShopController extends FrontController {
         $similarProducts = $product->similar()->get();
         $reviews = $product->reviews;
 
-        return view('front.shop.show', compact('product', 'similarProducts', 'reviews'));
+        return view('shop.show', compact('product', 'similarProducts', 'reviews'));
     }
 
     // POST: /shop/lorem-ipsum/review
