@@ -179,6 +179,8 @@ return [
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
+        PrettyRoutes\ServiceProvider::class,
+        Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -244,6 +246,7 @@ return [
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+        'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
 
     ],
 
