@@ -45,6 +45,9 @@
     @if (!app()->environment('local'))
         @include ('layouts._analytic')
     @endif
+
+    <!-- Rollbar tracking code -->
+    @include ('layouts._errors_tracker')
 </head><!-- END head -->
 
 <!-- BEGIN body -->
