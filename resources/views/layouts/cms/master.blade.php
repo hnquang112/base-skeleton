@@ -36,7 +36,12 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    @include ('layouts._analytic')
+    @if (!app()->environment('local'))
+        @include ('layouts._analytic')
+    @endif
+
+    <!-- Rollbar tracking code -->
+    @include ('layouts._errors_tracker')
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
     <div class="wrapper">

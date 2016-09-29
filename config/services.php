@@ -55,6 +55,11 @@ return [
 
     'tawk-to' => [
         'api-key' => '57a1ea0214e2f0af26fe0d76'
-    ]
+    ],
+
+    'rollbar' => [
+        'access_token' => 'e1f79676647f49749c96629565b8d5f3',
+        'level' => env('APP_LOG_LEVEL'), // 'debug' for dev or 'error' for prod
+    ],
 
 ];

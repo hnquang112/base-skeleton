@@ -43,6 +43,9 @@
     {{--@stack ('meta')--}}
 
     {!! Theme::partial('analytic') !!}
+
+    <!-- Rollbar tracking code -->
+    {!! Theme::partial('errors_tracker') !!}
 </head><!-- END head -->
 
 <!-- BEGIN body -->

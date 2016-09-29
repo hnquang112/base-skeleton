@@ -179,9 +179,10 @@ return [
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
-        Teepluss\Theme\ThemeServiceProvider::class,
         PrettyRoutes\ServiceProvider::class,
         Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
+        Jenssegers\Rollbar\RollbarServiceProvider::class,
+        Teepluss\Theme\ThemeServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -247,8 +248,8 @@ return [
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
-        'Theme' => Teepluss\Theme\Facades\Theme::class,
         'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
+        'Theme' => Teepluss\Theme\Facades\Theme::class,
 
     ],
 
