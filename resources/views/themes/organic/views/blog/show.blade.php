@@ -1,4 +1,4 @@
-@extends ('layouts.front.master')
+@extends ('themes.organic.layouts.master')
 
 @push ('meta')
     <meta property="og:url"           content="{{ $article->front_url }}" />
@@ -89,10 +89,10 @@
                     {{--</div><!-- #respond -->--}}
                 {{--</div><!--END .reply_container -->--}}
 
-                @include ('layouts.front._comment', ['identifier' => 'blog-' . $article->slug])
+                @include ('themes.organic.layouts._comment', ['identifier' => 'blog-' . $article->slug])
             </li>
 
-            @include ('layouts.front._sidebar')
+            @include ('themes.organic.layouts._sidebar')
         </ul>
     </div><!-- END .section -->
 @endsection

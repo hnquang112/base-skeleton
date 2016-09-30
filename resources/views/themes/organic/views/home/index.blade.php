@@ -1,7 +1,7 @@
-@extends ('layouts.front.master')
+@extends ('themes.organic.layouts.master')
 
 @section ('content')
-    @include ('layouts.front._slider')
+    @include ('themes.organic.layouts._slider')
     
     <!-- BEGIN .section-mini2 -->
     <div class="section-mini2">

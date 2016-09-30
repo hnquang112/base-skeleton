@@ -63,11 +63,11 @@
 
     <!-- BEGIN .wrapper -->
     <div class="wrapper">
-        @include ('layouts.front._header')
+        @include ('themes.organic.layouts._header')
 
         @yield ('content')
 
-        @include ('layouts.front._footer')
+        @include ('themes.organic.layouts._footer')
     </div><!-- END .wrapper -->
 
     <script>

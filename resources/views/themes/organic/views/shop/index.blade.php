@@ -1,4 +1,4 @@
-@extends ('layouts.front.master')
+@extends ('themes.organic.layouts.master')
 
 @section ('content')
     <div id="page-header"><img src="{{ asset('img/page-header1.jpg') }}" alt=""></div>
@@ -41,7 +41,7 @@
                         <p>No products</p>
                     @endforelse
 
-                    @include ('layouts.front._pagination', ['paginator' => $products])
+                    @include ('themes.organic.layouts._pagination', ['paginator' => $products])
                 </ul>
 
                 <div class="clear"></div>
@@ -58,7 +58,7 @@
             </li><!-- END .col-main -->
 
             <!-- BEGIN .col-sidebar -->
-            @include ('layouts.front._sidebar', [
+            @include ('themes.organic.layouts._sidebar', [
                 'hasPriceFilter' => true,
                 'start' => Request::get('min_price'),
                 'end' => Request::get('max_price'),

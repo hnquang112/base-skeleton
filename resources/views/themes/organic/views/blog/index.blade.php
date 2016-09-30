@@ -1,4 +1,4 @@
-@extends ('layouts.front.master')
+@extends ('themes.organic.layouts.master')
 
 @section ('content')
     <div id="page-header"><img src="{{ asset('img/page-header1.jpg') }}" alt=""></div>
@@ -47,10 +47,10 @@
                     <p>No posts</p>
                 @endforelse
 
-                @include ('layouts.front._pagination', ['paginator' => $articles])
+                @include ('themes.organic.layouts._pagination', ['paginator' => $articles])
             </li><!-- END .col-main -->
 
-            @include ('layouts.front._sidebar')
+            @include ('themes.organic.layouts._sidebar')
         </ul>
     </div><!-- END .section -->
 @endsection

@@ -1,4 +1,4 @@
-@extends ('layouts.front.master')
+@extends ('themes.organic.layouts.master')
 
 @section ('content')
     <div id="page-header"><img src="{{ asset('img/page-header1.jpg') }}" alt=""></div>
@@ -50,7 +50,7 @@
                 </div><!-- END .page-content-->
             </li><!-- END .col-main -->
 
-            @include ('layouts.front._sidebar')
+            @include ('themes.organic.layouts._sidebar')
         </ul>
     </div><!-- END .section -->
 @endsection

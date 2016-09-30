@@ -1,4 +1,4 @@
-@extends ('layouts.front.master')
+@extends ('themes.organic.layouts.master')
 
 @section ('content')
     <div id="page-header"><img src="{{ asset('img/page-header1.jpg') }}" alt=""></div>
@@ -18,7 +18,7 @@
                     <div class="login" style="display: none;">
                         <p>@lang ('front.checkout.login_description')</p>
 
-                        @include ('front.account._fb_login_button')
+                        @include ('account._fb_login_button')
                     </div>
                 @endif
 
@@ -217,7 +217,7 @@
                 </form>
             </li><!-- END .col-main -->
 
-            @include ('layouts.front._sidebar')
+            @include ('themes.organic.layouts._sidebar')
         </ul>
     </div><!-- END .section -->
 @endsection

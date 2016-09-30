@@ -10,10 +10,13 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Session;
+use App\Theme;
 
 class FrontController extends Controller {
-    public function __construct() {
+    protected $theme;
 
+    public function __construct(Theme $theme) {
+        $this->theme = $theme;
     }
 
     public function getSessionId() {
