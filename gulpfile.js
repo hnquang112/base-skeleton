@@ -4,6 +4,7 @@ require('laravel-elixir-vue');
 
 var assetPath = 'resources/assets/';
 var publicPath = 'public/';
+var theme = 'organic';
 
 // Add path of file for js concatenating task
 var cmsScriptPaths = [
@@ -46,31 +47,31 @@ var cmsStylePaths = [
 ];
 
 var scriptPaths = [
-    '../../../resources/assets/plugins/organic.shop.theme/js/jquery-1.7.2.min.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/jquery-ui-1.8.24.min.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/hoverIntent.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/superfish.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/flexslider-2.1.min.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/prettyPhoto-3.1.4.min.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/jquery.numeric-1.3.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/blockUI-2.39.min.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/fancybox-1.3.4.min.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/scripts.js',
-    '../../../resources/assets/plugins/organic.shop.theme/js/vanillatoasts.js'
+    '../../../resources/assets/themes/organic/js/jquery-1.7.2.min.js',
+    '../../../resources/assets/themes/organic/js/jquery-ui-1.8.24.min.js',
+    '../../../resources/assets/themes/organic/js/hoverIntent.js',
+    '../../../resources/assets/themes/organic/js/superfish.js',
+    '../../../resources/assets/themes/organic/js/flexslider-2.1.min.js',
+    '../../../resources/assets/themes/organic/js/prettyPhoto-3.1.4.min.js',
+    '../../../resources/assets/themes/organic/js/jquery.numeric-1.3.js',
+    '../../../resources/assets/themes/organic/js/blockUI-2.39.min.js',
+    '../../../resources/assets/themes/organic/js/fancybox-1.3.4.min.js',
+    '../../../resources/assets/themes/organic/js/scripts.js',
+    '../../../resources/assets/themes/organic/js/vanillatoasts.js'
 ];
 
 var stylePaths = [
-    '../../../resources/assets/plugins/organic.shop.theme/css/theme.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/theme.green.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/responsive.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/font-face.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/woocommerce.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/superfish.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/prettyPhoto.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/flexslider.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/fancybox-1.3.4.min.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/social-buttons.min.css',
-    '../../../resources/assets/plugins/organic.shop.theme/css/vanillatoasts.css'
+    '../../../resources/assets/themes/organic/css/theme.css',
+    '../../../resources/assets/themes/organic/css/theme.green.css',
+    '../../../resources/assets/themes/organic/css/responsive.css',
+    '../../../resources/assets/themes/organic/css/font-face.css',
+    '../../../resources/assets/themes/organic/css/woocommerce.css',
+    '../../../resources/assets/themes/organic/css/superfish.css',
+    '../../../resources/assets/themes/organic/css/prettyPhoto.css',
+    '../../../resources/assets/themes/organic/css/flexslider.css',
+    '../../../resources/assets/themes/organic/css/fancybox-1.3.4.min.css',
+    '../../../resources/assets/themes/organic/css/social-buttons.min.css',
+    '../../../resources/assets/themes/organic/css/vanillatoasts.css'
 ];
 
 // Add src and dest paths of file for copying task
@@ -78,7 +79,7 @@ var copyPaths = [{
     src: 'js',
     dest: 'js'
 }, {
-    src: 'images',
+    src: 'themes/organic/images',
     dest: 'img'
 }, {
     src: 'plugins/flexslider/**',
@@ -89,7 +90,7 @@ var copyBuildPaths = [{
     src: 'plugins/flag-icon-css/**',
     dest: 'flags'
 }, {
-    src: 'icons',
+    src: 'themes/organic/icons',
     dest: 'img'
 }, {
     src: 'fonts',
