@@ -5,13 +5,11 @@
   "description": "a really cool app",
   "version": "1.0.0",
   "engines": {
-    "node": "6.5.0",
+    "node": "6.7.0",
     "npm": "3.10.3"
   },
   "devDependencies": {
-    "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
-    "jquery": "^3.1.0",
     "laravel-elixir": "^6.0.0-9",
     "laravel-elixir-vue": "^0.1.4",
     "laravel-elixir-webpack-official": "^1.0.2",
@@ -20,16 +18,21 @@
     "vue-resource": "^0.9.3"
   },
   "dependencies": {
+    "admin-lte": "^2.3.6",
+    "blueimp-file-upload": "^9.12.5",
+    "bootstrap-sass": "^3.3.7",
+    "flag-icon-css": "^2.4.0",
+    "font-awesome": "^4.6.3",
     "gulp": "^3.9.1",
+    "ionicons": "^3.0.0",
+    "jquery": "^3.1.1",
+    "jquery-ui-dist": "^1.12.1",
     "laravel-elixir": "^6.0.0-9",
-    "bower": "^1.7.9",
-    "laravel-elixir-vue": "^0.1.4",
-    "laravel-elixir-webpack-official": "^1.0.2",
-    "lodash": "^4.14.0",
-    "vue": "^1.0.26",
-    "vue-resource": "^0.9.3"
+    "summernote": "^0.8.2",
+    "toastr": "^2.1.2",
+    "vanillatoasts": "^1.0.1"
   },
   "scripts": {
-    "postinstall": "bower install && gulp"
+    "postinstall": "gulp"
   }
 }
