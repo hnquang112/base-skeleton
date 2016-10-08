@@ -78,7 +78,7 @@ var copyPaths = [{
     src: 'js',
     dest: 'js'
 }, {
-    src: 'plugins/flexslider/**',
+    src: 'plugins/organic.shop.theme/flexslider/**',
     dest: 'css/fonts'
 }, {
     src: 'plugins/organic.shop.theme/images',
