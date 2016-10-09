@@ -31,7 +31,7 @@
                                     <th>Email</th>
                                     <th>Message</th>
                                     <th>Product</th>
-                                    <th>Published At</th>
+                                    <th>Approved At</th>
                                     <th>Rating</th>
                                     <th>Dates</th>
                                     <th>Action</th>
@@ -44,23 +44,24 @@
                                                     {{ $rev->name }}</strong></a></td>
                                         <td>{{ $rev->email }}</td>
                                         <td>{{ $rev->message }}</td>
-                                        <td>{{ $rev->product->title }}</td>
-                                        <td>@if ($rev->is_published)
-                                                <span class="text-success"><strong class="js-publish-status">{{ $rev->published_at }}</strong></span>
+                                        <td><a href="{{ $rev->product->front_url }}" target="_blank">
+                                                {{ $rev->product->title }}</a></td>
+                                        <td>@if ($rev->is_approved)
+                                                <span class="text-success"><strong class="js-publish-status">{{ $rev->approved_at }}</strong></span>
                                             @else
-                                                <span class="text-warning"><strong class="js-publish-status">Draft</strong></span>
+                                                <span class="text-warning"><strong class="js-publish-status">Disapproved</strong></span>
                                             @endif</td>
                                         <td>{{ $rev->rating }}</td>
                                         <td>{{ $rev->created_at }}</td>
-                                        <td><button data-href="{{ route('cms.reviews.publish', $rev->id) }}"
-                                                    class="btn js-button-publish-article btn-warning btn-xs {{ $rev->is_published ?: 'hide' }}"
-                                                    title="Unpublish">
-                                                <i class="fa fa-eye-slash"></i></button>
+                                        <td><button data-href="{{ route('cms.reviews.approve', $rev->id) }}"
+                                                    class="btn js-button-publish-article btn-warning btn-xs {{ $rev->is_approved ?: 'hide' }}"
+                                                    title="Disapprove">
+                                                <i class="fa fa-thumbs-down"></i></button>
 
-                                            <button data-href="{{ route('cms.reviews.publish', $rev->id) }}"
-                                                    class="btn js-button-publish-article btn-success btn-xs {{ !$rev->is_published ?: 'hide' }}"
-                                                    title="Publish">
-                                                <i class="fa fa-eye"></i></button>
+                                            <button data-href="{{ route('cms.reviews.approve', $rev->id) }}"
+                                                    class="btn js-button-publish-article btn-success btn-xs {{ !$rev->is_approved ?: 'hide' }}"
+                                                    title="Approve">
+                                                <i class="fa fa-thumbs-up"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Eloquent\Dialect\Json;
+use Carbon\Carbon;
 
 class Comment extends Model {
     use SoftDeletes, Json;
@@ -54,17 +55,15 @@ class Comment extends Model {
             "post_id":null,
             "rating":null,
             "read_by_users":[],
-            "status":null,
-            "image_id":null,
-            "published_at":null
+            "image_id":null
         }');
     }
 
     /**
      * Accessors
      */
-    public function getIsPublishedAttribute() {
-        return (int) ($this->published_at != null);
+    public function getIsApprovedAttribute() {
+        return (int) ($this->approved_at != null);
     }
 
     public function getImagePathAttribute() {
@@ -75,6 +74,13 @@ class Comment extends Model {
 //        if (empty($this->read_by_users) || in_array(auth()->user()->id, $this->read_by_users)) return true;
 //        return false;
 //    }
+
+    /**
+     * Mutators
+     */
+    public function setApprovedAtAttribute($value) {
+        $this->attributes['approved_at'] = ($value == self::STT_APPROVED ? Carbon::now() : null);
+    }
 
     /**
      * Relationships
@@ -106,12 +112,14 @@ class Comment extends Model {
         return $query->orderBy($field, 'DESC');
     }
 
+    // Filter featured testimonials only
     public function scopeFeatured($query) {
         return $query->orderByDesc('meta->rating')->orderByDesc('created_at')->take(2);
     }
 
+    // Filter approved reviews only
     public function scopeApproved($query) {
-        return $query->where('meta->status', self::STT_APPROVED);
+        return $query->whereNotNull('approved_at');
     }
 
 }

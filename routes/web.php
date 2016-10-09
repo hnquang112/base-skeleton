@@ -55,7 +55,7 @@ Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms
     Route::get('orders/{checkout}/print', ['uses' => 'OrderController@printOrder', 'as' => 'orders.print']);
     Route::resource('orders', 'OrderController');
 
-    Route::post('reviews/{comment}/publish', ['uses' => 'ReviewController@publish', 'as' => 'reviews.publish']);
+    Route::post('reviews/{comment}/approve', ['uses' => 'ReviewController@approve', 'as' => 'reviews.approve']);
     Route::resource('reviews', 'ReviewController', ['except' => ['show'], 'parameters' => ['reviews' => 'comment']]);
 
     Route::resource('settings', 'SettingController', ['only' => ['index', 'store']]);

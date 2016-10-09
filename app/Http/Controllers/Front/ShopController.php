@@ -44,7 +44,7 @@ class ShopController extends FrontController {
     // GET: /shop/lorem-ipsum
     public function show($product) {
         $similarProducts = $product->similar()->get();
-        $reviews = $product->reviews;
+        $reviews = $product->reviews()->approved()->get();
 
         return view('front.shop.show', compact('product', 'similarProducts', 'reviews'));
     }

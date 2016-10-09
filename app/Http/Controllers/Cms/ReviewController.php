@@ -73,23 +73,23 @@ class ReviewController extends CmsController {
     }
 
     /**
-     * Toggle publish status of a post
+     * Toggle approval status of a review
      */
-    // POST: /cms/reviews/1/publish
-    public function publish($review) {
-        if (is_null($review->published_at)) {
-            $review->published_at = Article::STT_PUBLISHED;
+    // POST: /cms/reviews/1/approve
+    public function approve($review) {
+        if (is_null($review->approved_at)) {
+            $review->approved_at = Comment::STT_APPROVED;
         } else {
-            $review->published_at = Article::STT_DRAFT;
+            $review->approved_at = Comment::STT_DISAPPROVED;
         }
 
         if ($review->save()) {
             $err = 0;
             $data = [
-                'status' => $review->is_published,
-                'value' => $review->published_at ? $review->published_at->format('Y-m-d H:i:s') : 'Draft',
+                'status' => $review->is_approved,
+                'value' => $review->approved_at ? $review->approved_at->format('Y-m-d H:i:s') : 'Disapproved',
             ];
-            $msg = $review->is_published ? 'Published' : 'Unpublished';
+            $msg = $review->is_approved ? 'Approved' : 'Disapproved';
         } else {
             $err = 1;
             $data = [];
