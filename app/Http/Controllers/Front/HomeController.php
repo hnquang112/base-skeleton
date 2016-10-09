@@ -18,9 +18,9 @@ class HomeController extends FrontController
     // GET: /
     public function index(Request $request) {
         $featuredProducts = Product::featured()->get();
-        $reviews = Comment::with('product')->reviews()->featured()->get();
+        $testimonials = Comment::with('product')->testimonials()->get();
 
-        return view('front.home.index', compact('featuredProducts', 'reviews'));
+        return view('front.home.index', compact('featuredProducts', 'testimonials'));
     }
 
     // GET: /search?q=lorem-ipsum

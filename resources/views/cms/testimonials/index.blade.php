@@ -91,6 +91,19 @@
                                     <span class="help-block"><strong>{{ $errors->first('message') }}</strong></span>
                                 @endif
                             </div>
+                            <div class="form-group{{ $errors->has('post_id') ? ' has-error' : '' }}">
+                                <label for="">Product:</label>
+                                <select name="post_id" class="form-control select2" style="width: 100%">
+                                    <option value="" selected></option>
+                                    @foreach (App\Product::pluck('title', 'id') as $id => $name)
+                                        <option value="{{ $id }}">{{ $name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('post_id'))
+                                    <span class="help-block"><strong>{{ $errors->first('post_id') }}</strong></span>
+                                @endif
+                            </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box-body -->
                     <div class="box-footer">
