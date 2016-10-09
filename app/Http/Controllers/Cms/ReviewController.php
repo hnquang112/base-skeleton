@@ -67,7 +67,7 @@ class ReviewController extends CmsController {
 
     // DELETE: /cms/reviews/1
     public function destroy(Request $request) {
-        $this->deleteMultipleItems(Category::class, $request->selected_ids);
+        $this->deleteMultipleItems(Comment::class, $request->selected_ids);
 
         return back();
     }

@@ -15,6 +15,7 @@ class Comment extends Model {
 
     const TYP_FEEDBACK = 0;
     const TYP_REVIEW = 1;
+    const TYP_TESTIMONIAL = 2;
     const STT_DISAPPROVED = 0;
     const STT_APPROVED = 1;
 
@@ -33,6 +34,17 @@ class Comment extends Model {
         'post_id' => 'required'
     ];
 
+    public static $rulesForCreatingTestimonial = [
+        'name' => 'required|max:255',
+        'message' => 'required',
+        'image' => 'required'
+    ];
+
+    public static $rulesForUpdatingTestimonial = [
+        'name' => 'required|max:255',
+        'message' => 'required'
+    ];
+
     public function __construct() {
         parent::__construct();
         $this->hintJsonStructure('meta', '{
@@ -42,7 +54,8 @@ class Comment extends Model {
             "post_id":null,
             "rating":null,
             "read_by_users":[],
-            "status":null
+            "status":null,
+            "image_id":null
         }');
     }
 
@@ -51,6 +64,10 @@ class Comment extends Model {
      */
     public function getStatusClassAttribute() {
         return $this->status ? 'thumbs-o-up' : 'thumbs-o-down';
+    }
+
+    public function getImagePathAttribute() {
+        return $this->image ? $this->image->path : '';
     }
 
 //    public function getIsReadAttribute() {
@@ -65,6 +82,10 @@ class Comment extends Model {
         return $this->belongsTo('App\Product', "meta->post_id", 'id');
     }
 
+    public function image() {
+        return $this->hasOne('App\File', 'id', "meta->>'image_id'");
+    }
+
     /**
      * Scopes
      */
@@ -74,6 +95,10 @@ class Comment extends Model {
 
     public function scopeReviews($query) {
         return $query->where('type', self::TYP_REVIEW);
+    }
+
+    public function scopeTestimonials($query) {
+        return $query->where('type', self::TYP_TESTIMONIAL);
     }
 
     public function scopeOrderByDesc($query, $field) {

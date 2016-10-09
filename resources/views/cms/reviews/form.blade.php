@@ -9,7 +9,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form action="{{ $review->id ? route('cms.categories.update', $review->id) : route('cms.categories.store') }}"
+                <form action="{{ $review->id ? route('cms.reviews.update', $review->id) : route('cms.reviews.store') }}"
                       method="POST">
                     {{ csrf_field() }}
                     {{ $review->id ? method_field('PUT') : '' }}
