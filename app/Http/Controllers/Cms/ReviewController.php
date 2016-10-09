@@ -71,4 +71,35 @@ class ReviewController extends CmsController {
 
         return back();
     }
+
+    /**
+     * Toggle publish status of a post
+     */
+    // POST: /cms/reviews/1/publish
+    public function publish($review) {
+        if (is_null($review->published_at)) {
+            $review->published_at = Article::STT_PUBLISHED;
+        } else {
+            $review->published_at = Article::STT_DRAFT;
+        }
+
+        if ($review->save()) {
+            $err = 0;
+            $data = [
+                'status' => $review->is_published,
+                'value' => $review->published_at ? $review->published_at->format('Y-m-d H:i:s') : 'Draft',
+            ];
+            $msg = $review->is_published ? 'Published' : 'Unpublished';
+        } else {
+            $err = 1;
+            $data = [];
+            $msg = 'Error!';
+        }
+
+        return json_encode([
+            'error' => $err,
+            'message' => $msg,
+            'data' => $data
+        ]);
+    }
 }

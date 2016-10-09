@@ -30,10 +30,11 @@
                                     <th>From</th>
                                     <th>Email</th>
                                     <th>Message</th>
-                                    <th>Status</th>
-                                    <th>Rating</th>
                                     <th>Product</th>
+                                    <th>Published At</th>
+                                    <th>Rating</th>
                                     <th>Dates</th>
+                                    <th>Action</th>
                                 </tr></thead>
                                 <tbody>
                                 @foreach ($reviews as $rev)
@@ -43,10 +44,24 @@
                                                     {{ $rev->name }}</strong></a></td>
                                         <td>{{ $rev->email }}</td>
                                         <td>{{ $rev->message }}</td>
-                                        <td><i class="fa fa-{{ $rev->status_class }}"></i></td>
-                                        <td>{{ $rev->rating }}</td>
                                         <td>{{ $rev->product->title }}</td>
+                                        <td>@if ($rev->is_published)
+                                                <span class="text-success"><strong class="js-publish-status">{{ $rev->published_at }}</strong></span>
+                                            @else
+                                                <span class="text-warning"><strong class="js-publish-status">Draft</strong></span>
+                                            @endif</td>
+                                        <td>{{ $rev->rating }}</td>
                                         <td>{{ $rev->created_at }}</td>
+                                        <td><button data-href="{{ route('cms.reviews.publish', $rev->id) }}"
+                                                    class="btn js-button-publish-article btn-warning btn-xs {{ $rev->is_published ?: 'hide' }}"
+                                                    title="Unpublish">
+                                                <i class="fa fa-eye-slash"></i></button>
+
+                                            <button data-href="{{ route('cms.reviews.publish', $rev->id) }}"
+                                                    class="btn js-button-publish-article btn-success btn-xs {{ !$rev->is_published ?: 'hide' }}"
+                                                    title="Publish">
+                                                <i class="fa fa-eye"></i></button>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

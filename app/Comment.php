@@ -55,15 +55,16 @@ class Comment extends Model {
             "rating":null,
             "read_by_users":[],
             "status":null,
-            "image_id":null
+            "image_id":null,
+            "published_at":null
         }');
     }
 
     /**
      * Accessors
      */
-    public function getStatusClassAttribute() {
-        return $this->status ? 'thumbs-o-up' : 'thumbs-o-down';
+    public function getIsPublishedAttribute() {
+        return (int) ($this->published_at != null);
     }
 
     public function getImagePathAttribute() {

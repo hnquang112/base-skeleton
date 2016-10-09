@@ -36,7 +36,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview{{ $request->is('cms/products*') || $request->is('cms/reviews/*') ? ' active' : '' }}">
+            <li class="treeview{{ $request->is('cms/products*') || $request->is('cms/reviews*') || $request->is('cms/orders*') ? ' active' : '' }}">
                 <a href="#">
                     <i class="fa fa-paper-plane"></i> <span>Products</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
@@ -48,10 +48,10 @@
                     <li {{ $request->is('cms/products/create') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.products.create') }}"><i class="fa fa-circle-o"></i> Add New Product</a>
                     </li>
-                    <li {{ $request->is('cms/reviews/*') ? 'class=active' : '' }}>
+                    <li {{ $request->is('cms/reviews*') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.reviews.index') }}"><i class="fa fa-star-half-o"></i> Reviews</a>
                     </li>
-                    <li {{ $request->is('cms/orders/*') ? 'class=active' : '' }}>
+                    <li {{ $request->is('cms/orders*') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.orders.index') }}"><i class="fa fa-money"></i> Orders</a>
                     </li>
                 </ul>
@@ -71,7 +71,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview{{ $request->is('cms/users*') ? ' active' : '' }}">
+            <li class="treeview{{ $request->is('cms/users*') || $request->is('cms/feedback*') ? ' active' : '' }}">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Users</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
@@ -83,7 +83,7 @@
                     <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.users.create') }}"><i class="fa fa-circle-o"></i> Add New User</a>
                     </li>
-                    <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
+                    <li {{ $request->is('cms/feedback*') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.feedback.index') }}"><i class="fa fa-envelope"></i> Feedback</a>
                     </li>
                 </ul>

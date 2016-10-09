@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
                             <label for="">Message:</label>
-                            <textarea name="message" class="form-control" placeholder="Enter message">{{ $testimonial->message }}</textarea>
+                            <textarea name="message" class="form-control" placeholder="Enter message" rows="5">{{ $testimonial->message }}</textarea>
 
                             @if ($errors->has('message'))
                                 <span class="help-block"><strong>{{ $errors->first('message') }}</strong></span>

@@ -55,9 +55,11 @@ Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms
     Route::get('orders/{checkout}/print', ['uses' => 'OrderController@printOrder', 'as' => 'orders.print']);
     Route::resource('orders', 'OrderController');
 
+    Route::post('reviews/{comment}/publish', ['uses' => 'ReviewController@publish', 'as' => 'reviews.publish']);
+    Route::resource('reviews', 'ReviewController', ['except' => ['show'], 'parameters' => ['reviews' => 'comment']]);
+
     Route::resource('settings', 'SettingController', ['only' => ['index', 'store']]);
     Route::resource('sliders', 'SliderController', ['except' => ['show'], 'parameters' => ['sliders' => 'setting']]);
-    Route::resource('reviews', 'ReviewController', ['except' => ['show'], 'parameters' => ['reviews' => 'comment']]);
     Route::resource('feedback', 'FeedbackController', ['except' => ['show'], 'parameters' => ['feedback' => 'comment']]);
     Route::resource('testimonials', 'TestimonialController', ['except' => ['show'], 'parameters' => ['testimonials' => 'comment']]);
     Route::resource('media', 'MediaController', ['only' => 'index']);
