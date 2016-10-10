@@ -60,7 +60,7 @@ Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms
 
     Route::resource('settings', 'SettingController', ['only' => ['index', 'store']]);
     Route::resource('sliders', 'SliderController', ['except' => ['show'], 'parameters' => ['sliders' => 'setting']]);
-    Route::resource('feedback', 'FeedbackController', ['except' => ['show'], 'parameters' => ['feedback' => 'comment']]);
+    Route::resource('feedback', 'FeedbackController', ['only' => ['index', 'show', 'destroy'], 'parameters' => ['feedback' => 'comment']]);
     Route::resource('testimonials', 'TestimonialController', ['except' => ['show'], 'parameters' => ['testimonials' => 'comment']]);
     Route::resource('media', 'MediaController', ['only' => 'index']);
 });

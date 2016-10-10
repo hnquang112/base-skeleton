@@ -48,5 +48,12 @@ class UsersTableSeeder extends Seeder
             'type' => Setting::TYP_CONFIG,
             'config_value' => 'en'
         ]);
+
+        // Set default address of site to e.town
+        Setting::updateOrCreate(['meta->label' => 'store_address'], [
+            'label' => 'store_address',
+            'type' => Setting::TYP_CONFIG,
+            'config_value' => '364 Cộng Hòa, Phường 13, Quận Tân Bình, Thành phố Hồ Chí Minh'
+        ]);
     }
 }

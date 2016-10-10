@@ -373,16 +373,16 @@
         },
         {
             "name": "brotzka/laravel-dotenv-editor",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Brotzka/laravel-dotenv-editor.git",
-                "reference": "29c262e1703474c77447e08c01b143ca5e4bc899"
+                "reference": "ec773c3ead7ba39e9edbb91a84a1fb5da179c395"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Brotzka/laravel-dotenv-editor/zipball/29c262e1703474c77447e08c01b143ca5e4bc899",
-                "reference": "29c262e1703474c77447e08c01b143ca5e4bc899",
+                "url": "https://api.github.com/repos/Brotzka/laravel-dotenv-editor/zipball/ec773c3ead7ba39e9edbb91a84a1fb5da179c395",
+                "reference": "ec773c3ead7ba39e9edbb91a84a1fb5da179c395",
                 "shasum": ""
             },
             "require": {
@@ -410,7 +410,7 @@
                 "dotenv-editor",
                 "laravel"
             ],
-            "time": "2016-09-14 03:56:19"
+            "time": "2016-10-10 12:33:36"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -2699,16 +2699,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0"
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/5277094ed527a1c4477177d102fe4c53551953e0",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
                 "shasum": ""
             },
             "require": {
@@ -2742,7 +2742,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-09-19 16:02:08"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "psy/psysh",
@@ -2948,16 +2948,16 @@
         },
         {
             "name": "simplesoftwareio/simple-qrcode",
-            "version": "1.4.3",
+            "version": "1.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SimpleSoftwareIO/simple-qrcode.git",
-                "reference": "ec5268adff5a632a463ebdd1ad2b8bf9f305bd1a"
+                "reference": "f14181454adcf187fc7e58ece0569fac50831b79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SimpleSoftwareIO/simple-qrcode/zipball/ec5268adff5a632a463ebdd1ad2b8bf9f305bd1a",
-                "reference": "ec5268adff5a632a463ebdd1ad2b8bf9f305bd1a",
+                "url": "https://api.github.com/repos/SimpleSoftwareIO/simple-qrcode/zipball/f14181454adcf187fc7e58ece0569fac50831b79",
+                "reference": "f14181454adcf187fc7e58ece0569fac50831b79",
                 "shasum": ""
             },
             "require": {
@@ -2995,7 +2995,7 @@
                 "qrcode",
                 "wrapper"
             ],
-            "time": "2016-04-24 02:00:22"
+            "time": "2016-10-10 02:43:24"
         },
         {
             "name": "spatie/db-dumper",
@@ -3171,24 +3171,24 @@
         },
         {
             "name": "spatie/laravel-responsecache",
-            "version": "1.1.6",
+            "version": "1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-responsecache.git",
-                "reference": "2b76ce21302f91b7e3d1b735008043b7d28937eb"
+                "reference": "15c77479ba508825b682b53a15938206307a6a15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-responsecache/zipball/2b76ce21302f91b7e3d1b735008043b7d28937eb",
-                "reference": "2b76ce21302f91b7e3d1b735008043b7d28937eb",
+                "url": "https://api.github.com/repos/spatie/laravel-responsecache/zipball/15c77479ba508825b682b53a15938206307a6a15",
+                "reference": "15c77479ba508825b682b53a15938206307a6a15",
                 "shasum": ""
             },
             "require": {
-                "illuminate/cache": "^5.1",
-                "illuminate/config": "^5.1",
-                "illuminate/console": "^5.1",
-                "illuminate/http": "^5.1",
-                "illuminate/support": "^5.1",
+                "illuminate/cache": "~5.1.0|~5.2.0|~5.3.0",
+                "illuminate/config": "~5.1.0|~5.2.0|~5.3.0",
+                "illuminate/console": "~5.1.0|~5.2.0|~5.3.0",
+                "illuminate/http": "~5.1.0|~5.2.0|~5.3.0",
+                "illuminate/support": "~5.1.0|~5.2.0|~5.3.0",
                 "nesbot/carbon": "~1.19",
                 "php": ">=5.5.0"
             },
@@ -3226,7 +3226,7 @@
                 "response",
                 "spatie"
             ],
-            "time": "2016-08-06 22:29:13"
+            "time": "2016-10-10 08:00:38"
         },
         {
             "name": "studio-42/elfinder",

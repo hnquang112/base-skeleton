@@ -9,7 +9,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form action="{{ $testimonial->id ? route('cms.categories.update', $testimonial->id) : route('cms.categories.store') }}"
+                <form action="{{ $testimonial->id ? route('cms.testimonials.update', $testimonial->id) : route('cms.testimonials.store') }}"
                       method="POST">
                     {{ csrf_field() }}
                     {{ $testimonial->id ? method_field('PUT') : '' }}
@@ -39,6 +39,19 @@
 
                             @if ($errors->has('message'))
                                 <span class="help-block"><strong>{{ $errors->first('message') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group{{ $errors->has('post_id') ? ' has-error' : '' }}">
+                            <label for="">Product:</label>
+                            <select name="post_id" class="form-control select2" style="width: 100%">
+                                <option value=""></option>
+                                @foreach (App\Product::pluck('title', 'id') as $id => $name)
+                                    <option value="{{ $id }}" {{ $id == $testimonial->post_id ? 'selected' : '' }}>{{ $name }}</option>
+                                @endforeach
+                            </select>
+
+                            @if ($errors->has('post_id'))
+                                <span class="help-block"><strong>{{ $errors->first('post_id') }}</strong></span>
                             @endif
                         </div>
                     </div>

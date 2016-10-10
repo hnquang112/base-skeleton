@@ -137,6 +137,6 @@ return [
     'home.testimonials.purchased' => 'Đã mua',
     'common.price' => 'Giá',
     'common.filter_btn' => 'Lọc',
-    'common.posted' => 'Đã đăng',
+    'common.posted' => 'Đã đăng vào',
     'common.by' => 'bởi',
 ];

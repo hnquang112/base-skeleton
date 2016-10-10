@@ -47,8 +47,12 @@
                         </div>
                         <div class="testimonial-speech"></div>
                     </div>
-                    <p class="testimonial-author">{{ $testimonial->name }}</p>
-                    {{--<p class="testimonial-author">{{ $testimonial->name }} - <span>@lang ('home.testimonials.purchased') {{ $testimonial->product->title }}</span></p>--}}
+                    <p class="testimonial-author">{{ $testimonial->name }}
+                        @if ($testimonial->product)
+                            - <span>@lang ('front.home.testimonials.purchased')
+                                <a href="{{ $testimonial->product->front_url }}" target="_blank">{{ $testimonial->product->title }}</a></span>
+                        @endif
+                    </p>
                 </li>
             @endforeach
         </ul>

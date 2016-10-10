@@ -18,6 +18,8 @@ class CreateSettingsTable extends Migration
             $table->jsonb('meta')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->index(['type']);
         });
     }
 

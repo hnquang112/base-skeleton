@@ -41,7 +41,7 @@
 
                 @if (session('contact.saved'))
                     <div class="msg success clearfix">
-                        <p class="fl">@lang ('contact.email_sent')</p>
+                        <p class="fl">@lang ('front.contact.email_sent')</p>
                     </div>
                 @endif
 

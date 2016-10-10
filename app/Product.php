@@ -74,6 +74,10 @@ class Product extends Post implements Buyable {
         return $query->orderByDesc('created_at')->take(4);
     }
 
+    public function delete() {
+        $this->reviews()->delete();
+    }
+
     /**
      * Get the identifier of the Buyable item.
      *

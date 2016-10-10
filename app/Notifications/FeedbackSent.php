@@ -2,25 +2,25 @@
 
 namespace App\Notifications;
 
+use App\Comment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\Order;
 
-class OrderCreated extends Notification implements ShouldQueue {
+class FeedbackSent extends Notification implements ShouldQueue {
     use Queueable;
 
-    protected $order;
+    protected $feedback;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Order $order)
+    public function __construct(Comment $feedback)
     {
-        $this->order = $order;
+        $this->feedback = $feedback;
     }
 
     /**
@@ -44,7 +44,7 @@ class OrderCreated extends Notification implements ShouldQueue {
     {
         return (new MailMessage)
                     ->line('The introduction to the notification.')
-                    ->action('Notification Action', $this->order->front_url)
+                    ->action('Notification Action', route('cms.feedback.show', $this->feedback->id))
                     ->line('Thank you for using our application!');
     }
 
@@ -57,7 +57,8 @@ class OrderCreated extends Notification implements ShouldQueue {
     public function toArray($notifiable)
     {
         return [
-            //
+            'sender' => $this->feedback->email,
+            'message' => $this->feedback->message
         ];
     }
 }
