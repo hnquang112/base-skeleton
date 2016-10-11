@@ -94,4 +94,31 @@ class ProductController extends CmsController {
         return back();
     }
 
+    // POST: /cms/products/1/featured
+    public function featured($product) {
+        if (is_null($product->featured_at)) {
+            $product->featured_at = Product::STT_FEATURED;
+        } else {
+            $product->featured_at = Product::STT_NORMAL;
+        }
+
+        if ($product->save()) {
+            $err = 0;
+            $data = [
+                'status' => $product->is_featured,
+                'value' => $product->featured_at ? $product->featured_at->format('Y-m-d H:i:s') : 'Not Featured',
+            ];
+            $msg = $product->is_featured ? 'Featured' : 'Not Featured';
+        } else {
+            $err = 1;
+            $data = [];
+            $msg = 'Error!';
+        }
+
+        return json_encode([
+            'error' => $err,
+            'message' => $msg,
+            'data' => $data
+        ]);
+    }
 }

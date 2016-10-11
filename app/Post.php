@@ -48,8 +48,7 @@ class Post extends Model
             "discount_price":null,
             "is_in_stock":true,
             "represent_image_id":null,
-            "product_image_ids":[],
-            "featured":null
+            "product_image_ids":[]
         }');
     }
 

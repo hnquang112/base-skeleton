@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->jsonb('meta')->nullable();
             $table->timestamp('published_at')->nullable();
+            $table->timestamp('featured_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

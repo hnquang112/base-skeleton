@@ -15,8 +15,8 @@
                     <div class="box-tools pull-right">
                         <a class="btn btn-primary" href="{{ route('cms.products.create') }}">Create</a>
                     </div>
-                </div>
-                <!-- /.box-header -->
+                </div><!-- /.box-header -->
+
                 <div class="box-body">
                     <div class="mailbox-controls form-inline">
                         <!-- Check all button -->
@@ -62,30 +62,44 @@
                             <table class="table table-hover datatable">
                                 <thead><tr>
                                     <th></th>
+                                    <th>Representer</th>
                                     <th>Title</th>
-                                    <th>Author</th>
+                                    <th>Price</th>
                                     <th>Categories</th>
                                     <th>Tags</th>
                                     <th>Dates</th>
+                                    <th>Display In HomePage</th>
                                 </tr></thead>
                                 <tbody>
                                     @foreach ($products as $product)
                                         <tr>
                                             <td><input name="selected_ids[]" type="checkbox" value="{{ $product->id }}"></td>
+                                            <td><img src="{{ $product->represent_image_path }}" width="80px"></td>
                                             <td><a href="{{ route('cms.products.edit', $product->id) }}"><strong>
                                                         {{ $product->title }}</strong></a></td>
-                                            <td>{{ $product->author->display_name }}</td>
+                                            <td>{{ format_price_with_currency($product->current_price, '') }}</td>
                                             <td>{{ $product->category_names }}</td>
                                             <td>{{ $product->tag_names }}</td>
-                                            <td>{{ $product->published_at }}</td>
+                                            <td>{{ $product->created_at }}</td>
+                                            <td><button data-href="{{ route('cms.products.featured', $product->id) }}"
+                                                        class="btn js-button-publish-article btn-success btn-xs {{ $product->is_featured ?: 'hide' }}"
+                                                        title="Unmark Featured">
+                                                    <i class="fa fa-thumb-tack fa-fw"></i></button>
+
+                                                <button data-href="{{ route('cms.products.featured', $product->id) }}"
+                                                        class="btn js-button-publish-article btn-xs {{ !$product->is_featured ?: 'hide' }}"
+                                                        title="Mark as Featured">
+                                                    <i class="fa fa-thumb-tack fa-fw"></i></button>
+
+                                                <a href="{{ $product->front_url }}" class="btn btn-info btn-xs" target="_blank" title="View Product">
+                                                    <i class="fa fa-external-link fa-fw"></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
-                            </table>
-                            <!-- /.table -->
+                            </table><!-- /.table -->
                         </form>
-                    </div>
-                    <!-- /.mail-box-messages -->
+                    </div><!-- /.mail-box-messages -->
                 </div>
             </div>
         </div>

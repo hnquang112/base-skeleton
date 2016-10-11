@@ -46,8 +46,10 @@ Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms
     Route::resource('dashboard', 'DashboardController', ['only' => ['index']]);
     Route::resource('tags', 'TagController', ['except' => ['show']]);
     Route::resource('categories', 'CategoryController', ['except' => ['show']]);
-    Route::resource('products', 'ProductController', ['except' => ['show']]);
     Route::resource('users', 'UserController', ['except' => ['show']]);
+
+    Route::post('products/{product}/featured', ['uses' => 'ProductController@featured', 'as' => 'products.featured']);
+    Route::resource('products', 'ProductController', ['except' => ['show']]);
 
     Route::post('articles/{article}/publish', ['uses' => 'ArticleController@publish', 'as' => 'articles.publish']);
     Route::resource('articles', 'ArticleController', ['except' => ['show']]);
