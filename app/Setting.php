@@ -53,7 +53,6 @@ class Setting extends Model {
         $this->hintJsonStructure('meta', '{
             "label":null,
             "description":null,
-            "image_id":null,
             "menu_item":null,
             "menu_url":null,
             "config_value":null,
@@ -66,7 +65,7 @@ class Setting extends Model {
      * Relationships
      */
     public function image() {
-        return $this->hasOne('App\File', 'id', "meta->>'image_id'");
+        return $this->hasOne('App\File', 'id', 'image_id');
     }
 
     /**

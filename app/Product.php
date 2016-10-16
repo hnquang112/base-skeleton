@@ -25,7 +25,7 @@ class Product extends Post implements Buyable {
     }
 
     public function reviews() {
-        return $this->hasMany('App\Comment', "meta->post_id", 'id');
+        return $this->hasMany('App\Comment', 'post_id', 'id');
     }
 
     public function newQuery($excludeDeleted = true) {

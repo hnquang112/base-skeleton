@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->longText('content');
             $table->integer('user_id');
             $table->string('slug');
+            $table->integer('represent_image_id')->nullable();
             $table->jsonb('meta')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamp('featured_at')->nullable();

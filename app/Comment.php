@@ -52,10 +52,8 @@ class Comment extends Model {
             "name":null,
             "email":null,
             "message":null,
-            "post_id":null,
             "rating":null,
-            "read_by_users":[],
-            "image_id":null
+            "read_by_users":[]
         }');
     }
 
@@ -86,11 +84,11 @@ class Comment extends Model {
      * Relationships
      */
     public function product() {
-        return $this->belongsTo('App\Product', "meta->post_id", 'id');
+        return $this->belongsTo('App\Product', 'post_id', 'id');
     }
 
     public function image() {
-        return $this->hasOne('App\File', 'id', "meta->>'image_id'");
+        return $this->hasOne('App\File', 'id', 'image_id');
     }
 
     /**
