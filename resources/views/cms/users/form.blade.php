@@ -14,7 +14,7 @@
 
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputName" placeholder="John Doe"
-                                    name="display_name" value="{{ $user->display_name }}">
+                                    name="display_name" value="{{ old('display_name') ?: $user->display_name }}">
                                 @if ($errors->has('display_name'))
                                     <span class="help-block"><strong>{{ $errors->first('display_name') }}</strong></span>
                                 @endif
@@ -25,7 +25,7 @@
 
                             <div class="col-sm-10">
                                 <input type="email" class="form-control" id="inputEmail" placeholder="john.doe@gmail.com"
-                                    name="email" value="{{ $user->email }}">
+                                    name="email" value="{{ old('email') ?: $user->email }}">
                                 @if ($errors->has('email'))
                                     <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
                                 @endif
@@ -57,7 +57,7 @@
                                     <label for="inputUsername" class="control-label">{{ $user->username }}</label>
                                 @else
                                     <input type="text" class="form-control" id="inputUsername" placeholder="john.doe"
-                                           name="username">
+                                           name="username" value="{{ old('username') }}">
                                     @if ($errors->has('username'))
                                         <span class="help-block"><strong>{{ $errors->first('username') }}</strong></span>
                                     @endif

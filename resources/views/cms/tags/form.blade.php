@@ -16,7 +16,8 @@
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="">Name:</label>
-                            <input name="name" type="text" class="form-control" placeholder="Enter name" value="{{ $tag->name }}">
+                            <input name="name" type="text" class="form-control" placeholder="Enter name"
+                                   value="{{ old('name') ?: $tag->name }}">
 
                             @if ($errors->has('name'))
                                 <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
@@ -25,7 +26,7 @@
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                             <label for="">Description:</label>
                             <input name="description" type="text" class="form-control" placeholder="Enter description"
-                                   value="{{ $tag->description }}">
+                                   value="{{ old('description') ?: $tag->description }}">
 
                             @if ($errors->has('description'))
                                 <span class="help-block"><strong>{{ $errors->first('description') }}</strong></span>

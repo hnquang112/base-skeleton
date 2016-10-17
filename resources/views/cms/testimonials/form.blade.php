@@ -18,7 +18,7 @@
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="">Name:</label>
                             <input name="name" type="text" class="form-control" placeholder="Enter name"
-                                   value="{{ $testimonial->name }}">
+                                   value="{{ old('name') ?: $testimonial->name }}">
 
                             @if ($errors->has('name'))
                                 <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
@@ -35,7 +35,8 @@
                         </div>
                         <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
                             <label for="">Message:</label>
-                            <textarea name="message" class="form-control" placeholder="Enter message" rows="5">{{ $testimonial->message }}</textarea>
+                            <textarea name="message" class="form-control" placeholder="Enter message" rows="5">
+                                {{ old('message') ?: $testimonial->message }}</textarea>
 
                             @if ($errors->has('message'))
                                 <span class="help-block"><strong>{{ $errors->first('message') }}</strong></span>

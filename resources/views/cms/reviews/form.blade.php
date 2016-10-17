@@ -18,7 +18,7 @@
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="">Name:</label>
                             <input name="name" type="text" class="form-control" placeholder="Enter name"
-                                   value="{{ $review->name }}">
+                                   value="{{ old('name') ?: $review->name }}">
 
                             @if ($errors->has('name'))
                                 <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
@@ -27,7 +27,7 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="">Email:</label>
                             <input name="email" type="email" class="form-control" placeholder="Enter email"
-                                   value="{{ $review->email }}">
+                                   value="{{ old('email') ?: $review->email }}">
 
                             @if ($errors->has('email'))
                                 <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
@@ -48,7 +48,7 @@
                         <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
                             <label for="">Message:</label>
                             <input name="message" type="text" class="form-control" placeholder="Enter message"
-                                   value="{{ $review->message }}">
+                                   value="{{ old('message') ?: $review->message }}">
 
                             @if ($errors->has('message'))
                                 <span class="help-block"><strong>{{ $errors->first('message') }}</strong></span>

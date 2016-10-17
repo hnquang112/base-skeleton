@@ -18,7 +18,7 @@
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="">Title:</label>
                             <input name="title" type="text" class="form-control" placeholder="Enter title"
-                                   value="{{ $product->title }}">
+                                   value="{{ old('title') ?: $product->title }}">
 
                             @if ($errors->has('title'))
                                 <span class="help-block"><strong>{{ $errors->first('title') }}</strong></span>
@@ -27,7 +27,7 @@
                         <div class="form-group{{ $errors->has('short_description') ? ' has-error' : '' }}">
                             <label for="">Description:</label>
                             <input name="short_description" type="text" class="form-control"
-                                   placeholder="Enter description" value="{{ $product->short_description }}">
+                                   placeholder="Enter description" value="{{ old('short_description') ?: $product->short_description }}">
 
                             @if ($errors->has('short_description'))
                                 <span class="help-block"><strong>{{ $errors->first('short_description') }}</strong></span>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                             <label for="">Content:</label>
-                            <textarea name="content" id="summernote" class="hidden">{{ $product->content }}</textarea>
+                            <textarea name="content" id="summernote" class="hidden">{{ old('content') ?: $product->content }}</textarea>
 
                             @if ($errors->has('content'))
                                 <span class="help-block"><strong>{{ $errors->first('content') }}</strong></span>
@@ -44,18 +44,18 @@
                         <div class="form-group{{ $errors->has('seo_title') ? ' has-error' : '' }}">
                             <label for="">SEO Title:</label>
                             <input name="seo_title" type="text" class="form-control" placeholder="Enter SEO title"
-                                   value="{{ $product->seo_title }}">
+                                   value="{{ old('seo_title') ?: $product->seo_title }}">
                         </div>
                         <div class="form-group{{ $errors->has('seo_description') ? ' has-error' : '' }}">
                             <label for="">SEO Description:</label>
                             <input name="seo_description" type="text" class="form-control"
                                    placeholder="Enter SEO description"
-                                   value="{{ $product->seo_description }}">
+                                   value="{{ old('seo_description') ?: $product->seo_description }}">
                         </div>
                         <div class="form-group{{ $errors->has('seo_keywords') ? ' has-error' : '' }}">
                             <label for="">SEO Keywords:</label>
                             <input name="seo_keywords" type="text" class="form-control" placeholder="Enter SEO keywords"
-                                   value="{{ $product->seo_keywords }}">
+                                   value="{{ old('seo_keywords') ?: $product->seo_keywords }}">
                         </div>
                     </div>
                 </div><!-- /.box-body -->
@@ -90,8 +90,7 @@
                         <h3 class="box-title">Price</h3>
 
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                        class="fa fa-minus"></i>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
                         </div><!-- /.box-tools -->
                     </div><!-- /.box-header -->
@@ -100,7 +99,7 @@
                             <label for="">Regular Price:</label>
                             <div class="input-group">
                                 <input name="price" type="text" class="form-control" placeholder="100.000"
-                                       value="{{ $product->price }}">
+                                       value="{{ old('price') ?: $product->price }}">
                                 <span class="input-group-addon">đ</span>
                             </div>
 
@@ -112,7 +111,7 @@
                             <label for="">Discount Price:</label>
                             <div class="input-group">
                                 <input name="discount_price" type="text" class="form-control" placeholder="85.000"
-                                       value="{{ $product->discount_price }}">
+                                       value="{{ old('discount_price') ?: $product->discount_price }}">
                                 <span class="input-group-addon">đ</span>
                             </div>
 
