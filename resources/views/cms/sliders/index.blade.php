@@ -67,7 +67,7 @@
                         <div class="box-body">
                             <div class="form-group{{ $errors->has('label') ? ' has-error' : '' }}">
                                 <label for="">Label:</label>
-                                <input name="label" type="text" class="form-control" placeholder="Enter label">
+                                <textarea name="label" class="form-control" placeholder="Enter label"></textarea>
 
                                 @if ($errors->has('label'))
                                     <span class="help-block"><strong>{{ $errors->first('label') }}</strong></span>
