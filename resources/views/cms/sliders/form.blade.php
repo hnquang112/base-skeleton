@@ -8,7 +8,8 @@
                     <h3 class="box-title">Slider</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form action="{{ $slider->id ? route('cms.sliders.update', $slider->id) : route('cms.sliders.store') }}" method="POST">
+                <form action="{{ $slider->id ? route('cms.sliders.update', $slider->id) : route('cms.sliders.store') }}"
+                      method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ $slider->id ? method_field('PUT') : '' }}
 
