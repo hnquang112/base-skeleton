@@ -94,7 +94,7 @@
                             <div class="form-group{{ $errors->has('post_id') ? ' has-error' : '' }}">
                                 <label for="">Product:</label>
                                 <select name="post_id" class="form-control select2" style="width: 100%">
-                                    <option value="" selected></option>
+                                    <option value="0" selected></option>
                                     @foreach (App\Product::pluck('title', 'id') as $id => $name)
                                         <option value="{{ $id }}">{{ $name }}</option>
                                     @endforeach
