@@ -16,7 +16,7 @@
 
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="">Title:</label>
+                            <label for="">Title (*):</label>
                             <input name="title" type="text" class="form-control" placeholder="Enter title"
                                    value="{{ old('title') ?: $article->title }}">
 
@@ -25,7 +25,7 @@
                             @endif
                         </div>
                         <div class="form-group{{ $errors->has('short_description') ? ' has-error' : '' }}">
-                            <label for="">Description:</label>
+                            <label for="">Description (*):</label>
                             <input name="short_description" type="text" class="form-control" placeholder="Enter description"
                                    value="{{ old('short_description') ?: $article->short_description }}">
 
@@ -34,7 +34,7 @@
                             @endif
                         </div>
                         <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-                            <label for="">Content:</label>
+                            <label for="">Content (*):</label>
                             <textarea name="content" id="summernote" class="hidden">{{ old('content') ?: $article->content }}</textarea>
 
                             @if ($errors->has('content'))

@@ -10,7 +10,7 @@
                         {{ csrf_field() }}
                         {{ $user->id ? method_field('PUT') : '' }}
                         <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label">Name</label>
+                            <label for="inputName" class="col-sm-2 control-label">Name (*):</label>
 
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputName" placeholder="John Doe"
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                            <label for="inputEmail" class="col-sm-2 control-label">Email (*):</label>
 
                             <div class="col-sm-10">
                                 <input type="email" class="form-control" id="inputEmail" placeholder="john.doe@gmail.com"
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputRole" class="col-sm-2 control-label">Role</label>
+                            <label for="inputRole" class="col-sm-2 control-label">Role:</label>
 
                             <div class="col-sm-10">
                                 @if ($user->id)
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputRole" class="col-sm-2 control-label">Username</label>
+                            <label for="inputRole" class="col-sm-2 control-label">Username (*):</label>
 
                             <div class="col-sm-10">
                                 @if ($user->id)
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                            <label for="inputPassword" class="col-sm-2 control-label">Password (*):</label>
 
                             <div class="col-sm-10">
                                 <input type="password" class="form-control" id="inputPassword" placeholder="password"
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPasswordConfirm" class="col-sm-2 control-label">Password confirm</label>
+                            <label for="inputPasswordConfirm" class="col-sm-2 control-label">Password confirm (*):</label>
 
                             <div class="col-sm-10">
                                 <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="password"

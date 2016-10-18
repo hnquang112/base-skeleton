@@ -15,7 +15,7 @@
 
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="">Name:</label>
+                            <label for="">Name (*):</label>
                             <input name="name" type="text" class="form-control" placeholder="Enter name"
                                    value="{{ old('name') ?: $tag->name }}">
 

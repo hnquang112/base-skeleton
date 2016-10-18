@@ -16,7 +16,7 @@
 
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="">Name:</label>
+                            <label for="">Name (*):</label>
                             <input name="name" type="text" class="form-control" placeholder="Enter name"
                                    value="{{ old('name') ?: $testimonial->name }}">
 
@@ -25,7 +25,7 @@
                             @endif
                         </div>
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                            <label for="">Avatar:</label>
+                            <label for="">Avatar (*):</label>
                             <input name="image" id="js-input-image" type="file" class="form-control" accept="image/*">
                             <img id="js-image-thumbnail-gotten" src="{{ $testimonial->image_path }}" width="100px" height="auto">
 
@@ -34,7 +34,7 @@
                             @endif
                         </div>
                         <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                            <label for="">Message:</label>
+                            <label for="">Message (*):</label>
                             <textarea name="message" class="form-control" placeholder="Enter message" rows="5">
                                 {{ old('message') ?: $testimonial->message }}</textarea>
 

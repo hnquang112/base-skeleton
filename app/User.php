@@ -130,7 +130,7 @@ class User extends Authenticatable
     public function getAvatarImageAttribute() {
         if (!empty($this->profile_image)) return asset($this->profile_image);
         if (!empty($this->email)) return Gravatar::get($this->email);
-        return null;
+        return config('misc.no_preview_image');
     }
 
     public function getIsManagerAttribute() {

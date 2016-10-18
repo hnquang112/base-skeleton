@@ -93,7 +93,7 @@
                     <div class="box-body">
                         <div class="box-body">
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="">Name:</label>
+                                <label for="">Name (*):</label>
                                 <input name="name" type="text" class="form-control" placeholder="Enter name">
 
                                 @if ($errors->has('name'))
@@ -101,7 +101,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="">Email:</label>
+                                <label for="">Email (*):</label>
                                 <input name="email" type="email" class="form-control" placeholder="Enter email">
 
                                 @if ($errors->has('email'))
@@ -109,7 +109,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
-                                <label for="">Rating:</label>
+                                <label for="">Rating (*):</label>
                                 <select name="rating" class="form-control">
                                     @for ($i = 5; $i >= 1; $i--)
                                         <option value="{{ $i }}">{{ $i }}</option>
@@ -121,7 +121,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                                <label for="">Message:</label>
+                                <label for="">Message (*):</label>
                                 <input name="message" type="text" class="form-control" placeholder="Enter message">
 
                                 @if ($errors->has('message'))
@@ -129,7 +129,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('post_id') ? ' has-error' : '' }}">
-                                <label for="">Product:</label>
+                                <label for="">Product (*):</label>
                                 <select name="post_id" class="form-control select2" style="width: 100%">
                                     @foreach (App\Product::pluck('title', 'id') as $id => $name)
                                         <option value="{{ $id }}">{{ $name }}</option>

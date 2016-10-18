@@ -66,7 +66,7 @@
                     <div class="box-body">
                         <div class="box-body">
                             <div class="form-group{{ $errors->has('label') ? ' has-error' : '' }}">
-                                <label for="">Label:</label>
+                                <label for="">Label (*):</label>
                                 <textarea name="label" class="form-control" placeholder="Enter label"></textarea>
 
                                 @if ($errors->has('label'))
@@ -74,7 +74,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                                <label for="">Image:</label>
+                                <label for="">Image (*):</label>
                                 <input name="image" id="js-input-image" type="file" class="form-control" accept="image/*">
                                 <img id="js-image-thumbnail-gotten" src="" width="100%" height="auto">
 
