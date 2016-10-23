@@ -8,7 +8,6 @@
 
 namespace App;
 
-
 class Article extends Post {
     protected $table = 'posts';
     protected $attributes = [

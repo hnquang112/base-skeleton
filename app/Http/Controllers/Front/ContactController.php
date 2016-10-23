@@ -8,8 +8,10 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Notifications\FeedbackSent;
 use Illuminate\Http\Request;
 use App\Comment;
+use App\Admin;
 
 class ContactController extends FrontController {
 
@@ -27,6 +29,11 @@ class ContactController extends FrontController {
         $comment->fill($request->all());
 
         if ($comment->save()) {
+            // Notify to all admins via mail
+            $admins = Admin::all();
+            foreach ($admins as $admin) {
+                $admin->notify(new FeedbackSent($comment));
+            }
             return back()->with('contact.saved', true);
         }
 

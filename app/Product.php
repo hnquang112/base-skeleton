@@ -4,8 +4,12 @@ namespace App;
 
 use DB;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
+use Carbon\Carbon;
 
 class Product extends Post implements Buyable {
+    const STT_NORMAL = 0;
+    const STT_FEATURED = 1;
+
     protected $table = 'posts';
     protected $attributes = [
         'type' => self::TYP_PRODUCT,
@@ -21,7 +25,7 @@ class Product extends Post implements Buyable {
     }
 
     public function reviews() {
-        return $this->hasMany('App\Comment', "meta->post_id", 'id');
+        return $this->hasMany('App\Comment', 'post_id', 'id');
     }
 
     public function newQuery($excludeDeleted = true) {
@@ -42,6 +46,14 @@ class Product extends Post implements Buyable {
 
     public function getAverageRatingAttribute() {
         return round($this->reviews()->avg(DB::raw("cast(meta->>'rating' as integer)")), 1);
+    }
+
+    public function getIsFeaturedAttribute() {
+        return (int) ($this->featured_at != null);
+    }
+
+    public function setFeaturedAtAttribute($value) {
+        $this->attributes['featured_at'] = ($value == self::STT_FEATURED ? Carbon::now() : null);
     }
 
     public function scopeSortByAlphabet($query) {
@@ -71,7 +83,11 @@ class Product extends Post implements Buyable {
     }
 
     public function scopeFeatured($query) {
-        return $query->orderByDesc('created_at')->take(4);
+        return $query->whereNotNull('featured_at')->take(4);
+    }
+
+    public function delete() {
+        $this->reviews()->delete();
     }
 
     /**

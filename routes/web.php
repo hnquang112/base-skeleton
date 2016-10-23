@@ -46,8 +46,10 @@ Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms
     Route::resource('dashboard', 'DashboardController', ['only' => ['index']]);
     Route::resource('tags', 'TagController', ['except' => ['show']]);
     Route::resource('categories', 'CategoryController', ['except' => ['show']]);
-    Route::resource('products', 'ProductController', ['except' => ['show']]);
     Route::resource('users', 'UserController', ['except' => ['show']]);
+
+    Route::post('products/{product}/featured', ['uses' => 'ProductController@featured', 'as' => 'products.featured']);
+    Route::resource('products', 'ProductController', ['except' => ['show']]);
 
     Route::post('articles/{article}/publish', ['uses' => 'ArticleController@publish', 'as' => 'articles.publish']);
     Route::resource('articles', 'ArticleController', ['except' => ['show']]);
@@ -55,9 +57,12 @@ Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms
     Route::get('orders/{checkout}/print', ['uses' => 'OrderController@printOrder', 'as' => 'orders.print']);
     Route::resource('orders', 'OrderController');
 
+    Route::post('reviews/{comment}/approve', ['uses' => 'ReviewController@approve', 'as' => 'reviews.approve']);
+    Route::resource('reviews', 'ReviewController', ['except' => ['show'], 'parameters' => ['reviews' => 'comment']]);
+
     Route::resource('settings', 'SettingController', ['only' => ['index', 'store']]);
     Route::resource('sliders', 'SliderController', ['except' => ['show'], 'parameters' => ['sliders' => 'setting']]);
-    Route::resource('reviews', 'ReviewController', ['except' => ['show'], 'parameters' => ['reviews' => 'comment']]);
-    Route::resource('feedback', 'FeedbackController', ['except' => ['show'], 'parameters' => ['feedback' => 'comment']]);
+    Route::resource('feedback', 'FeedbackController', ['only' => ['index', 'show', 'destroy'], 'parameters' => ['feedback' => 'comment']]);
+    Route::resource('testimonials', 'TestimonialController', ['except' => ['show'], 'parameters' => ['testimonials' => 'comment']]);
     Route::resource('media', 'MediaController', ['only' => 'index']);
 });

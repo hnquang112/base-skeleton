@@ -67,8 +67,39 @@ class ReviewController extends CmsController {
 
     // DELETE: /cms/reviews/1
     public function destroy(Request $request) {
-        $this->deleteMultipleItems(Category::class, $request->selected_ids);
+        $this->deleteMultipleItems(Comment::class, $request->selected_ids);
 
         return back();
+    }
+
+    /**
+     * Toggle approval status of a review
+     */
+    // POST: /cms/reviews/1/approve
+    public function approve($review) {
+        if (is_null($review->approved_at)) {
+            $review->approved_at = Comment::STT_APPROVED;
+        } else {
+            $review->approved_at = Comment::STT_DISAPPROVED;
+        }
+
+        if ($review->save()) {
+            $err = 0;
+            $data = [
+                'status' => $review->is_approved,
+                'value' => $review->approved_at ? $review->approved_at->format('Y-m-d H:i:s') : 'Disapproved',
+            ];
+            $msg = $review->is_approved ? 'Approved' : 'Disapproved';
+        } else {
+            $err = 1;
+            $data = [];
+            $msg = 'Error!';
+        }
+
+        return json_encode([
+            'error' => $err,
+            'message' => $msg,
+            'data' => $data
+        ]);
     }
 }

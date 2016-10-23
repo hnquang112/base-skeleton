@@ -35,7 +35,7 @@
 
             @if (session('contact.saved'))
                 <div class="msg success clearfix">
-                    <p class="fl">@lang ('contact.email_sent')</p>
+                    <p class="fl">@lang ('front.contact.email_sent')</p>
                 </div>
             @endif
 
@@ -69,7 +69,6 @@
                 <button class="button2" type="submit" style="margin-top: 20px">@lang ('front.contact.field.send_email')</button>
             </form>
         </li><!-- END .col-main -->
-
-        {!! Theme::partial('sidebar') !!}
+        @include ('layouts.front._sidebar')
     </ul>
 </div><!-- END .section -->

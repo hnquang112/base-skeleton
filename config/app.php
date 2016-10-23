@@ -183,6 +183,7 @@ return [
         Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
         Jenssegers\Rollbar\RollbarServiceProvider::class,
         Teepluss\Theme\ThemeServiceProvider::class,
+        Themsaid\MailPreview\MailPreviewServiceProvider::class,
 
         /*
          * Application Service Providers...

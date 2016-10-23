@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Eloquent\Dialect\Json;
+use Carbon\Carbon;
 
 class Comment extends Model {
     use SoftDeletes, Json;
@@ -15,6 +16,7 @@ class Comment extends Model {
 
     const TYP_FEEDBACK = 0;
     const TYP_REVIEW = 1;
+    const TYP_TESTIMONIAL = 2;
     const STT_DISAPPROVED = 0;
     const STT_APPROVED = 1;
 
@@ -33,24 +35,37 @@ class Comment extends Model {
         'post_id' => 'required'
     ];
 
+    public static $rulesForCreatingTestimonial = [
+        'name' => 'required|max:255',
+        'message' => 'required',
+        'image' => 'required'
+    ];
+
+    public static $rulesForUpdatingTestimonial = [
+        'name' => 'required|max:255',
+        'message' => 'required'
+    ];
+
     public function __construct() {
         parent::__construct();
         $this->hintJsonStructure('meta', '{
             "name":null,
             "email":null,
             "message":null,
-            "post_id":null,
             "rating":null,
-            "read_by_users":[],
-            "status":null
+            "read_by_users":[]
         }');
     }
 
     /**
      * Accessors
      */
-    public function getStatusClassAttribute() {
-        return $this->status ? 'thumbs-o-up' : 'thumbs-o-down';
+    public function getIsApprovedAttribute() {
+        return (int) ($this->approved_at != null);
+    }
+
+    public function getImagePathAttribute() {
+        return $this->image ? $this->image->path : '';
     }
 
 //    public function getIsReadAttribute() {
@@ -59,10 +74,21 @@ class Comment extends Model {
 //    }
 
     /**
+     * Mutators
+     */
+    public function setApprovedAtAttribute($value) {
+        $this->attributes['approved_at'] = ($value == self::STT_APPROVED ? Carbon::now() : null);
+    }
+
+    /**
      * Relationships
      */
     public function product() {
-        return $this->belongsTo('App\Product', "meta->post_id", 'id');
+        return $this->belongsTo('App\Product', 'post_id', 'id');
+    }
+
+    public function image() {
+        return $this->hasOne('App\File', 'id', 'image_id');
     }
 
     /**
@@ -76,16 +102,22 @@ class Comment extends Model {
         return $query->where('type', self::TYP_REVIEW);
     }
 
+    public function scopeTestimonials($query) {
+        return $query->where('type', self::TYP_TESTIMONIAL);
+    }
+
     public function scopeOrderByDesc($query, $field) {
         return $query->orderBy($field, 'DESC');
     }
 
+    // Filter featured testimonials only
     public function scopeFeatured($query) {
         return $query->orderByDesc('meta->rating')->orderByDesc('created_at')->take(2);
     }
 
+    // Filter approved reviews only
     public function scopeApproved($query) {
-        return $query->where('meta->status', self::STT_APPROVED);
+        return $query->whereNotNull('approved_at');
     }
 
 }

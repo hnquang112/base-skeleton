@@ -22,49 +22,9 @@ class FeedbackController extends CmsController {
         return view('cms.feedback.index', compact('feedback', 'newFb'));
     }
 
-    // GET: /cms/feedback/create
-    public function create() {
-        $feedback = new Comment;
-        $feedback->type = Comment::TYP_FEEDBACK;
-
-        return view('cms.feedback.form', compact('feedback'));
-    }
-
-    // POST: /cms/feedback
-    public function store(Request $request) {
-        $this->validate($request, Comment::$rulesForCreatingFeedback);
-
-        $feedback = new Comment;
-        $feedback->type = Comment::TYP_FEEDBACK;
-        $feedback->fill($request->all());
-
-        if ($feedback->save()) {
-            flash()->success('Saved successfully');
-        } else {
-            flash()->error('Save failed');
-        }
-
-        return back();
-    }
-
-    // GET: /cms/feedback/1/edit
-    public function edit($feedback) {
-        return view('cms.feedback.form', compact('feedback'));
-    }
-
-    // PUT: /cms/feedback/1
-    public function update(Request $request, $feedback) {
-        $this->validate($request, Comment::$rulesForCreatingFeedback);
-
-        $feedback->fill($request->all());
-
-        if ($feedback->save()) {
-            flash()->success('Saved successfully');
-        } else {
-            flash()->error('Save failed');
-        }
-
-        return back();
+    // GET: /cms/feedback/1
+    public function show($feedback) {
+        return view('cms.feedback.show', compact('feedback'));
     }
 
     // DELETE: /cms/feedback/1

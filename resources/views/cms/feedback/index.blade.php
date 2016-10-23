@@ -2,7 +2,7 @@
 
 @section ('content')
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Feedback</h3>
@@ -39,7 +39,7 @@
                                 @foreach ($feedback as $fb)
                                     <tr>
                                         <td><input name="selected_ids[]" type="checkbox" value="{{ $fb->id }}"></td>
-                                        <td><a href="{{ route('cms.feedback.edit', $fb->id) }}">
+                                        <td><a href="{{ route('cms.feedback.show', $fb->id) }}">
 {{--                                                @if (!$fb->is_read) <strong> @endif--}}
                                                     {{ $fb->name }}
 {{--                                                @if (!$fb->is_read) </strong> @endif--}}
@@ -57,62 +57,6 @@
                     <!-- /.mail-box-messages -->
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Create</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                    <!-- /.box-tools -->
-                </div>
-                <form action="{{ $newFb->id ? route('cms.feedback.update', $newFb->id) : route('cms.feedback.store') }}"
-                      method="POST">
-                    {{ csrf_field() }}
-
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="box-body">
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="">Name:</label>
-                                <input name="name" type="text" class="form-control" placeholder="Enter name"
-                                       value="{{ $newFb->name }}">
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
-                                @endif
-                            </div>
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="">Email:</label>
-                                <input name="email" type="email" class="form-control" placeholder="Enter email"
-                                       value="{{ $newFb->email }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
-                                @endif
-                            </div>
-                            <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                                <label for="">Message:</label>
-                                <textarea name="message" class="form-control" placeholder="Enter message" rows="5">{{ $newFb->message }}</textarea>
-
-                                @if ($errors->has('message'))
-                                    <span class="help-block"><strong>{{ $errors->first('message') }}</strong></span>
-                                @endif
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                        <button class="btn btn-primary btn-flat pull-right" type="submit">Save</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.box -->
         </div>
     </div>
 @endsection

@@ -31,7 +31,19 @@ class File extends Model implements StaplerableInterface {
     }
 
     public function getPathAttribute() {
+        return $this->file->url();
+    }
+
+    public function getThumbPathAttribute() {
+        return $this->file->url('thumb');
+    }
+
+    public function getMediumPathAttribute() {
         return $this->file->url('medium');
+    }
+
+    public function getLargePathAttribute() {
+        return $this->file->url('large');
     }
 
 }

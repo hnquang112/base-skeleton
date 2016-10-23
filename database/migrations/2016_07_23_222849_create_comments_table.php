@@ -16,8 +16,13 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->integer('type');
             $table->jsonb('meta')->nullable();
+            $table->timestamp('approved_at')->nullable();
+            $table->integer('post_id')->nullable();
+            $table->integer('image_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->index(['approved_at', 'type']);
         });
     }
 

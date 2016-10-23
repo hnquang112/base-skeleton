@@ -33,16 +33,21 @@
 <div class="section">
     <div class="tag-title-wrap clearfix"><h4 class="tag-title">@lang ('front.home.testimonials')</h4></div>
     <ul class="columns-2 clearfix">
-        @foreach ($reviews as $review)
+        @foreach ($testimonials as $testimonial)
             <li class="col2">
                 <div class="testimonial-wrapper clearfix">
-                    <div class="testimonial-author-image"><img alt="" src="{{ Gravatar::get($review->email) }}"></div>
+                    <div class="testimonial-author-image"><img alt="" src="{{ $testimonial->image_path }}"></div>
                     <div class="testimonial-text">
-                        <p>“{{ $review->message }}”</p>
+                        <p>“{{ $testimonial->message }}”</p>
                     </div>
                     <div class="testimonial-speech"></div>
                 </div>
-                <p class="testimonial-author">{{ $review->name }} - <span>@lang ('home.testimonials.purchased') {{ $review->product->title }}</span></p>
+                <p class="testimonial-author">{{ $testimonial->name }}
+                    @if ($testimonial->product)
+                        - <span>@lang ('front.home.testimonials.purchased')
+                            <a href="{{ $testimonial->product->front_url }}" target="_blank">{{ $testimonial->product->title }}</a></span>
+                    @endif
+                </p>
             </li>
         @endforeach
     </ul>

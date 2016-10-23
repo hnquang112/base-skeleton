@@ -48,9 +48,8 @@
                                     {{--<th>Categories</th>--}}
                                     <th>Tags</th>
                                     <th>Published At</th>
-                                    <th>Created At</th>
                                     <th>Updated At</th>
-                                    <th>View Post</th>
+                                    <th>Publish</th>
                                 </tr></thead>
                                 <tbody>
                                     @foreach ($articles as $article)
@@ -68,12 +67,8 @@
                                                     <span class="text-warning"><strong class="js-publish-status">Draft</strong></span>
                                                 @endif
                                             </td>
-                                            <td>{{ $article->created_at }}</td>
                                             <td>{{ $article->updated_at }}</td>
-                                            <td><a href="{{ $article->front_url }}" class="btn btn-info btn-xs" target="_blank" title="View">
-                                                    <i class="fa fa-external-link"></i></a>
-
-                                                <button data-href="{{ route('cms.articles.publish', $article->id) }}"
+                                            <td><button data-href="{{ route('cms.articles.publish', $article->id) }}"
                                                         class="btn js-button-publish-article btn-warning btn-xs {{ $article->is_published ?: 'hide' }}"
                                                         title="Unpublish">
                                                     <i class="fa fa-eye-slash"></i></button>
@@ -82,6 +77,9 @@
                                                         class="btn js-button-publish-article btn-success btn-xs {{ !$article->is_published ?: 'hide' }}"
                                                         title="Publish">
                                                     <i class="fa fa-eye"></i></button>
+
+                                                <a href="{{ $article->front_url }}" class="btn btn-info btn-xs" target="_blank" title="View Post">
+                                                    <i class="fa fa-external-link"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

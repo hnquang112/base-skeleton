@@ -15,9 +15,12 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('type');
+            $table->integer('image_id')->nullable();
             $table->jsonb('meta')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->index(['type']);
         });
     }
 

@@ -47,9 +47,7 @@ class Post extends Model
             "price":0,
             "discount_price":null,
             "is_in_stock":true,
-            "represent_image_id":null,
-            "product_image_ids":[],
-            "featured":null
+            "product_image_ids":[]
         }');
     }
 
@@ -88,7 +86,7 @@ class Post extends Model
     }
 
     public function represent_image() {
-        return $this->hasOne('App\File', 'id', "meta->>'represent_image_id'");
+        return $this->hasOne('App\File', 'id', 'represent_image_id');
     }
 
     /**
@@ -115,8 +113,7 @@ class Post extends Model
     }
 
     public function getRepresentImagePathAttribute() {
-        return !empty($this->represent_image) ? $this->represent_image->path :
-            'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
+        return !empty($this->represent_image) ? $this->represent_image->path : config('misc.no_preview_image');
     }
 
     /**

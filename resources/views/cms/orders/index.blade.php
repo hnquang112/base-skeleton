@@ -8,9 +8,9 @@
                     <h3 class="box-title">Orders</h3>
 
                     <!--Filter items-->
-                    <a href="{{ route('cms.orders.index') }}">All (442)</a> |
-                    <a href="{{ route('cms.orders.index', ['filter' => 'mine']) }}">Sale (215)</a> |
-                    <a href="{{ route('cms.orders.index', ['filter' => 'published']) }}">Published (442)</a>
+                    {{--<a href="{{ route('cms.orders.index') }}">All (442)</a> |--}}
+                    {{--<a href="{{ route('cms.orders.index', ['filter' => 'mine']) }}">Sale (215)</a> |--}}
+                    {{--<a href="{{ route('cms.orders.index', ['filter' => 'published']) }}">Published (442)</a>--}}
 
                     <div class="box-tools pull-right">
                         <a class="btn btn-primary" href="{{ route('cms.orders.create') }}">Create</a>
@@ -27,31 +27,31 @@
                         <button id="js-button-confirm-delete" type="button" class="btn btn-danger btn-sm" title="Delete">
                             <i class="fa fa-trash-o"></i></button>
 
-                        <form id="js-form-filter-items" action="{{ route('cms.orders.create') }}" method="GET" style="display: inline">
-                            <div class="form-group">
-                                <select name="filter_date" class="form-control">
-                                    <option>Date</option>
-                                    <option>option 1</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
-                                </select>
-                            </div>
+                        {{--<form id="js-form-filter-items" action="{{ route('cms.orders.create') }}" method="GET" style="display: inline">--}}
+                            {{--<div class="form-group">--}}
+                                {{--<select name="filter_date" class="form-control">--}}
+                                    {{--<option>Date</option>--}}
+                                    {{--<option>option 1</option>--}}
+                                    {{--<option>option 2</option>--}}
+                                    {{--<option>option 3</option>--}}
+                                    {{--<option>option 4</option>--}}
+                                    {{--<option>option 5</option>--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
 
-                            <div class="form-group">
-                                <select name="filter_category" class="form-control">
-                                    <option>All</option>
-                                    <option>option 1</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
-                                </select>
-                            </div>
+                            {{--<div class="form-group">--}}
+                                {{--<select name="filter_category" class="form-control">--}}
+                                    {{--<option>All</option>--}}
+                                    {{--<option>option 1</option>--}}
+                                    {{--<option>option 2</option>--}}
+                                    {{--<option>option 3</option>--}}
+                                    {{--<option>option 4</option>--}}
+                                    {{--<option>option 5</option>--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
 
-                            <button type="submit" class="btn btn-default">Filter</button>
-                        </form>
+                            {{--<button type="submit" class="btn btn-default">Filter</button>--}}
+                        {{--</form>--}}
                     </div>
                     <div class="table-responsive mailbox-messages">
                         <form id="js-form-delete" action="{{ route('cms.orders.destroy', $orders->first() ?

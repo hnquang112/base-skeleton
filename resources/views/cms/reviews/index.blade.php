@@ -30,10 +30,11 @@
                                     <th>From</th>
                                     <th>Email</th>
                                     <th>Message</th>
-                                    <th>Status</th>
-                                    <th>Rating</th>
                                     <th>Product</th>
+                                    <th>Approved At</th>
+                                    <th>Rating</th>
                                     <th>Dates</th>
+                                    <th>Action</th>
                                 </tr></thead>
                                 <tbody>
                                 @foreach ($reviews as $rev)
@@ -43,10 +44,25 @@
                                                     {{ $rev->name }}</strong></a></td>
                                         <td>{{ $rev->email }}</td>
                                         <td>{{ $rev->message }}</td>
-                                        <td><i class="fa fa-{{ $rev->status_class }}"></i></td>
+                                        <td><a href="{{ $rev->product->front_url }}" target="_blank">
+                                                {{ $rev->product->title }}</a></td>
+                                        <td>@if ($rev->is_approved)
+                                                <span class="text-success"><strong class="js-publish-status">{{ $rev->approved_at }}</strong></span>
+                                            @else
+                                                <span class="text-warning"><strong class="js-publish-status">Disapproved</strong></span>
+                                            @endif</td>
                                         <td>{{ $rev->rating }}</td>
-                                        <td>{{ $rev->product->title }}</td>
                                         <td>{{ $rev->created_at }}</td>
+                                        <td><button data-href="{{ route('cms.reviews.approve', $rev->id) }}"
+                                                    class="btn js-button-publish-article btn-warning btn-xs {{ $rev->is_approved ?: 'hide' }}"
+                                                    title="Disapprove">
+                                                <i class="fa fa-thumbs-down"></i></button>
+
+                                            <button data-href="{{ route('cms.reviews.approve', $rev->id) }}"
+                                                    class="btn js-button-publish-article btn-success btn-xs {{ !$rev->is_approved ?: 'hide' }}"
+                                                    title="Approve">
+                                                <i class="fa fa-thumbs-up"></i></button>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -77,7 +93,7 @@
                     <div class="box-body">
                         <div class="box-body">
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="">Name:</label>
+                                <label for="">Name (*):</label>
                                 <input name="name" type="text" class="form-control" placeholder="Enter name">
 
                                 @if ($errors->has('name'))
@@ -85,7 +101,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="">Email:</label>
+                                <label for="">Email (*):</label>
                                 <input name="email" type="email" class="form-control" placeholder="Enter email">
 
                                 @if ($errors->has('email'))
@@ -93,7 +109,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
-                                <label for="">Rating:</label>
+                                <label for="">Rating (*):</label>
                                 <select name="rating" class="form-control">
                                     @for ($i = 5; $i >= 1; $i--)
                                         <option value="{{ $i }}">{{ $i }}</option>
@@ -105,7 +121,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                                <label for="">Message:</label>
+                                <label for="">Message (*):</label>
                                 <input name="message" type="text" class="form-control" placeholder="Enter message">
 
                                 @if ($errors->has('message'))
@@ -113,7 +129,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('post_id') ? ' has-error' : '' }}">
-                                <label for="">Product:</label>
+                                <label for="">Product (*):</label>
                                 <select name="post_id" class="form-control select2" style="width: 100%">
                                     @foreach (App\Product::pluck('title', 'id') as $id => $name)
                                         <option value="{{ $id }}">{{ $name }}</option>

@@ -10,29 +10,29 @@
                         {{ csrf_field() }}
                         {{ $user->id ? method_field('PUT') : '' }}
                         <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label">Name</label>
+                            <label for="inputName" class="col-sm-2 control-label">Name (*):</label>
 
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputName" placeholder="John Doe"
-                                    name="display_name" value="{{ $user->display_name }}">
+                                    name="display_name" value="{{ old('display_name') ?: $user->display_name }}">
                                 @if ($errors->has('display_name'))
                                     <span class="help-block"><strong>{{ $errors->first('display_name') }}</strong></span>
                                 @endif
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                            <label for="inputEmail" class="col-sm-2 control-label">Email (*):</label>
 
                             <div class="col-sm-10">
                                 <input type="email" class="form-control" id="inputEmail" placeholder="john.doe@gmail.com"
-                                    name="email" value="{{ $user->email }}">
+                                    name="email" value="{{ old('email') ?: $user->email }}">
                                 @if ($errors->has('email'))
                                     <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
                                 @endif
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputRole" class="col-sm-2 control-label">Role</label>
+                            <label for="inputRole" class="col-sm-2 control-label">Role:</label>
 
                             <div class="col-sm-10">
                                 @if ($user->id)
@@ -50,14 +50,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputRole" class="col-sm-2 control-label">Username</label>
+                            <label for="inputRole" class="col-sm-2 control-label">Username (*):</label>
 
                             <div class="col-sm-10">
                                 @if ($user->id)
                                     <label for="inputUsername" class="control-label">{{ $user->username }}</label>
                                 @else
                                     <input type="text" class="form-control" id="inputUsername" placeholder="john.doe"
-                                           name="username">
+                                           name="username" value="{{ old('username') }}">
                                     @if ($errors->has('username'))
                                         <span class="help-block"><strong>{{ $errors->first('username') }}</strong></span>
                                     @endif
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                            <label for="inputPassword" class="col-sm-2 control-label">Password (*):</label>
 
                             <div class="col-sm-10">
                                 <input type="password" class="form-control" id="inputPassword" placeholder="password"
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPasswordConfirm" class="col-sm-2 control-label">Password confirm</label>
+                            <label for="inputPasswordConfirm" class="col-sm-2 control-label">Password confirm (*):</label>
 
                             <div class="col-sm-10">
                                 <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="password"

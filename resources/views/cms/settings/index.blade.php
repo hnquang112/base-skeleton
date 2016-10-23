@@ -34,19 +34,19 @@
                             <label for="">Contact:</label>
 
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
                                 <input type="text" name="store_address" class="form-control" placeholder="Address"
                                        value="{{ App\Setting::getSiteConfigValue('store_address') }}">
                             </div>
                             <br>
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
                                 <input type="text" name="store_phone" class="form-control" placeholder="Phone"
                                        value="{{ App\Setting::getSiteConfigValue('store_phone') }}">
                             </div>
                             <br>
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
                                 <input type="email" name="store_email" class="form-control" placeholder="Email"
                                        value="{{ App\Setting::getSiteConfigValue('store_email') }}">
                             </div>

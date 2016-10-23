@@ -37,7 +37,9 @@
         "garygreen/pretty-routes": "^0.0.1",
         "brotzka/laravel-dotenv-editor": "^2.0",
         "jenssegers/rollbar": "^1.5",
-        "teepluss/theme": "^2.0"
+        "teepluss/theme": "^2.0",
+        "themsaid/laravel-mail-preview": "^1.2",
+        "spatie/laravel-backup": "^4.0"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.6",

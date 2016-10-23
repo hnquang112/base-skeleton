@@ -8,8 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Order;
 
-class OrderCreated extends Notification implements ShouldQueue
-{
+class OrderCreated extends Notification implements ShouldQueue {
     use Queueable;
 
     protected $order;
@@ -32,7 +31,7 @@ class OrderCreated extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**

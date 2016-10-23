@@ -7,42 +7,42 @@ var publicPath = 'public/';
 
 // Add path of file for js concatenating task
 var cmsScriptPaths = [
-    '../../../bower_components/jquery/dist/jquery.min.js',
-    '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-    '../../../bower_components/AdminLTE/plugins/fastclick/fastclick.min.js',
-    '../../../bower_components/AdminLTE/dist/js/app.min.js',
-    '../../../bower_components/AdminLTE/plugins/sparkline/jquery.sparkline.min.js',
-    // '../../../bower_components/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js',
-    // '../../../bower_components/AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js',
-    '../../../bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js',
-    // '../../../bower_components/AdminLTE/plugins/chartjs/Chart.min.js',
-    // '../../../bower_components/AdminLTE/plugins/iCheck/icheck.min.js',
-    '../../../bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js',
-    '../../../bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js',
-    '../../../bower_components/AdminLTE/plugins/select2/select2.full.min.js',
-    '../../../bower_components/summernote/dist/summernote.min.js',
-    '../../../bower_components/summernote/dist/lang/summernote-vi-VN.min.js',
-    '../../../bower_components/toastr/toastr.min.js',
-    '../../../bower_components/jquery-ui/jquery-ui.min.js',
-    // '../../../bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js',
-    // '../../../bower_components/blueimp-file-upload/js/jquery.iframe-transport.js',
-    // '../../../bower_components/blueimp-file-upload/js/jquery.fileupload.js',
+    '../../../node_modules/jquery/dist/jquery.min.js',
+    '../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+    '../../../node_modules/admin-lte/plugins/fastclick/fastclick.min.js',
+    '../../../node_modules/admin-lte/dist/js/app.min.js',
+    '../../../node_modules/admin-lte/plugins/sparkline/jquery.sparkline.min.js',
+    // '../../../node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js',
+    // '../../../node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js',
+    '../../../node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js',
+    // '../../../node_modules/admin-lte/plugins/chartjs/Chart.min.js',
+    // '../../../node_modules/admin-lte/plugins/iCheck/icheck.min.js',
+    '../../../node_modules/admin-lte/plugins/datatables/jquery.dataTables.min.js',
+    '../../../node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.min.js',
+    '../../../node_modules/admin-lte/plugins/select2/select2.full.min.js',
+    '../../../node_modules/summernote/dist/summernote.min.js',
+    '../../../node_modules/summernote/dist/lang/summernote-vi-VN.min.js',
+    '../../../node_modules/toastr/build/toastr.min.js',
+    '../../../node_modules/jquery-ui-dist/jquery-ui.min.js',
+    // '../../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js',
+    // '../../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js',
+    // '../../../node_modules/blueimp-file-upload/js/jquery.fileupload.js',
 ];
 
 var cmsStylePaths = [
-    '../../../bower_components/AdminLTE/bootstrap/css/bootstrap.min.css',
-    '../../../bower_components/fontawesome/css/font-awesome.min.css',
-    '../../../bower_components/Ionicons/css/ionicons.min.css',
-    // '../../../bower_components/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css',
-    '../../../bower_components/AdminLTE/dist/css/AdminLTE.min.css',
-    '../../../bower_components/AdminLTE/dist/css/skins/_all-skins.min.css',
-    // '../../../bower_components/AdminLTE/plugins/iCheck/square/purple.css',
-    '../../../bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css',
-    '../../../bower_components/AdminLTE/plugins/select2/select2.min.css',
-    '../../../bower_components/summernote/dist/summernote.css',
-    '../../../bower_components/toastr/toastr.min.css',
-    '../../../bower_components/flag-icon-css/css/flag-icon.min.css',
-    '../../../bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css',
+    '../../../node_modules/admin-lte/bootstrap/css/bootstrap.min.css',
+    '../../../node_modules/font-awesome/css/font-awesome.min.css',
+    '../../../node_modules/ionicons/dist/css/ionicons.min.css',
+    // '../../../node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css',
+    '../../../node_modules/admin-lte/dist/css/AdminLTE.min.css',
+    '../../../node_modules/admin-lte/dist/css/skins/_all-skins.min.css',
+    // '../../../node_modules/admin-lte/plugins/iCheck/square/purple.css',
+    '../../../node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.css',
+    '../../../node_modules/admin-lte/plugins/select2/select2.min.css',
+    '../../../node_modules/summernote/dist/summernote.css',
+    '../../../node_modules/toastr//build/toastr.min.css',
+    '../../../node_modules/flag-icon-css/css/flag-icon.min.css',
+    '../../../node_modules/jquery-ui-dist/jquery-ui.min.css',
 ];
 
 var scriptPaths = [
@@ -78,18 +78,18 @@ var copyPaths = [{
     src: 'js',
     dest: 'js'
 }, {
-    src: 'images',
-    dest: 'img'
-}, {
-    src: 'plugins/flexslider/**',
+    src: 'plugins/organic.shop.theme/flexslider/**',
     dest: 'css/fonts'
+}, {
+    src: 'plugins/organic.shop.theme/images',
+    dest: 'img'
 }];
 
 var copyBuildPaths = [{
     src: 'plugins/flag-icon-css/**',
     dest: 'flags'
 }, {
-    src: 'icons',
+    src: 'plugins/organic.shop.theme/icons',
     dest: 'img'
 }, {
     src: 'fonts',

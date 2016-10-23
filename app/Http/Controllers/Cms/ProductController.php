@@ -40,9 +40,7 @@ class ProductController extends CmsController {
 
             $product->fill($request->except('represent_image'));
 
-        if (!empty($request->represent_image)) {
-            $product->represent_image_id = create_file_from_path($request->represent_image);
-        }
+        if ($request->hasFile('represent_image')) $product->represent_image_id = create_file_from_path($request->represent_image);
 
         if ($product->save()) {
             $product->syncCategories($request->input('category_ids', []));
@@ -70,9 +68,7 @@ class ProductController extends CmsController {
 
         $product->fill($request->except('represent_image'));
 
-        if (!empty($request->represent_image)) {
-            $product->represent_image_id = create_file_from_path($request->represent_image);
-        }
+        if ($request->hasFile('represent_image')) $product->represent_image_id = create_file_from_path($request->represent_image);
 
         if ($product->save()) {
             $product->syncCategories($request->input('category_ids', []));
@@ -94,4 +90,31 @@ class ProductController extends CmsController {
         return back();
     }
 
+    // POST: /cms/products/1/featured
+    public function featured($product) {
+        if (is_null($product->featured_at)) {
+            $product->featured_at = Product::STT_FEATURED;
+        } else {
+            $product->featured_at = Product::STT_NORMAL;
+        }
+
+        if ($product->save()) {
+            $err = 0;
+            $data = [
+                'status' => $product->is_featured,
+                'value' => $product->featured_at ? $product->featured_at->format('Y-m-d H:i:s') : 'Not Featured',
+            ];
+            $msg = $product->is_featured ? 'Featured' : 'Not Featured';
+        } else {
+            $err = 1;
+            $data = [];
+            $msg = 'Error!';
+        }
+
+        return json_encode([
+            'error' => $err,
+            'message' => $msg,
+            'data' => $data
+        ]);
+    }
 }
