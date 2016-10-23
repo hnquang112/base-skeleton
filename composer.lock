@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f808315cf76fc997df787eb079f89b23",
-    "content-hash": "e76ca166665ea39c925926e39945edf6",
+    "hash": "2c0d762b0be86c662e8b6a747fdb6302",
+    "content-hash": "38603ee36063658973a24d850b0b14d0",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -1817,16 +1817,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.30",
+            "version": "1.0.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "75138bb14160f3ba963750aa95e08d1d394fb198"
+                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/75138bb14160f3ba963750aa95e08d1d394fb198",
-                "reference": "75138bb14160f3ba963750aa95e08d1d394fb198",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
+                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
                 "shasum": ""
             },
             "require": {
@@ -1896,7 +1896,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-10-18 16:20:02"
+            "time": "2016-10-19 20:38:46"
         },
         {
             "name": "league/flysystem-cached-adapter",
@@ -2999,16 +2999,16 @@
         },
         {
             "name": "spatie/db-dumper",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/db-dumper.git",
-                "reference": "cf3e695627755effc8e6e1aa9437aafac5f56cc6"
+                "reference": "0987ad5d748791bea61aa345ff7820a5ba0efb54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/db-dumper/zipball/cf3e695627755effc8e6e1aa9437aafac5f56cc6",
-                "reference": "cf3e695627755effc8e6e1aa9437aafac5f56cc6",
+                "url": "https://api.github.com/repos/spatie/db-dumper/zipball/0987ad5d748791bea61aa345ff7820a5ba0efb54",
+                "reference": "0987ad5d748791bea61aa345ff7820a5ba0efb54",
                 "shasum": ""
             },
             "require": {
@@ -3045,20 +3045,20 @@
                 "mysqldump",
                 "spatie"
             ],
-            "time": "2016-09-17 13:42:57"
+            "time": "2016-10-20 22:16:18"
         },
         {
             "name": "spatie/laravel-analytics",
-            "version": "2.2.2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-analytics.git",
-                "reference": "50531d2ee760d67b19100450b1f89e7615338c5b"
+                "reference": "18e4132ec94e07288affe8cf46d79308d408e926"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-analytics/zipball/50531d2ee760d67b19100450b1f89e7615338c5b",
-                "reference": "50531d2ee760d67b19100450b1f89e7615338c5b",
+                "url": "https://api.github.com/repos/spatie/laravel-analytics/zipball/18e4132ec94e07288affe8cf46d79308d408e926",
+                "reference": "18e4132ec94e07288affe8cf46d79308d408e926",
                 "shasum": ""
             },
             "require": {
@@ -3102,20 +3102,20 @@
                 "retrieve",
                 "spatie"
             ],
-            "time": "2016-08-23 15:06:52"
+            "time": "2016-10-20 09:38:38"
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "4.0.3",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "af2ef212ec0c392708f1ffcd6ad6ff797e29d013"
+                "reference": "954723612fb79cd501770d556124f25f6c39a666"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/af2ef212ec0c392708f1ffcd6ad6ff797e29d013",
-                "reference": "af2ef212ec0c392708f1ffcd6ad6ff797e29d013",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/954723612fb79cd501770d556124f25f6c39a666",
+                "reference": "954723612fb79cd501770d556124f25f6c39a666",
                 "shasum": ""
             },
             "require": {
@@ -3123,16 +3123,18 @@
                 "illuminate/contracts": "~5.3.8",
                 "illuminate/events": "~5.3.8",
                 "illuminate/filesystem": "~5.3.8",
+                "illuminate/notifications": "~5.3.8",
                 "illuminate/support": "~5.3.8",
                 "league/flysystem": "^1.0.27",
                 "php": "^7.0",
-                "spatie/db-dumper": "^2.0",
+                "spatie/db-dumper": "^2.1",
                 "symfony/finder": "^3.0"
             },
             "require-dev": {
+                "laravel/framework": "~5.3.8",
                 "mockery/mockery": "^0.9.5",
-                "orchestra/testbench": "^3.3.1",
-                "phpunit/phpunit": "^5.5.4",
+                "orchestra/testbench": "^3.3.3",
+                "phpunit/phpunit": "^5.3.0",
                 "tightenco/mailthief": "^0.3.1"
             },
             "suggest": {
@@ -3167,7 +3169,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2016-10-02 06:12:24"
+            "time": "2016-10-20 22:28:31"
         },
         {
             "name": "spatie/laravel-responsecache",
@@ -4176,6 +4178,61 @@
             "time": "2016-09-29 14:13:09"
         },
         {
+            "name": "teepluss/theme",
+            "version": "2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/teepluss/laravel-theme.git",
+                "reference": "7eba5032584bb15ef640950faf7360c738bcc380"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/teepluss/laravel-theme/zipball/7eba5032584bb15ef640950faf7360c738bcc380",
+                "reference": "7eba5032584bb15ef640950faf7360c738bcc380",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "twig/twig": "1.x"
+            },
+            "require-dev": {
+                "illuminate/support": ">=5.0.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Teepluss\\Theme\\": "src/"
+                },
+                "classmap": [
+                    "src/Exceptions.php"
+                ],
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Teepluss",
+                    "email": "admin@laravel.in.th"
+                }
+            ],
+            "description": "Theme will help you organize your themes inside Laravel projects easily and maintain its related assets, layouts and partials for the theme in single directory.",
+            "homepage": "https://github.com/teepluss/laravel-theme",
+            "keywords": [
+                "asset",
+                "laravel",
+                "layout",
+                "theme",
+                "twig",
+                "widget"
+            ],
+            "time": "2015-11-13 05:24:05"
+        },
+        {
             "name": "themsaid/laravel-mail-preview",
             "version": "v1.2.5",
             "source": {
@@ -4226,6 +4283,67 @@
                 "mail"
             ],
             "time": "2016-08-23 23:22:26"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v1.26.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "a09d8ee17ac1cfea29ed60c83960ad685c6a898d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a09d8ee17ac1cfea29ed60c83960ad685c6a898d",
+                "reference": "a09d8ee17ac1cfea29ed60c83960ad685c6a898d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.7"
+            },
+            "require-dev": {
+                "symfony/debug": "~2.7",
+                "symfony/phpunit-bridge": "~2.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.26-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "http://twig.sensiolabs.org/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2016-10-05 18:57:41"
         },
         {
             "name": "tymon/jwt-auth",
