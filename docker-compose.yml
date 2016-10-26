@@ -11,6 +11,7 @@ services:
                 - INSTALL_XDEBUG=true
                 - INSTALL_MONGO=false
                 - INSTALL_NODE=true
+                - INSTALL_YARN=false
                 - INSTALL_DRUSH=false
                 - INSTALL_AEROSPIKE_EXTENSION=false
                 - COMPOSER_GLOBAL_INSTALL=true
@@ -18,6 +19,7 @@ services:
                 - PUID=1000
                 - PGID=1000
                 - NODE_VERSION=stable
+                - TZ=UTC
         volumes_from:
             - volumes_source
         extra_hosts:
@@ -76,7 +78,7 @@ services:
 #        build:
 #            context: ./apache2
 #            args:
-#                - PHP_SOCKET="php-fpm:9000"
+#                - PHP_SOCKET=php-fpm:9000
 #        volumes_from:
 #            - volumes_source
 #        volumes:
@@ -112,19 +114,6 @@ services:
 #            MYSQL_PASSWORD: secret
 #            MYSQL_ROOT_PASSWORD: root
 
-### PostgreSQL Container ####################################
-
-    postgres:
-        build: ./laradock/postgres
-        volumes_from:
-            - volumes_data
-        ports:
-            - "54320:5432"
-        environment:
-            POSTGRES_DB: homestead
-            POSTGRES_USER: homestead
-            POSTGRES_PASSWORD: secret
-
 ### MariaDB Container #######################################
 
 #    mariadb:
@@ -138,6 +127,19 @@ services:
 #            MYSQL_USER: homestead
 #            MYSQL_PASSWORD: secret
 #            MYSQL_ROOT_PASSWORD: root
+
+### PostgreSQL Container ####################################
+
+    postgres:
+        build: ./laradock/postgres
+        volumes_from:
+            - volumes_data
+        ports:
+            - "54320:5432"
+        environment:
+            POSTGRES_DB: homestead
+            POSTGRES_USER: homestead
+            POSTGRES_PASSWORD: secret
 
 ### Neo4j Container #########################################
 
@@ -290,9 +292,6 @@ services:
         image: tianon/true
         volumes:
             - ./:/var/www/laravel
-            # Demonstration of how to mount multiple sites
-            # - ../../site_a/:/var/www/site_a
-            # - ../../site_b/:/var/www/site_b
 
 ### Databases Data Container ################################
 
@@ -300,7 +299,7 @@ services:
         image: tianon/true
         volumes:
             - ./laradock/data/mysql:/var/lib/mysql
-            - /var/lib/postgresql/data
+            - ./laradock/data/postgresql:/var/lib/postgresql/data
             - ./laradock/data/memcached:/var/lib/memcached
             - ./laradock/data/redis:/data
             - ./laradock/data/neo4j:/var/lib/neo4j/data
