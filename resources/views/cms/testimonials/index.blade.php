@@ -80,7 +80,7 @@
                                 <img id="js-image-thumbnail-gotten" src="" width="100px" height="auto">
 
                                 @if ($errors->has('image'))
-                                    <span class="help-block"><strong>{{ $error->first('image') }}</strong></span>
+                                    <span class="help-block"><strong>{{ $errors->first('image') }}</strong></span>
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
