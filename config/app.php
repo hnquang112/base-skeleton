@@ -181,7 +181,6 @@ return [
         Spatie\Analytics\AnalyticsServiceProvider::class,
         PrettyRoutes\ServiceProvider::class,
         Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
-        Jenssegers\Rollbar\RollbarServiceProvider::class,
         Themsaid\MailPreview\MailPreviewServiceProvider::class,
 
         /*

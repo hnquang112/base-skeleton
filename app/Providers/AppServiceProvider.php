@@ -42,9 +42,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if ($this->app->environment('local')) {
             $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
-        }
-
-        if ($this->app->environment('production')) {
+        } else {
             $this->app->register('Jenssegers\Rollbar\RollbarServiceProvider');
         }
     }

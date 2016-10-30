@@ -1,5 +1,8 @@
 {
-  "cacheDirectories": ["node_modules", "bower_components"],
+  "cacheDirectories": [
+    "node_modules",
+    "bower_components"
+  ],
   "private": true,
   "name": "base-skeleton",
   "description": "a really cool app",

@@ -15,7 +15,7 @@ class Post extends Model
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['title', 'short_description', 'published_at', 'content', 'seo_title', 'seo_description',
-        'seo_keywords', 'price', 'discount_price', 'is_in_stock', 'product_image_ids'];
+        'seo_keywords', 'price', 'discount_price', 'is_in_stock', 'image_ids'];
     protected $jsonColumns = ['meta'];
     protected $attributes = [
         'type' => self::TYP_ARTICLE,
@@ -47,7 +47,7 @@ class Post extends Model
             "price":0,
             "discount_price":null,
             "is_in_stock":true,
-            "product_image_ids":[]
+            "image_ids":[]
         }');
     }
 

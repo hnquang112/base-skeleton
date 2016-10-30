@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Cms;
 
 use App\Article;
 use Illuminate\Http\Request;
-use Laracasts\Flash\Flash;
 use App\Repositories\PostRepository;
 
 class ArticleController extends CmsController {

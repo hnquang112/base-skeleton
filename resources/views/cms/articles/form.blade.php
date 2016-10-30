@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                             <label for="">Content (*):</label>
-                            <textarea name="content" id="summernote" class="hidden">{{ old('content') ?: $article->content }}</textarea>
+                            <textarea name="content" id="summernote" class="hidden" data-token="{{ csrf_token() }}">{{ old('content') ?: $article->content }}</textarea>
 
                             @if ($errors->has('content'))
                                 <span class="help-block"><strong>{{ $errors->first('content') }}</strong></span>

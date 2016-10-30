@@ -17,6 +17,20 @@ var Common = {
     setupWysiwygEditor: function () {
         $('#summernote').summernote({
             minHeight: 300,
+            tabsize: 2,
+            toolbar: [
+                ['style', ['style']],
+                ['style', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['table', ['table']],
+                ['insert', ['link', 'elfinder', 'video', 'hr', 'readmore']],
+                ['view', ['fullscreen', 'codeview']],
+                ['help', ['help']]
+            ],
             callbacks: {
                 onChange: function(contents, $editable) {
                     $('#this').val(contents);
@@ -132,3 +146,22 @@ var Common = {
         this.setupButtonInFormPages();
     }
 };
+
+function elfinderDialog(){
+    var fm = $('<div/>').css('z-index', 999).dialogelfinder({
+        url : '/cms/elfinder/connector' + '?_token=' + $('#summernote').data('token'),
+        lang : 'en',
+        width : '70%',
+        height: 450,
+        destroyOnClose : true,
+        getFileCallback : function(files, fm) {
+            $('#summernote').summernote('insertImage',files.url);
+        },
+        commandsOptions : {
+            getfile : {
+                oncomplete : 'close',
+                folders : false
+            }
+        }
+    }).dialogelfinder('instance');
+}

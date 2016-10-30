@@ -227,8 +227,8 @@
                 <li title="View Front Page"><a href="{{ url('/') }}" target="_blank">
                         <i class="fa fa-lg fa-crosshairs" aria-hidden="true"></i></a></li>
                 <!-- Language selector -->
-                <li class="dropdown" title="Change CMS Page Language">
-                    <?php $lCms = App\Setting::getSiteConfigValue('cms_page_language') ?>
+                {{--<li class="dropdown" title="Change CMS Page Language">
+                    <?php $lCms = App\Setting::getSiteConfigValue('cms_page_language')?>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="flag-icon flag-icon-{{ App\Setting::$languages[$lCms]['flag'] }}"></span>
                         {{ App\Setting::$languages[$lCms]['name'] }} <span class="caret"></span></a>
@@ -239,7 +239,7 @@
                                 </a></li>
                         @endforeach
                     </ul>
-                </li>
+                </li>--}}
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
