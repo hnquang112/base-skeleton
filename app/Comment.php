@@ -65,7 +65,7 @@ class Comment extends Model {
     }
 
     public function getImagePathAttribute() {
-        return $this->image ? $this->image->path : '';
+        return $this->image ? $this->image->url : '';
     }
 
 //    public function getIsReadAttribute() {

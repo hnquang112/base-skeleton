@@ -113,7 +113,7 @@ class Post extends Model
     }
 
     public function getRepresentImagePathAttribute() {
-        return !empty($this->represent_image) ? $this->represent_image->path : config('misc.no_preview_image');
+        return !empty($this->represent_image) ? $this->represent_image->getScaledUrl() : config('misc.no_preview_image');
     }
 
     /**

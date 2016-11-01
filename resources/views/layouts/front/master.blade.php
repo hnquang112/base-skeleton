@@ -65,6 +65,8 @@
     <div class="wrapper">
         @include ('layouts.front._header')
 
+        @include ('layouts.front._slider')
+
         @yield ('content')
 
         @include ('layouts.front._footer')

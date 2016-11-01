@@ -72,7 +72,7 @@ class Setting extends Model {
      * Accessors
      */
     public function getImagePathAttribute() {
-        return $this->image ? $this->image->path : '';
+        return $this->image ? $this->image->url : '';
     }
 
     /**

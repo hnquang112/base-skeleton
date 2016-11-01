@@ -176,7 +176,6 @@ return [
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
-        Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
         PrettyRoutes\ServiceProvider::class,

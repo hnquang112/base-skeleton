@@ -8,42 +8,71 @@
 
 namespace App;
 
+use Eloquent\Dialect\Json;
 use Illuminate\Database\Eloquent\Model;
-use Codesleeve\Stapler\ORM\StaplerableInterface;
-use Codesleeve\Stapler\ORM\EloquentTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class File extends Model implements StaplerableInterface {
-    use EloquentTrait;
+class File extends Model {
+    use Json, SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['file'];
+    protected $fillable = [];
+    protected $jsonColumns = ['meta'];
 
-    const TYP_EXTERNAL = 0;
-    const TYP_INTERNAL = 1;
+    const TYP_INTERNAL = 0;
+    const TYP_EXTERNAL = 1;
+
+    const SIZ_THUMB = 100;
+    const SIZ_MEDIUM = 480;
+    const SIZ_LARGE = 960;
+    const SIZ_FULL = 1920;
 
     public function __construct() {
         parent::__construct();
-        $this->hasAttachedFile('file', [
-            'styles' => config('laravel-stapler.stapler.styles'),
-            'url' => config('laravel-stapler.filesystem.url'),
-            'path' => config('laravel-stapler.filesystem.path'),
-        ]);
+        $this->hintJsonStructure('meta', '{
+            "name":null,
+			"size":null,
+			"content_type":null,
+			"extension":null
+		}');
     }
 
-    public function getPathAttribute() {
-        return $this->file->url();
+    public function getIsExternalAttribute() {
+        return $this->type == self::TYP_EXTERNAL;
     }
 
-    public function getThumbPathAttribute() {
-        return $this->file->url('thumb');
+    public function getUrlAttribute() {
+        return $this->is_external ? $this->path : asset($this->path);
     }
 
-    public function getMediumPathAttribute() {
-        return $this->file->url('medium');
-    }
+    public function getScaledUrl($scale = 'medium') {
+        if (!is_string($this->path)) {
+            return config('misc.no_preview_image');
+        }
 
-    public function getLargePathAttribute() {
-        return $this->file->url('large');
+        $server = crc32($this->path) % 5;
+
+        switch ($scale) {
+            case 'thumb':
+                $size = self::SIZ_THUMB;
+                break;
+            case 'large':
+                $size = self::SIZ_LARGE;
+                break;
+            case 'full':
+                $size = self::SIZ_FULL;
+                break;
+            default:
+                $size = self::SIZ_MEDIUM;
+                break;
+        }
+
+        if (app('env') != 'local') {
+            return '//images' . $server . '-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&resize_w=' .
+                $size . '&rewriteMime=image/*&url=' . urlencode(asset($this->path));
+        } else {
+            return asset($this->path);
+        }
     }
 
 }

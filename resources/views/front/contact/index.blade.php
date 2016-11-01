@@ -1,8 +1,6 @@
 @extends ('layouts.front.master')
 
 @section ('content')
-    <div id="page-header"><img src="{{ asset('img/page-header1.jpg') }}" alt=""></div>
-
     <!-- BEGIN .section -->
     <div class="section">
         <ul class="columns-content page-content clearfix">
