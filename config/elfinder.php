@@ -88,7 +88,7 @@ return array(
     |
     */
     'root_options' => array(
-
+        'uploadDeny' => ['text/x-php']
     ),
 
 );

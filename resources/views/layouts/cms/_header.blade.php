@@ -228,7 +228,7 @@
                         <i class="fa fa-lg fa-crosshairs" aria-hidden="true"></i></a></li>
                 <!-- Language selector -->
                 {{--<li class="dropdown" title="Change CMS Page Language">--}}
-                    <?php $lCms = App\Setting::getSiteConfigValue('cms_page_language') ?>
+                    <?php //$lCms = App\Setting::getSiteConfigValue('cms_page_language') ?>
                     {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
                         {{--<span class="flag-icon flag-icon-{{ App\Setting::$languages[$lCms]['flag'] }}"></span>--}}
                         {{--{{ App\Setting::$languages[$lCms]['name'] }} <span class="caret"></span></a>--}}

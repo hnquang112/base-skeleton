@@ -181,6 +181,7 @@ return [
         PrettyRoutes\ServiceProvider::class,
         Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
         Themsaid\MailPreview\MailPreviewServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
         /*
          * Application Service Providers...

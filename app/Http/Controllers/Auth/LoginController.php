@@ -48,4 +48,15 @@ class LoginController extends Controller
         return auth()->guard('cms');
     }
 
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect('/cms');
+    }
+
 }
