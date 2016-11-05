@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -62,5 +63,21 @@ class Handler extends ExceptionHandler
         }
 
         return redirect()->guest('login');
+    }
+
+    protected function renderHttpException(HttpException $e)
+    {
+        $status = $e->getStatusCode();
+
+        $view = 'front';
+        if (\Request::is('cms/*')) {
+            $view = 'cms';
+        }
+
+        if (view()->exists("{$view}.errors.{$status}")) {
+            return response()->view("{$view}.errors.{$status}", ['exception' => $e], $status, $e->getHeaders());
+        } else {
+            return $this->convertExceptionToResponse($e);
+        }
     }
 }
