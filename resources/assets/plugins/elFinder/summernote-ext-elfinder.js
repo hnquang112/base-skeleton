@@ -11,31 +11,30 @@
     factory(window.jQuery);
   }
 }(function ($) {
-    
   // Extends plugins for adding readmore.
-  //  - plugin is external module for customizing.
+  //    - plugin is external module for customizing.
   $.extend($.summernote.plugins, {
     /**
-      * @param {Object} context - context object has status of editor.
-      */
+     * @param {Object} context - context object has status of editor.
+     */
     'elfinder': function (context) {
       var self = this;
-      
+
       // ui has renders to build ui elements.
-      //  - you can create a button with `ui.button`
+      //    - you can create a button with `ui.button`
       var ui = $.summernote.ui;
-      
+
       // add elfinder button
       context.memo('button.elfinder', function () {
         // create button
         var button = ui.button({
-          contents: '<i class="fa fa-picture-o"/>',
-          tooltip: 'Picture',
+          contents: '<i class="fa fa-cloud-upload"/>',
+          tooltip: 'Upload and insert',
           click: function () {
             elfinderDialog();
           }
         });
-        
+
         // create jQuery object from button instance.
         var $elfinder = button.render();
         return $elfinder;

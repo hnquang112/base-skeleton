@@ -84,7 +84,7 @@
                         <a href="{{ route('cms.users.create') }}"><i class="fa fa-circle-o"></i> Add New User</a>
                     </li>
                     <li {{ $request->is('cms/feedback*') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.feedback.index') }}"><i class="fa fa-envelope"></i> Customer Feedback</a>
+                        <a href="{{ route('cms.feedback.index') }}"><i class="fa fa-envelope-open-o"></i> Customer Feedback</a>
                     </li>
                 </ul>
             </li>

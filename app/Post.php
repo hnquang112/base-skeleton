@@ -34,7 +34,7 @@ class Post extends Model
         'title' => 'required|max:255',
         'short_description' => 'required|max:255',
         'content' => 'required',
-        'represent_image' => 'image'
+//        'represent_image' => 'image'
     ];
 
     public function __construct() {

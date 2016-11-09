@@ -41,11 +41,12 @@ class Setting extends Model {
 
     public static $rulesForCreatingSliders = [
         'label' => 'required|max:255',
-        'image' => 'required'
+        'image' => 'required|string'
     ];
 
     public static $rulesForUpdatingSliders = [
-        'label' => 'required|max:255'
+        'label' => 'required|max:255',
+        'image' => 'nullable|string'
     ];
 
     public function __construct() {

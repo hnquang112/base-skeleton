@@ -4,7 +4,7 @@
     <div class="row">
         <!-- form start -->
         <form action="{{ $product->id ? route('cms.products.update', $product->id) : route('cms.products.store') }}"
-              id="js-save-post-form" method="POST" enctype="multipart/form-data">
+              id="js-save-post-form" method="POST">
             {{ csrf_field() }}
             {{ $product->id ? method_field('PUT') : '' }}
 
@@ -73,15 +73,12 @@
                         </div><!-- /.box-tools -->
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        <label for="">Image:</label>
-                        <input name="represent_image" id="js-input-image" type="file" class="form-control" accept="image/*">
+                        @include ('layouts.cms._file_selector', ['inputName' => 'represent_image',
+                            'filePath' => $product->represent_image_path])
 
                         @if ($errors->has('represent_image'))
                             <span class="help-block"><strong>{{ $errors->first('represent_image') }}</strong></span>
                         @endif
-
-                        <img id="js-image-thumbnail-gotten" src="{{ $product->represent_image_path }}" width="100%"
-                             height="auto">
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
 

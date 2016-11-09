@@ -26,8 +26,7 @@
                         </div>
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                             <label for="">Avatar (*):</label>
-                            <input name="image" id="js-input-image" type="file" class="form-control" accept="image/*">
-                            <img id="js-image-thumbnail-gotten" src="{{ $testimonial->image_path }}" width="100px" height="auto">
+                            @include ('layouts.cms._file_selector', ['inputName' => 'image', 'filePath' => $testimonial->image_path])
 
                             @if ($errors->has('image'))
                                 <span class="help-block"><strong>{{ $error->first('image') }}</strong></span>

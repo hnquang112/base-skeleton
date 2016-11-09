@@ -30,7 +30,7 @@ class SliderController extends CmsController {
 
         $slider = new Setting;
         $slider->type = Setting::TYP_SLIDER;
-        if ($request->hasFile('image')) $slider->image_id = create_file_from_path($request->image);
+        if (!empty($request->image)) $slider->image_id = create_file_from_path($request->image);
         $slider->fill($request->except('image'));
 
         if ($slider->save()) {
@@ -51,7 +51,7 @@ class SliderController extends CmsController {
     public function update(Request $request, $slider) {
         $this->validate($request, Setting::$rulesForUpdatingSliders);
 
-        if ($request->hasFile('image')) $slider->image_id = create_file_from_path($request->image);
+        if (!empty($request->image)) $slider->image_id = create_file_from_path($request->image);
         $slider->fill($request->except('image'));
 
         if ($slider->save()) {

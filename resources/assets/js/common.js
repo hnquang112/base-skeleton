@@ -6,6 +6,8 @@ $(document).ready(function () {
 });
 
 var Common = {
+    _token: $('meta[name=csrf-token]').attr('content'),
+
     configAjax: function () {
         $.ajaxSetup({
             headers: {
@@ -27,9 +29,10 @@ var Common = {
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['height', ['height']],
                 ['table', ['table']],
-                ['insert', ['link', 'elfinder', 'video', 'hr', 'readmore']],
+                ['insert', ['link', 'picture', 'video', 'hr', 'readmore']],
                 ['view', ['fullscreen', 'codeview']],
-                ['help', ['help']]
+                ['help', ['help']],
+                ['mybutton', ['elfinder']]
             ],
             callbacks: {
                 onChange: function(contents, $editable) {
@@ -116,25 +119,68 @@ var Common = {
         })
     },
 
-    setupButtonInFormPages: function() {
-        var $input = $('#js-input-image'),
-            $image = $('#js-image-thumbnail-gotten');
+    // setupButtonInFormPages: function() {
+    //     var $input = $('#js-input-image'),
+    //         $image = $('#js-image-thumbnail-gotten');
+    //
+    //     function readURL(input) {
+    //         if (input.files && input.files[0]) {
+    //             var reader = new FileReader();
+    //
+    //             reader.onload = function (e) {
+    //                 $image.attr('src', e.target.result);
+    //             }
+    //
+    //             reader.readAsDataURL(input.files[0]);
+    //         }
+    //     }
+    //
+    //     $input.change(function(){
+    //         readURL(this);
+    //     });
+    // },
 
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+    setupElFinderDialog: function() {
+        var that = this;
 
-                reader.onload = function (e) {
-                    $image.attr('src', e.target.result);
-                }
+        $("#js-open-elfinder").click(function(e) {
+            e.preventDefault();
+            var $that = $(this);
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $input.change(function(){
-            readURL(this);
+            that._openElFinderDialog(function (filePath) {
+                $('#' + $that.data('image-id')).attr('src', filePath);
+                $('#' + $that.data('input-id')).val(filePath);
+            })
         });
+    },
+
+    _openElFinderDialog: function(callback) {
+        var elf = $('<div/>').css('z-index', 999).dialogelfinder({
+            customData: {
+                _token: Common._token
+            },
+            getfile: {
+                onlyURL: true,
+                multiple: false,
+                folders: false,
+                oncomplete: ''
+            },
+            url: '/cms/elfinder/connector',  // connector URL
+            lang: 'en',
+            width: '70%',
+            height: 450,
+            destroyOnClose: true,
+            getFileCallback: function(file, fm) {
+                // pass relative url of file to callback function, ex: "/uploads\IMG_20151005_234346.jpg"
+                if (callback) callback('/' + file.path)
+            },
+            commandsOptions: {
+                getfile: {
+                    oncomplete: 'close',
+                    folders: false
+                }
+            }
+        }).dialogelfinder('instance');
     },
 
     run: function () {
@@ -143,25 +189,19 @@ var Common = {
         this.setupDatatable();
         this.setupSelect2();
         this.setupButtonInListPages();
-        this.setupButtonInFormPages();
+        // this.setupButtonInFormPages();
+        this.setupElFinderDialog();
     }
 };
 
+// called by summernote's elFinder extension
 function elfinderDialog(){
-    var fm = $('<div/>').css('z-index', 999).dialogelfinder({
-        url : '/cms/elfinder/connector' + '?_token=' + $('#summernote').data('token'),
-        lang : 'en',
-        width : '70%',
-        height: 450,
-        destroyOnClose : true,
-        getFileCallback : function(files, fm) {
-            $('#summernote').summernote('insertImage',files.url);
-        },
-        commandsOptions : {
-            getfile : {
-                oncomplete : 'close',
-                folders : false
-            }
-        }
-    }).dialogelfinder('instance');
+    Common._openElFinderDialog(function (filePath) {
+        $('#summernote').summernote('editor.saveRange');
+
+        // Editor loses selected range (e.g after blur)
+        $('#summernote').summernote('editor.restoreRange');
+        $('#summernote').summernote('editor.focus');
+        $('#summernote').summernote('insertImage', filePath);
+    })
 }

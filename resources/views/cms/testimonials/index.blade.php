@@ -60,7 +60,7 @@
                         </button>
                     </div><!-- /.box-tools -->
                 </div>
-                <form action="{{ route('cms.testimonials.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('cms.testimonials.store') }}" method="POST">
                     {{ csrf_field() }}
 
                     <!-- /.box-header -->
@@ -76,8 +76,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                                 <label for="">Avatar (*):</label>
-                                <input name="image" id="js-input-image" type="file" class="form-control" accept="image/*">
-                                <img id="js-image-thumbnail-gotten" src="" width="100px" height="auto">
+                                @include ('layouts.cms._file_selector', ['inputName' => 'image', 'filePath' => ''])
 
                                 @if ($errors->has('image'))
                                     <span class="help-block"><strong>{{ $errors->first('image') }}</strong></span>

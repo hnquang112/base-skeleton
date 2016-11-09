@@ -40,7 +40,7 @@ class ArticleController extends CmsController {
         $article->user_id = $this->getCurrentUser()->id;
         $article->published_at = $request->do_publish;
 
-        if ($request->hasFile('represent_image')) $article->represent_image_id = create_file_from_input('represent_image');
+        if (!empty($request->represent_image)) $article->represent_image_id = create_file_from_path($request->represent_image);
 
         $article->fill($request->except('do_publish', 'represent_image'));
 

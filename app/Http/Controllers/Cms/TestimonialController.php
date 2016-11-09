@@ -34,7 +34,7 @@ class TestimonialController extends CmsController {
 
         $testimonial = new Comment;
         $testimonial->type = Comment::TYP_TESTIMONIAL;
-        if ($request->hasFile('image')) $testimonial->image_id = create_file_from_path($request->image);
+        if (!empty($request->image)) $testimonial->image_id = create_file_from_path($request->image);
         $testimonial->fill($request->except('image'));
 
         if ($testimonial->save()) {
@@ -55,7 +55,7 @@ class TestimonialController extends CmsController {
     public function update(Request $request, $testimonial) {
         $this->validate($request, Comment::$rulesForUpdatingTestimonial);
 
-        if ($request->hasFile('image')) $testimonial->image_id = create_file_from_path($request->image);
+        if (!empty($request->image)) $testimonial->image_id = create_file_from_path($request->image);
         $testimonial->fill($request->except('image'));
 
         if ($testimonial->save()) {

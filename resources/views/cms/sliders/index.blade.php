@@ -59,7 +59,7 @@
                     </div><!-- /.box-tools -->
                 </div>
                 <form action="{{ $slider->id ? route('cms.sliders.update', $slider->id) : route('cms.sliders.store') }}"
-                      method="POST" enctype="multipart/form-data">
+                      method="POST">
                     {{ csrf_field() }}
 
                     <!-- /.box-header -->
@@ -75,8 +75,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                                 <label for="">Image (*):</label>
-                                <input name="image" id="js-input-image" type="file" class="form-control" accept="image/*">
-                                <img id="js-image-thumbnail-gotten" src="" width="100%" height="auto">
+                                @include ('layouts.cms._file_selector', ['inputName' => 'image', 'filePath' => ''])
 
                                 @if ($errors->has('image'))
                                     <span class="help-block"><strong>{{ $errors->first('image') }}</strong></span>
