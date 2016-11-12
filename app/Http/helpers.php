@@ -94,3 +94,33 @@ function calc_stars_from_rating($rating) {
     // rating from 1 to 5. stars' width is 80px
     return $rating / 5 * 80;
 }
+
+function get_image_path($path, $scale = 'medium') {
+    if (!is_string($path)) {
+        return config('misc.no_preview_image');
+    }
+
+    $server = crc32($path) % 5;
+
+    switch ($scale) {
+        case 'thumb':
+            $size = self::SIZ_THUMB;
+            break;
+        case 'large':
+            $size = self::SIZ_LARGE;
+            break;
+        case 'full':
+            $size = self::SIZ_FULL;
+            break;
+        default:
+            $size = self::SIZ_MEDIUM;
+            break;
+    }
+
+    if (app('env') != 'local') {
+        return '//images' . $server . '-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&resize_w=' .
+        $size . '&rewriteMime=image/*&url=' . urlencode(asset($path));
+    } else {
+        return asset($path);
+    }
+}
