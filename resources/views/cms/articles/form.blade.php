@@ -124,7 +124,7 @@
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         @include ('layouts.cms._file_selector', ['inputName' => 'represent_image',
-                            'filePath' => $article->represent_image_path])
+                            'filePath' => get_image_path($article->represent_image)])
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div>

@@ -95,29 +95,31 @@ function calc_stars_from_rating($rating) {
     return $rating / 5 * 80;
 }
 
-function get_image_path($path, $scale = 'medium') {
-    if (!is_string($path)) {
+function get_image_path($relationship, $scale = 'medium') {
+    if (!$relationship) {
         return config('misc.no_preview_image');
     }
 
-    $server = crc32($path) % 5;
-
-    switch ($scale) {
-        case 'thumb':
-            $size = self::SIZ_THUMB;
-            break;
-        case 'large':
-            $size = self::SIZ_LARGE;
-            break;
-        case 'full':
-            $size = self::SIZ_FULL;
-            break;
-        default:
-            $size = self::SIZ_MEDIUM;
-            break;
-    }
+    $path = $relationship->url;
 
     if (app('env') != 'local') {
+        $server = crc32($path) % 5;
+
+        switch ($scale) {
+            case 'thumb':
+                $size = File::SIZ_THUMB;
+                break;
+            case 'large':
+                $size = File::SIZ_LARGE;
+                break;
+            case 'full':
+                $size = File::SIZ_FULL;
+                break;
+            default:
+                $size = File::SIZ_MEDIUM;
+                break;
+        }
+
         return '//images' . $server . '-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&resize_w=' .
         $size . '&rewriteMime=image/*&url=' . urlencode(asset($path));
     } else {

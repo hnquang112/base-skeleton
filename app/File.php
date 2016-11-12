@@ -45,34 +45,4 @@ class File extends Model {
         return $this->is_external ? $this->path : asset($this->path);
     }
 
-    public function getScaledUrl($scale = 'medium') {
-        if (!is_string($this->path)) {
-            return config('misc.no_preview_image');
-        }
-
-        $server = crc32($this->path) % 5;
-
-        switch ($scale) {
-            case 'thumb':
-                $size = self::SIZ_THUMB;
-                break;
-            case 'large':
-                $size = self::SIZ_LARGE;
-                break;
-            case 'full':
-                $size = self::SIZ_FULL;
-                break;
-            default:
-                $size = self::SIZ_MEDIUM;
-                break;
-        }
-
-        if (app('env') != 'local') {
-            return '//images' . $server . '-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&resize_w=' .
-                $size . '&rewriteMime=image/*&url=' . urlencode(asset($this->path));
-        } else {
-            return asset($this->path);
-        }
-    }
-
 }

@@ -74,7 +74,7 @@
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         @include ('layouts.cms._file_selector', ['inputName' => 'represent_image',
-                            'filePath' => $product->represent_image_path])
+                            'filePath' => get_image_path($product->represent_image)])
 
                         @if ($errors->has('represent_image'))
                             <span class="help-block"><strong>{{ $errors->first('represent_image') }}</strong></span>
