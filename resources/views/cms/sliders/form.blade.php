@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                             <label for="">Image (*):</label>
-                            @include ('layouts.cms._file_selector', ['inputName' => 'represent_image',
+                            @include ('layouts.cms._file_selector', ['inputName' => 'image',
                                 'filePath' => get_image_path($slider->image)])
 
                             @if ($errors->has('image'))
