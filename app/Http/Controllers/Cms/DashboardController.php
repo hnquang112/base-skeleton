@@ -8,9 +8,14 @@
 
 namespace App\Http\Controllers\Cms;
 
+use Analytics;
+use Spatie\Analytics\Period;
+
 class DashboardController extends CmsController {
     // GET: /cms/dashboard
     public function index() {
-        return view('cms.dashboard.index');
+        $analyticsData = Analytics::fetchTotalVisitorsAndPageViews(Period::days(7));
+
+        return view('cms.dashboard.index', compact('analyticsData'));
     }
 }

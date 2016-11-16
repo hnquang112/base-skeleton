@@ -15,7 +15,7 @@ var cmsScriptPaths = [
     // '../../../node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js',
     // '../../../node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js',
     '../../../node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js',
-    // '../../../node_modules/admin-lte/plugins/chartjs/Chart.min.js',
+    '../../../node_modules/admin-lte/plugins/chartjs/Chart.min.js',
     // '../../../node_modules/admin-lte/plugins/iCheck/icheck.min.js',
     '../../../node_modules/admin-lte/plugins/datatables/jquery.dataTables.min.js',
     '../../../node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.min.js',

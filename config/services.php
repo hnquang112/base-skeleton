@@ -40,6 +40,7 @@ return [
         'recaptcha-site-key' => '6LfEjycTAAAAAF4WPi51pQSc-QhR242tkjgSU_jl',
         'recaptcha-secret-key' => '6LfEjycTAAAAAE7EcPgS_4odnoU2rCq-DX-uDdfL',
         'analytics-tracking-id' => 'UA-69576958-2',
+        'analytics-view-id' => '127837841',
     ],
 
     'facebook' => [
