@@ -27,7 +27,7 @@ var cmsScriptPaths = [
     // '../../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js',
     // '../../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js',
     // '../../../node_modules/blueimp-file-upload/js/jquery.fileupload.js',
-    '../plugins/elFinder/summernote-ext-elfinder.js',
+    '../plugins/summernote/summernote-ext-elfinder.js',
     '../plugins/elFinder/elfinder.min.js',
 ];
 

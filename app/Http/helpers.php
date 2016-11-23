@@ -126,3 +126,7 @@ function get_image_path($relationship, $scale = 'medium') {
         return asset($path);
     }
 }
+
+function format_day_string($datetime) {
+    return Carbon::parse($datetime)->toDayDateTimeString();
+}
