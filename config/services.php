@@ -39,8 +39,8 @@ return [
         'maps-api-key' => 'AIzaSyAFtg67FGkPzztwBYPRq1EnvupxMLvRFJc',
         'recaptcha-site-key' => '6LfEjycTAAAAAF4WPi51pQSc-QhR242tkjgSU_jl',
         'recaptcha-secret-key' => '6LfEjycTAAAAAE7EcPgS_4odnoU2rCq-DX-uDdfL',
-        'analytics-tracking-id' => 'UA-69576958-2',
-        'analytics-view-id' => '127837841',
+        'analytics-tracking-id' => env('ANALYTICS_TRACKING_ID', 'UA-69576958-2'),
+        'analytics-view-id' => env('ANALYTICS_VIEW_ID', '127837841'),
     ],
 
     'facebook' => [
@@ -55,12 +55,12 @@ return [
     ],
 
     'tawk-to' => [
-        'api-key' => '57a1ea0214e2f0af26fe0d76'
+        'api-key' => env('TAWK_TO_API_KEY', '57a1ea0214e2f0af26fe0d76')
     ],
 
     'rollbar' => [
         'access_token' => 'e1f79676647f49749c96629565b8d5f3',
-        'level' => env('APP_LOG_LEVEL'), // 'debug' for dev or 'error' for prod
+        'level' => env('APP_LOG_LEVEL', 'error'), // 'debug' for dev or 'error' for prod
     ],
 
 ];
