@@ -63,7 +63,7 @@
                 <li class="clearfix">
                     <div class="lpl-img">
                         <a href="{{ $_articles->front_url }}" rel="bookmark">
-                            <img width="66" height="66" src="{{ $_articles->represent_image_path }}" alt="{{ $_articles->title }}">
+                            <img width="66" height="66" src="{{ get_image_path($_articles->represent_image) }}" alt="{{ $_articles->title }}">
                         </a>
                     </div>
                     <div class="lpl-content">

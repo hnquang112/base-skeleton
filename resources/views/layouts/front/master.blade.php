@@ -14,11 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <!-- Title -->
-    <title>Organic Shop | A Responsive WordPress Theme for eCommerce Websites</title>
+    <!-- SEO meta tags -->
+    {!! SEO::generate() !!}
 
     <!-- Stylesheets -->
-    <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
     <link rel="stylesheet" href="{{ elixir('css/vendor.front.css') }}" type="text/css">
     <style type="text/css">
         h1, h2, h3, h4, h5, h6, #ui-datepicker-div .ui-datepicker-title, .dropcap, .ui-tabs .ui-tabs-nav li,
@@ -33,14 +32,12 @@
 
     @stack ('styles')
 
-    <!-- Meta tags -->
+    <!-- Functionality meta tags -->
     {{-- See https://github.com/joshbuchea/HEAD for further neccesary tags --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="fb:app_id" content="{{ config('services.facebook.app-id') }}"/>
     <meta name="theme-color" content="#80b600">
     <meta name="google" value="notranslate">
-
-    @stack ('meta')
 
     @if (!app()->environment('local'))
         @include ('layouts._analytic')

@@ -10,8 +10,11 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Session;
+use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class FrontController extends Controller {
+    use SEOToolsTrait;
+
     public function __construct() {
 
     }

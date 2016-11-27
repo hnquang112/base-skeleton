@@ -182,6 +182,7 @@ return [
         Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
         Themsaid\MailPreview\MailPreviewServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -248,6 +249,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
         'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
 
     ],
 

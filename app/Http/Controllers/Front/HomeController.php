@@ -17,6 +17,8 @@ class HomeController extends FrontController
 {
     // GET: /
     public function index(Request $request) {
+        $this->seo()->setTitle('Home');
+
         $featuredProducts = Product::featured()->get();
         $testimonials = Comment::with('product')->testimonials()->get();
 
