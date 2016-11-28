@@ -38,9 +38,9 @@ class ProductController extends CmsController {
         $product->user_id = $this->getCurrentUser()->id;
         $product->published_at = Product::STT_PUBLISHED;
 
-            $product->fill($request->except('represent_image'));
+        $product->fill($request->except('represent_image'));
 
-        if ($request->hasFile('represent_image')) $product->represent_image_id = create_file_from_path($request->represent_image);
+        if (!empty($request->represent_image)) $product->represent_image_id = create_file_from_path($request->represent_image);
 
         if ($product->save()) {
             $product->syncCategories($request->input('category_ids', []));
@@ -68,7 +68,7 @@ class ProductController extends CmsController {
 
         $product->fill($request->except('represent_image'));
 
-        if ($request->hasFile('represent_image')) $product->represent_image_id = create_file_from_path($request->represent_image);
+        if (!empty($request->represent_image)) $product->represent_image_id = create_file_from_path($request->represent_image);
 
         if ($product->save()) {
             $product->syncCategories($request->input('category_ids', []));
