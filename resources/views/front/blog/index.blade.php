@@ -35,7 +35,7 @@
                     <div class="blog-content clearfix">
                         <div class="block-img1">
                             <a href="{{ $article->front_url }}" rel="bookmark" title="{{ $article->title }}">
-                                <img src="{{ $article->represent_image_path }}" alt="" class="prev-image"> </a>
+                                <img src="{{ get_image_path($article->represent_image) }}" alt="" class="prev-image"> </a>
                         </div>
                         <p>{{ $article->short_description }}</p>
                         <p><a href="{{ $article->front_url }}" class="button2">@lang ('front.blog.body.read_more') »</a>

@@ -17,7 +17,7 @@
                             <a href="{{ $product->front_url }}">
                                 <div class="product-image">
                                     @if ($product->is_on_sale) <span class="onsale">@lang ('front.home.product.sale')</span> @endif
-                                    <img src="{{ $product->represent_image_path }}" alt="{{ $product->title }}"
+                                    <img src="{{ get_image_path($product->represent_image) }}" alt="{{ $product->title }}"
                                          title="{{ $product->title }}" class="attachment-shop_catalog wp-post-image">
                                 </div>
                                 <p class="product-title">{{ $product->title }}</p>

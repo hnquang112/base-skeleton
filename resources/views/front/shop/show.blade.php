@@ -13,9 +13,9 @@
                     <li class="post-73 product type-product status-publish hentry col2 clearfix" id="product-73">
                         @if ($product->is_on_sale) <span class="onsale">@lang ('front.home.product.sale')</span> @endif
                         <div class="images">
-                            <a itemprop="image" href="{{ $product->represent_image_path }}"
+                            <a itemprop="image" href="{{ get_image_path($product->represent_image) }}"
                                class="zoom" rel="thumbnails" title="image2">
-                                <img src="{{ $product->represent_image_path }}" alt="image2" title="image2"
+                                <img src="{{ get_image_path($product->represent_image) }}" alt="image2" title="image2"
                                      class="attachment-shop_single wp-post-image">
                             </a>
                             <div class="thumbnails"></div>
@@ -182,7 +182,7 @@
                                 <a href="{{ $prod->front_url }}">
                                     <div class="product-image">
                                         @if ($prod->is_on_sale) <span class="onsale">Sale!</span> @endif
-                                        <img src="{{ $prod->represent_image_path }}" alt="image1" title="image1"
+                                        <img src="{{ get_image_path($product->represent_image) }}" alt="image1" title="image1"
                                              class="attachment-shop_catalog wp-post-image">
                                     </div>
                                     <p class="product-title">{{ $prod->title }}</p>

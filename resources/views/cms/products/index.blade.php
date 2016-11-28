@@ -74,7 +74,7 @@
                                     @foreach ($products as $product)
                                         <tr>
                                             <td><input name="selected_ids[]" type="checkbox" value="{{ $product->id }}"></td>
-                                            <td><img src="{{ $product->represent_image_path }}" width="80px"></td>
+                                            <td><img src="{{ get_image_path($product->represent_image) }}" width="80px"></td>
                                             <td><a href="{{ route('cms.products.edit', $product->id) }}"><strong>
                                                         {{ $product->title }}</strong></a></td>
                                             <td>{{ format_price_with_currency($product->current_price, '') }}</td>

@@ -5,7 +5,7 @@
     <meta property="og:type"          content="article" />
     <meta property="og:title"         content="{{ $article->title }}" />
     <meta property="og:description"   content="{{ $article->short_description }}" />
-    <meta property="og:image"         content="{{ $article->represent_image_path }}" />
+    <meta property="og:image"         content="{{ get_image_path($article->represent_image) }}" />
 @endpush
 
 @section ('content')
@@ -38,7 +38,7 @@
                 <div class="blog-content clearfix">
                     <div class="block-img1">
                         <a href="{{ $article->front_url }}" rel="bookmark" title="{{ $article->title }}">
-                            <img src="{{ $article->represent_image_path }}" alt="" class="prev-image"></a>
+                            <img src="{{ get_image_path($article->represent_image) }}" alt="" class="prev-image"></a>
                     </div>
 
                     {!! $article->content !!}

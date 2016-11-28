@@ -80,7 +80,7 @@
                             <span class="help-block"><strong>{{ $errors->first('represent_image') }}</strong></span>
                         @endif
 
-                        <img id="js-image-thumbnail-gotten" src="{{ $product->represent_image_path }}" width="100%"
+                        <img id="js-image-thumbnail-gotten" src="{{ get_image_path($product->represent_image) }}" width="100%"
                              height="auto">
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->

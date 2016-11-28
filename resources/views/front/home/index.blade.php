@@ -11,7 +11,7 @@
                         <div class="product-image">
                             @if ($product->is_on_sale) <span class="onsale">@lang ('front.home.product.sale')</span> @endif
                             <img alt="image4" class="attachment-shop_catalog wp-post-image"
-                                 src="{{ $product->represent_image_path }}" title="image4">
+                                 src="{{ get_image_path($product->represent_image) }}" title="image4">
                         </div>
                         <p class="product-title">{{ $product->title }}</p>
                         <p class="product-price">
