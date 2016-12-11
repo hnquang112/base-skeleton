@@ -183,6 +183,7 @@ return [
         Themsaid\MailPreview\MailPreviewServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Roumen\Sitemap\SitemapServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 
 class FeedbackController extends CmsController {
 
+    public function __construct() {
+        $this->middleware('can:view,App\User');
+    }
+
     // GET: /cms/feedback
     public function index() {
         $feedback = Comment::feedback()->orderBy('created_at', 'desc')->get();

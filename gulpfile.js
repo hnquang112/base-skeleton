@@ -86,6 +86,9 @@ var copyPaths = [{
 }, {
     src: 'plugins/organic.shop.theme/images',
     dest: 'img'
+}, {
+    src: 'plugins/elFinder',
+    dest: 'packages/barryvdh/elfinder'
 }];
 
 var copyBuildPaths = [{
@@ -100,9 +103,6 @@ var copyBuildPaths = [{
 }, {
     src: 'plugins/summernote/**',
     dest: 'css/font'
-}, {
-    src: 'plugins/elFinder/img',
-    dest: 'img'
 }, {
     src: 'plugins/jquery-ui',
     dest: 'css/images'

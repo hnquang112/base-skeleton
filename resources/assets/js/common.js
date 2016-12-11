@@ -171,8 +171,19 @@ var Common = {
             height: 450,
             destroyOnClose: true,
             getFileCallback: function(file, fm) {
+                var filePath = '';
+
+                // Detech if disk storage is S3
+                if (file.path.indexOf('s3') !== -1) {
+                    filePath = s3BasePath + file.name
+                }
+                // Or local server
+                else {
+                    filePath = '/' + file.path
+                }
+
                 // pass relative url of file to callback function, ex: "/uploads\IMG_20151005_234346.jpg"
-                if (callback) callback('/' + file.path)
+                if (callback) callback(filePath)
             },
             commandsOptions: {
                 getfile: {

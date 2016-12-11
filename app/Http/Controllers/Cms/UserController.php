@@ -7,6 +7,13 @@ use App\User;
 
 class UserController extends CmsController {
 
+    public function __construct() {
+        $this->middleware('can:view,App\User', ['only' => ['index']]);
+        $this->middleware('can:create,App\User', ['only' => ['create', 'store']]);
+        $this->middleware('can:update,user', ['only' => ['edit', 'update']]);
+        $this->middleware('can:delete,App\User', ['only' => ['destroy']]);
+    }
+
     // GET: /cms/users
     public function index(Request $request) {
         $users = User::query();
@@ -31,6 +38,7 @@ class UserController extends CmsController {
 
         $user = new User;
         $user->fill($request->all());
+        $user->password = $request->password;
 
         if ($user->save()) {
             flash()->success('Saved successfully');
@@ -49,19 +57,18 @@ class UserController extends CmsController {
     }
 
     // PUT: /cms/users/1
-    public function update(Request $request, $user) {;
+    public function update(Request $request, $user) {
         $emailUpdateRule = 'email|required|max:255|unique:users,email,' . $user->id;
-        $this->validate($request, User::extendRulesForUpdating(self::$rulesForUpdating, ['email' => $emailUpdateRule]));
+        $this->validate($request, User::extendRulesForUpdating(User::$rulesForUpdating, ['email' => $emailUpdateRule]));
 
         $user->fill($request->all());
+        if (!empty($request->password)) $user->password = $request->password;
 
         if ($user->save()) {
             flash()->success('Saved successfully');
-
-            return redirect()->route('cms.users.index');
+        } else {
+            flash()->error('Save failed');
         }
-
-        flash()->error('Save failed');
 
         return back();
     }

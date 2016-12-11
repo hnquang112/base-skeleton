@@ -14,6 +14,7 @@
 Route::group(['namespace' => 'Front'], function () {
     Route::resource('/', 'HomeController', ['only' => ['index']]);
     Route::get('search', ['uses' => 'HomeController@search', 'as' => 'index.search']);
+    Route::get('sitemap', ['uses' => 'HomeController@sitemap', 'as' => 'index.sitemap']);
 
     Route::get('category/{category_slug}/{type?}', ['uses' => 'BlogController@filterByCategory', 'as' => 'category.show']);
     Route::get('tag/{tag_slug}/{type?}', ['uses' => 'BlogController@filterByTag', 'as' => 'tag.show']);

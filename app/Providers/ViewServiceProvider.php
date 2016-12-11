@@ -57,9 +57,9 @@ class ViewServiceProvider extends ServiceProvider
         }
 
         // max product price
-        if (!Cache::has('front.max_product_prices')) {
-            Cache::put('front.max_product_prices', Product::max(DB::raw("cast(meta->>'price' as integer)")), $expiresIn7days);
-        }
+//        if (!Cache::has('front.max_product_prices')) {
+//            Cache::put('front.max_product_prices', Product::max(DB::raw("cast(meta->>'price' as integer)")), $expiresIn7days);
+//        }
     }
 
 }

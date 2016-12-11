@@ -14,6 +14,10 @@ use Illuminate\Http\Request;
 
 class SettingController extends CmsController {
 
+    public function __construct() {
+        $this->middleware('can:view,App\User');
+    }
+
     // GET: /cms/settings
     public function index() {
         return view('cms.settings.index');

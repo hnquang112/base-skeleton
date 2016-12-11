@@ -37,6 +37,6 @@ return [
     'route'             =>  '/cms/env',
 
     // middleware and middlewwaregroups. Add your own middleware if you want.
-    'middleware'        => ['web', 'auth:cms'],
+    'middleware'        => ['web', 'auth:cms', 'can:view,App\User'],
     'middlewareGroups'  => []
 ];

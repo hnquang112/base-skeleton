@@ -56,38 +56,40 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview{{ $request->is('cms/categories*') || $request->is('cms/tags*')
-                ? ' active' : '' }}">
-                <a href="#">
-                    <i class="fa fa-sitemap"></i> <span>Taxonomies</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li {{ $request->is('cms/categories*') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.categories.index') }}"><i class="fa fa-list-ul"></i> Categories</a>
-                    </li>
-                    <li {{ $request->is('cms/tags*') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.tags.index') }}"><i class="fa fa-tags"></i> Tags</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview{{ $request->is('cms/users*') || $request->is('cms/feedback*') ? ' active' : '' }}">
-                <a href="#">
-                    <i class="fa fa-users"></i> <span>Users</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li {{ $request->is('cms/users*') && !$request->is('cms/users/create') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.users.index') }}"><i class="fa fa-circle-o"></i> Users List</a>
-                    </li>
-                    <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.users.create') }}"><i class="fa fa-circle-o"></i> Add New User</a>
-                    </li>
-                    <li {{ $request->is('cms/feedback*') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.feedback.index') }}"><i class="fa fa-envelope"></i> Customer Feedback</a>
-                    </li>
-                </ul>
-            </li>
+            @can ('view', 'App\User')
+                <li class="treeview{{ $request->is('cms/categories*') || $request->is('cms/tags*')
+                    ? ' active' : '' }}">
+                    <a href="#">
+                        <i class="fa fa-sitemap"></i> <span>Taxonomies</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li {{ $request->is('cms/categories*') ? 'class=active' : '' }}>
+                            <a href="{{ route('cms.categories.index') }}"><i class="fa fa-list-ul"></i> Categories</a>
+                        </li>
+                        <li {{ $request->is('cms/tags*') ? 'class=active' : '' }}>
+                            <a href="{{ route('cms.tags.index') }}"><i class="fa fa-tags"></i> Tags</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview{{ $request->is('cms/users*') || $request->is('cms/feedback*') ? ' active' : '' }}">
+                    <a href="#">
+                        <i class="fa fa-users"></i> <span>Users</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li {{ $request->is('cms/users*') && !$request->is('cms/users/create') ? 'class=active' : '' }}>
+                            <a href="{{ route('cms.users.index') }}"><i class="fa fa-circle-o"></i> Users List</a>
+                        </li>
+                        <li {{ $request->is('cms/users/create') ? 'class=active' : '' }}>
+                            <a href="{{ route('cms.users.create') }}"><i class="fa fa-circle-o"></i> Add New User</a>
+                        </li>
+                        <li {{ $request->is('cms/feedback*') ? 'class=active' : '' }}>
+                            <a href="{{ route('cms.feedback.index') }}"><i class="fa fa-envelope"></i> Customer Feedback</a>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
             <li class="treeview {{ $request->is('cms/settings*') || $request->is('cms/sliders*') || $request->is('cms/media*')
                 || $request->is('cms/testimonials*')? ' active' : '' }}">
                 <a href="#">
@@ -95,9 +97,11 @@
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li {{ $request->is('cms/settings*') ? 'class=active' : '' }}>
-                        <a href="{{ route('cms.settings.index') }}"><i class="fa fa-cog"></i> General Settings</a>
-                    </li>
+                    @can ('view', 'App\User')
+                        <li {{ $request->is('cms/settings*') ? 'class=active' : '' }}>
+                            <a href="{{ route('cms.settings.index') }}"><i class="fa fa-cog"></i> General Settings</a>
+                        </li>
+                    @endcan
                     <li {{ $request->is('cms/sliders*') ? 'class=active' : '' }}>
                         <a href="{{ route('cms.sliders.index') }}"><i class="fa fa-picture-o"></i> Home Slider</a>
                     </li>

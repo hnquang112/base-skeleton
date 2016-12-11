@@ -130,3 +130,11 @@ function get_image_path($relationship, $scale = 'medium') {
 function format_day_string($datetime) {
     return Carbon::parse($datetime)->toDayDateTimeString();
 }
+
+function format_time_as_readable($datetime) {
+    return Carbon::parse($datetime)->diffForHumans();
+}
+
+function format_time_with_timezone($datetime) {
+    return Carbon::parse($datetime)->toW3cString();
+}

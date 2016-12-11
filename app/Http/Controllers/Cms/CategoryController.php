@@ -7,6 +7,10 @@ use App\Category;
 
 class CategoryController extends CmsController {
 
+    public function __construct() {
+        $this->middleware('can:view,App\User');
+    }
+
     // GET: /cms/categories
     public function index(Request $request) {
         $categories = Category::withCount('products')->orderByDesc('created_at')->get();

@@ -7,6 +7,10 @@ use App\Tag;
 
 class TagController extends CmsController {
 
+    public function __construct() {
+        $this->middleware('can:view,App\User');
+    }
+
     // GET: /cms/tags
     public function index(Request $request) {
         $tags = Tag::withCount(['products', 'articles'])->orderByDesc('created_at')->get();
