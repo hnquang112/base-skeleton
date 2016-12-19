@@ -101,6 +101,9 @@ var copyBuildPaths = [{
     src: 'fonts',
     dest: 'fonts'
 }, {
+    src: 'plugins/elFinder/img',
+    dest: 'img'
+}, {
     src: 'plugins/summernote/**',
     dest: 'css/font'
 }, {
