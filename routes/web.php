@@ -37,7 +37,9 @@ Route::group(['namespace' => 'Front'], function () {
     Route::resource('checkout', 'PurchaseController', ['only' => ['index', 'store', 'show']]);
 });
 
-Auth::routes();
+Route::group(['prefix' => 'cms'], function () {
+    Auth::routes();
+});
 
 Route::group(['namespace' => 'Cms', 'middleware' => 'auth:cms', 'prefix' => 'cms', 'as' => 'cms.'], function () {
     Route::get('/', ['uses' => 'CmsController@gate', 'as' => 'index']);

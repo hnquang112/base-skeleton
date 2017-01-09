@@ -15,6 +15,7 @@ class ReviewController extends CmsController {
 
     // GET: /cms/reviews
     public function index() {
+        $this->seo()->setTitle('Reviews List');
         $reviews = Comment::reviews()->orderByDesc('created_at')->get();
         $review = new Comment;
 
@@ -23,6 +24,7 @@ class ReviewController extends CmsController {
 
     // GET: /cms/reviews/create
     public function create() {
+        $this->seo()->setTitle('Create Review');
         $review = new Comment;
 
         return view('cms.reviews.form', compact('review'));
@@ -47,6 +49,8 @@ class ReviewController extends CmsController {
 
     // GET: /cms/reviews/1/edit
     public function edit($review) {
+        $this->seo()->setTitle('Edit Review');
+
         return view('cms.reviews.form', compact('review'));
     }
 

@@ -14,6 +14,7 @@ use Spatie\Analytics\Period;
 class DashboardController extends CmsController {
     // GET: /cms/dashboard
     public function index() {
+        $this->seo()->setTitle('Dashboard');
         $analyticsData = [];
 
         if (!app()->environment('local')) $analyticsData = Analytics::fetchTotalVisitorsAndPageViews(Period::days(7));

@@ -1,15 +1,13 @@
 @extends('layouts.cms.auth')
 
 @section('content')
-
     <div class="login-logo">
         <a href="{{ route('cms.index') }}"><b>Base</b>Skeleton</a>
-    </div>
-    <!-- /.login-logo -->
+    </div><!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form action="{{ url('/login') }}" method="POST">
+        <form action="{{ url('/cms/login') }}" method="POST">
             {{ csrf_field() }}
 
             <div class="form-group has-feedback{{ $errors->has('username') ? ' has-error' : '' }}">
@@ -35,17 +33,15 @@
                             <input name="remember" type="checkbox"> Remember Me
                         </label>
                     </div>
-                </div>
-                <!-- /.col -->
+                </div><!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Login
-                    <span class="glyphicon glyphicon-log-in"></span></button>
-                </div>
-                <!-- /.col -->
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">
+                        <span class="glyphicon glyphicon-log-in"></span> Login
+                    </button>
+                </div><!-- /.col -->
             </div>
         </form>
 
-        <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-    </div>
-    <!-- /.login-box-body -->
+        <a href="{{ url('/cms/password/reset') }}">I forgot my password</a><br>
+    </div><!-- /.login-box-body -->
 @endsection

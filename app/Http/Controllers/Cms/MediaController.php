@@ -27,20 +27,19 @@ class MediaController extends CmsController {
      */
     protected $app;
 
-    public function __construct(Application $app)
-    {
+    public function __construct(Application $app) {
         $this->app = $app;
     }
 
-    public function index()
-    {
+    public function index() {
+        $this->seo()->setTitle('Media List');
+
         return $this->app['view']
             ->make('cms.media.index')
             ->with($this->getViewVars());
     }
 
-    public function showConnector()
-    {
+    public function showConnector() {
         $roots = $this->app->config->get('elfinder.roots', []);
         if (empty($roots)) {
             $dirs = (array) $this->app['config']->get('elfinder.dir', []);
@@ -92,8 +91,7 @@ class MediaController extends CmsController {
         return $connector->getResponse();
     }
 
-    protected function getViewVars()
-    {
+    protected function getViewVars() {
         $dir = 'packages/barryvdh/' . $this->package;
         $locale = get_cms_lang_attribute();
         if (!file_exists($this->app['path.public'] . "/$dir/js/i18n/elfinder.$locale.js")) {

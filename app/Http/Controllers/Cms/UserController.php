@@ -16,6 +16,7 @@ class UserController extends CmsController {
 
     // GET: /cms/users
     public function index(Request $request) {
+        $this->seo()->setTitle('Users List');
         $users = User::query();
 
         if (get_auth_admin_type() == User::ADMIN) $users = $users->filterNotMaster();
@@ -27,6 +28,7 @@ class UserController extends CmsController {
 
     // GET: /cms/users/create
     public function create() {
+        $this->seo()->setTitle('Create User');
         $user = new User;
 
         return view('cms.users.form', compact('user'));
@@ -53,6 +55,8 @@ class UserController extends CmsController {
 
     // GET: /cms/users/1/edit
     public function edit($user) {
+        $this->seo()->setTitle('Edit User');
+
         return view('cms.users.form', compact('user'));
     }
 

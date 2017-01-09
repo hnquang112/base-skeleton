@@ -15,6 +15,7 @@ class TestimonialController extends CmsController {
 
     // GET: /cms/testimonials
     public function index() {
+        $this->seo()->setTitle('Testimonials List');
         $testimonials = Comment::testimonials()->orderByDesc('created_at')->get();
         $testimonial = new Comment;
 
@@ -23,6 +24,7 @@ class TestimonialController extends CmsController {
 
     // GET: /cms/testimonials/create
     public function create() {
+        $this->seo()->setTitle('Create Testimonial');
         $testimonial = new Comment;
 
         return view('cms.testimonials.form', compact('testimonial'));
@@ -48,6 +50,8 @@ class TestimonialController extends CmsController {
 
     // GET: /cms/testimonials/1/edit
     public function edit($testimonial) {
+        $this->seo()->setTitle('Edit Testimonial');
+
         return view('cms.testimonials.form', compact('testimonial'));
     }
 

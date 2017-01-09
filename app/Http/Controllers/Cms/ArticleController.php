@@ -18,6 +18,7 @@ class ArticleController extends CmsController {
 
     // GET: /cms/articles
     public function index(Request $request) {
+        $this->seo()->setTitle('Articles List');
         $articles = Article::with('author', 'tags')->orderByDesc('created_at')->get();
 
         return view('cms.articles.index', compact('articles'));
@@ -25,6 +26,7 @@ class ArticleController extends CmsController {
 
     // GET: /cms/articles/create
     public function create() {
+        $this->seo()->setTitle('Create Article');
         $article = new Article;
         $tags = [];
 
@@ -57,6 +59,7 @@ class ArticleController extends CmsController {
 
     // GET: /cms/articles/1/edit
     public function edit($article) {
+        $this->seo()->setTitle('Edit Article');
         $tags = $article->tag_ids;
 
         return view('cms.articles.form', compact('article', 'tags'));

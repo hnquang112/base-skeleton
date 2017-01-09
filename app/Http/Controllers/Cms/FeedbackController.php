@@ -19,6 +19,7 @@ class FeedbackController extends CmsController {
 
     // GET: /cms/feedback
     public function index() {
+        $this->seo()->setTitle('Feedback List');
         $feedback = Comment::feedback()->orderBy('created_at', 'desc')->get();
 
         $newFb = new Comment;
@@ -28,6 +29,8 @@ class FeedbackController extends CmsController {
 
     // GET: /cms/feedback/1
     public function show($feedback) {
+        $this->seo()->setTitle('Feedback Detail');
+
         return view('cms.feedback.show', compact('feedback'));
     }
 

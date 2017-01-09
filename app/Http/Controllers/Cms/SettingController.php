@@ -20,6 +20,8 @@ class SettingController extends CmsController {
 
     // GET: /cms/settings
     public function index() {
+        $this->seo()->setTitle('Settings');
+
         return view('cms.settings.index');
     }
 

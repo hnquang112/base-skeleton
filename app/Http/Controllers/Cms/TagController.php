@@ -13,6 +13,7 @@ class TagController extends CmsController {
 
     // GET: /cms/tags
     public function index(Request $request) {
+        $this->seo()->setTitle('Tags List');
         $tags = Tag::withCount(['products', 'articles'])->orderByDesc('created_at')->get();
         $tag = new Tag;
 
@@ -21,6 +22,7 @@ class TagController extends CmsController {
 
     // GET: /cms/tags/create
     public function create() {
+        $this->seo()->setTitle('Create Tag');
         $tag = new Tag;
 
         return view('cms.tags.form', compact('tag'));
@@ -46,6 +48,8 @@ class TagController extends CmsController {
 
     // GET: /cms/tags/1/edit
     public function edit($tag) {
+        $this->seo()->setTitle('Edit Tag');
+
         return view('cms.tags.form', compact('tag'));
     }
 

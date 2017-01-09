@@ -15,6 +15,7 @@ class ProductController extends CmsController {
 
     // GET: /cms/products
     public function index() {
+        $this->seo()->setTitle('Products List');
         $products = Product::orderByDesc('created_at')->get();
 
         return view('cms.products.index', compact('products'));
@@ -22,6 +23,7 @@ class ProductController extends CmsController {
 
     // GET: /cms/products/create
     public function create() {
+        $this->seo()->setTitle('Create Product');
         $product = new Product;
         $categories = [];
         $tags = [];
@@ -56,6 +58,7 @@ class ProductController extends CmsController {
 
     // GET: /cms/products/1/edit
     public function edit($product) {
+        $this->seo()->setTitle('Edit Product');
         $categories = $product->category_ids;
         $tags = $product->tag_ids;
 

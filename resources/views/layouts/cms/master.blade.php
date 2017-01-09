@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ get_cms_lang_attribute() }}">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,15 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name='format-detection' content='telephone=no'>
     <meta name='msapplication-tap-highlight' content='no'>
-    <meta name='description' content=''/><!----**********ADD WEB DESCRIPTION---->
-    <meta name='keywords' content=''/><!----**********ADD WEB KEYWORDS---->
-    <meta name='author' content='hnquang112'/><!----**********ADD WEB AUTHOR---->
+    <meta name='author' content='hnquang112'/>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-    @inject ('_request', 'Illuminate\Http\Request')
-    <link rel="canonical" href="{{ $_request->url() }}">
-
-    <title>BaseSkeleton | Dashboard</title>
+    {!! SEO::generate(true) !!}
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="{{ elixir('css/vendor.css') }}">
@@ -38,11 +36,12 @@
 
     @if (!app()->environment('local'))
         @include ('layouts._analytic')
-    @endif
 
-    <!-- Rollbar tracking code -->
-    @include ('layouts._errors_tracker')
+        <!-- Rollbar tracking code -->
+        @include ('layouts._errors_tracker')
+    @endif
 </head>
+
 <body class="hold-transition skin-purple sidebar-mini">
     <div class="wrapper">
         @include ('layouts.cms._header')

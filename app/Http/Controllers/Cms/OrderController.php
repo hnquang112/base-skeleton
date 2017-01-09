@@ -15,6 +15,7 @@ class OrderController extends CmsController {
 
     // GET: /cms/orders
     public function index() {
+        $this->seo()->setTitle('Orders List');
         $orders = Order::withCount('products')->orderByDesc('created_at')->get();
 
         return view('cms.orders.index', compact('orders'));
@@ -32,6 +33,7 @@ class OrderController extends CmsController {
 
     // GET: /cms/orders/1
     public function show($order) {
+        $this->seo()->setTitle('Order Detail');
         $layout = 'detail';
 
         return view('cms.orders.show', compact('order', 'layout'));
@@ -56,6 +58,7 @@ class OrderController extends CmsController {
 
     // GET: /cms/orders/123456/print
     public function printOrder($order) {
+        $this->seo()->setTitle('Order Print Preview');
         $layout = 'print';
 
         return view('cms.orders.show', compact('order', 'layout'));

@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Eloquent\Dialect\Json;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
+use App\Notifications\ResetPassword as ResetPasswordNotification;
 use Gravatar;
 
 class User extends Authenticatable
@@ -169,4 +169,14 @@ class User extends Authenticatable
         return array_merge($rules, $newRules);
     }
 
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
+    }
 }

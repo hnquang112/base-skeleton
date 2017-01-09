@@ -13,6 +13,7 @@ class CategoryController extends CmsController {
 
     // GET: /cms/categories
     public function index(Request $request) {
+        $this->seo()->setTitle('Category List');
         $categories = Category::withCount('products')->orderByDesc('created_at')->get();
         $category = new Category;
 
@@ -21,6 +22,7 @@ class CategoryController extends CmsController {
 
     // GET: /cms/categories/create
     public function create() {
+        $this->seo()->setTitle('Create Category');
         $category = new Category;
 
         return view('cms.categories.form', compact('category'));
@@ -46,6 +48,8 @@ class CategoryController extends CmsController {
 
     // GET: /cms/categories/1/edit
     public function edit($category) {
+        $this->seo()->setTitle('Edit Category');
+
         return view('cms.categories.form', compact('category'));
     }
 

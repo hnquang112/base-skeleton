@@ -11,8 +11,10 @@ namespace App\Http\Controllers\Cms;
 use App\Http\Controllers\Controller;
 use App\Setting;
 use App;
+use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class CmsController extends Controller {
+    use SEOToolsTrait;
 
     public function __construct() {
         $lang = Setting::getSiteConfigValue('cms_page_language');

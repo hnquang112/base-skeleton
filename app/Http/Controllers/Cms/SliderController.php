@@ -9,6 +9,7 @@ class SliderController extends CmsController {
 
     // GET: /cms/sliders
     public function index(Request $request) {
+        $this->seo()->setTitle('Sliders List');
         $sliders = Setting::with('image')->sliders()->get();
         $slider = new Setting;
         $slider->type = Setting::TYP_SLIDER;
@@ -18,6 +19,7 @@ class SliderController extends CmsController {
 
     // GET: /cms/settings/create
     public function create() {
+        $this->seo()->setTitle('Create Slider');
         $slider = new Setting;
         $slider->type = Setting::TYP_SLIDER;
 
@@ -44,6 +46,8 @@ class SliderController extends CmsController {
 
     // GET: /cms/settings/1/edit
     public function edit($slider) {
+        $this->seo()->setTitle('Edit Slider');
+
         return view('cms.sliders.form', compact('slider'));
     }
 
